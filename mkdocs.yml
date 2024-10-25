@@ -1,17 +1,27 @@
 site_name: Akane's blog
 site_url: https://akane.github.io/blog/
-repo_url: https://github.com/akane/blog/
+repo_url: https://github.com/Akane-6730/blog
 
 
 nav:
   - Home: index.md  
-  - About: About.md
-  - code: code-examples.md
-  - admonitions: admonitions.md
+  - Notes: 
+      - C:  C/C.md
+
 
 theme: 
   name: material
+  language: "zh"
   logo: assets/MIKASA.png
+  favicon: assets/MIKASA.png
+  features:
+    - content.code.annotate
+    - content.action.edit
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - navigation.sections
   palette: 
 
     # Palette toggle for light mode
