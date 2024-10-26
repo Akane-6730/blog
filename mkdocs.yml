@@ -5,8 +5,13 @@ repo_url: https://github.com/Akane-6730/blog
 
 nav:
   - Home: index.md  
-  - Notes: 
-      - C:  C/C.md
+  - Notes:
+      - 编程语言:
+          - C:
+              - 编程语言/C/C.md
+              - 编程语言/C/一些概念性知识.md
+              - 编程语言/C/一些常犯的小错误.md
+              - 编程语言/C/输入.md
 
 
 theme: 
