@@ -7,13 +7,25 @@ nav:
   - Home: 
       - Home: index.md  
       - About: about.md
-  - Notes:
+  - CS:
       - 编程语言:
           - C:
-              - 编程语言/C/C.md
-              - 编程语言/C/一些概念性知识.md
-              - 编程语言/C/一些常犯的小错误.md
-              - 编程语言/C/输入.md
+              - CS/编程语言/C/C.md
+              - CS/编程语言/C/一些概念性知识.md
+              - CS/编程语言/C/一些常犯的小错误.md
+              - CS/编程语言/C/输入.md
+  - Math:
+      - Linear Algebra:
+          - Math/Linear Algebra/01-01 向量,矩阵.md
+          - Math/Linear Algebra/01-02 求解线性方程.md
+          - Math/Linear Algebra/01-03 向量空间和子空间.md
+
+  
+  - Language:
+      - English:
+          - 大英Ⅲ:
+              - VLSⅡ: Language/English/大英Ⅲ/VLSⅡ.md
+              - ICⅡ: Language/English/大英Ⅲ/ICⅡ.md
 
 
 theme: 
@@ -92,7 +104,10 @@ extra_css:  # 额外CSS文件设置
     - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css  # JetBrains Mono字体样式
     - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css  # LXGW字体样式
 
+
 extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML
+
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
