@@ -8,6 +8,9 @@ nav:
       - Home: index.md  
       - About: about.md
   - CS:
+      - MIT-Missing-Semester:
+          - CS\MIT-Missing-Semester\0_linux-shell.md
+          
       - 编程语言:
           - C:
               - CS/编程语言/C/C.md
@@ -16,10 +19,7 @@ nav:
               - CS/编程语言/C/输入.md
   - Math:
       - Linear Algebra:
-          - Math/Linear Algebra/01-01 向量,矩阵.md
-          - Math/Linear Algebra/01-02 求解线性方程.md
-          - Math/Linear Algebra/01-03 向量空间和子空间.md
-
+          - Math/Linear Algebra/Linear Algebra.md
   
   - Language:
       - English:
@@ -100,6 +100,8 @@ extra_css:  # 额外CSS文件设置
     - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css  # KaTeX样式文件
     - css/custom.css  # 自定义CSS文件
     - css/neoteroi-mkdocs.css  # 另一个自定义CSS文件
+    - css/custom-carousel.css
+    - css/counter.css
     - https://cdn.tonycrane.cc/utils/katex.min.css  # 另一个KaTeX样式文件
     - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css  # JetBrains Mono字体样式
     - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css  # LXGW字体样式
@@ -107,7 +109,9 @@ extra_css:  # 额外CSS文件设置
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML
-
+  - javascripts/mathjax.js  #Latex支持
+  - https://polyfill.io/v3/polyfill.min.js?features=es6   #Latex支持
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js   #Latex支持
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
