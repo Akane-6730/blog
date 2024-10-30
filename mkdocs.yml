@@ -9,7 +9,7 @@ nav:
       - About: about.md
   - CS:
       - MIT-Missing-Semester:
-          - CS\MIT-Missing-Semester\0_linux-shell.md
+          - CS/MIT-Missing-Semester/0_linux-shell.md
           
       - 编程语言:
           - C:
@@ -115,3 +115,12 @@ extra_javascript:
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+# plugins:
+#   - search
+#   - git-revision-date-localized:
+#       type: datetime
+#       timezone: Asia/Shanghai
+#       locale: zh
+#       enable_creation_date: true
+#       enable_update_date: true

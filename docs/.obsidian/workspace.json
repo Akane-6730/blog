@@ -73,12 +73,11 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "a666a83e8e751501",
@@ -168,9 +167,11 @@
   "active": "d9ab9ecdc58125ae",
   "lastOpenFiles": [
     "Language/English/大英Ⅲ/VLSⅡ.md",
+    "CS/编程语言/C/一些概念性知识.md",
+    "CS/编程语言/C/C.md",
     "Language/English/大英Ⅲ/ICⅡ.md",
-    "index.md",
     "about.md",
+    "index.md",
     "Math/calculus/方法思路整理.md",
     "CS/MIT-Missing-Semester/0_linux-shell.md",
     "未命名 1.md",

@@ -1,3 +1,177 @@
+# Unit 1
+??? danger "challenging words"
+	- **entrepreneur - entrepreneurial**
+	- **sprawl**
+	- stall
+	- **spectrum**
+	- cord
+	- assemble
+	- **holdout**
+	- **poised**
+	- **impetus**
+	- **reign**
+	- **feat**
+	- **momentum**
+	- **consecutive**
+	- **burgeon**
+	- head-to-head
+	- **dogged**
+	---
+	- **reminisce**
+	- **spontaneous**
+	- sole
+	- **capacity**
+	- **sophisticated**
+	- **daunting**
+	- **navigate**
+	- **attribute**
+	- **savvy**
+	- **entitled**
+	- **craze**
+
+
+??? info "important words"
+	- mistaken - mistakenly
+	- glitter
+	- coexist
+	- artificial intelligence
+	- drone
+	- miracle
+	- **supreme**
+	- **sector**
+	- **glimmer**
+	- accomplish
+	- evolve
+	- envision
+	- consensus
+	- workforce
+	---
+	- **millennial**
+	- remark
+	- phenomenon
+	- outpouring
+	- hardship
+	- downturn
+	- **individualistic**
+	- considerable
+	- progressive
+	- **deem**
+	- self-centered
+	- consumption
+	- forecast
+	- **aspiration**
+	- e-commerce
+	- trendy
+
+??? note "phrases"
+	- **packed with**
+	- for now
+	- **reign supreme**
+	- in the long/short/medium term
+	---
+	- other than
+	- in/by contrast (to/with)
+	- speak to
+
+??? Abstract "sentences"
+
+# Unit 2
+??? danger "challenging words"
+	- dockside
+	- **stern**
+	- **fretful**
+	- **refugee**
+	- windmill
+	- **scramble**
+	- chambermaid
+	- **packet**
+	---
+	- **tuck**
+	- **serendipity**
+	- **throes**
+	- cathedral
+	- metro
+	- **snapshot**
+	- **capitalism**
+	- **antidote**
+	- **sketch**
+	- **jot**
+	- mustache
+	- **muzing**
+	- whisperer
+	- **snugly**
+	- **stripe - striped**
+	- **spiky**
+	- **sway**
+
+
+
+??? info "important words"
+	- roam
+	- passionate
+	- **reunion**
+	- overloaded
+	- lifeboat
+	- singular
+	- double-decker
+	- sidewalk
+	- **grasp**
+	- **quene**
+	- **impulse**
+	- bounce
+	- childlike
+	- **ignorant**
+	- **reliably**
+	- endanger
+	- existence
+	- **sniff**
+	- puzzle
+	- charm
+	---
+	- **casual**
+	- **devour**
+	- transition
+	- **telling**
+	- virtually
+	- fossil - fossilize
+	- **critic**
+	- echo
+	- thoughtful
+	- capability
+	- layer
+	- **unfiltered**
+	- **cherish**
+	- tap
+	- **enduring**
+	- quotation
+	- **sake**
+	- obey - disobey
+
+
+??? note "phrases"
+	- no more ... than
+	- **get around**
+	- for instance
+	- **get the hang of ...**
+	- pull up
+	- as far as sb. is concerned
+	- wash out
+	- in the end
+	---
+	- **stumble upon/on/across**
+	- **tuck away**
+	- **win out**
+	- **bring up**
+	- if not
+	- in real time
+	- **touch up**
+	- **get off the ground**
+	- **bring back**
+	- **follow in sb.'s footsteps**
+	
+
+??? Abstract "sentences"
+
 #  Unit 3
 ??? danger "challenging words"
 	- **parallel** - unparalleled
