@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Language/English/大英Ⅲ/ICⅡ.md",
+                "file": "Math/calculus/定理证明思路.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ICⅡ"
+              "title": "定理证明思路"
             }
           }
         ]
@@ -166,17 +166,19 @@
   },
   "active": "d9ab9ecdc58125ae",
   "lastOpenFiles": [
-    "Language/English/大英Ⅲ/VLSⅡ.md",
+    "未命名.md",
+    "Math/calculus/定理证明思路.md",
+    "Math/calculus/解题方法思路整理.md",
     "CS/编程语言/C/一些概念性知识.md",
-    "CS/编程语言/C/C.md",
+    "CS/编程语言/C/输入.md",
     "Language/English/大英Ⅲ/ICⅡ.md",
+    "Language/English/大英Ⅲ/VLSⅡ.md",
+    "CS/编程语言/C/C.md",
     "about.md",
     "index.md",
-    "Math/calculus/方法思路整理.md",
     "CS/MIT-Missing-Semester/0_linux-shell.md",
     "未命名 1.md",
     "Math/calculus",
-    "未命名",
-    "未命名.md"
+    "未命名"
   ]
 }

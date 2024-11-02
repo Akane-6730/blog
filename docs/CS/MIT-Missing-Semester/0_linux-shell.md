@@ -44,6 +44,50 @@ counter: True
         - **fish**：Friendly Interactive Shell，开箱即用、全平台的 shell
         - <ruby>ash<rp>(</rp><rt>Almquist Shell</rt><rp>)</rp></ruby>, <ruby>csh<rp>(</rp><rt>C Shell</rt><rp>)</rp></ruby>, <ruby>ksh<rp>(</rp><rt>Korn Shell</rt><rp>)</rp></ruby>, nushell, <ruby>pwsh<rp>(</rp><rt>PowerShell 7</rt><rp>)</rp></ruby>, xonsh, ...
 
+#### 使用shell
+
+进入shell，可以看到这样的一行提示：
+
+```shell
+yourUserName@yourComputerName:~$
+```
+
+ - `yourUserName` 代表当前用户的用户名，也可以使用 `echo $USER` 来查看，以后我们省略不写；
+ - `~`代表当前所在路径，也可以使用`pwd`来查看；
+ - `$`是命令提示符，提示用户现在可以输入命令了。
+
+`~` 是表示用户的**home**目录，非 root 用户的 `~` 代表 `/home/$USER/`，而 root 用户的 `~` 代表 `/root`。
+
+!!! question "shell怎么运行程序？"
+    当我们想要运行一个程序的时候，直接输入名称即可
+
+    ??? info "examples"
+        例如，Linux 中有一个程序叫做 `date`，直接输入就可以，这个程序将输出当前的时间：
+
+        ```shell
+        :~$ date
+        Fri Mar 15 19:40:29 CST 2024
+        ```
+
+        程序可以附加参数，例如：
+
+        ```shell
+        :~$ echo hello
+        hello
+        ```
+        - 这里的`hello`，就是传给程序`echo`的参数。`echo`程序的功能就是输出它的参数。参数和程序名、参数与参数之间都要使用空格隔开。如果参数里包含空格，可以用`'`或`"`将参数包裹起来，或者在空格前面加上一个反斜杠转义（如`My\ Photos`会被转义成`My Photos`）
+
+!!! question "shell怎么知道这些程序在哪里呢？"
+    其实shell会在`$PATH`里面的路径寻找。这里的`$PATH`和上面的`$USER`都是shell中的变量，`$`表示引用变量，提示shell把`$变量名`替换成变量的值。`$PATH`储存了多个路径，用“:”隔开，提示了shell去哪里找这个程序。你也可以使用`which`来查找某一个程序的具体位置。输入程序的完整路径，也可以绕过`$PATH`运行程序。
+    ??? info "examples"
+        ```shell
+        :~$ echo $PATH
+        /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        :~$ which echo
+        /bin/echo
+        :~$ /bin/echo $PATH
+        /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        ```
 
 ### Shell 与 Terminal
 
@@ -58,6 +102,8 @@ counter: True
         - 比如 macOS 上 iTerm2 就可以随意更改按键的这些行为
         - 如果定义了 `^C` 应该复制，那么 Terminal 就会直接复制内容到剪贴板
         - 如果定义了 `^C` 应该中断程序，那么 Terminal 就告诉 Shell，Shell 再通过 SIGINT 信号通知内核中断程序
+
+
 
 ## 命令
 

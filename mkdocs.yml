@@ -18,9 +18,12 @@ nav:
               - CS/编程语言/C/一些常犯的小错误.md
               - CS/编程语言/C/输入.md
   - Math:
+      - Calculus:
+          - Math/calculus/解题方法思路整理.md
+          - Math\calculus\定理证明思路.md
       - Linear Algebra:
           - Math/Linear Algebra/Linear Algebra.md
-  
+
   - Language:
       - English:
           - 大英Ⅲ:
@@ -117,10 +120,11 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
 # plugins:
-#   - search
-#   - git-revision-date-localized:
-#       type: datetime
-#       timezone: Asia/Shanghai
-#       locale: zh
-#       enable_creation_date: true
-#       enable_update_date: true
+#     - git-revision-date-localized:
+#         enable_creation_date: true
+#         type: date
+#         fallback_to_build_date: true
+#         timezone: Asia/Shanghai
+#         locale: zh
+#         exclude:
+#             - index.md
