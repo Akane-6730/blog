@@ -147,6 +147,43 @@
 	- I also get a lot of **doors held open for me**, **compliments about** being a good dad, etc.
 	- My wife’s job **stresses her out**, and she’s going to leave it one day, while I get to raise our child to be a good person.
 
+# Unit 5
+??? danger "challenging words"
+    - **mutual**
+    - worldview
+    - **linguist**
+    - multilingual
+    - neurologist
+    - vigorous
+    - **argumentation**
+    - Mandarin
+    - **reinforce**
+    - **commute**
+    - bid
+
+??? info "important words"
+    - **immune**
+    - playlist
+    - administrative
+    - inadequate
+    - additively
+    - tempting
+    - empathy
+    - tolerance
+    - **extract**
+    - reap
+    - **persuasion**
+    - **credibility**
+    - **contextual**
+
+??? note "phrases"
+
+??? Abstract "sentences"
+	- **The global demand for** Chinese language education has **kept pace with** the country’s economic development.
+	- Fairy tales are **imaginative stories with rich visual and contextual elements** that **evoke emotions in children**.
+	- The characters might **be unfamiliar to** the children but the problems and the feelings **that are dealt with** are **themselves** often **very true to life**.
+	- My friend used to **commute to work** daily on a train. After getting off the train, he always **walked a short distance to** his office building.
+	- And my friend was the only one who ever **bid him a good day**. The old man also said that my friend’s warm words always **brightened his day** and helped him to **continue on** despite being ignored by thousands of others who saw him daily.
 
 
 
