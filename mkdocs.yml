@@ -2,37 +2,50 @@ site_name: Akane's blog
 site_url: https://akane.github.io/blog/
 repo_url: https://github.com/Akane-6730/blog
 
-
 nav:
   - Home: 
       - Home: index.md  
       - About: about.md
   - CS:
+      # - CS/index.md
       - PracticalSkills:
-          - CS/PracticalSkills/0_linux-shell.md
-          
+          - CS/PracticalSkills/README.md
+          - CS/PracticalSkills/Shell.md
+          - CS/PracticalSkills/Git.md
+          - Editor:
+              - CS/PracticalSkills/Emacs.md
+          - Build Tool:
+              - CS/PracticalSkills/Make.md
+          - Debugging Tools:
+              - gdb: CS/PracticalSkills/GDB.md
+              - Valgrind: CS/PracticalSkills/Valgrind.md
+          - CS/PracticalSkills/Compile (gcc).md
+
       - 编程语言:
           - C:
-              - CS/编程语言/C/C.md
-              - CS/编程语言/C/一些概念性知识.md
-              - CS/编程语言/C/一些常犯的小错误.md
-              - CS/编程语言/C/输入.md
+              - CS/编程语言/C/index.md
+              # - CS/编程语言/C/一些概念性知识.md
+              # - CS/编程语言/C/一些常犯的小错误.md
+              # - CS/编程语言/C/输入.md
+
   - Math:
       - Calculus:
           - Math/calculus/解题方法思路整理.md
-          - Math\calculus\定理证明思路.md
+          - Math/calculus/定理证明思路.md
       - Linear Algebra:
-          - Math/Linear Algebra/Linear Algebra.md
+          - Math/Linear Algebra/思路.md
+          - Math\Linear Algebra\01-04 正交(Orthogonality).md
 
   - Language:
       - English:
           - 大英Ⅲ:
               - VLSⅡ: Language/English/大英Ⅲ/VLSⅡ.md
               - ICⅡ: Language/English/大英Ⅲ/ICⅡ.md
+              
   - CTF:
-      - CTF\Crypto\My CTF competition history.md
+      - CTF/Crypto/My CTF competition history.md
       - Crypto:
-          - CTF\Crypto\Introduction to CryptoHack.md
+          - CTF/Crypto/Introduction to CryptoHack.md
 
 theme: 
   name: material
@@ -62,9 +75,10 @@ theme:
     - search.share
     - search.suggest
     - header.autohide
-  font: false
-  palette: 
 
+  font: false
+
+  palette: 
     # Palette toggle for light mode
     - scheme: default
       toggle:
@@ -78,13 +92,19 @@ theme:
         name: Switch to light mode
 
 markdown_extensions:
-  - md_in_html
-  - attr_list
+  #This configuration adds the ability to align images, add captions to images (rendering them as figures), and mark large images for lazy-loading.
+  - attr_list     
+  - md_in_html  
+  - pymdownx.blocks.caption
 
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -103,33 +123,43 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
-
 extra_css:  # 额外CSS文件设置
-    - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css  # KaTeX样式文件
-    - css/custom.css  # 自定义CSS文件
-    - css/neoteroi-mkdocs.css  # 另一个自定义CSS文件
-    - css/custom-carousel.css
-    - css/counter.css
-    - https://cdn.tonycrane.cc/utils/katex.min.css  # 另一个KaTeX样式文件
-    - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css  # JetBrains Mono字体样式
-    - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css  # LXGW字体样式
-
+  - https://unpkg.com/katex@0/dist/katex.min.css  # KaTeX样式文件
+  - css/custom.css  # 自定义CSS文件
+  - css/neoteroi-mkdocs.css  # 另一个自定义CSS文件
+  - css/custom-carousel.css
+  - css/counter.css
+  - https://cdn.tonycrane.cc/utils/katex.min.css  # 另一个KaTeX样式文件
+  - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css  # JetBrains Mono字体样式
+  - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css  # LXGW字体样式
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML
-  - javascripts/mathjax.js  #Latex支持
-  - https://polyfill.io/v3/polyfill.min.js?features=es6   #Latex支持
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js   #Latex支持
-  - javascripts/katex.js 
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
-# plugins:
-#     - git-revision-date-localized:
-#         enable_creation_date: true
-#         type: date
-#         fallback_to_build_date: true
-#         timezone: Asia/Shanghai
-#         locale: zh
-#         exclude:
-#             - index.md
+  - javascripts/mathjax.js  # MathJax
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+  - javascripts/katex.js  # KaTeX
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+  - https://polyfill.io/v3/polyfill.min.js?features=es6   # Latex支持
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js   # Latex支持
+
+plugins:
+  - glightbox
+
+  # - search
+  # - pymdownx.arithmatex:
+  #     generic: true
+
+  # - git-revision-date-localized:
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: date
+  #     fallback_to_build_date: true
+  #     timezone: Asia/Shanghai
+  #     locale: zh
+  #     exclude:
+  #         - index.md

@@ -307,3 +307,195 @@
 	 - **at stake**
 
 ??? Abstract "sentences"
+
+# Unit 5
+??? danger "challenging words"
+	 - **console**
+	 - **monologue**
+	 - **paradoxically**
+	 - **timelessness**
+	 - **subconscious**
+	 - bibliotherapist
+	 - **transient** - **transience**
+	 - **memoir**
+	 ---
+	 - netspeak
+	 - **abbreviation**
+	 - **lexicon**
+	 - **blur**
+	 - **prevalent**
+	 - linguistics
+	 - **acronym**
+	 - **longevity**
+	 - **eligible**
+	 - **revisit**
+	 - **mainstream**
+	 - **fuzzy**
+	 - jargon
+	 - **impose**
+	 - **worrisome**
+	 - **robust**
+
+??? info "important words"
+	- **coincidence**
+	- **therapy**
+	- propose
+	- **fleeting**
+	- betrayal
+	- **interior**
+	- **empathetic**
+	- symptom
+	- **grieve** - **grief**
+	---
+	- slang
+
+??? note "phrases"
+	 - **one's fair share**
+	 - through/by word of mouth
+	 - stick around
+	 - come and go
+	 - keep up with
+	 - speed up
+	 - one after the other / one after another
+	 - in the hope of / that
+
+# Unit 6
+??? danger "challenging words"
+	- grill
+	- toast
+	- **resourcefulness**
+	- tuna
+	- leftover
+	- mayonnaise
+	- lettuce
+	- **convention**
+	- **turnover**
+	- downside
+	- **scrap**
+	- **conscience**
+	- **elite**
+	- chafing dish
+	- toothpick
+	- **conservatism**
+	- **dainty**
+	- **doctorate**
+	- bun
+	- gravy
+	- **munch**
+	- **expats**
+	---
+	- **confession**
+	- **insatiable**
+	- **craving**
+	- **tropical**
+	- cucumber
+	- **disposal**
+	- **peruse**
+	- grimly
+	- mealy
+	- wrapper
+	- peel
+	- **unworldly**
+	- **crunch**
+	- free-range
+	- **sustenance**
+	- **grave**
+
+
+??? info "important words"
+	- priority
+	- organic
+	- earbud
+	- far-reaching
+	- prediction
+	- priority
+
+??? note "phrases"
+	- **from scratch**
+	- **come up with**
+	- fill (sb.) up
+	- **reach out to**
+	- of one's choosing/choice
+	- **to go**
+	- call for sth.
+	- to this day
+	- thanks to
+	---
+	- get (sb.) through
+	- make fun of
+	- **at one's disposal**
+	- pick out
+	- keep sth. to oneself
+	- **be far removed from sth.**
+	- rely on
+	- in season
+	- next to
+	- **for the most part**
+	- **down/along the road**
+
+# Unit 7
+??? danger "challenging words"
+	- meteor
+	- hormone
+	- melatonin
+	- bulldozer
+	- **intimate**
+	- soulful
+	---
+	- **pal**
+	- **skitter**
+	- **windup**
+	- **flop**
+	- **alas**
+	- **exquisitely**
+	- **staple**
+	- **spawn**
+	- **backfire**
+	- fattiness
+	- **moist**
+	- **surplus**
+	- **incorporate**
+	- flesh
+	- antibiotic
+	- toxin
+	- **overtake**
+	- joyride
+
+??? info "important words"
+	- **trail**
+	- **irreplaceable**
+	- **rhythm**
+	- nightfall
+	- **diabetes**
+	- **obesity**
+	- migrate
+	- **wreck**
+	- **disrupt**
+	- **collapse**
+	- **illuminate**
+	- **solitude**
+	- starry
+	- **diminish**
+	- monument
+	---
+	- spray
+	- **magnetic**
+	- rocky
+	- coastal
+	- thrive
+	- **abundance**
+	- overcook
+	- **domesticated**
+	- **breed**
+
+??? note "phrases"
+	- in the making
+	- simply put / to put it simply
+	- in short supply
+	- **tap into**
+	- to the point
+	- in large part / measure
+	- **lend oneself to sth.**
+	- **cut corners**
+	- **phase out**
+	- **in my book**

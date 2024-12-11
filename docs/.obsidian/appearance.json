@@ -1,1 +1,5 @@
-{}
+{
+  "theme": "moonstone",
+  "baseFontSize": 16,
+  "baseFontSizeAction": true
+}

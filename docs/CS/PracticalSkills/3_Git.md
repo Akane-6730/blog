@@ -70,7 +70,7 @@ tags:
 
 > [!TIP]
 >
-> 如果不理解如何创建可以转看 [0_linux-shell](0_linux-shell.md)
+> 如果不理解如何创建可以转看 [Shell](Shell.md)
 
 ![](Git-3.png)
 
