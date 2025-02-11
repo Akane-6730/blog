@@ -1,5 +1,8 @@
 {
   "theme": "moonstone",
   "baseFontSize": 16,
-  "baseFontSizeAction": true
+  "baseFontSizeAction": true,
+  "accentColor": "",
+  "cssTheme": "Minimal",
+  "monospaceFontFamily": "Consolas"
 }

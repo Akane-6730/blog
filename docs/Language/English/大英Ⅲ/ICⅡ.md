@@ -499,3 +499,61 @@
 	- **cut corners**
 	- **phase out**
 	- **in my book**
+
+# Unit 8
+
+??? danger "challenging words" 
+	- **biometric**
+	- **manipulate**
+	---
+	- **rational**
+	- microbe
+	- **intuitively**
+	- broccoli
+	- **recoil**
+	- **distaste**
+	- **receptor**
+	- **innate**
+	- **shapely**
+	- **offspring**
+	- **destined**
+	- **magnificent**
+	- **remedy**
+
+??? info "important words"
+	- routinized
+	- automated
+	- **consequently**
+	- **algorithm**
+	- **mystical**
+	- **analysis**
+	- disdress
+	- **peculiarity**
+	- **compose**
+	- surpass
+	- outperform
+	---
+	- **ridiculous**
+	- plentiful
+	- **disgusting**
+	- reasonable
+	- relieve
+	- **disirable**
+	- reproduce
+	- parental
+	- **disheartening**
+	- slave
+	- **compassion**
+
+??? note "phrases"
+	- make sense
+	- dig into
+	- hit upon / on
+	- give / lose one's heart to
+	- **as to** = with respect to
+	- **green with envy**
+	- **set out to do sth.**
+	- **be on the case**
+	- beyond one's control
+	- **lend one's support**
+	- take sth. personally

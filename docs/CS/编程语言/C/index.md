@@ -1,7 +1,5 @@
 # Index
 
-欢迎来到我的 C 语言学习笔记。由于课程仍在进行中，目前的笔记十分凌乱，所以暂时被我藏起来了...期末有空再整吧...
-
 # Resource Collection
 
 ## [Introductory C Programming Specialization](https://www.coursera.org/specializations/c-programming)

@@ -1,8 +1,9 @@
 /* https://github.com/TonyCrane/note/blob/master/docs/css/custom.css */
 
 :root {
-  --md-text-font: "Georia", "LXGW WenKai Screen"; 
-  --md-code-font: "JetBrains Mono";
+  --md-text-font: "Georia", "LXGW WenKai"; 
+  /*  */
+  --md-code-font: "Consolas";
 }
 
 
