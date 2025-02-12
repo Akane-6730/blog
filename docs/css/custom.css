@@ -2,8 +2,7 @@
 
 :root {
   --md-text-font: "Georia", "LXGW WenKai"; 
-  /*  */
-  --md-code-font: "Consolas";
+  --md-code-font: "Monaco", "Consolas";
 }
 
 
