@@ -17,41 +17,33 @@ counter:
 - [Master Emacs in 21 Days](https://book.emacs-china.org/)
 	- 不适合新手看
 
+## Misc
+- 以下根据我自己踩过的一些坑做了一些经验总结，帮助你在上手时就获得极致的体验😊
+1. Ubuntu 装 Emacs30 可以通过 snap
+2. windows terminal 启动真彩色防止与 Emacs 主题冲突，在终端输入
+```shell
+export TERM=xterm-direct
+```
+3. wslg 模拟的图形化界面分辨率低？[参考这个回答](https://github.com/microsoft/wslg/issues/590#issuecomment-2320164818)
+	- 创建文件 C:/users/username/.wslgconfig，写入
+	```
+	[system-distro-env]
+	WESTON_RDP_HI_DPI_SCALING=true
+	WESTON_RDP_FRACTIONAL_HI_DPI_SCALING=true
+	WESTON_RDP_DEBUG_DESKTOP_SCALING_FACTOR=100
+	```
+	- 然后重启wsl即可
+
 ## 高级操作备忘
 
 ### 删除
 - 删除光标所在行： **C-S DEL**
-
+---
 ### 文件
 
 - **打开当前文件所在的目录** : 当已经打开了一个文件时，输入 **C-x C-j** 可以打开当前文件所在的目录。
 
-- **移动光标**：按下 **p**（previous）和 **n**（next）来上下移动光标，不需要按 Control 键。
-  
-- **标记文件**：按 **m** 来标记文件，标记的文件会被选中，可以进行批量操作。
-  
-- **取消标记**：按 **u** 来取消选中的文件标记。
-  
-- **删除文件**：按 **d** 来标记删除文件，删除操作不会立即生效，直到按 **x** 执行删除。
-  
-- **查看帮助**：按 **h** 来查看 Dired 的帮助文档，其中列出了所有可用的命令。
-
-
-### **搜索 (Search)**
-
-- `C-s`：启动增量搜索 (incremental search)
-	- 输入字符后立即搜索并高亮匹配项。
-	- 如果再次按下 `C-s`，则会向前搜索下一个匹配项。
-- `C-r`：反向增量搜索 (reverse incremental search)
-	- 输入字符后立即向反方向搜索并高亮匹配项。
-	- 再次按下 `C-r` 可返回查找上一个匹配项。
-- 搜索中：
-    - `DEL`：撤销上一个输入字符 (undo last character)
-    - `C-s`/`C-r`：切换前进或后退方向。
-	- 如果出现显示问题，使用 `C-l` 重绘屏幕 (redraw the screen)
-
 ---
-
 ### **撤销与区域撤销 (Undo and Region Undo)**
 
 - `C-x u`：撤销最近的更改 (undo the last change)
@@ -60,12 +52,6 @@ counter:
     2. 在选中区域内使用 `C-x u` 撤销仅该区域的更改 (undo changes within the region)
 
 ---
-
-### **光标移动 (Cursor Movement)**
-
-
----
-
 ### **剪切、复制和粘贴 (Cut, Copy, Paste)**
 
 - `C-k`：剪切当前行 (cut the current line)
@@ -78,6 +64,7 @@ counter:
     - `M-y`：切换到之前剪切/复制的内容 (cycle through previous yanked items)
     - 相当于回溯剪贴板
 - Tips：可以和搜索联合使用
+
 ---
 
 ### **自动补全 (Autocomplete)**
