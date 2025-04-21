@@ -1,0 +1,2095 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://akane.github.io/blog/Math/Linear%20Algebra/01-01%20%E5%90%91%E9%87%8F%2C%E7%9F%A9%E9%98%B5/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/MIKASA.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>1. 前言 - Akane's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Akane&#39;s blog" class="md-header__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Akane's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. 前言
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/PracticalSkills/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CS
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Akane&#39;s blog" class="md-nav__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    Akane's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/PracticalSkills/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PracticalSkills
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PracticalSkills
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Editor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Editor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emacs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Tool
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fancier Make Options
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debugging Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/GDB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    gdb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Valgrind.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Valgrind
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Compile%20%28gcc%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compile (gcc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大英Ⅲ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            大英Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VLSⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/IC%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ICⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CTF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Crypto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to CryptoHack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Akane-6730/blog/edit/master/docs/Math/Linear Algebra/01-01 向量,矩阵.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="1">1. 前言</h1>
+<p><img alt="1571189779502" src="../.assets/1571189779502.png" /></p>
+<p>上图是MIT线代的封面,展示的是四大子空间(<strong>four fundamental Subspaces)</strong>:</p>
+<ul>
+<li>行空间和零空间在左边</li>
+<li>列空间和<span class="arithmatex">\(A^T\)</span>的零空间在右边</li>
+</ul>
+<p>把本书主题的中心思想展示成这样的图片是很少见的!</p>
+<p>这四个子空间,从矩阵A开始.A的每一行是一个n维空间的向量.当一个矩阵有m行时,每一列是一个m维空间的向量.线性代数至关重要的操作是向量的线性组合(<strong>linear combination of vectors</strong>).我们取所有列向量的线性组合,得到列空间.如果这个空间包含向量b,那么我们可以解决等式 <span class="arithmatex">\(Ax = b\)</span></p>
+<p>等式Ax = b使用了线性代数的语言.向量Ax是A的列的一个组合(combination of the columns of A).这个等式要求一个可以产生b的组合(<strong>a combination that produces b</strong>).解向量(solution vector) x存在了三个层次,都很重要:</p>
+<ol>
+<li>
+<p><strong>Direct  solution</strong> ： 用向前消去(forward elimination)和向后替换(back substitution)求解x.</p>
+</li>
+<li>
+<p><strong>Matrix solution</strong> ：使用矩阵A的逆:<span class="arithmatex">\(x= A^{-1}b\)</span>,如果A有逆的话</p>
+</li>
+<li>
+<p><strong>Vector  space solution</strong>： 特解(Particular solution):<span class="arithmatex">\(Ay  =  b\)</span>  加上零空间解(nullspace solution)$ Az  =  0$</p>
+</li>
+</ol>
+<p>很多超级计算机都有测试Ax = b的速度.这是纯粹的线性代数.IBM在2008年的速度是<span class="arithmatex">\(10^{15}/sec\)</span>的新纪录.就算是超级计算机也不想要计算逆矩阵:太慢了.逆操作给出了最简单的公式 <span class="arithmatex">\(x =A^{-1}b\)</span> ,但不是最快的速度.而且,任何一个人都应该知道,行列式(determinant)甚至更慢:<strong>任何线性代数的课程都不应该从n*n行列式的公式开始讲起.这些公式有一定重要性,但不是最重要的</strong></p>
+<p>微积分主要用在于特别的操作(导数)和逆操作(积分)--我承认微积分很重要....但是很多数学是离散的而不是连续的,是数字的而不是模拟的(discrete rather than continuous,digital rather than analog).数据的时代已经来临!!!你会在我的网站找到一个文章叫做  "too many Calculus".<strong>The truth is that vectors  and  matrices have become the language to know!</strong></p>
+<h1 id="2">2. 向量</h1>
+<p>线性代数的两个核心操作都和向量有关</p>
+<ul>
+<li>向量加操作可以得到 <span class="arithmatex">\(\vec{v}+\vec{w}\)</span></li>
+<li>乘以一个数可以得到<span class="arithmatex">\(c\vec{v},c\vec{w}\)</span></li>
+</ul>
+<p>组合这些操作,可以得到的<span class="arithmatex">\(c\vec{v}+c\vec{w}\)</span>线性组合(<strong>linear combination</strong>)
+$$
+\text{Linear combination}:c\vec{v}+c\vec{w}\
+\text{for example :} 
+c 
+\left[\begin{matrix} 
+1  \
+1   \
+\end{matrix} \right]</p>
+<ul>
+<li>d 
+\left[\begin{matrix} 
+2  \
+3   \
+\end{matrix} \right]</li>
+</ul>
+<p>= </p>
+<p>\left[\begin{matrix} 
+c+2d  \
+c+3d    \
+\end{matrix} \right]
+$$
+向量<span class="arithmatex">\(c\vec{v}\)</span> 都在一条直线上.如果<span class="arithmatex">\(\vec{w}\)</span>不在这一条直线上,组合<span class="arithmatex">\(c\vec{v}+c\vec{w}\)</span>形成了了整个的二维空间.我必须用二维这个词是因为线性代数允许更高维的平面.如果从四维空间的四个向量开始,<span class="arithmatex">\(\vec{u},\vec{v},\vec{w},\vec{z}\)</span>,它们的<span class="arithmatex">\(c\vec{u}+d\vec{v}+d\vec{w}+f\vec{z}\)</span>组合很可能会形成那个空间--但不总是.这些线和组合可以处以同一条直线上</p>
+<p>这就是这本书要走向的方向(进入n维空间)</p>
+<h2 id="21-linear-combination">2.1. 线性组合(linear combination)</h2>
+<p>我们有两个数字<span class="arithmatex">\(v_1,v_2\)</span>,这样一对数字产生了二维向量 <span class="arithmatex">\(\vec{v}\)</span>:
+$$
+\text{column vector:}\quad v = \left[ \begin{array} { c } { v _ { 1 } } \ { v _ { 2 } } \end{array} \right] \quad \begin{array} { l } { v _ { 1 } = \text { first component } } \ { v _ { 2 } = \text { second component } } \end{array}
+$$
+向量加法如下,分量+分量
+$$
+\begin{array} { l } { \text { VECTOR } } \ { \text { ADDITION } } \end{array} \quad v = \left[ \begin{array} { c } { v _ { 1 } } \ { v _ { 2 } } \end{array} \right] \text { and } w = \left[ \begin{array} { c } { w _ { 1 } } \ { w _ { 2 } } \end{array} \right] \quad \text { add to } \quad v + w = \left[ \begin{array} { c } { v _ { 1 } + w _ { 1 } } \ { v _ { 2 } + w _ { 2 } } \end{array} \right]
+$$
+减法类似.</p>
+<p>另外一个基础操作是数乘(scalar multiplication)
+$$
+\begin{array} { l l } { \text { SCALAR Multiplication:} } &amp; { 2 v = \left[ \begin{array} { c } { 2 v _ { 1 } } \ { 2 v _ { 2 } } \end{array} \right] \text { and } - v = \left[ \begin{array} { c } { - v _ { 1 } } \ { - v _ { 2 } } \end{array} \right] } \end{array}
+$$
+<span class="arithmatex">\(\vec{v}\)</span> 和<span class="arithmatex">\(-\vec{v}\)</span> 相加得到的结果是<span class="arithmatex">\(\vec{0}\)</span>(不是数字<code>0</code>).<span class="arithmatex">\(\vec{0}\)</span>向量的分量是0和0.线性代数就是在 <span class="arithmatex">\(\vec{v}+\vec{w},c\vec{v}\)</span> 这些<strong>向量加法和数乘下构建起来的</strong></p>
+<blockquote>
+<p><strong>Definition:Linear combination of <span class="arithmatex">\(\vec{v}\)</span> and <span class="arithmatex">\(\vec{w}\)</span></strong></p>
+<hr />
+<p><span class="arithmatex">\(c\vec{v}\)</span> 和 <span class="arithmatex">\(d\vec{w}\)</span>  的和(sum),是   <span class="arithmatex">\(\vec{v}\)</span>  和 <span class="arithmatex">\(\vec{w}\)</span> 的<strong>线性组合</strong>
+</p>
+</blockquote>
+<p>四个特别的线性组合是：和，差，0乘和数乘(sum,difference,zero and scalar multiple of c<span class="arithmatex">\(\vec{v}\)</span>)
+$$
+\begin{aligned}</p>
+<p>1 \vec{v} + 1 \vec{w} &amp; = \text { sum of vectors in Fig } 1.1 \mathrm { a } \ 
+1 \vec{v} - 1 \vec{w} &amp; = \text { difference of vectors in Fig } 1.1 \mathrm {b} \ 
+0 \vec{v} + 0 \vec{w} &amp; = \text { zero vector } \ 
+c \vec{v} + 0 \vec{w} &amp; = \text { vector } c \vec{v} \text { in the direction of } \vec{v} </p>
+<p>\end{aligned}
+$$
+零向量总是一个可能的组合,只要系数是<code>0</code>即可.任何我们看到一个向量空间(space of vector),零向量也是包括在内的.</p>
+<p><img alt="1606897835725" src="../.assets/1606897835725.png" /></p>
+<h2 id="22">2.2. 三维下的向量</h2>
+<blockquote>
+<p>Vectors In Three dimension</p>
+</blockquote>
+<p><img alt="1606897946550" src="../.assets/1606897946550.png" /></p>
+<p>从现在开始,我们写向量的时候,有下面约定 
+$$
+\vec { v } = \left[ \begin{array} { c } { 1 } \ { 1 } \ { - 1 } \end{array} \right] \text { 也写成  }   \vec { v } = ( 1,1 , - 1 )
+$$
+主要原因是为了节省空间,注意<span class="arithmatex">\(\vec{v} = (1,1,-1)\)</span>实际上还是一个<strong>列向量</strong>,只是为了表示方便.行向量是列向量的转置.三维向量的线性组合和二维是一样的,只是多了一个坐标而已</p>
+<h2 id="23">2.3. 一个重要的问题</h2>
+<p>对于一个向量<span class="arithmatex">\(\vec{u}\)</span>,唯一的线性组合是 <span class="arithmatex">\(c\vec{u}\)</span>.两个向量,组合有 <span class="arithmatex">\(c\vec{u}+d\vec{v}\)</span>.三个向量是: $ c\vec{u}+d\vec{v} + e\vec{w} $;c,d,e可以是任何值.假设 <span class="arithmatex">\(\vec{u},\vec{v},\vec{w}\)</span> 是三维空间向量.那么</p>
+<ol>
+<li><span class="arithmatex">\(c\vec{u}\)</span> 所有组合的图像是什么?</li>
+<li><span class="arithmatex">\(c\vec{u}  +  d\vec{v}\)</span>  所有组合的图像是什么?</li>
+<li><span class="arithmatex">\(c\vec{u}  +  d\vec{v}  +  e\vec{w}\)</span> 所有组合的图像是什么?</li>
+</ol>
+<p>答案取决于这些 <span class="arithmatex">\(\vec{u},\vec{v},\vec{w}\)</span> 向量,如果它们都是零向量(极端例子),那么这些所有的组合都是零向量.如果它们不是零向量.那么下面就是答案,这是我们学习的关键:</p>
+<ol>
+<li><span class="arithmatex">\(c\vec{u}\)</span> 的组合形成一条直线(fill a <strong>line</strong>)</li>
+<li><span class="arithmatex">\(c\vec{u}  +  d\vec{v}\)</span> 形成一个平面(fill a <strong>plane</strong>)</li>
+<li><span class="arithmatex">\(c\vec{u}  +  d\vec{v}  +  e\vec{w}\)</span> 形成一个三维空间</li>
+</ol>
+<p>零向量(0,0,0)是在第一种情况的直线上,因为c可以是0;它也在平面上,因为c,d可以是0.向量 <span class="arithmatex">\(c \vec{u}\)</span> 的线是无限长的(前进方向或者后退方向). 需要特别让你关注的是,所有 $ c\vec{u}  +  d\vec{v}$ (组合两个三维下的向量)的那个平面:</p>
+<blockquote>
+<p>把一条直线上的所有 $ c\vec{u}$  加上另一条直线的所有 <span class="arithmatex">\(d\vec{v}\)</span>,产生了如Fig1.3的平面</p>
+</blockquote>
+<p><img alt="1571191950433" src="../.assets/1571191950433.png" /></p>
+<p>而当加上第三个向量 <span class="arithmatex">\(e \vec{ w}\)</span>,<span class="arithmatex">\(e \vec{ w}\)</span> 给出了第三条线.假设 <span class="arithmatex">\(e \vec{ w}\)</span> 不在 $ \vec{ u}, \vec{ v}$ 的平面上,那么所有 <span class="arithmatex">\(e \vec{ w}\)</span>,和所有 <span class="arithmatex">\(c\vec{u}  +  d\vec{v}\)</span> 的组合填充了整个三维空间</p>
+<p>这就是典型的情况! 首先产生线(<strong>line</strong>),然后是平面(<strong>plane</strong>),然后是空间(<strong>space</strong>).但是其他情况也可以存在.当 $ \vec{ w}$ 刚好是 $ c\vec{u}  +  d\vec{v} $.那么 $ \vec{w}$ 就是在 $ \vec{ u}, \vec{ v}$ 组成的平面当中.那么 $ \vec{ u}, \vec{ v}, \vec{ w}$ 的组合不会跳出这个<strong>uv</strong>平面.我们得不到全部的三维空间<span class="arithmatex">\(R^3\)</span></p>
+<h2 id="24">2.4. 典型例题</h2>
+<p><strong>1.</strong> <span class="arithmatex">\(\vec{v}=(1,1,0)\)</span> 和 <span class="arithmatex">\(\vec{w} =(0,1,1)\)</span> 的线性组合形成了一个平面,描述一下这个平面.找到一个不在 <span class="arithmatex">\(\vec{v},\vec{w}\)</span> 的组合当中的向量</p>
+<p>解: <span class="arithmatex">\(c\vec{v}+d\vec{w}\)</span> 的组合填充了一个<span class="arithmatex">\(R^3\)</span>的平面,这个平面允许任何的c,d,下面是组合的表达</p>
+<p>$$
+\text{combination:  }c \vec{v} + d \vec{w} = c \left[ \begin{array} { l } { 1 } \ { 1 } \ { 0 } \end{array} \right] + d \left[ \begin{array} { l } { 0 } \ { 1 } \ { 1 } \end{array} \right] = \left[ \begin{array} { c } { c } \ { c + d } \ { d } \end{array} \right]
+\quad \text{fill a plane}
+$$
+<code>(1,2,3)</code>不再这个平面上,因为 <span class="arithmatex">\(2 \ne 1+3\)</span> . 另一个特别的向量是 <span class="arithmatex">\(\vec{n} =(1,-1,1)\)</span>,是和这个平面垂直,<span class="arithmatex">\(\vec{w} \cdot \vec{n} = \vec{v} \cdot \vec{n} = 0\)</span></p>
+<hr />
+<p><strong>2.</strong> 找到未知数c,d,从而如下的 <span class="arithmatex">\(c\vec{v}+d\vec{w} = \vec{b}\)</span> 成立
+$$
+\vec{v} = \left[ \begin{array} { r } { 2 } \ { - 1 } \end{array} \right] \quad \vec{w} = \left[ \begin{array} { r } { - 1 } \ { 2 } \end{array} \right] \quad \vec{b} = \left[ \begin{array} { l } { 1 } \ { 0 } \end{array} \right]
+$$</p>
+<p>解:在应用数学上,很多问题都有下面2个步骤</p>
+<ol>
+<li>Modeling part:把问题表达成为一系列等式</li>
+<li>Computational part:使用快速正确的算法求解等式</li>
+</ol>
+<p>这里我们关注第一个步骤,后面我们会学习计算算法.<strong>其实这个模型就是线代的基础模型</strong>
+$$
+\text{find }c _ { 1 } , \ldots , c _ { n } \text { so that } c _ { 1 } v _ { 1 } + \cdots + c _ { n } v _ { n } = b
+$$
+对于</p>
+<ul>
+<li>n = 2,我们可以找到这些 <span class="arithmatex">\(c_n\)</span> 的公式</li>
+<li>对于n&gt;100,可以使用后面的消去法</li>
+<li>对于n大于100W,只能求助于数值线性代数<code>&lt;01-09&gt;</code>!</li>
+</ul>
+<p>现在我们开始看看怎么求解本问题n = 2的情况
+$$
+c\left[ \begin{array} { r } { 2 } \ { - 1 } \end{array} \right]  + d\left[ \begin{array} { r } { - 1 } \ { 2 } \end{array} \right] =  \left[ \begin{array} { l } { 1 } \ { 0 } \end{array} \right]
+$$
+这可以拆分成2个数字等式:
+$$
+\begin{aligned}
+2c-d = 1\
+-c+2d = 0
+\end{aligned}
+$$
+很明显我们可以得到:<span class="arithmatex">\(c=\frac{2}{3},d = \frac{1}{3}\)</span></p>
+<h1 id="3">3. 长度和点乘,角度</h1>
+<blockquote>
+<p><strong>DEFINITIION: Inner(Dot) product</strong></p>
+<hr />
+<p><span class="arithmatex">\(\vec{v} = (v_1,v_2)\)</span> 和 <span class="arithmatex">\(\vec{w} = (w_1,w_2)\)</span> 的点乘是下面的 <strong>数字</strong>:
+$$
+\vec{v} \cdot \vec{w} = v_1w_1 + v_2w_2 \tag{1}
+$$
+而且  <span class="arithmatex">\(\vec{v} \cdot \vec{w}  = \vec{w} \cdot \vec{v}\)</span>,  顺序无关紧要</p>
+</blockquote>
+<p>经济学上,假设我们有三个商品需要销售或者购买,价格分别是<span class="arithmatex">\((p_1,p_2,p_3)\)</span>.形成了价格向量 <span class="arithmatex">\(\vec{p}\)</span>.购买或者销售的数量分别是<span class="arithmatex">\((q_1,q_2,q_3)\)</span>.那么总的收入就是:</p>
+<p>$$
+\text{Income} = \left( q _ { 1 } , q _ { 2 } , q _ { 3 } \right) \cdot \left( p _ { 1 } , p _ { 2 } , p _ { 3 } \right) = q _ { 1 } p _ { 1 } + q _ { 2 } p _ { 2 } + q _ { 3 } p _ { 3 } = \text{dot product}
+$$
+如果点乘得到<code>0</code>意味着收支平衡.<span class="arithmatex">\(\vec{p},\vec{q}\)</span> 在三维空间下是垂直的!一个有几千种商品的超市很容易就可以形成高维空间!</p>
+<p>点乘具有下面的性质:
+$$
+\begin{array} { l } 
+{ \text { 1. }  { \vec{v} } \cdot  { \vec{w} } =  { \vec{w} } \cdot  { \vec{v} } } \ 
+{ \text { 2. }  { \vec{u} } \cdot ( { \vec{v} } +  { \vec{w} } ) =  { \vec{u} } \cdot  { \vec{v} } +  { \vec{u} } \cdot  { \vec{w} } } \
+{ \text { 3. } ( { c \vec{v} } ) \cdot { \vec{w} } =  { c } ( { \vec{v} } \cdot  { \vec{w} } ) } </p>
+<p>\end{array}
+$$
+这些通过点乘的定义可以直接得到,现在根据这些定义,对规则2,我们设<span class="arithmatex">\(\vec{u} = \vec{v}+\vec{w}\)</span>,我们可以证明
+$$
+\begin{array} { c } 
+{ |  { \vec{v} } +  \vec{ w } | ^ { 2 } = 
+( \vec { v } + \vec { w } ) \cdot ( \vec { v } + \vec { w } ) \stackrel { \text { by rule } 2 } { \longrightarrow } = 
+( \vec { v } + \vec { w } ) \cdot \vec { v } + ( \vec { v } + \vec { w } ) \cdot \vec { w } \stackrel { \text { by rule } 1 } { \longrightarrow } } \ </p>
+<p>{ = \vec { v } \cdot ( \vec { v } + \vec { w } ) + \vec { w } \cdot ( \vec { v } + \vec { w } ) \stackrel { \text { by rule } 2 } { \longrightarrow } =</p>
+<p>\vec{v} \cdot \vec{v} + \vec{w} \cdot \vec{w} + 2 \vec{v} \cdot \vec{w}</p>
+<p>= | \vec{v} | ^ { 2 } + | \vec{w} | ^ { 2 } + 2 \vec{v} \cdot \vec{w} } \end{array}
+$$</p>
+<p>所以对于点乘,我们主要理解,<strong>括号是可以展开的</strong></p>
+<h2 id="31">3.1. 长度,单位向量</h2>
+<p>如果向量和自己点乘,那么得到的就是长度的平方</p>
+<blockquote>
+<p><strong>Definition:Length of Vector</strong></p>
+<hr />
+<p>向量  <span class="arithmatex">\(|\vec{v}|\)</span> 的长度是   <span class="arithmatex">\(\vec{v} \cdot \vec{v}\)</span> 的平方根
+$$
+Length(\vec{v}) = norm(\vec{v}) = |\vec{v}| = \sqrt{\vec{v} \cdot \vec{v}}
+$$
+比如
+$$
+| v | ^ { 2 } = \left[ \begin{array} { l } { 1 } \ { 2 } \ { 3 } \end{array} \right] \cdot \left[ \begin{array} { l } { 1 } \ { 2 } \ { 3 } \end{array} \right] = 1 + 4 + 9 = 14
+$$
+</p>
+</blockquote>
+<p>根据长度的定义,我们可以引申出单位向量的定义</p>
+<blockquote>
+<p><strong>Definition:Unit Vector</strong></p>
+<hr />
+<p>单位向量 <span class="arithmatex">\(\vec{u}\)</span> 长度为1的向量,也就是<span class="arithmatex">\(\vec{u} \cdot \vec{u} = 1\)</span>.任何向量自身除以其长度,就是单位向量,如</p>
+<p>$$
+\vec{u} = \frac{\vec{v}}{|\vec{v}|}
+$$
+就是一个和  <span class="arithmatex">\(\vec{v}\)</span> 方向一致的单位向量</p>
+</blockquote>
+<hr />
+<p><strong>例1</strong> 沿着x轴和y轴的标准单位向量是 <span class="arithmatex">\(\vec{i},\vec{j}\)</span>.而和x轴形成角度<span class="arithmatex">\(\theta\)</span>的单位向量是<span class="arithmatex">\((cos \theta,sin \theta)\)</span>
+$$
+\text{Unit Vector}:\quad \vec{i} = \left[ \begin{array} { l } { 1 } \ { 0 } \end{array} \right] \text { and } \vec{j} = \left[ \begin{array} { l } { 0 } \ { 1 } \end{array} \right] \text { and } \vec{u} = \left[ \begin{array} { c } { \cos \theta } \ { \sin \theta } \end{array} \right]
+$$</p>
+<p>当 <span class="arithmatex">\(\theta = 0\)</span>,那么 $ \vec{ u}$ 就是 <span class="arithmatex">\(\vec{i}\)</span>,<span class="arithmatex">\(\theta = \frac{\pi}{2}\)</span>,那么 $ \vec{ u}$ 就是 <span class="arithmatex">\(\vec{j}\)</span>.如Fig1.7.其他任何角度的 <span class="arithmatex">\(\theta\)</span>,都有 <span class="arithmatex">\(\vec{u} \cdot  \vec{ u} = \cos^\theta +\sin^2 \theta = 1\)</span>.</p>
+<p><img alt="1608879313429" src="../.assets/1608879313429.png" /></p>
+<h2 id="32">3.2. 向量夹角</h2>
+<p>我们说过,点乘结果是0意味着垂直,比如
+$$
+\text{Dot Product is 0} \rightarrow \text{Perpendicular vector}:\quad
+\left[ \begin{array} { l } { 4 } \ { 2 } \end{array} \right] \cdot \left[ \begin{array} { r } { - 1 } \ { 2 } \end{array} \right] = - 4 + 4 = 0
+$$
+为了解释,我们需要把角度和点乘关联起来,然后我们也会知道,<span class="arithmatex">\(\vec{v} \cdot \vec{w}\)</span> 可以求得向量之间的夹角</p>
+<blockquote>
+<p><strong>Right Angles</strong></p>
+<hr />
+<p>当 <span class="arithmatex">\(\vec{v}\)</span> 和 <span class="arithmatex">\(\vec{w}\)</span> 垂直,那么它们之间的点乘是:  <span class="arithmatex">\(\vec{v} \cdot \vec{w} = 0\)</span>     <br />
+</p>
+</blockquote>
+<p><strong>证明</strong> 如果 <span class="arithmatex">\(\vec{v}, \vec{ w}\)</span> 是垂直的,那么形成了三角形的两条直角边.第三条斜边是$ \vec{ v}- \vec{ w}$.,如Fig1.8.由毕达哥斯拉定理我们知道
+$$
+|  \vec{v} |  ^ { 2 } +  | \vec{w}  | ^ { 2 } = | \vec{v} - \vec{w} |  ^ { 2 } \tag{2}
+$$
+把上面的等式写成向量的长度,可以得到
+$$
+\left( v _ { 1 } ^ { 2 } + v _ { 2 } ^ { 2 } \right) + \left( w _ { 1 } ^ { 2 } + w _ { 2 } ^ { 2 } \right) = \left( v _ { 1 } - w _ { 1 } \right) ^ { 2 } + \left( v _ { 2 } - w _ { 2 } \right) ^ { 2 } \tag{3}
+$$
+化简后得到
+$$
+0 = - 2 \mathrm { v } _ { 1 } \mathrm { w } _ { 1 } - 2 \mathrm { v } _ { 2 } \mathrm { w } _ { 2 } \rightarrow v _ { 1 } w _ { 1 } + v _ { 2 } w _ { 2 } = 0 \tag{4}
+$$
+需要注意,因为<strong>0</strong>向量和任何的向量点乘都是0,<strong>所以0向量和任何向量垂直</strong>.</p>
+<p>假设 <span class="arithmatex">\(\vec{v} \cdot \vec{w}\)</span> 不为<code>0</code>,那么可以是正值的,也可以是负值的.<span class="arithmatex">\(\vec{v} \cdot \vec{w}\)</span> 的符号可以直接告诉我们它们之间的角度是大于还是小于<span class="arithmatex">\(90^\circ\)</span>.<span class="arithmatex">\(\vec{v} \cdot \vec{w}\)</span> 是正值,那么小于90度,是负值,大于90度.是以<span class="arithmatex">\(\vec{v} \cdot \vec{w}\)</span>为分界线</p>
+<p><img alt="1608879592200" src="../.assets/1608879592200.png" /></p>
+<p>点乘可以直接揭示向量之间的夹角 <span class="arithmatex">\(\theta\)</span>.但是对于线性代数来说不重要!停下.一旦我们有了矩阵,我们不会再回到这个角度.但是现在主题是角度,知道一下也没关系</p>
+<p>从单位向量<span class="arithmatex">\(\vec{u},\vec{U}\)</span> 开始,<span class="arithmatex">\(\vec{u} \cdot \vec{U}\)</span> 的正负号可以告诉我们夹角是是大于90度还是小于90度.而且因为是单位向量,所以点乘肯定是在<code>[-1,1]</code>之间的,更进一步,<strong>单位向量的点乘在是其夹角 <span class="arithmatex">\(\theta\)</span>的cosine值</strong>,而且<strong>不管向量的维度是多少都成立</strong>:(sp:这里可以参考 <code>&lt;calculus/01-12&gt;</code>)</p>
+<blockquote>
+<p>夹角为 <span class="arithmatex">\(\theta\)</span> 的单位向量有 <span class="arithmatex">\(\vec{u} \cdot \vec{U} = \cos \theta\)</span>,  明显 <span class="arithmatex">\(| \vec{u} \cdot \vec{U}| \le  1\)</span></p>
+</blockquote>
+<p>Fig1.9展示的是 $ \vec{ i} =(1,0), \vec{ u}=(\cos \theta,\sin\theta)$ 这两个向量,它们之间的点乘就是<span class="arithmatex">\(\cos \theta\)</span>.</p>
+<p><img alt="1608882979995" src="../.assets/1608882979995.png" /></p>
+<p>它们2个经过旋转角度α,还是单位向量.<span class="arithmatex">\(\vec{i}\)</span> 变成<span class="arithmatex">\((\cos \alpha,\sin \alpha)\)</span>.<span class="arithmatex">\(\vec{u}\)</span> 变成 <span class="arithmatex">\((\cos \beta,\sin \beta)\)</span>.并且<span class="arithmatex">\(β = \alpha + \theta\)</span>.那么点乘 <span class="arithmatex">\(\cos \alpha  \cos \beta + \sin \alpha \sin \beta\)</span> 其实就是<span class="arithmatex">\(cos(\beta  - \alpha)\)</span>.而且<span class="arithmatex">\(\beta - \alpha <span class="arithmatex">\(就是角度\)</span>\theta\)</span>,所以点乘的值就是<span class="arithmatex">\(\cos\theta\)</span>,也就是说,2个单位向量的点乘就是它们夹角<span class="arithmatex">\(\theta\)</span>的cos值. 习题7直接证明 <span class="arithmatex">\(\vec{u} \cdot \vec{U} \le 1\)</span>,没有涉及到角度</p>
+<p>对于 $ \vec{v}, \vec{ w}$ 不是单位向量的时候的处理方法,那么我们转换为单位向量就行啦</p>
+<blockquote>
+<p><strong>Cosine Formula</strong></p>
+<hr />
+<p>如果 <span class="arithmatex">\(\vec{v}\)</span>  和 <span class="arithmatex">\(\vec{w}\)</span>  不是零向量,那么:
+$$
+\frac { \vec{v} \cdot \vec{w} } { | \vec{ v} |  \times | \vec{w}  | } = \cos \theta
+$$
+</p>
+</blockquote>
+<p>如果 $ \vec{v}, \vec{ w}$ 不是单位向量</p>
+<p><img alt="1571382367607" src="../.assets/1571382367607.png" /></p>
+<p>那么我们知道:
+$$
+\begin{aligned} \cos \alpha &amp; = \frac { v _ { 1 } } { | v | } , \sin \alpha = \frac { v _ { 2 } } { | v | } \ 
+\cos \beta &amp; = \frac { w _ { 1 } } { | w | } , \sin \beta = \frac { w _ { 2 } } { | w | } \end{aligned}
+$$
+那么
+$$
+\cos \theta = \cos ( \beta - \alpha ) = \cos \alpha \cos \beta + \sin \alpha \sin \beta = \frac { v _ { 1 } } { | \vec{v} | } * \frac { w _ { 1 } } { | \vec{w} | } + \frac { v _ { 2 } } { | \vec{v} | } * \frac { w _ { 2 } } { | \vec{w} | } = \frac { \vec{v} \cdot \vec{w} } { | \vec { v } | * | \vec { w } | }
+$$</p>
+<p>根据这个公式,而且 <span class="arithmatex">\(|cos \theta|\)</span> 从来不超过1,可以得到下面的不等式(可能是数学中最重要的不等式)
+$$
+\large
+\begin{aligned}
+\text{柯西不等式 Schwarz Inequality :  } &amp; | \vec{v} \cdot \vec{w} | \leq | \vec{v} | * | \vec{w} | \
+\text{Triangle Ineqaulity,2边之和大于第三边: } &amp; | \vec{v} + \vec{w} | \leq | \vec{v} | + | \vec{w} |
+\end{aligned}
+$$</p>
+<p>我们还可以看看余弦定理,展开方法是上面总结的点乘性质.<strong>Cosine Law(余弦定理)</strong>可以从下面的公式得到
+$$
+\begin{aligned} {</p>
+<p>( \ { v } - \ { w } ) \cdot ( \ { v } - \ { w } ) = \ { v } \cdot \ { v } + \ { w } \cdot \ { w } - 2 \ { v } \cdot \ { w } } \ </p>
+<p>\overset{\text{by cosine formula}}{\Longrightarrow}</p>
+<p>{  |\ { v } - \ { w } | ^ { 2 } = | \ { v } | ^ { 2 } + | \ { w } | ^ { 2 } - 2 | \ { v } | | \ { w } | \cos \theta 
+} \end{aligned}
+$$</p>
+<p>那么如果<span class="arithmatex">\(\theta &lt; 90^{\circ},cos \theta &gt; 0\)</span>,也就是说<span class="arithmatex">\(||v||^2 + ||w||^2 &gt; ||v - w||^2\)</span>,也就是<span class="arithmatex">\(v \cdot v + w \cdot w &gt;(v- w) \cdot (v - w)\)</span>,2边之和大于第三边</p>
+<hr />
+<p><strong>例2</strong> $ \vec{ v} = (a,b), \vec{ w} = (b,a)$ 的点乘是2ab.长度都是<span class="arithmatex">\(\sqrt{a^2 + b^2}\)</span>.那么根据柯西不等式:<span class="arithmatex">\(2ab \le a^2 + b^2\)</span></p>
+<p>如果把 <span class="arithmatex">\(a^2\)</span> 写成 x ,<span class="arithmatex">\(b^2\)</span> 写成 y.你会发现很熟悉,变成了 "几何平均数(geometric mean)"小于 "算数平均数(arithmetic mean])".
+$$
+\text{Geometric mean} \leq \text { Arithmetic mean } \ 
+\Rightarrow ab \leq \frac { a ^ { 2 } + b ^ { 2 } } { 2 } \
+\Rightarrow \sqrt { x y } \leq \frac { x + y } { 2 }
+$$</p>
+<h2 id="33">3.3. 典型例题</h2>
+<p><strong>1.</strong> 对于 $ \vec{ v} = (3,4), \vec{ w} = (4,3)<span class="arithmatex">\(,测试柯西不等式和三角不等式. 什么情况下,\)</span>|\vec{v}\cdot  \vec{ w}| = | \vec{ v}| * | \vec{ w}|,  | \vec{ v}+ \vec{ w}| = | \vec{ v}| + | \vec{ w}$|?</p>
+<p>解:
+$$
+\begin{aligned}  </p>
+<p>\text{柯西不等式 } \quad &amp; |\vec{v} \cdot \vec{w} | \leq |\vec{v} | | \vec{ w} | \quad \text { is } \quad 24 &lt; 25 \ </p>
+<p>\text{三角不等式} \quad &amp; | \vec{ v } + \vec{ w } | \leq | \vec{ v } | + | \vec{ w } | \quad \text { is } \quad 7 \sqrt { 2 } &lt; 5 + 5 \ </p>
+<p>\text{Csoine of angle} \quad &amp; \cos \theta = \frac { 24 } { 25 } \quad \text { 是从 } \vec{v} = ( 3,4 ) \text { 到 } \vec{ w } = ( 4,3 ) \text{的角度}</p>
+<p>\end{aligned}
+$$
+假设一个向量是另一个向量的数乘,也就是夹角是0或者180度: $ \vec{w}= c \vec{ v}$ ,那么 <span class="arithmatex">\(|\cos\theta| = 1\)</span>,那么
+$$
+| \vec{v} \cdot \vec{w} | =  | \vec{v}| * | \vec{w} | |\cos \theta|  = | \vec{v}|  * | w|
+$$
+当角度是0度的时候,有:
+$$
+|\vec{v}+\vec{w}| = |\vec{v}| + |\vec{w}|
+$$</p>
+<hr />
+<p><strong>2.</strong> 设 <span class="arithmatex">\(\vec{r} = (2,1),\vec{s} = (-1,2)\)</span>,求一个向量 <span class="arithmatex">\(\vec{x} = (c,d)\)</span>,满足 $ \vec{x} \cdot  \vec{r} = 1, \vec{ x}\cdot  \vec{ s} = 0$.请注意这个问题和<code>&lt;#2 向量 典型例题2&gt;</code> 求解 $ c\vec{v}+d\vec{w} = \vec{b} = (1,0)$  的联系</p>
+<p>解: 2个点乘,其实给出了关于c,d的2线性方程
+$$
+\begin{array} { l l } </p>
+<p>\vec{x} \cdot \vec{r} = 1 &amp; 2 c - d = 1 \ 
+\vec{x} \cdot \vec{s} = 0 &amp; - c + 2 d = 0 </p>
+<p>\end{array}</p>
+<p>\quad \color{orange} \text{Same As &lt;2 向量 典型例题2&gt;}
+$$</p>
+<p>第二个等式表示和 <span class="arithmatex">\(\vec{ s}= (-1,2)\)</span> 垂直,所以才几何上看:以 $ \vec{ s}$ 垂直的方向 (2,1) 出发,当走到 <span class="arithmatex">\(\frac{1}{3} (2,1)\)</span>,就有 $ \vec{x} \cdot  \vec{r} = 1$</p>
+<h1 id="4">4. 矩阵</h1>
+<p>这一节是基于两个精心选择的例子.都是三个向量,<strong>并使用矩阵来对它们进行组合</strong>,</p>
+<p><strong>第一个例子:</strong></p>
+<p>3个列向量是
+$$
+u = \left[ \begin{array} { c } 1 \ - 1 \ 0 \end{array} \right] , v = \left[ \begin{array} { c } 0 \ 1 \ - 1 \end{array} \right] , w = \left[ \begin{array} { l } 0 \ 0 \ 1 \end{array} \right]
+$$
+它们在三维空间的线性组合数 $ c\vec{u}+d\vec{v} + e\vec{w} $<br />
+$$
+c \left[ \begin{array} { c }  1 \ - 1 \ 0 \end{array} \right] + </p>
+<p>\mathrm { d } \left[ \begin{array} { c } 0 \ 1 \ - 1 \end{array} \right] +</p>
+<p>\mathrm { e } \left[ \begin{array} { c } 0 \ 0 \ 1 \end{array} \right] </p>
+<p>= \left[ \begin{array} { c } \mathrm { c } \ d - c \ e - d \end{array} \right]</p>
+<p>\tag{1}
+$$
+重要的是:<strong>使用矩阵重写这些组合</strong>,向量u,v,w变成矩阵A的列:</p>
+<p>$$
+\text{同样的线性组合,现在是 A * x:} \quad</p>
+<p>\left[ \begin{array} { c c c } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } c \ d \ e \end{array} \right] = \left[ \begin{array} { c } \mathrm { c } \ d - c \ e - d \end{array} \right] \tag{2}
+$$
+c,d,e现在是向量x的分量,$ c\vec{u}+d\vec{v} + e\vec{w} $ 其实和 A 乘以 x 效果一样:
+$$
+\left[ \begin{array} { l l l } \mid &amp; \mid &amp; \mid \ u &amp; v &amp; w \ \mid &amp; \mid &amp; \mid \end{array} \right] \left[ \begin{array} { l } \mathrm { c } \ d \ e \end{array} \right] = \mathrm { c\vec{u} } + \mathrm { d } \vec { \mathrm { v } } + \mathrm { e } \vec { \mathrm { w } } \tag{3}
+$$
+==这不仅仅是Ax的定义,因为这样的重写带来了一个<strong>视角上根本性的变化</strong>.一开始,数c,d,e本来是乘以这些向量的.现在,矩阵乘以这些数.<strong>矩阵A作用在向量x上</strong>.得到的结果Ax是一个<strong>A的列的组合,也就是b</strong>==</p>
+<p>为了看到这个作用,可用 <span class="arithmatex">\(x_1,x_2,x_3\)</span> 来替代c,d,e.用 <span class="arithmatex">\(b_1,b_2,b_3\)</span> 来代替Ax的分量.得到
+$$
+A x = \left[ \begin{array} { c c c } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { c } x _ { 1 } \ x _ { 2 } - x _ { 1 } \ x _ { 3 } - x _ { 2 } \end{array} \right] = \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \end{array} \right] = \vec { b } </p>
+<p>\tag{4}
+$$
+输入是<code>x</code>,输出是 <code>b= Ax</code>.A是一个<strong>差分矩阵</strong>(difference matrix),因为b包含了输入向量x的差值(b contains differences of the input vector x).最顶上的差值(difference)就是 <span class="arithmatex">\(x_1  − x_0= x_1  −0\)</span> (sp:这里为什么会出现 <span class="arithmatex">\(x_0\)</span>,看下面微积分的解释)</p>
+<p>下面例子展示这些数字的差值(x是平方值,b成了奇数)
+$$
+\mathrm { x } = \left[ \begin{array} { l } 1 \ 4 \ 9 \end{array} \right] = \text { squares, } \quad A x = \left[ \begin{array} { l } 1 - 0 \ 4 - 1 \ 9 - 4 \end{array} \right] = \left[ \begin{array} { l } 1 \ 3 \ 5 \end{array} \right] = \vec { b }
+\tag{5}
+$$
+这个模式对于4 by 4差分矩阵也是如此.下一个平方值是 <span class="arithmatex">\(x_4=16\)</span>,那么下一个差分值是 <span class="arithmatex">\(x_4   − x_3=16 −9=7\)</span>.(这也就是下一个奇数值).矩阵一次找到了所有的差分值(The matrix finds all the differences at once)</p>
+<blockquote>
+<p><strong>重要提示:</strong></p>
+<p>你可能已经学习过了Ax的乘法(矩阵乘以向量)的意义是: 常规的让每一个行和x取点乘:
+$$
+\begin{array} { l } </p>
+<p>\text { Dot products } \ \text { with rows } \end{array} </p>
+<p>\quad A x = </p>
+<p>\left[ \begin{array} { r r r } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right] 
+\left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = </p>
+<p>\left[ \begin{array} { l } ( 1,0,0 ) \cdot \left( x _ { 1 } , x _ { 2 } , x _ { 3 } \right) \ ( - 1,1,0 ) \cdot \left( x _ { 1 } , x _ { 2 } , x _ { 3 } \right) \ ( 0 , - 1,1 ) \cdot \left( x _ { 1 } , x _ { 2 } , x _ { 3 } \right) \end{array} \right]
+$$</p>
+<p>点乘结果和<code>Eq(4)</code>是一样的.新的方法是使用列来处理Ax,==线性组合是线性代数的关键,而且输出Ax是<strong>A的列的线性组合</strong>==</p>
+</blockquote>
+<h2 id="41">4.1. 线性方程</h2>
+<blockquote>
+<p>Linear Equation</p>
+</blockquote>
+<p>另外还有一个视角上的改变是很重要的.到目前为止,<span class="arithmatex">\(x_1,x_2,x_3\)</span> 是已知的(一开始的c,d,e).右手边的b是未知的:我们通过A<em>x来找到了差分向量b.现在,</em><em>我们假设b是已知的,想要找到x</em>*:</p>
+<blockquote>
+<ul>
+<li>旧问题: 计算线性组合 <span class="arithmatex">\(x_1 \vec{u} +x_2 \vec{v}+ x_3 \vec{w}\)</span>  来找到 <span class="arithmatex">\(\vec{b}\)</span></li>
+<li>新问题:<span class="arithmatex">\(\vec{u}, \vec{v},\vec{w}\)</span> 的什么线性组合可以产生一个特定的 <span class="arithmatex">\(\vec{b}\)</span>?</li>
+</ul>
+</blockquote>
+<p>这是一个反过来的问题:给定 b ,求 <span class="arithmatex">\(b =Ax\)</span> 所需要的输入 <code>x</code>. 我们在第一个例子已经见过了,是一个关于 <span class="arithmatex">\(x_1,x_2,x_3\)</span> 的<strong>线性方程组</strong>.方程组右手边的是 <span class="arithmatex">\(b_1,b_2,b_3\)</span>,我们可以求解这个系统来找到 <span class="arithmatex">\(x_1,x_2,x_3\)</span>
+$$
+Ax=b: \quad</p>
+<div class="arithmatex">\[\begin{aligned}
+x_1 &amp;= b_1 \\
+-x_1 + x_2 &amp;= b_2\\
+-x_2+x_3 &amp;= b_3
+\end{aligned}\]</div>
+<p>\quad \text{Solution:} \quad:</p>
+<div class="arithmatex">\[\begin{aligned} x _ { 1 } &amp; = b _ { 1 } \\ x _ { 2 } &amp; = b _ { 1 } + b _ { 2 } \\ x _ { 3 } &amp; = b _ { 1 } + b _ { 2 } + b _ { 3 } \end{aligned}\]</div>
+<p>\tag{6}
+$$
+首先我们必须承认: 大部分的线性系统比较难求解.在这个系统当中,第一个方程可以得到 <span class="arithmatex">\(x_1= b_1\)</span>,然后是 <span class="arithmatex">\(x_2= b_1+b_2\)</span>.这些方程可以从上到下的求解,是因为矩阵A被选择为是<strong>下三角(low triangular)</strong></p>
+<p>看看特别的 <span class="arithmatex">\(b_1,b_2,b_3\)</span>
+$$
+b = \left[ \begin{array} { l } 0 \ 0 \ 0 \end{array} \right] \text { gives } x = \left[ \begin{array} { l } 0 \ 0 \ 0 \end{array} \right] \quad b = \left[ \begin{array} { l } 1 \ 3 \ 5 \end{array} \right] \text { gives } x = \left[ \begin{array} { l } 1 \ 1 + 3 \ 1 + 3 + 5 \end{array} \right] = \left[ \begin{array} { l } 1 \ 4 \ 9 \end{array} \right]
+$$
+第一个都是0的解比看起来更重要.换句话说:如果输出b=0,那么输入x必须是0.对于这个A是正确的,其他矩阵不一定是. 从下面的第二个例子(<code>&lt;#4.3&gt;</code>)就可以看到,会有 <span class="arithmatex">\(Cx = 0\)</span> 但是 <span class="arithmatex">\(C\ne 0\)</span> 而且 <span class="arithmatex">\(x\ne 0\)</span></p>
+<p>如果矩阵A是<strong>可逆的(invertible)</strong>,从b我们可以恢复x(From b we can recover x)</p>
+<h2 id="42">4.2. 逆矩阵</h2>
+<blockquote>
+<p>The inverse Matrix </p>
+</blockquote>
+<p>重新看一下<code>Eq(6)</code>的解.一个和矩阵(sum matrix)会出现!
+$$
+A x = b \text { is solved by } \left[ \begin{array} { c } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { l } b _ { 1 } \ b _ { 1 } + b _ { 2 } \ b _ { 1 } + b _ { 2 } + b _ { 3 } \end{array} \right] = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 0 \ 1 &amp; 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \end{array} \right]</p>
+<p>\tag{7}
+$$
+如果 <code>x's</code> 的差分是 <code>b's</code>,那么 <code>b's</code> 的和就是x.<strong>Eq(7)的和矩阵S是差分矩阵A的逆矩阵</strong></p>
+<p>比如,<span class="arithmatex">\(x=(1,2,3)\)</span> 的差分是 <span class="arithmatex">\(b=(1,1,1)\)</span>.所以 <span class="arithmatex">\(b = Ax,x = Sb\)</span>
+$$
+A x = \left[ \begin{array} { r r r } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } 1 \ 2 \ 3 \end{array} \right] = \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right] ,</p>
+<p>\qquad </p>
+<p>S b = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 0 \ 1 &amp; 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right] = \left[ \begin{array} { l } 1 \ 2 \ 3 \end{array} \right] = x
+$$
+<code>Eq(7)</code> 的解向量 <span class="arithmatex">\(x=(x_1,x_2,x_3)\)</span> 告诉我们两件重要的事情:</p>
+<ol>
+<li>对于每一个b,Ax=b有一个解<code>x</code></li>
+<li>有一个矩阵S可以产生 <span class="arithmatex">\(x = Sb\)</span></li>
+</ol>
+<p>下一章的也会学习Ax = b方程组,是否有一个解?怎么计算出来?在线性代数当中,逆矩阵的符号是<span class="arithmatex">\(A^{−1}\)</span></p>
+<blockquote>
+<p><strong>微积分提示:</strong></p>
+<p>让我把特殊的S和A矩阵关联到微积分.向量x变成一个函数 <span class="arithmatex">\(x(t)\)</span> ,差分Ax变成导数 <span class="arithmatex">\(dx/dt = b(t)\)</span>.在逆操作(In the innverse direction),和 <span class="arithmatex">\(Sb\)</span> 变成 <span class="arithmatex">\(b(t)\)</span> 的积分,根据微积分基础定理,积分S是微分A的逆(integration  S  is  the  inverse  of  differentiation  A)
+$$
+A x = b \text { and } x = S b , \quad \frac { d x } { d t } = b \text { and } x ( t ) = \int _ { 0 } ^ { t } b \tag{8}
+$$
+运动的距离<code>x</code> 的导数是速度<code>b</code>. <code>b(t)</code>的积分是距离<code>x(t)</code>.我没有+C,因为从 <span class="arithmatex">\(x(0) = 0\)</span> 开始计算距离(sp:这里的意思是积分要加上常数C,但是我们设置x(0) = 0作为初始条件).类似的,差分从 <span class="arithmatex">\(x_0=0\)</span> 开始,从而让模式完整了,所以对于Ax的第一个分量写成 <span class="arithmatex">\(x_1−x_0\)</span>.</p>
+<p>再注意一下和微积分的另一个类似.平方值 <code>0,1,4,9</code> 的差分是奇数<code>1,3,5</code> .<span class="arithmatex">\(x(t) = t^2\)</span>  的导数是2t.如果是完美的类似,那么应该当t = 1,2,3的时候产生偶数值b=2,4,6.但是差分并不是导数,而且我们的矩阵A产生的是 <span class="arithmatex">\(2t-1\)</span> 而不是 <span class="arithmatex">\(2t\)</span> 
+$$
+x ( t ) - x ( t - 1 ) = t ^ { 2 } - ( t - 1 ) ^ { 2 } = 2 t - 1  \tag{9}
+$$
+习题里面会继续展示forward difference产生<span class="arithmatex">\(2t + 1\)</span>.更佳的例子是<strong>中心差分(centered difference)</strong>.使用的是 <span class="arithmatex">\(x(t+1)  −x(t−1)\)</span>,再把Δx除以t-1到t+1的距离 <span class="arithmatex">\(Δt = 2\)</span>,产生的恰好是2t:
+$$
+\text{centered difference of } { x } = { t } ^ { 2 } : \quad \frac { ( t + 1 ) ^ { 2 } - ( t - 1 ) ^ { 2 } } { 2 } = 2 t \tag{10}
+$$
+</p>
+</blockquote>
+<h2 id="43">4.3. 循环差分</h2>
+<blockquote>
+<p>Cyclic differences</p>
+</blockquote>
+<p>第二个例子是不可逆的: 矩阵使用的u,v和第一个例子相同,但是w变成一个新的向<span class="arithmatex">\(w^∗\)</span></p>
+<p><strong>第二个例子:</strong>
+$$
+u = \left[ \begin{array} { c } 1 \ - 1 \ 0 \end{array} \right] , \mathrm { v } = \left[ \begin{array} { c } 0 \ 1 \ - 1 \end{array} \right] , \mathrm { w } ^ { * } = \left[ \begin{array} { c } - 1 \ 0 \ 1 \end{array} \right]
+$$
+现在 <span class="arithmatex">\(u,v,w^∗\)</span> 的线性组合得到的是循环差分矩阵C (cyclic difference matrix  C)
+$$
+\text{Cyclic}: \quad C x = \left[ \begin{array} { c c c } 1 &amp; 0 &amp; - 1 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l }  x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { l }  x_ { 1 } - x _ { 3 } \ x _ { 2 } - x _ { 1 } \ x _ { 3 } - x _ { 2 } \end{array} \right] = \overrightarrow { \mathrm { b } }</p>
+<p>\tag{11}
+$$
+矩阵C不是三角的.现在,<strong>给定b,解出x</strong>是有点困难的.实际上,不可能找到 <code>Cx = b</code> 的解.因为这三个方程不是有无穷多解就是没有解:</p>
+<p>当b=(0,0,0),无穷多解:
+$$
+\begin{array} { l } C x = 0 \ \text { Infinitely } \ \text { many } x \end{array} \left[ \begin{array} { l } x _ { 1 } - x _ { 3 } \ x _ { 2 } - x _ { 1 } \ x _ { 3 } - x _ { 2 } \end{array} \right] = \left[ \begin{array} { l } 0 \ 0 \ 0 \end{array} \right] \text { 解向量是 } \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { l } c \ c \ c \end{array} \right]</p>
+<p>\tag{12}
+$$</p>
+<p>当我们循环差分的时候,每一个常数向量 <code>(c,c,c)</code> 的差分都是0.这就像是我们求积分的时候加上一个未确定的常数+C.循环差分在第一个分量是 <span class="arithmatex">\(x_1−x_3\)</span>,而不是从 <span class="arithmatex">\(x_0=0\)</span> 开始</p>
+<p>另一个可能是Cx = b完全没有解,当b = (1,3,5),没有解:
+$$
+C x = b \quad \left[ \begin{array} { l } x _ { 1 } - x _ { 3 } \ x _ { 2 } - x _ { 1 } \ x _ { 3 } - x _ { 2 } \end{array} \right] = \left[ \begin{array} { l } 1 \ 3 \ 5 \end{array} \right] \quad</p>
+<div class="arithmatex">\[\begin{array} { l } \text { 左边分量加起来 } 0 \\ \text { 右边加起来是 } 9 \\ \text { 没有解} x _ { 1 } , x _ { 2 } , x _ { 3 } \end{array}\]</div>
+<p>\tag{13}
+$$
+从几何的角度看一下这:没有 <span class="arithmatex">\(u,v,w^∗\)</span> 的组合会产生向量 <code>b=(1,3,5)</code>.<strong>向量组合没能填充整个三维空间</strong>.右手边必须有<span class="arithmatex">\(b_1+b_2+b_3=0\)</span> 来允许左边的 <span class="arithmatex">\(Cx = b\)</span> 有一个解,因为左边 <span class="arithmatex">\(x_1  − x_3  ,x_2  − x_1, x_3  − x_2\)</span> 加起来总是0</p>
+<p>换句话说就是,<strong>所有 <span class="arithmatex">\(x_1 u+ x_2 v+ x_3 w^∗=b\)</span> 的线性组合位于 <span class="arithmatex">\(b_1+b_2+b_3  = 0\)</span> 给定的平面上</strong>.注意,我们把<strong>代数和几何联系起来了</strong>.线性组合可以填充满一个空间,也可以仅仅是一个平面.我们需要一个图像,来展示 <span class="arithmatex">\(u,v,w\)</span> 和 <span class="arithmatex">\(u,v,w^∗\)</span> 之间至关重要的区别</p>
+<p><img alt="1609142656215" src="../.assets/1609142656215.png" /></p>
+<blockquote>
+<p>sp: <span class="arithmatex">\(u,v,w^∗\)</span> 的上图最右,它们处于同一个平面,黄色u,蓝色v,黑色 <span class="arithmatex">\(w^∗\)</span></p>
+</blockquote>
+<h2 id="44">4.4. 独立和依赖</h2>
+<blockquote>
+<p>Independence and dependence </p>
+</blockquote>
+<p>Fig1.10展示了矩阵A和C的列向量.前面两个向量u,v是一样的.如果只看这两个向量的组合,那么会得到一个三维的平面.<strong>关键的问题是第三个向量是否也在这个平面</strong></p>
+<p>重要的点在于,新向量 <span class="arithmatex">\(w^∗\)</span> 是u,v的线性组合</p>
+<ul>
+<li>
+<p><strong>独立</strong>:w不在u,v组成的平面内</p>
+</li>
+<li>
+<p><strong>依赖</strong>:<span class="arithmatex">\(w^∗\)</span> 在u,v组成的平面内
+$$
+u + v + w ^ { * } = 0 , \quad w ^ { * } = \left[ \begin{array} { c } - 1 \ 0 \ 1 \end{array} \right] = - u - v \tag{14}
+$$</p>
+</li>
+</ul>
+<p><span class="arithmatex">\(u,v,w^∗\)</span> ,<strong>每个</strong>向量<strong>自身的</strong>分量加起来都是0,如前所见,它们的任何组合b肯定也是 <span class="arithmatex">\(b_1+b_2+b_3=0\)</span>,这就是包含所有u,v组合的平面,把 <span class="arithmatex">\(w^∗\)</span> 加入进来,我们没有得到任何的新向量,因为 <span class="arithmatex">\(w^∗\)</span> 已经在这个平面内了.</p>
+<p>一开始的 <code>w = (0,0,1)</code> 不在这个平面内,因为:<span class="arithmatex">\(0+0+1 \ne 0\)</span>,所以u,v,w的组合产生了整个三维空间.从第一个例子我们已经知道了,因为<code>Eq(6)</code>当中,x = Sb的解,可以对<strong>任何b</strong>恰当的组合</p>
+<p>两个矩阵A,C,差别在于第三列<span class="arithmatex">\(w,w^∗\)</span>,让我提一下线性代数的两个关键词语:独立和依赖:</p>
+<ul>
+<li><span class="arithmatex">\(u,v,w\)</span>是独立的,除了 <span class="arithmatex">\(0u+0v+0w=\vec{0}\)</span> ,没有任何其它组合能给出 <span class="arithmatex">\(\vec{b} = \vec{0}\)</span>,换句话说:<strong>独立列: Ax = 0 只有1个解,A是可逆矩阵</strong></li>
+<li><span class="arithmatex">\(u,v,w^{*}\)</span>是依赖的,有其他组合(以例2来说,就是(<span class="arithmatex">\(cu+cv+cw^*\)</span>)) 能给出 <span class="arithmatex">\(\vec{b} = \vec{0}\)</span> ,换句话说: <strong>依赖列: Ax = 0于很多解,A是奇异矩阵</strong></li>
+</ul>
+<p>在<code>&lt;01-02&gt;</code>我们会看看n个向量,n维空间.最后我们会在m维空间上有n个向量.从而有m by n的矩形矩阵.这时候理解Ax = b是在<code>&lt;01-03&gt;</code>的任务</p>
+<h2 id="45">4.5. 关键概念</h2>
+<ol>
+<li>Ax是矩阵乘以向量: 结果是 A 的列的组合</li>
+<li>当A是可逆矩阵,Ax=b 的解是  <span class="arithmatex">\(x=A^(−1) b\)</span></li>
+<li>差分矩阵A是和矩阵S的逆:$S  = A^(−1) $.</li>
+<li>循环矩阵C没有逆,它的三列在同一个平面上,这些依赖的列自身的分量加起来都是0,Cx = 0有无穷多的解</li>
+</ol>
+<h2 id="46">4.6. 典型例题</h2>
+<p><strong>1.</strong> 把A的左下的项 <span class="arithmatex">\(a_{31}\)</span> 改为1可以得到
+$$
+A x = b \quad \left[ \begin{array} { r r r } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 1 &amp; - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { c } x _ { 1 } \ - x _ { 1 } + x _ { 2 } \ x _ { 1 } - x _ { 2 } + x _ { 3 } \end{array} \right] = \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \end{array} \right]
+$$
+对任何b,求解x,并从 <span class="arithmatex">\(x = A^{−1} b\)</span> 写出逆矩阵 <span class="arithmatex">\(A^{−1}\)</span></p>
+<p>解: 从Ax = b的等式从上往下求解可以得到
+$$
+\begin{array} { l } x _ { 1 } = b _ { 1 } \ x _ { 2 } = b _ { 1 } + b _ { 2 } \ x _ { 3 } = \quad b _ { 2 } + b _ { 3 } \end{array}</p>
+<p>\Rightarrow </p>
+<p>\boldsymbol { x } = A ^ { - 1 } \boldsymbol { b } = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 0 \ 0 &amp; 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \end{array} \right]
+$$
+<span class="arithmatex">\(A^{−1}\)</span> 的第一列是 <span class="arithmatex">\(b = (1,0,0)\)</span> 的解.第二列是 b=(0,1,0) 的解,第三列就是 <span class="arithmatex">\(Ax= b= (0,0,1)\)</span> 的解</p>
+<blockquote>
+<p>sp:意思就是,当b= (1,0,0)的时候,这时候 <span class="arithmatex">\(A^{−1}\)</span> 的第一列会和 <span class="arithmatex">\(\vec{b}\)</span> 的一个数字相乘,也就是说,<span class="arithmatex">\(\left[\begin{matrix} 
+  1  \\
+  1 \\
+  0 \\
+\end{matrix} \right]\)</span>  会和 <span class="arithmatex">\(b_1\)</span> 相乘,得到</p>
+<p><span class="arithmatex">\(A^{−1}\)</span> 的第一列一定是(1,1,0). 那么 <span class="arithmatex">\(A^{−1}\)</span> 的第二列就是和b = (0,1,0)相乘得到,第三列就是(0,1,1)了</p>
+</blockquote>
+<p>A的三列是独立的.它们不处于同一个平面上.这三列的组合,使用了正确的 <span class="arithmatex">\((x_1,x_2,x_3)\)</span> 的话,会产生任何的三维向量<span class="arithmatex">\((b_1,b_2,b_3)\)</span>.</p>
+<hr />
+<p><strong>2.</strong> 这里的E是一个<strong>消去矩阵(Elimination Matrix)</strong>.E有减去的效果,<span class="arithmatex">\(E^{−1}\)</span> 有加法的效果
+$$
+E = \left[ \begin{array} { r r } 1 &amp; 0 \ - \ell &amp; 1 \end{array} \right],\quad </p>
+<p>E x = b \Rightarrow \left[ \begin{array} { r r } 1 &amp; 0 \ - \ell &amp; 1 \end{array} \right] \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \end{array} \right] =</p>
+<p>\left[\begin{matrix} 
+x_1  \
+x_2- \ell x_1   \
+\end{matrix} \right] = </p>
+<p>\left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \end{array} \right] \quad
+$$
+第一个方程是 <span class="arithmatex">\(x_1= b_1\)</span>,第二个方程是 <span class="arithmatex">\(x_2  −  \ell x_1 = b_2\)</span>.逆矩阵会加上 <span class="arithmatex">\(\ell x_1 = \ell b_1\)</span>,因为消去矩阵减去了 <span class="arithmatex">\(\ell x_1\)</span>
+$$
+x = E ^ { - 1 }  b \Rightarrow</p>
+<p>\left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \end{array} \right] = </p>
+<p>\left[ \begin{array} { c } b _ { 1 } \ \ell b _ { 1 } + b _ { 2 } \end{array} \right]
+= \left[ \begin{array} { l l } 1 &amp; 0 \ \ell &amp; 1 \end{array} \right] \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \end{array} \right]</p>
+<p>\Rightarrow <br />
+E ^ { - 1 } = \left[ \begin{array} { l l } 1 &amp; 0 \ \ell &amp; 1 \end{array} \right]
+$$
+sp:上述,是得到  <span class="arithmatex">\(x = \left[ \begin{array} { c } b _ { 1 } \\ \ell b _ { 1 } + b _ { 2 } \end{array} \right]\)</span>,然后根据<span class="arithmatex">\(x = E^{-1}b\)</span> 得到 <span class="arithmatex">\(E^{-1}\)</span></p>
+<hr />
+<p><strong>3.</strong> 把例2的C从循环差分改为重心差分(centered difference),得到 <span class="arithmatex">\(x_3- x_1\)</span>:
+$$
+C x = b \left[ \begin{array} { r r r } 0 &amp; 1 &amp; 0 \ - 1 &amp; 0 &amp; 1 \ 0 &amp; - 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right] = \left[ \begin{array} { c } x _ { 2 } - 0 \ x _ { 3 } - x _ { 1 } \ 0 - x _ { 2 } \end{array} \right] = \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \end{array} \right] 
+\tag{15}
+$$
+证明Cx =b只有在 <span class="arithmatex">\(b_1+ b_3=0\)</span> 的情况下可以求解.那是向量b在三维空间的一个平面,C的每一列都在这个平面上.矩阵没有逆矩阵,所以这个平面包含了那些列的所有组合(也就是所有向量Cx)</p>
+<p>解: <span class="arithmatex">\(b=Cx\)</span> 的第一个分量是 <span class="arithmatex">\(x_2= b_1\)</span>,最后一个分量是 <span class="arithmatex">\(-x_2= b_3\)</span>.所以可以得到对于每一个x向量的选择,都需要 <span class="arithmatex">\(b_1+ b_3=0\)</span></p>
+<p>如果你画出C的列向量,会发现,<strong>第一列和第三列在同一条直线上</strong>.实际上,<span class="arithmatex">\(列1 = -列3\)</span>.所以3个列在同一个平面上,而且C不是一个可逆矩阵.除非 <span class="arithmatex">\(b_1+b_3=0\)</span>,否则Cx=b无解</p>
+<p>我把那些0写进来了,所以你可以看到矩阵产生了"中间差分"的效果.Cx的第i行是 <span class="arithmatex">\(x_{i+1}   (中间右边)减去x_{i−1}   (中间左边)\)</span>.下面是4-4的中间差分矩阵:
+$$
+C x = b \quad \left[ \begin{array} { r r r r } 0 &amp; 1 &amp; 0 &amp; 0 \ - 1 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; - 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \ x _ { 4 } \end{array} \right] = \left[ \begin{array} { r } x _ { 2 } - 0 \ x _ { 3 } - x _ { 1 } \ x _ { 4 } - x _ { 2 } \ 0 - x _ { 3 } \end{array} \right] = \left[ \begin{array} { l } b _ { 1 } \ b _ { 2 } \ b _ { 3 } \ b _ { 4 } \end{array} \right]
+\tag{16}
+$$
+意外的是,这个矩阵现在是可逆的!第一行和最后一行可以得到 <span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(x_3\)</span>.中间的2行可以得到 <span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(x_4\)</span>.  我们可以写下逆矩阵<span class="arithmatex">\(C^{−1}\)</span> (动手操作一下) .但是5-5的又是不可逆的了…</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.sections", "search.highlight", "search.share", "search.suggest", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>

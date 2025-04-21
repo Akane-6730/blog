@@ -1,0 +1,2797 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://akane.github.io/blog/Math/Linear%20Algebra/01-04%20%E6%AD%A3%E4%BA%A4%28Orthogonality%29/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/MIKASA.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>1. 四个子空间的正交性 - Akane's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Akane&#39;s blog" class="md-header__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Akane's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. 四个子空间的正交性
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/PracticalSkills/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CS
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Akane&#39;s blog" class="md-nav__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    Akane's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/PracticalSkills/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PracticalSkills
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PracticalSkills
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Editor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Editor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emacs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Tool
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fancier Make Options
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debugging Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/GDB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    gdb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Valgrind.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Valgrind
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Compile%20%28gcc%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compile (gcc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大英Ⅲ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            大英Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VLSⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/IC%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ICⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CTF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Crypto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to CryptoHack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. 正交补
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. 正交补">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-part2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.1. 线代基础定理 Part2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. 组合子空间的基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. 总结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. 典型习题
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Akane-6730/blog/edit/master/docs/Math/Linear Algebra/01-04 正交(Orthogonality).md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="1">1. 四个子空间的正交性</h1>
+<blockquote>
+<ul>
+<li>Orthogonality of the Four Subspaces</li>
+<li>本章综合到视频14-17，视频16在 <code>&lt;01-06&gt;</code> 部分综合，因为内容是关于正定矩阵</li>
+</ul>
+</blockquote>
+<p>2个向量在点乘为0的时候是正交的，也就是 <span class="arithmatex">\(v \cdot w = 0\)</span> 或 <span class="arithmatex">\(v^T w =0\)</span>.本章，我们要扩展正交的概念到 </p>
+<ul>
+<li><strong>正交子空间(Orthogonal subspaces)</strong></li>
+<li><strong>正交基(Orthogonal bases)</strong></li>
+<li><strong>正交矩阵(Orthogonal matrix)</strong></li>
+</ul>
+<p>从而，子空间任何2个向量，基的任何2个向量，矩阵的任意2个列，都是正交的。</p>
+<p>$$
+\text{正交向量：} \quad </p>
+<p>\begin{aligned}
+    &amp; v^Tw = 0  \
+    &amp; |v+w|^2 = |v|^2 + |w|^2  \quad  \text{因为}(v+w)^T (v+w)= v^T v+ w^T w）
+\end{aligned}
+$$</p>
+<p>矩阵A乘以一个向量</p>
+<ol>
+<li>第一个层次只是数字</li>
+<li>第2个层次是列向量的组合</li>
+<li>第三个层次是子空间</li>
+</ol>
+<p>但是我不认为你真正看到整个图像,除非你学习 Fig4.2 !它把子空间联系起来,展示了 <span class="arithmatex">\(Ax\)</span> 隐藏的事实.子空间之间的90度夹角是新的知识,<strong>我们必须知道为何有这个直角的存在。</strong>基础定理Part 1是四个子空间的维数.现在看看基础定理Part 2.</p>
+<ul>
+<li><strong>行空间和零空间是 <span class="arithmatex">\(R^n\)</span> 下的正交子空间</strong>
+  行空间的任何向量，和 <code>Ax = 0</code> 任何解都正交。这是Fig4.2左半部分垂直的原因.这个垂直性就是线性代数基础定理的第二部分</li>
+<li><strong>列空间和 <span class="arithmatex">\(A^T\)</span> 零空间是 <span class="arithmatex">\(R^m\)</span> 下的正交子空间</strong>
+  当b<strong>不在</strong>A的列空间,我们仍然想要求解 <code>Ax = b</code> 。 这时候 <span class="arithmatex">\(A^T\)</span> 的零空间就发挥作用了.它包含了最小二乘误差解(least-square solution)当中的误差 <span class="arithmatex">\(e = b -Ax\)</span>.最小二乘是本章的关键应用</li>
+</ul>
+<p>首先定义正交子空间</p>
+<blockquote>
+<p><strong>Definition：正交子空间</strong></p>
+<hr />
+<p>一个向量空间的2个<strong>子</strong>空间 V,W,如果<strong>任何</strong> V 当中的向量 v, 都和 W 当中的任何向量 w 垂直，那么，V,W 就是正交子空间：
+$$
+\text{Orthogonal subspaces:} \quad v^Tw = 0 \quad \color{orange} \text{for all v in V and all w in W}
+$$
+</p>
+</blockquote>
+<p><strong>例1.</strong>  房间里的地板(无限延伸)是一个子空间V，而2面墙的交线是一个子空间W(一维的).这2个子空间是正交的，交线上的任何向量，和地板生的任何向量，都是垂直的。</p>
+<p><img alt="image-20210121145512217" src="../.assets/image-20210121145512217.png" /></p>
+<p>反过来，考虑2面垂直的墙V,W,它们看起来像是正交的子空间，但是不是！2面墙的交线，同时属于V，W,这条交线并不和自身垂直！<strong>2个平面（<span class="arithmatex">\(R^3\)</span> 下都是2维子空间）不可能是正交子空间。</strong> 实际上,<strong>当两个子空间有共同的向量,它们肯定不正交(除非是0向量).所以两个不正交的子空间,交集只会有零向量.</strong></p>
+<p>再比如，矩阵 <span class="arithmatex">\(A = \left[\begin{matrix} 1 &amp; 2 &amp; 5\\2 &amp; 4 &amp; 10\\\end{matrix} \right]\)</span>, 行空间是一维的经过(1,2,5)的一条直线.r = 1.那么 <code>dim N(A) = n - r = 3 - 1 = 2</code> .所以零空间是一个平面,<strong>这个平面垂直于向量(1,2,5)的一个平面,向量(1,2,5)就是平面的法向量N!</strong>.</p>
+<hr />
+<p>再看看为什么<strong>行空间<span class="arithmatex">\(C(A^T)\)</span>，和零空间N(A),是 <span class="arithmatex">\(R^n\)</span> 下的2个正交子空间</strong>,把 Ax = 0 方程组写出来：
+$$
+Ax = ​​\left[\begin{matrix} r_1 \\vdots \r_m\ \end{matrix} \right]  [x]</p>
+<p>= ​​\left[\begin{matrix}0\\vdots\ 0  \end{matrix} \right]</p>
+<p>\quad \color{orange}  \begin{matrix}\leftarrow r_1 \cdot x = 0 \\ \vdots \ \leftarrow r_m \cdot x = 0 \ \end{matrix} </p>
+<p>\tag{1}
+$$
+<strong>A的每一行，和x点乘都是0！所以x也和A的行的任何线性组合都是垂直的，所以整个行空间和零空间正交。</strong></p>
+<p>第二个证明方法:行空间的向量是行的组合 <span class="arithmatex">\(A^Ty\)</span>,把 <span class="arithmatex">\(A^T y\)</span> 和零空间的任何x点乘,我们看到
+$$
+\text{Nullspace and row space:} \quad</p>
+<p>x ^ { \mathrm { T } } \left( A ^ { \mathrm { T } } y \right) = ( A x ) ^ { \mathrm { T } } y = 0 ^ { \mathrm { T } } y = 0</p>
+<p>\tag{2}
+$$</p>
+<hr />
+<p>现在我们看看另外两个子空间:<strong>列空间C(A)和左零空间 <span class="arithmatex">\(N(A^T)\)</span> 是 <span class="arithmatex">\(R^m\)</span> 下的正交子空间</strong>. 如何证明？将 <code>Eq(1)</code> 的证明过程应用到 <span class="arithmatex">\(A^T\)</span>,<span class="arithmatex">\(A^T\)</span> 的列就是 A 的行，QED！为了可视化的的鞥是，看看 <span class="arithmatex">\(A^T y=0\)</span> ,y 是 <span class="arithmatex">\(A^T\)</span> 的零空间向量，也就是 A的左零空间向量
+$$
+C(A) \perp N(A^T) \quad  A^Ty = \left[\begin{matrix} 
+    \text{(cloumn 1)}^T  \
+    \dots  \
+    \text{(cloumn n)}^T  \
+\end{matrix} \right] [y] = \left[\begin{matrix} 
+    0  \
+    .  \
+    0  \
+\end{matrix} \right] \tag{3}
+$$</p>
+<h2 id="11">1.1. 正交补</h2>
+<blockquote>
+<p>Orthogonal Complements</p>
+</blockquote>
+<p><strong>重要</strong>:4个子空间不仅仅是两两正交,而且它们的维数恰恰好; <span class="arithmatex">\(R^3\)</span> 下的两条直线可以正交,但是这2直线不可能是 <code>3-3</code> 矩阵的行空间和零空间,因为这两条支线的维数是1,加起来只是2.正确的维数 r 和  <code>n-r</code> 加起来必须是 n = 3</p>
+<p>4大子空间不仅仅是正交的，它们还是正交补，现在定义这个概念</p>
+<blockquote>
+<p><strong>Definition：正交补</strong></p>
+<hr />
+<p>子空间 V 的正交补，是一个子空间，用 <span class="arithmatex">\(V^{\perp}\)</span> 表示，这个子空间包含了<strong>所有</strong> 和 V 当中的向量正交的向量。</p>
+<hr />
+<p>sp：正交补比正交子空间更进一步，参见 <code>典型例题1</code> 理解</p>
+</blockquote>
+<p>根据这个定义,零空间是行空间的正交补,<strong>任何</strong>垂直行的 <code>x</code> 都可以求解Ax = 0</p>
+<p><img alt="image-20210120170219809" src="../.assets/image-20210120170219809.png" /></p>
+<p>反过来也是正确的,<strong>如果v是和零空间垂直的,那么它肯定是在行空间里面</strong>! 因为,如果不是的话,我们可以把 <code>v</code> 加到矩阵作为新的1行，(sp:为何可以作为新的一行，因为已经假设 v 不是行空间里面，也就是不是行的任何线性组合，所以v可以作为新的1行)，那么行空间增加了维数，但零空间不变, <code>r + n-r=n</code> 的定理被打破了!从而得出结论: 零空间的补 <span class="arithmatex">\(N(A)^{\perp}\)</span> 就是行空间 <span class="arithmatex">\(C(A^T)\)</span></p>
+<p>同理，列空间和左零空间是在 <span class="arithmatex">\(R^m\)</span> 下正交的,它们是正交补,它们的维数是 <code>r,m-r</code>,加起来是m</p>
+<h3 id="111-part2">1.1.1. 线代基础定理 Part2</h3>
+<blockquote>
+<p><strong>线代基础定理 Part2</strong></p>
+<hr />
+<ul>
+<li>零空间<span class="arithmatex">\(N(A)\)</span> 是行空间 <span class="arithmatex">\(C(A^T)\)</span> 的正交补 (<span class="arithmatex">\(R^n\)</span> 下)</li>
+<li>左零空间<span class="arithmatex">\(N(A^T)\)</span> 是列空间 <span class="arithmatex">\(C(A)\)</span> 的正交补 (<span class="arithmatex">\(R^m\)</span> 下)</li>
+</ul>
+</blockquote>
+<p><strong>补(complement)</strong>的关键是:<strong>每一个x,可以被分为行空间分量 <span class="arithmatex">\(x_r\)</span> 和零空间分量 <span class="arithmatex">\(x_n\)</span> !当A乘以 <span class="arithmatex">\(x = x_r+ x_n\)</span></strong>, 如Fig4.3所示：</p>
+<ul>
+<li><strong>零空间分量部分变成0 ：<span class="arithmatex">\(Ax_n = 0\)</span></strong></li>
+<li><strong>行空间分量部分，转换到列空间： <span class="arithmatex">\(Ax_r = Ax\)</span></strong></li>
+</ul>
+<p><img alt="image-20210121154411451" src="../.assets/image-20210121154411451.png" /></p>
+<p><strong>任何向量被A乘，都会到达列空间，除此之外，不会有其他任何效果!(Every vector goes to the column space! Multiplying by  A  cannot do anything else）</strong></p>
+<p>不仅如此,<strong>列空间的每一个向量 <code>b</code>,来自于1个且仅且1个行空间的向量!(More than that:  Every vector b in the column space comes from one and only one vector in the row space)</strong>.</p>
+<blockquote>
+<p><strong>证明:</strong> 如果 <span class="arithmatex">\(x_r,x_r'\)</span> 都是行空间向量，并且 <span class="arithmatex">\(Ax_r  = Ax_r′ = b\)</span>,那么</p>
+<ul>
+<li>差值 <span class="arithmatex">\(x_r  − x_r′\)</span> 是在零空间的,因为 <span class="arithmatex">\(A(x_r-x_r') = Ax_r - Ax_r' = 0\)</span></li>
+<li><span class="arithmatex">\(x_r  − x_r′\)</span> 也是在行空间里面，因为 <span class="arithmatex">\(x_r  − x_r′\)</span> 是行空间向量的线性组合而已，组合之后肯定还在原来的空间：行空间</li>
+</ul>
+<p>因为零空间和行空间垂直，所以差值 <span class="arithmatex">\(x_r - x_r'\)</span> 只能是零向量,因此 <span class="arithmatex">\(x_r= x_r^′\)</span></p>
+<hr />
+<p><strong>sp-Note1</strong>：你可能会想，垂直向量的差也不一定为0向量啊，比如 <code>a=(-5,2)，b=(1,2.5)</code>,a,b是正交的，但是差值明显不是零向量。注意，证明过程使用的是：<strong>空间是垂直的</strong>！看 Fig4.3,这2个空间的交集部分只有“点”而已。~~况且，零空间和行空间大多数情况下维数都是不一样的！~~ 这里想岔了，维数不是向量分量个数，不要搞错了。行，零空间的向量都是n个分量的。</p>
+<p>重点在于，$ v =x_r - x_r' $ 是1个向量，是这1个向量，既在行空间，也在零空间，而行，零空间的向量是正交的，也就是自身和自身正交，v向量和自身正交，那么 <span class="arithmatex">\(v\cdot v = 0\)</span>,只有零向量满足！<strong>所以每一个 <span class="arithmatex">\(Ax_r = b\)</span> 的 <span class="arithmatex">\(x_r\)</span> 在行空间都是唯一的。</strong>
+</p>
+</blockquote>
+<p>在A当中有一个 <code>r-r</code> 的可逆矩阵隐藏着!如果把2个零空间扔掉,那么<strong>就是单纯的从行空间转换到列空间，A变成可逆</strong>,<code>&lt;01-07 #3&gt;</code>学习伪逆(pseudoinverse)就可以逆这个A矩阵。</p>
+<hr />
+<p><strong>例2.</strong> 每一个对角矩阵都有一个r-r的<strong>可逆</strong>子矩阵
+$$
+A = \left[ \begin{array} { l l l l l } 3 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 5 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right] \text { 包含子矩阵 } \left[ \begin{array} { l l } 3 &amp; 0 \ 0 &amp; 5 \end{array} \right]
+$$
+其他11个0是负责形成零空间的!下面的B的秩也是2
+$$
+B = \left[ \begin{array} { l l l l l } 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \ 1 &amp; 2 &amp; 4 &amp; 5 &amp; 6 \ 1 &amp; 2 &amp; 4 &amp; 5 &amp; 6 \end{array} \right] \text { 在主列主行交汇处包含子矩阵 } \left[ \begin{array} { l l } 1 &amp; 3 \ 1 &amp; 4 \end{array} \right]  <br />
+$$
+<strong>当我们为 <span class="arithmatex">\(R^n\)</span> 和 <span class="arithmatex">\(R^m\)</span> 选择恰当的基之后，每一个A都可以变成一个对角矩阵.这种奇异值分解SVD在应用当中是极其重要的</strong></p>
+<blockquote>
+<p>sp-Update:这里还不是特别理解想要表达什么。意思应该是，通过构造基，把任何A都化作对角矩阵。。。。后面补充</p>
+</blockquote>
+<h2 id="12">1.2. 组合子空间的基</h2>
+<blockquote>
+<p>Combing Bases from Subspaces</p>
+</blockquote>
+<p>下面讲解关于基的重要知识,现在才讲，是因为现在我们已经明确清楚基什么(<strong>线性独立</strong>的可<strong>生成</strong>一个空间的向量).通常，下我们需要检查这些性质.但是向量数目是对的时候,其中一个性质可以推得另一个性质:</p>
+<blockquote>
+<p><strong>只要有==正确数目==的向量，基的一个性质可以推得另一个性质</strong>：</p>
+<hr />
+<ul>
+<li><span class="arithmatex">\(R^n\)</span> 下的 n 个独立的向量肯定生成 <span class="arithmatex">\(R^n\)</span>,所以它们是基</li>
+<li>任何生成 <span class="arithmatex">\(R^n\)</span> 的 n 个向量肯定是独立的，所以它们是基</li>
+</ul>
+</blockquote>
+<p>对于行空间和零空间的基,我们有 <code>r +(n-r) =</code>  n个向量.这就是==正确的数目==，现在我们证明n个基向量是独立的：</p>
+<blockquote>
+<p><strong>sp-Note2</strong>：为何行,零空间向量独立？证明</p>
+<p>假设<span class="arithmatex">\(x_r,x_n\)</span> 分别是行空间和零空间的<strong>任意</strong>向量，而且<strong>不</strong>独立，那么存在 <span class="arithmatex">\(c,v\ne 0\)</span>,使得 <span class="arithmatex">\(cx_r+dx_n = 0\)</span>.也就是说 <span class="arithmatex">\(x_r = -\frac{d}{c}x_n\)</span>. <span class="arithmatex">\(x_r\)</span> 本身是行空间向量，现在式子表明它是 <span class="arithmatex">\(x_n\)</span> 的一个数乘，所以也是零空间向量，也就是 <span class="arithmatex">\(x_r\)</span> 即在行空间，又在零空间，而这2个空间正交，也即是说 <span class="arithmatex">\(x_r \cdot x_r = 0\)</span>，那么 <span class="arithmatex">\(x_r\)</span> 只能是零向量，但零向量是不能为基的，所以假设不成立。从而<strong>行空间，零空间向量一定是独立的</strong></p>
+<p>总结一下把，从而使得概念清晰一点：<span class="arithmatex">\(x_r,x_n\)</span> 都是</p>
+<ol>
+<li>都是n个分量</li>
+<li>它们之间正交</li>
+<li>它们之间独立，如上所证明</li>
+<li>它们之间完全不可能相等，也就是行，零空间不可能有一样的向量。这其实是独立的延伸，不然肯定不独立。其实这从书中也可以看出来，<code>Fig4.3</code> 的行，零空间的交集，只有“点”。</li>
+</ol>
+</blockquote>
+<p>所以行，零空间的n个基独立，所以它们<strong>生成 <span class="arithmatex">\(R^n\)</span></strong>，所以：<strong>任何向量x，都可分解为行空间==向量== <span class="arithmatex">\(x_r\)</span> 加上零空间==向量== <span class="arithmatex">\(x_n\)</span> ,也即是 <span class="arithmatex">\(x = x_r +x_n\)</span></strong>.</p>
+<blockquote>
+<ul>
+<li>注意上述向量2字为何强调，意思是要表达<strong>是向量，不一定是基</strong>。是这2个空间的n个<strong>基向量</strong>已经生成了整个<span class="arithmatex">\(R^n\)</span> 了，那么这n个基向量，可以线性组合成任何需要的 x 向量，而这个线性组合其实就是：行空间的基向量的线性组合+零空间向量的线性组合，而每个空间基向量的线性组合所产生的，其实也就是本空间的一个==向量==而已。</li>
+<li>至于如何分解，参见<code>典型例题2 第4问!</code></li>
+</ul>
+</blockquote>
+<p>现在在仔细看看 Fig4.3,好好理解一下其中的意味！</p>
+<hr />
+<p>根据上述结论，当向量是 <code>n-n</code> 的<strong>方阵</strong> A 的列,肯定有下面2个事实:</p>
+<blockquote>
+<ul>
+<li>如果 A 的 n 个列是独立的，那么它们生成 <span class="arithmatex">\(R^n\)</span>,所以 Ax = b有解</li>
+<li>如果 A 的 n 个列生成 <span class="arithmatex">\(R^n\)</span>,那么它们独立，所以 Ax = b只有1个解</li>
+</ul>
+</blockquote>
+<p>这2句话的意思是：唯一性意味着存在，而且存在意味着唯一性，从而<strong>A可逆</strong>。分析下</p>
+<ul>
+<li>解 x 是<strong>唯一的</strong>，那么没有自由变量，必然存在 n 个主元，n个列独立，生成整个<span class="arithmatex">\(R^n\)</span>,从而 Ax = b 肯定<strong>存在</strong>解。</li>
+<li>从反方向开始,假设Ax = b对于任何b都有<strong>解存在</strong>,那么消去后不会产生任何的0行,有n个主元,没有自由变量.零空间只有<strong>唯一解</strong>： <code>x = 0</code> </li>
+</ul>
+<hr />
+<p><strong>例3.</strong>  对 <span class="arithmatex">\(A = \left[\begin{matrix} 1 &amp; 2 \\ 3 &amp; 6 \end{matrix} \right]\)</span>,分解 <span class="arithmatex">\(x = \left[\begin{matrix} 4  \\3  \\\end{matrix} \right]\)</span> 到 <span class="arithmatex">\(x_r + x_n = \left[\begin{matrix} 2  \\4  \\\end{matrix} \right] + \left[\begin{matrix} 2  \\-1  \\\end{matrix} \right]\)</span>.</p>
+<blockquote>
+<p>sp:这一题的意思就是，把 x 分解到A的行空间和零空间。分解方法就是 <code>典型例题2 第4问</code></p>
+</blockquote>
+<p>首先，计算出行零空间的基向量
+$$
+A = \left[\begin{matrix} 1 &amp; 2 \ 3 &amp; 6 \end{matrix} \right] \Rightarrow A = \left[\begin{matrix} 1 &amp; 2 \ 0 &amp; 0 \end{matrix} \right]
+$$
+所以行空间的基是 <code>(1,2)</code>,零空间的基是 <code>(-2,1)</code> .那么分解就是求解如下方程组
+$$
+\left[\begin{matrix} 1 &amp; -2 \ 2 &amp; 1 \end{matrix} \right] 
+\left[\begin{matrix} c_1  \c_2  \\end{matrix} \right] = \left[\begin{matrix} 4  \3  \\end{matrix} \right] = x
+$$
+解得 <span class="arithmatex">\(c_1 = 2,c_2 = -1\)</span>,那么</p>
+<ul>
+<li><span class="arithmatex">\(x_r =  c_1 * (1,2) = (2,4)\)</span></li>
+<li><span class="arithmatex">\(x_n =  c_2 * (-2,1) = (2,-1)\)</span></li>
+</ul>
+<h2 id="13">1.3. 总结</h2>
+<ol>
+<li>子空间V，W,如果V当中的任何向量 v 都和 W 当中的任何向量 w 垂直，那么它们正交</li>
+<li>子空间V，W，如果 W 包含了<strong>所有</strong>和 V 正交的向量，而且 V 也包含了所有和 W 正交的向量，那么它们就是正交补。在 <span class="arithmatex">\(R^n\)</span>,正交补的维度加起来是n</li>
+<li><span class="arithmatex">\(R^n\)</span> 下的任意n个独立的向量都能生成 <span class="arithmatex">\(R^n\)</span></li>
+<li>任何 <span class="arithmatex">\(R^n\)</span> 下的向量 x，都有一个零空间分量(nullspace component) <span class="arithmatex">\(x_n\)</span> 和一个行空间分量(rowspace component) <span class="arithmatex">\(x_r\)</span></li>
+</ol>
+<p>本节知识梳理：</p>
+<ol>
+<li>首先定义正交子空间</li>
+<li>然后更进一步定义正交补</li>
+<li>然后证明行空间，零空间是正交补(列，左零空间也一样的)</li>
+<li>因为正交补，所以行空间，零空间的基向量都是独立的，从而可以生成整个 <span class="arithmatex">\(R^n\)</span>,所以任何向量x，都可以分解为行空间向量 + 零空间向量: <span class="arithmatex">\(x = x_r +x_n\)</span></li>
+</ol>
+<h2 id="14">1.4. 典型习题</h2>
+<p><strong>1.</strong> 假设 S 是一个9维空间下的一个6维子空间</p>
+<ol>
+<li>和S正交的子空间的维度可能是多少？</li>
+<li>S正交补 <span class="arithmatex">\(S^{\perp}\)</span> 的维度可能是多少？</li>
+<li>如果A的行空间是S，那么A的最小形状是什么？</li>
+<li>A零空间矩阵N的形状是什么？</li>
+</ol>
+<p>解： </p>
+<ol>
+<li>维度可以是 <code>0,1,2,3</code>!</li>
+<li><strong>正交补其实就是维度最大的正交子空间</strong>，所以维度肯定是3.</li>
+<li>S是6维的，必有6个基，6个基向量都作为A的行，而S的向量是9个分量的，所以是 6-9</li>
+<li>A是 6-9 的，而行空间和零空间是正交补，所以 N 的列必须包含 <span class="arithmatex">\(S^{\perp}\)</span>  的基，所以N是 9-3的</li>
+</ol>
+<hr />
+<p><strong>2.</strong> 等式 <span class="arithmatex">\(x-3y-4z = 0\)</span> 描述了 <span class="arithmatex">\(R^3\)</span> 下的一个平面P(实际上是一个子空间）</p>
+<ol>
+<li>平面P是一个 1-3 矩阵A的零空间N(A)，这个A是什么？</li>
+<li>求 <span class="arithmatex">\(x-3y-4z=0\)</span> 的特解的基，这些基是零空间矩阵N的列</li>
+<li>再求出和 P 垂直的直线 <span class="arithmatex">\(P^{\perp}\)</span> 的基</li>
+<li>把 <code>v=（6，4，5)</code> 分解到 P 当中的零空间分量，和 <span class="arithmatex">\(P^{\perp}\)</span> 当中的行空间分量</li>
+</ol>
+<p>解： </p>
+<blockquote>
+<p>sp:<span class="arithmatex">\(x-3y-4z = 0\)</span> 是一个平面P，P就是表示一个零空间，求出特解就是求零空间的基！</p>
+</blockquote>
+<p><strong>1.</strong> A 是 <code>[1,-3,-4]</code></p>
+<p><strong>2.</strong> c2,c3都是自由变量，那么 <span class="arithmatex">\(s_1 = (3,1,0),s_2=(3,0,1)\)</span>，所以 <strong>P = N(A)</strong>.</p>
+<p><strong>3.</strong>.<span class="arithmatex">\(P^{\perp}\)</span> 就是A的行空间，而 A 只有一行，所以这条线的方向就是 <code>z= (1,-3,-4)</code></p>
+<p><strong>4.</strong> 把向量分解为正交补空间的向量的线性组合，其实就是解方程组啊，目前，我们有3个基 <span class="arithmatex">\(s_1,s_2,z\)</span>，要组合它们得到 v,不就是 <span class="arithmatex">\(c_1s_1+ c_2s_2+c_3 z = v\)</span> 吗，也就是
+$$
+Ax = b \quad  \Rightarrow\underbrace{\left[ \begin{array} { l l l } 3 &amp; 4 &amp; 1 \ 1 &amp; 0 &amp; - 3 \ 0 &amp; 1 &amp; - 4 \end{array} \right]}_{\color{orange} \text{这个矩阵的列就是行列空间的基构成！}}</p>
+<p>\left[ \begin{array} { r } c_1 \ c_2 \ c_3 \end{array} \right] = \left[ \begin{array} { l } 6 \ 4 \ 5 \end{array} \right]
+$$
+直接消去化简，得到 <span class="arithmatex">\(c_1 = 1,c_2 = 1,c_3 = -1\)</span> ，那么</p>
+<ul>
+<li>A的前2列是零空间的基，所以 $v_n= c_1s_1 + c_2s_2 = (7,1,1) $</li>
+<li>A的地3列是行空间的基，所以 $v_r= c_3z = -z = (-1,3,4) $</li>
+</ul>
+<p>这个方法，就是使用2个子空间的全部基 <span class="arithmatex">\(s_1,s_2,z\)</span> 来计算。下一节 <code>&lt;#2&gt;</code>,我们会把v直接投影到子空间S，从而不需要<span class="arithmatex">\(S^{\perp}\)</span> 的基！</p>
+<blockquote>
+<p>~~sp-Update~~:最后一句话是什么意思？看下去把，就是把b分解成 p 和 e！</p>
+</blockquote>
+<h1 id="2">2. 投影</h1>
+<blockquote>
+<p>Projections</p>
+<p>导言(来自视频15):考虑一下,为什么需要投影?因为Ax = b有可能无解,只能求解最接近的那个可解的问题.那么,最接近的可解是什么呢?我们知道Ax总是在A的列空间里面,而b不一定是,所以我们需要调整b,把b变成列空间最接近它的那一个,然后求解 <span class="arithmatex">\(A\widehat{x} = p\)</span>,p是b在A的列空间上的投影!</p>
+</blockquote>
+<p>从两个问题开始这一节，第一个问题展示，投影过程是很形象化的，第2个问题是关于投影矩阵：<span class="arithmatex">\(P^2 = P\)</span> 的对称矩阵，<code>b</code> 的投影就是 <code>Pb</code>!</p>
+<ol>
+<li><code>b = (2,3,4)</code>的投影,在z轴和xy平面上分别是什么?</li>
+<li>什么样的矩阵可以产生这个到线和平面的投影呢?</li>
+</ol>
+<p>当b投影到一条线的时候,它的投影 <code>p</code> 是<strong>这条线的一部分</strong>,当投影到一个平面的时候,投影<code>p</code> 是<strong>平面的一部分</strong>.<strong>投影p就是Pb</strong>,也就是<strong>投影矩阵P乘以b的得到p</strong>.这一节我们会找到p和P</p>
+<p>第1个问题是到z轴的投影，设为 <span class="arithmatex">\(p_1\)</span>,第2个投影是把 <code>b</code> 直接扔进xy平面，设为 <span class="arithmatex">\(p_2\)</span>,如 Fig4.4 所示, <span class="arithmatex">\(p_1=(0,0,4),p_2=(2,3,0).p_1,p_2\)</span> 是b在z轴和xy平面的部分</p>
+<p><img alt="image-20210121092259773" src="../.assets/image-20210121092259773.png" /></p>
+<p>投影矩阵 <span class="arithmatex">\(P_1,P_2\)</span> 都是 3-3 的矩阵,它们乘以3个分量的 <code>b</code> 来产生3个分量的 <code>p</code>.其中,<strong>投影成一条直线的 <span class="arithmatex">\(P_1\)</span> 是秩一矩阵,投影到平面的是秩2矩阵</strong>
+$$
+\text{投影到Z轴:}\quad P_1 = \left[\begin{matrix} 0 &amp; 0 &amp; 0\0 &amp; 0 &amp; 0\0 &amp; 0 &amp; 1\\end{matrix} \right]
+\quad
+\text{投影到xy平面:}\quad P_2 = \left[\begin{matrix} 1 &amp; 0 &amp; 0\0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 0\\end{matrix} \right]
+$$
+<span class="arithmatex">\(P_1\)</span> 把每一个向量的z分量选择出来,<span class="arithmatex">\(P_2\)</span> 把x,y分量选择出来.如下
+$$
+p_1 =  P_1b = \left[\begin{matrix} 0 &amp; 0 &amp; 0\0 &amp; 0 &amp; 0\0 &amp; 0 &amp; 1\\end{matrix} \right]
+​​\left[\begin{matrix}x\y\z\ \end{matrix} \right] = ​​\left[\begin{matrix}0\0\z\ \end{matrix} \right]
+\quad
+p_2 =  P_2b = \left[\begin{matrix} 1 &amp; 0 &amp; 0\0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 0\\end{matrix} \right]
+​​\left[\begin{matrix}x\y\z\ \end{matrix} \right] = ​​\left[\begin{matrix}x\y\0\ \end{matrix} \right]
+$$
+在这个例子当中,<span class="arithmatex">\(p_1,p_2\)</span> 是垂直的,<strong>xy 平面 和 z 轴是正交的子空间,</strong>不仅如此,这条线和这个平面是<strong>正交补</strong>.它们的维数加起来是 <code>1+2 = 3</code>.<strong>整个 <span class="arithmatex">\(R^3\)</span> 空间中的每一个向量 <code>b</code> ,都可表达为，b本身在2个==子空间部分==的和 ，这个部分，就是==投影== <span class="arithmatex">\(p_1,p_2\)</span> </strong>：
+$$
+\text{向量和是：} p_1+p_2 = b   \quad  矩阵和是： P_1+P_2 = I   \tag{1}
+$$
+完美!这个例子我们的目标达到了。但更远大的目标是： <strong>对于任何直线,任何平面,任何n维空间</strong> 作为被投影的子空间，都想要找到</p>
+<ul>
+<li>b向量在这个子空间的<strong>部分 <code>p</code></strong></li>
+<li>和投影矩阵P,从而产生 <span class="arithmatex">\(p = Pb\)</span></li>
+</ul>
+<p><strong>每一个 <span class="arithmatex">\(R^m\)</span> 的子空间都有一个 <code>m-m</code> 的投影矩阵</strong>,为了计算P矩阵,我们需要一个描述需要被投影子空间的好方法.而描述子空间最好的方式就是基!我们把<strong>基向量当成是A的列,那么现在,我们就是对 <code>A</code> 的列空间进行投影！</strong>明显的，本节开始的问题当中</p>
+<ol>
+<li>投影到z轴就是一个 <code>3-1</code> 矩阵 <span class="arithmatex">\(A_1\)</span> 的列空间,</li>
+<li>投影xy 平面，是一个 <code>3-2</code> 矩阵 <span class="arithmatex">\(A_2\)</span>。注意一个子空间可能有很多基,所以 <span class="arithmatex">\(A_3\)</span> 代表xy平面也是可以的</li>
+</ol>
+<p>$$
+A _ { 1 } = \left[ \begin{array} { l } 0 \ 0 \ 1 \end{array} \right] \text { , } A _ { 2 } = \left[ \begin{array} { l l } 1 &amp; 0 \ 0 &amp; 1 \ 0 &amp; 0 \end{array} \right] \text { , } A _ { 3 } = \left[ \begin{array} { l l } 1 &amp; 2 \ 2 &amp; 3 \ 0 &amp; 0 \end{array} \right]
+$$
+我们的问题是,把<strong>任何 <code>b</code> 投影到任何 <code>m-n</code> 的矩阵的列空间上.</strong> 下面从一条直线开始(维数n =1)开始，矩阵A只有一个列,这个矩阵称为a.</p>
+<h2 id="21">2.1. 投影到线上</h2>
+<blockquote>
+<p>Projection onto a line</p>
+</blockquote>
+<p>经过原点的一条直线在方向 <span class="arithmatex">\(a = (a_1…a_m)\)</span>， 在这条直线上，我们想要找到一个点 <code>p</code>，从而 <code>p</code> 点距离 <span class="arithmatex">\(b = (b_1,...b_m)\)</span> 最近.投影的关键是正交:<strong>从 b 到 p 的直线 e ,是和向量 a 垂直的!</strong> 如Fig4.5左半部分</p>
+<p><img alt="image-20210121095127115" src="../.assets/image-20210121095127115.png" /></p>
+<p>投影 <code>p</code> 是 <code>a</code> 的一个数乘.设为 <span class="arithmatex">\(p = \hat{x}a\)</span>.计算出 <span class="arithmatex">\(\hat{x}\)</span> 就可以得到投影 <code>p</code> ,然后从 <code>p</code> 的公式里面,我们可以得到投影矩阵 <code>P</code>.这三个步骤可以得到所有的投影矩阵:</p>
+<ol>
+<li>求 <span class="arithmatex">\(\hat{x}\)</span></li>
+<li>求投影向量 <code>p</code></li>
+<li>求投影矩阵 <code>P</code></li>
+</ol>
+<p>现在开始求 <span class="arithmatex">\(\hat{x}\)</span>.因为 <span class="arithmatex">\(e = b- p = b - \hat{x}a\)</span>,是和a<strong>垂直的</strong>，所以
+$$
+a \cdot (b - \hat{x} a) = 0     \rightarrow \quad
+a \cdot b - \hat{x} a\cdot a = 0 \rightarrow \quad 
+\hat{x} = \frac{a \cdot b}{a \cdot a} = \frac{a^Tb}{a^Ta}<br />
+\tag{2}
+$$
+乘法 <span class="arithmatex">\(a^T b\)</span> 和 <span class="arithmatex">\(a \cdot b\)</span> 是等价的.使用转置符号把a当成矩阵看待.可得到</p>
+<blockquote>
+<p><strong>向量 b 投影到直线 a 上的结果是 向量 <span class="arithmatex">\(p = \hat{x} a = \frac{a^Tb}{a^Ta}   a\)</span></strong>  </p>
+<ul>
+<li>特殊情况1： 如果 b = a,那么 <span class="arithmatex">\(\hat{x} = 1\)</span>,也就是向量 a 投影到 a 本身 还是 a 自己，<span class="arithmatex">\(Pa = a\)</span></li>
+<li>特殊情况2： 如果 b 和 a 垂直,那么 <span class="arithmatex">\(a^Tb = 0\)</span>,投影结果是 <span class="arithmatex">\(p = 0\)</span></li>
+</ul>
+</blockquote>
+<p><strong>例1</strong> 参见 Fig4.5,把 <span class="arithmatex">\(b = \left[\begin{matrix}1\\1\\1\\ \end{matrix} \right]\)</span> 投影到 <span class="arithmatex">\(a = \left[\begin{matrix}1\\2\\2\\ \end{matrix} \right]\)</span>,求投影结果 <span class="arithmatex">\(p = \hat{x}a\)</span>.</p>
+<p>解： <span class="arithmatex">\(a^Tb = 5,a^Ta = 9\)</span> , 所以 <span class="arithmatex">\(\hat{x} = \frac{5}{9}\)</span>,投影结果是  <span class="arithmatex">\(p = 5/9a\)</span>.误差向量是 <span class="arithmatex">\(e = b - p\)</span>,所以误差向量和投影结果向量的和是b = (1,1,1)。
+$$
+p = \frac { 5 } { 9 } a = \left( \frac { 5 } { 9 } , \frac { 10 } { 9 } , \frac { 10 } { 9 } \right) \quad , \quad e = b - p = \left( \frac { 4 } { 9 } , - \frac { 1 } { 9 } , - \frac { 1 } { 9 } \right)
+$$
+e 和 a 是<strong>垂直</strong>的： <span class="arithmatex">\(e \cdot a = 0\)</span>!</p>
+<p>注意观察 b,p,e形成的三角形，向量 b 被分解成2个部分：</p>
+<ol>
+<li>沿着 a 方向的 p 部分，长度是 <span class="arithmatex">\(|b| \cos \theta\)</span></li>
+<li>垂直 p 方向的 e 部分,长度是 <span class="arithmatex">\(|b| \sin \theta\)</span></li>
+</ol>
+<p>可通过三角知识验证点乘符合：
+$$
+\boldsymbol { p } = \frac { \boldsymbol { a } ^ { \mathrm { T } } \boldsymbol { b } } { \boldsymbol { a } ^ { \mathrm { T } } \boldsymbol { a } } \boldsymbol { a } \quad \text { 长度是 } | \boldsymbol { p } | = \frac { | \boldsymbol { a } | | \boldsymbol { b } | \cos \theta } { | \boldsymbol { a } | ^ { 2 } } | \boldsymbol { a } | = | \boldsymbol { b } | \cos \theta</p>
+<p>\tag{3}
+$$
+使用点乘，比使用 b 的 <span class="arithmatex">\(\theta\)</span> 角度简单多了，在这里，<span class="arithmatex">\(\cos \theta = 5/3\sqrt{3},|b| = \sqrt{3}\)</span> ,但在投影结果 <span class="arithmatex">\(5/9a\)</span> 是没有平方跟的，从点乘 $\frac{a^Tb}{a^Ta}  $ 计算方便多了</p>
+<hr />
+<p>现在我们看看投影矩阵.根据 <span class="arithmatex">\(p=\hat{x}a\)</span> 公式：
+$$
+\text{投影矩阵P：}\quad p = a\hat{x} = a\frac{a^Tb}{a^Ta}   = Pb   \Rightarrow \quad  P = \frac{aa^T}{a^Ta}  \tag{M9}
+$$</p>
+<blockquote>
+<p><strong>sp-Note1: P是列乘以行形成的矩阵!</strong> 列是a,行是 <span class="arithmatex">\(a^T\)</span>,再除以<strong>数字</strong> <span class="arithmatex">\(a^Ta\)</span>.投影矩阵是 <code>m-m</code> 的<strong>秩1矩阵</strong>.我们<strong>投影目的地</strong>是一个<strong>一维子空间</strong>:经过a的直线,也就是<strong>P的列空间!</strong></p>
+</blockquote>
+<p><strong>例2.</strong> 求投影到 <span class="arithmatex">\(a = \left[\begin{matrix}1\\2\\2\\ \end{matrix} \right]\)</span> 的投影矩阵 <span class="arithmatex">\(P = \frac{aa^T}{a^Ta}\)</span></p>
+<p>解： 
+$$
+P = \frac { a a ^ { \mathrm { T } } } { a ^ { \mathrm { T } } a } = \frac { 1 } { 9 } \left[ \begin{array} { l } 1 \ 2 \ 2 \end{array} \right] \left[ \begin{array} { l l l } 1 &amp; 2 &amp; 2 \end{array} \right] = \frac { 1 } { 9 } \left[ \begin{array} { l l l } 1 &amp; 2 &amp; 2 \ 2 &amp; 4 &amp; 4 \ 2 &amp; 4 &amp; 4 \end{array} \right]
+$$
+这个矩阵 P 将任何向量 b 投影到 a,可用例1的 <span class="arithmatex">\(p = Pb\)</span> 检查一下：
+$$
+p = P b = \frac { 1 } { 9 } \left[ \begin{array} { l l l } 1 &amp; 2 &amp; 2 \ 2 &amp; 4 &amp; 4 \ 2 &amp; 4 &amp; 4 \end{array} \right] \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right] = \frac { 1 } { 9 } \left[ \begin{array} { c } 5 \ 10 \ 10 \end{array} \right] 
+\quad \text{正确}
+$$
+<strong>如果向量 a 翻倍，矩阵P还是不变，还是投影到同一条直线。如果P矩阵平方，<span class="arithmatex">\(P^2 = P!\)</span> 因为第2次投影不会改变任何东西。</strong> P的对角线元素和是 <span class="arithmatex">\(\frac{1}{9}(1+4+4) = 1\)</span></p>
+<hr />
+<p>总结一下例1例2的思想：把向量 b 投影到直线 a 上，其实就是投影到只有1列的 <code>A= [a]</code> 的列空间上，投影 p 是在 ==A的== <strong>列空间</strong> 当中。而且，矩阵 <span class="arithmatex">\(I - P\)</span> 也是一个投影矩阵:<span class="arithmatex">\((I-P) b = b - p = e\)</span>, 这个投影结果是三角形的另一条边 e .<strong>当 P 投影到一个子空间，<span class="arithmatex">\(I-P\)</span> 投影到对应的垂直子空间！</strong>为什么？如下</p>
+<ul>
+<li><span class="arithmatex">\(p = Pb\)</span> 投影 b 在投影在==A的==列空间</li>
+<li><span class="arithmatex">\(e = (I-P)b = e\)</span> ，e和p垂直，所以肯定在==A的==左零空间</li>
+</ul>
+<p>在本例，<span class="arithmatex">\(I-P\)</span> 投影到和 a 垂直的平面。</p>
+<blockquote>
+<p><strong>sp-Note2</strong> :要非常注意，p 是投影在 ==A的== 列空间，<strong>其实也在投影矩阵P的列空间</strong>，看 <code>总结第2点</code></p>
+</blockquote>
+<hr />
+<p>现在我们看看不仅仅投影到一个直线上,而是投影到 <span class="arithmatex">\(R^m\)</span> 的n维子空间上.至关重要的公式是等式5,6,7,你需要记住它们</p>
+<h2 id="22">2.2. 投影到子空间</h2>
+<blockquote>
+<p>Projections Onto a Subspaces</p>
+</blockquote>
+<p>从 <span class="arithmatex">\(R^m\)</span> 下的 n 个向量 <span class="arithmatex">\(a_1...a_n\)</span> 开始,假设这些a是线性独立的.<strong>目标:找到的线性组合 **
+$$
+p =\hat{x_1}a_1  + ... + \hat{x_n}a_n  \tag{M1}
+$$
+</strong>使得 p 最接近给定向量 b。** </p>
+<p>这其实就是，把 <span class="arithmatex">\(R^m\)</span> 下的 n 个<strong>独立的</strong>向量 <span class="arithmatex">\(a_1...a_n\)</span>，作为一个矩阵 A 的列，A 是 m-n 形状的，列空间维数是n。而<code>Eq(M1)</code> 的线性组合，就是对A列向量的线性组合 <span class="arithmatex">\(p = Ax\)</span>，<strong>p肯定还属于A的列空间</strong>，而我们想要这个p，和b最接近。 <span class="arithmatex">\(\hat{x}\)</span> 就是所有 x 当中最好的一个，能让 <span class="arithmatex">\(p = A\hat{x}\)</span> 最接近 b. 这<strong>个最接近 b 的 <span class="arithmatex">\(p = A\hat{x}\)</span>,就是 b 在 A 的列空间(向量 <span class="arithmatex">\(a_1...a_n\)</span> 所形成的子空间)当中的投影。</strong>注意，<strong>投影 <code>p</code> 属于子空间(这里是A的列空间)当中的向量</strong>。</p>
+<p>当n = 1(只有1个向量 <span class="arithmatex">\(a_1\)</span>),就是 <code>例1，2</code> 投影到直线的例子,这条直线就是A的列空间,A只有一列.因为是投影到一条直线，所以最接近b意味着和b垂直，从而得到这个最好的组合是 <span class="arithmatex">\(\hat{x} = \frac{a^Tb}{a^Ta}\)</span>.</p>
+<p>一般情况下,A有n列,<span class="arithmatex">\(a_1...a_n\)</span>。当n &gt;1,同样的还是三个步骤求 <span class="arithmatex">\(\hat{x},p,P\)</span></p>
+<ol>
+<li>找到 <span class="arithmatex">\(\hat{x}\)</span></li>
+<li>求出 <span class="arithmatex">\(p = A\hat{x}\)</span></li>
+<li>找到投影矩阵P</li>
+</ol>
+<p>关键是几何知识! 下图还是 Fig4.5,注意右边部分</p>
+<p><img alt="image-20210121095127115" src="../.assets/image-20210121095127115.png" /></p>
+<p>虚线部分表示， b 到其投影(投影是在子空间的!) $ p = A\hat{x}$ 的最近距离，这个距离(<strong>误差向量，error vector</strong>) 也就是 <span class="arithmatex">\(b - A\hat{x}\)</span> ,和<strong>投影 <code>p</code> 所在的子空间垂直！</strong>那么当n &gt;1,误差向量 <span class="arithmatex">\(b -A\hat{x}\)</span> 是和所有的向量 <span class="arithmatex">\(a_1...a_n\)</span> 垂直的,从而得到n个关于 <span class="arithmatex">\(\hat{x}\)</span> 的方程
+$$
+\begin{aligned}
+    a_1^T(b - A\hat{x}) &amp;= 0 \
+    &amp; \vdots \
+    a_n^T(b - A\hat{x}) &amp;= 0 \
+\end{aligned}</p>
+<p>\quad \text{也就是} \quad </p>
+<p>\left[\begin{matrix} 
+    -a_1^T-  \
+    \vdots  \
+    -a_n^T-  \
+\end{matrix} \right]
+\left[\begin{matrix} 
+      \
+    b - A\hat{x}  \ 
+      \
+\end{matrix} \right]</p>
+<p>= \left[\begin{matrix} 
+      \
+    0  \
+      \
+\end{matrix} \right]   \tag{4}
+$$
+这些 <span class="arithmatex">\(a_i^T\)</span> 组成行的矩阵就是 <span class="arithmatex">\(A^T\)</span>.这n个方程实际上就是 <span class="arithmatex">\(A^T (b −A\hat{x} )=0\)</span> ,也就是 <span class="arithmatex">\(A^T A\hat{x}= A^T b\)</span>,这是关于 <span class="arithmatex">\(\hat{x}\)</span> 的方程,系数矩阵是 <span class="arithmatex">\(A^T A\)</span>,现在我们可以找到 <span class="arithmatex">\(x',p,P\)</span>. </p>
+<blockquote>
+<p>线性组合 <span class="arithmatex">\(p = \hat{x_1}a+1 +... + \hat{x_n} a_n\)</span> 是最接近 b 的，它来自于
+$$
+A ^ { \mathrm { T } } ( b - A \widehat { x } ) = 0 \quad \text { 也即是 }\quad A ^ { \mathrm { T } } A \widehat { x } = A ^ { \mathrm { T } } b</p>
+<p>\tag{5}
+$$
+<strong>对称</strong>矩阵 <span class="arithmatex">\(A^TA\)</span> 是 n-n 的，<strong>如果 a‘s 独立，那么它可逆</strong>。解是 <span class="arithmatex">\(\hat{x} = (A^TA)^{-1}A^Tb\)</span>，那么 b 在子空间的投影 p 就是：
+$$
+p = A\hat{x} = A (A^TA)^{-1}A^Tb  \tag{6}
+$$
+产生 <span class="arithmatex">\(p = Pb\)</span> 的投影矩阵的公式就是
+$$
+P= A(A^TA)^{-1}A^T  \tag{7}
+$$</p>
+<p>sp-Note3:A是m-n,那么<span class="arithmatex">\(A^TA\)</span> 是 n-n,从而 P 是m-m，所以投影矩阵是 <strong>m-m 矩阵</strong>，而且P是<strong>对称</strong>的! <span class="arithmatex">\(P^T = P\)</span> ,转置一下就明白了！这是理解 <code>&lt;总结 第2点&gt;</code> 的关键</p>
+</blockquote>
+<p>和投影到直线上的比较一下,也就是当n = 1,A只有一列a的时候,
+$$
+\hat{x} = \frac{a^Tb}{a^Ta},\quad 
+p = a\frac{a^Tb}{a^Ta}   \quad
+P = \frac{aa^T}{a^Ta}<br />
+$$
+只是 <span class="arithmatex">\(a^Ta\)</span> 一个数字.变成矩阵 <span class="arithmatex">\(A^T A\)</span>,所以我们需要求逆.而对于的逆<span class="arithmatex">\((A^T A)^{−1}\)</span>,<strong>a's之间的线性独立会保证逆矩阵存在.</strong></p>
+<p>关键步骤是 <span class="arithmatex">\(A^T (b−A\hat{x} )=0\)</span>,是由几何知识的垂直得到的。线性代数以非常快的方式给出了这个<strong>正规方程(normal equation)</strong>：</p>
+<ol>
+<li>要投影的子空间是A的<strong>列空间</strong></li>
+<li>误差向量 <span class="arithmatex">\(e = b - A\hat{x}\)</span> 和这个列空间垂直</li>
+<li>因此 <strong><span class="arithmatex">\(e=b - A\hat{x}\)</span> 是 <span class="arithmatex">\(A^T\)</span> 的零空间！</strong>这意味着 <span class="arithmatex">\(A^T(b- A\hat{x}) = 0\)</span></li>
+</ol>
+<p>左零空间在投影中是很重要的.<span class="arithmatex">\(A^T\)</span> 的零空间包含了误差向量 <span class="arithmatex">\(e = b - A\hat{x}\)</span>,<strong>向量b被分解为投影 <code>p</code> 和误差 <span class="arithmatex">\(e = b - p\)</span>.</strong>投影操作产生了一个直角三角形(Fig4.5),三条边分别是<code>p,e,b</code></p>
+<p>举2个极端的例子:</p>
+<ol>
+<li>如果b已经在列空间上,那么投影后结果就是b自身
+   b在列空间,那么b等于A的线性组合: <code>b=Ax</code>.这时候: <span class="arithmatex">\(Pb = A(A^TA)^{-1} A^Tb = A(A^TA)^{-1}A^TAx=Ax = b\)</span></li>
+<li>如果b垂直于列空间(把列空间想象成平面),那么b没有分量是属于列空间的,所以 Pb = 0
+   为何？向量b垂直于列空间,意味着垂直于所有的列,所以它在 <span class="arithmatex">\(N(A^T)\)</span> 里!这时候如果我们乘以P,得到: <span class="arithmatex">\(p = Pb = A(A^TA)^{-1}A^Tb\)</span> 就会等于0,这是因为 <span class="arithmatex">\(A^T\)</span> b立马就可以得到0.这就是为什么Pb = 0这部分可以消去.</li>
+</ol>
+<p>一般情况下,向量 b 会有分量在A的列空间上,另一分量在和列空间垂直的A的左零空间.<strong>投影做的就是,去掉 e = Pb =0的部分（误差）,保留Pb = p的部分,而且 <code>e+p = b</code></strong></p>
+<p><strong>例3.</strong> 如果 <span class="arithmatex">\(A = \left[\begin{matrix} 1 &amp; 0 \\1 &amp; 1 \\1 &amp; 2 \\\end{matrix} \right],b = \left[\begin{matrix}6\\0\\0\\ \end{matrix} \right]\)</span>，求 <span class="arithmatex">\(\hat{x},p,P\)</span>.</p>
+<p>解： 求对称矩阵 <span class="arithmatex">\(A^TA\)</span> 和 <span class="arithmatex">\(A^T b\)</span>
+$$
+A ^ { \mathrm { T } } A = \left[ \begin{array} { l l l } 1 &amp; 1 &amp; 1 \ 0 &amp; 1 &amp; 2 \end{array} \right] \left[ \begin{array} { l l } 1 &amp; 0 \ 1 &amp; 1 \ 1 &amp; 2 \end{array} \right] = \left[ \begin{array} { l l } 3 &amp; 3 \ 3 &amp; 5 \end{array} \right] \quad </p>
+<p>,\quad A ^ { \mathrm { T } } b = \left[ \begin{array} { l l l } 1 &amp; 1 &amp; 1 \ 0 &amp; 1 &amp; 2 \end{array} \right] \left[ \begin{array} { l } 6 \ 0 \ 0 \end{array} \right] = \left[ \begin{array} { l } 6 \ 0 \end{array} \right]
+$$
+现在求正规方程 <span class="arithmatex">\(A^TA \hat{x} = A^T b\)</span> 求 <span class="arithmatex">\(\hat{x}\)</span>
+$$
+\left[ \begin{array} { l l } 3 &amp; 3 \ 3 &amp; 5 \end{array} \right] \left[ \begin{array} { l } \widehat { x } _ { 1 } \ \widehat { x } _ { 2 } \end{array} \right] = \left[ \begin{array} { l } 6 \ 0 \end{array} \right] \quad 
+\Rightarrow 
+\quad \widehat { x } = \left[ \begin{array} { l } \hat { x } _ { 1 } \ \widehat { x } _ { 2 } \end{array} \right] = \left[ \begin{array} { r } 5 \ - 3 \end{array} \right]</p>
+<p>\tag{8}
+$$
+线性组合 <span class="arithmatex">\(p = A\hat{x}\)</span> 是 <strong>b 投影到 A 的列空间</strong>：
+$$
+\boldsymbol { p } = A\hat{x} =  5  \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right] - 3 \left[ \begin{array} { l } 0 \ 1 \ 2 \end{array} \right] = \left[ \begin{array} { r } 5 \ 2 \ - 1 \end{array} \right] . \text { 误差是 } e = b - p = \left[ \begin{array} { r } 1 \ - 2 \ 1 \end{array} \right]</p>
+<p>\tag{9}
+$$
+进行2个检查看看计算是否有问题</p>
+<ol>
+<li>首先，误差 <span class="arithmatex">\(e = (1,-2,1)\)</span> 和2个列 <span class="arithmatex">\((1,1,1),(1,2,1)\)</span> 都是垂直的</li>
+<li>其次，<span class="arithmatex">\(Pb\)</span> 正确的得到了 <span class="arithmatex">\(p = (5,2,-1)\)</span></li>
+</ol>
+<p>注意，<strong>投影矩阵 P 的计算只要A，也就是不需要涉及到 b</strong>，所以，任何 <code>b</code> 要投影到例3矩阵A的列空间，投影矩阵都是 <span class="arithmatex">\(P = A(A^T A)^{−1} A^T\)</span>, <span class="arithmatex">\(A^TA\)</span> 的行列式是15-9 = 6,那么<span class="arithmatex">\((A^T A)^{−1}\)</span> 很简单,:
+$$
+\left( A ^ { \mathrm { T } } A \right) ^ { - 1 } = \frac { 1 } { 6 } \left[ \begin{array} { r r } 5 &amp; - 3 \ - 3 &amp; 3 \end{array} \right] \quad \text { and } \quad P = \frac { 1 } { 6 } \left[ \begin{array} { r r r } 5 &amp; 2 &amp; - 1 \ 2 &amp; 2 &amp; 2 \ - 1 &amp; 2 &amp; 5 \end{array} \right]
+$$</p>
+<h2 id="23-ata">2.3. 注意事项和 <span class="arithmatex">\(A^TA\)</span> 的可逆性</h2>
+<p>注意，<span class="arithmatex">\(P = A(A^T A)^{−1} A^T\)</span> 是很具有欺骗性的，你可能会想着把 <span class="arithmatex">\((A^T A)^{−1}\)</span> 根据逆矩阵乘积的知识拆分成 <span class="arithmatex">\(A^{−1}\)</span> 和 <span class="arithmatex">\((A^T)^{−1}\)</span>,如果你这样做，再代入到P的公式当中，得到 $ P = A A^{-1}(A^T)^{-1}A^T = I$,但这是错误的！<strong>因为A矩阵是矩形的，没有逆矩阵</strong>，不可能把 <span class="arithmatex">\((A^T A)^{−1}\)</span> 拆分成 <span class="arithmatex">\(A^{-1}*(A^T)^{-1}\)</span>！</p>
+<blockquote>
+<p>sp:假设 A 是方阵而且独立列列，那么就生成了整个 <span class="arithmatex">\(R^n\)</span>,b本身就在A的列空间，而误差e所在的左零空间只有零向量，根本没有投影的必要了！</p>
+</blockquote>
+<p>在我的经验当中，涉及到矩形矩阵的时候，最后总是会使用到 <span class="arithmatex">\(A^TA\)</span>,而且当A具有独立的列，<span class="arithmatex">\(A^TA\)</span> 就是可逆的。这个性质是如此的重要，我们下面强调，并给出证明</p>
+<blockquote>
+<p><strong>当且仅当A具有独立的列(满列秩，零空间N(A)只有零向量)， <span class="arithmatex">\(A^TA\)</span> 可逆</strong>。注意 <span class="arithmatex">\(A^TA\)</span> 是 n-n 矩阵，可逆所以秩是n,所以 <span class="arithmatex">\(\operatorname{rank}(A) = \operatorname{A^TA}\)</span></p>
+</blockquote>
+<p><strong>证明：</strong></p>
+<p><span class="arithmatex">\(A^TA\)</span> 是 n-n 的方阵。现在，对任何A，我们证明，<strong><span class="arithmatex">\(A^TA\)</span> 和 A的零空间是等价的！</strong> 从而，当A的列线性独立，那么零空间只有零向量，而<span class="arithmatex">\(A^TA\)</span> 的零空间和 A 一样，只有零向量，又是方阵，所以可逆。</p>
+<ul>
+<li>
+<p><strong>证明<span class="arithmatex">\(A^TA\)</span> 的零空间和A一样：</strong> 设A是任何矩阵，如果 x 在零空间，那么 Ax = 0,左乘<span class="arithmatex">\(A^T\)</span>,得到 <span class="arithmatex">\(A^TAx = 0\)</span>,所以x也在 <span class="arithmatex">\(A^TA\)</span> 的零空间。</p>
+</li>
+<li>
+<p><strong>证明A的零空间和 <span class="arithmatex">\(A^TA\)</span> 一样：</strong>  现在从 <span class="arithmatex">\(A^TA\)</span> 的零空间开始，从 <span class="arithmatex">\(A^TAx = 0\)</span>，我们必须证明 <span class="arithmatex">\(Ax = 0\)</span>，但我们不能左乘<span class="arithmatex">\((A^T)^{-1}\)</span>，因为这一般都是不存在的，直接左乘 <span class="arithmatex">\(x^T\)</span>：
+  $$
+  \left( x ^ { \mathrm { T } } \right) A ^ { \mathrm { T } } A x = 0 \quad \text { 也就是 } \quad ( A x ) ^ { \mathrm { T } } ( A x ) = 0 \quad \text { 也就是 } \quad | A x | ^ { 2 } = 0
+  $$
+  上式意味着： 如果 <span class="arithmatex">\(A^TAx= 0\)</span>，那么 Ax 的长度是0.所以 Ax = 0.</p>
+</li>
+</ul>
+<p>QED.所以，当 x 是其中一个零空间向量，那么肯定也是另一个. 如果 <span class="arithmatex">\(A^TA\)</span> 或 A 有依赖的列，那么A也是，如果 <span class="arithmatex">\(A^TA\)</span> 或 A 有独立的列，A也是.更进一步，<span class="arithmatex">\(A^TA\)</span> 还有如下性质：</p>
+<ul>
+<li>方阵： <span class="arithmatex">\(A^TA\)</span> 是  n-m 矩阵乘以 m-n，矩阵，所以 <span class="arithmatex">\(A^TA\)</span> 是 n-n 的方阵。</li>
+<li>对称：通过转置规则: <span class="arithmatex">\((A^TA)^T= A^T(A^{T})^{T} = A^TA\)</span></li>
+</ul>
+<p>所以： <strong>当A具有独立列：<span class="arithmatex">\(A^TA\)</span>是方阵，对称，且可逆</strong></p>
+<p>看一下独立列和依赖列产生的 <span class="arithmatex">\(A^TA\)</span> 不同
+$$
+\left[ \begin{array} { l l l } 1 &amp; 1 &amp; 0 \ 2 &amp; 2 &amp; 0 \end{array} \right] \left[ \begin{array} { l l } 1 &amp; 2 \ 1 &amp; 2 \ 0 &amp; 0 \end{array} \right] = \left[ \begin{array} { l l } 2 &amp; 4 \ 4 &amp; 8 \end{array} \right]  \quad \color{orange} \text{依赖}
+\</p>
+<p>\left[ \begin{array} { l l l } 1 &amp; 1 &amp; 0 \ 2 &amp; 2 &amp; 1 \end{array} \right] \left[ \begin{array} { l l } 1 &amp; 2 \ 1 &amp; 2 \ 0 &amp; 1 \end{array} \right] = \left[ \begin{array} { l l } 2 &amp; 4 \ 4 &amp; 9 \end{array} \right]  \quad \color{orange} \text{独立}
+$$</p>
+<h2 id="24">2.4. 总结</h2>
+<p>投影矩阵满足 <span class="arithmatex">\(P^2 = P\)</span>，且 <span class="arithmatex">\(P^T= P\)</span></p>
+<p><strong>第1点：推导流程：</strong> 为了求得 b 到到子空间的投影：<span class="arithmatex">\(p= \hat{x_1}a_1...\hat{x_n}a_n\)</span>，把 <span class="arithmatex">\(a_1...a_n\)</span> 向量作为矩阵A的列，那么投影就是 <span class="arithmatex">\(p = A\hat{x}\)</span>。误差向量是 <span class="arithmatex">\(e = b -p = b - A\hat{x}\)</span>（ b到子空间的距离是 <span class="arithmatex">\(|e| = |b-p|\)</span>）。根据几何知识，e必须和A的列空间垂直，所以e就是在==A的==<strong>左零</strong>空间，从而A的列和e点乘必须为0，也就是 <span class="arithmatex">\(A^T(b-A\hat{x})= 0,A^TA\hat{x} = A^Tb\)</span>.从而解出</p>
+<ul>
+<li><span class="arithmatex">\(\hat{x} = (A^TA)^{-1}A^Tb\)</span></li>
+<li>$p = A\hat{x} = A (A^TA)^{-1}A^Tb = Pb \rightarrow\quad P= A(A^TA)^{-1}A^T $</li>
+</ul>
+<p><strong>第2点，容易引起困惑的地方</strong></p>
+<ol>
+<li>首先，<span class="arithmatex">\(p = A\hat{x}\)</span> ,所以 p 在 ==A 的==列空间，而 e 和 p 垂直，所以e在A的左零空间 <span class="arithmatex">\(N(A^T)\)</span></li>
+<li>其次，<span class="arithmatex">\(p = Pb\)</span>,明显，b只是对P矩阵的列进行组合而已，所以p也在==P的==列空间。那么e也在P的左零空间</li>
+<li>然后，根据 <code>典型例题1</code>,e在P的零空间</li>
+</ol>
+<p>可能吗？ <strong>e既在P的左零空间，又在P的零空间！</strong>当然可以啊，P是对称矩阵！<span class="arithmatex">\(Pe = 0\)</span>,肯定有 <span class="arithmatex">\(P^Te = 0\)</span>!困惑了好久啊！好神奇啊，2个零空间居然可以有交集。</p>
+<h3 id="_1">投影矩阵性质</h3>
+<p>目前，已知 <span class="arithmatex">\(P = P^2 = P^T\)</span>,还具有如下性质</p>
+<blockquote>
+<p><strong>除非P=I,不然投影矩阵都是奇异的</strong></p>
+<hr />
+<p><strong>证明</strong>：<span class="arithmatex">\(P = A(A^TA)^{-1}A^T\)</span>,首先我们证明 <span class="arithmatex">\(rank(P) \le rank(A)\)</span>。设 <span class="arithmatex">\((A^TA)^{-1}A^T = M\)</span>，那么 <span class="arithmatex">\(P = AM\)</span>.因此P的列都是A的列的线性组合，所以 <span class="arithmatex">\(rank(P)\le rank(A)\)</span></p>
+<p>A是 m-n 矩阵，P是 m-m 矩阵，而A的列必须是线性独立的,所以 <span class="arithmatex">\(m\ge n\)</span>,因此 <span class="arithmatex">\(rank(A) \le n\)</span>.(假设A的列是9维的向量，A的列线性独立，所以至多需要9列即可，所有 <span class="arithmatex">\(m \ge n\)</span>).</p>
+<p>综上，我们得到 <span class="arithmatex">\(rank(P) \le rank(A) \le n\)</span>，并且 <span class="arithmatex">\(m \ge n\)</span></p>
+<ul>
+<li>如果 <span class="arithmatex">\(m&gt;n\)</span>，那么P明显奇异</li>
+<li>如果 <span class="arithmatex">\(m = n\)</span>,那么,参见 <code>&lt;#2.3&gt;</code>, <span class="arithmatex">\(A^TA\)</span> 可逆，所以 <span class="arithmatex">\(P = A(A^TA)^{-1}A^T = AA^{-1}(A^T)^{-1}A^T = I\)</span></li>
+</ul>
+<p>QED
+</p>
+</blockquote>
+<h2 id="25">2.5. 典型例题</h2>
+<p><strong>1.</strong> 把 b = (3,4,4) 投影到</p>
+<ol>
+<li>经过 a=(2,2,1)的直线上，验证误差向量 <span class="arithmatex">\(e = b-p\)</span> 和 a 垂直</li>
+<li>再投影到包含a和 <span class="arithmatex">\(a^* = (1,0,0)\)</span> 的平面上，验证误差向量 <span class="arithmatex">\(e^* = b - p^*\)</span> 和 <span class="arithmatex">\(a,a^*\)</span> 垂直，并求出投影矩阵P。什么向量投影到这个平面是零向量呢？</li>
+</ol>
+<p>解： 到直线的投影是
+$$
+p = \frac { a ^ { \mathrm { T } } b } { a ^ { \mathrm { T } } a } a = \frac { 18 } { 9 } ( 2,2,1 ) = ( 4,4,2 )
+$$
+误差 <span class="arithmatex">\(e = b - p = (-1,0,2)\)</span>,和a垂直，所以p正确</p>
+<p>到平面的投影就是投影到 $A = [a,a^*] $ 的列空间，计算投影矩阵P
+$$
+A = \left[ \begin{array} { l l } 2 &amp; 1 \ 2 &amp; 0 \ 1 &amp; 0 \end{array} \right] \quad A ^ { \mathrm { T } } A = \left[ \begin{array} { l l } 9 &amp; 2 \ 2 &amp; 1 \end{array} \right] \quad \left( A ^ { \mathrm { T } } A \right) ^ { - 1 } = \frac { 1 } { 5 } \left[ \begin{array} { r r } 1 &amp; - 2 \ - 2 &amp; 9 \end{array} \right] \quad P = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 0 &amp; .8 &amp; .4 \ 0 &amp; .4 &amp; .2 \end{array} \right]
+$$
+那么，<span class="arithmatex">\(p^* = Pb = (3,4.8,2,4)\)</span>,误差 <span class="arithmatex">\(e^* = b - p* = (0,-0.8,1.6)\)</span> 和 <span class="arithmatex">\(a,a^*\)</span> 都垂直。</p>
+<p>注意，<strong><span class="arithmatex">\(e^*\)</span> 在P的零空间</strong>，为什么?因为 
+$$
+Pe^<em> = P(b-p^</em>) = P(b- Pb) = Pb - P^2b = 0
+$$
+所以e的投影就是零向量！</p>
+<hr />
+<p><strong>2.</strong> 假设你的心跳经过3次测量，分别是 x =70/m,x=80/m,x= 120/m.方程组 Ax = b 是由3个方程组成的，其中 <span class="arithmatex">\(A^T = [1；1；1],b= (70,80,120)\)</span>,使用微积分和投影，计算出最佳的 <span class="arithmatex">\(\hat{x}\)</span></p>
+<blockquote>
+<p>sp:这里最佳的意思是，类似于 <code>&lt;#2.1&gt;</code> 投影到一条直线上，就是求出一条拟合直线，使得误差最小</p>
+</blockquote>
+<p>解：首先看微积分的方法，其实就是对方程 <span class="arithmatex">\(E = ( x - 70 ) ^ { 2 } + ( x - 80 ) ^ { 2 } + ( x - 120 ) ^ { 2 }\)</span> 最优化，求倒数
+$$
+\frac { d E } { d x } = 2 ( x - 70 ) + 2 ( x - 80 ) + 2 ( x - 120 ) = 0 \quad \Rightarrow \quad \widehat { x } = \frac { 70 + 80 + 120 } { 3 } = 90
+$$
+然后看看投影的方法，非常简单，直接套公式
+$$
+\widehat { x } = \frac { a ^ { \mathrm { T } } b } { a ^ { \mathrm { T } } a } = \frac { ( 1,1,1 ) ^ { \mathrm { T } } ( 70,80,120 ) } { ( 1,1,1 ) ^ { \mathrm { T } } ( 1,1,1 ) } = \frac { 70 + 80 + 120 } { 3 } = 90
+$$</p>
+<hr />
+<p>**3. ** 接上一题，假设第4次测量是 <span class="arithmatex">\(b_4 = 100\)</span>,这会让 <span class="arithmatex">\(\widehat{x}_{old}\)</span> 变为 <span class="arithmatex">\(x_{new}\)</span>,请验证 <span class="arithmatex">\(\widehat{x}_{new} = \widehat{x}_{old} + \frac{1}{4} (130 - \widehat{x}_{old})\)</span>.</p>
+<p>这其实有一个规则，假设已经进行了999次测量，第1000次测量，会得到  $\widehat{x}<em old="old">{new} = x</em>） $, 这只需要 }+\frac{1}{1000} (b_{1000} - \widehat{x}_{old<span class="arithmatex">\(\widehat{x}_{old}\)</span> 和最后测量的数据 <span class="arithmatex">\(b_{1000}\)</span> ，<strong>不需要对1000个数字作平均值！</strong></p>
+<p>解： <span class="arithmatex">\(b_4 = 130\)</span> 添加了第4个等式，<span class="arithmatex">\(\widehat{x}\)</span> 会被 更新为100，100可以通过直接平均4个数字，或者把 <span class="arithmatex">\(b_1,b_2,b_3\)</span> 的平均值和 <span class="arithmatex">\(b_4\)</span> 组合起来，如下
+$$
+\frac { 70 + 80 + 120 + 130 } { 4 } = 100\quad  \text { 也等于 } \quad \widehat { x } _ { \text {old } } + \frac { 1 } { 4 } \left( b _ { 4 } - \widehat { x } _ { \text {old } } \right) = 90 + \frac { 1 } { 4 } ( 40 )
+$$
+再第1000次测量之后，方程会出现一个 <span class="arithmatex">\(1/1000\)</span> 的 <strong>kalman filter</strong> 乘以预测误差(prediction error) ：<span class="arithmatex">\(b_{new} - \widehat{x}_{old}\)</span>,注意 ，<span class="arithmatex">\(1/1000 = 1/999 - 1/999000\)</span>
+$$
+\widehat { x } _ { \text {new } } = \frac { b _ { 1 } + \cdots + b _ { 1000 } } { 1000 } = \frac { b _ { 1 } + \cdots + b _ { 999 } } { 999 } + \frac { 1 } { 1000 } \left( b _ { 1000 } - \frac { b _ { 1 } + \cdots + b _ { 999 } } { 999 } \right) .
+$$</p>
+<h1 id="3">3. 最小二乘近似</h1>
+<blockquote>
+<p>Least Squares Approximations</p>
+</blockquote>
+<p>Ax = b通常没有解,一般原因是:矩阵的行数比列数多,也就是<strong>方程数目比未知数更多</strong>.n个列只能生成 <code>m</code> 维空间的一小部分.除非所有的测量刚好,等式恰恰好,不然没有解.比如为了预测卫星的位置,我们测量了1000次的数据,所以可以得到1000个方程,但是方程数目多了以后,肯定有一些是坏的数目,右侧的一些b是不好的,导致方程组解不出来.但是b肯定也包含了好的数据,我们想要的就是把坏的数据去掉,留下好的计算.其中一个方法是,不断去掉一些方程,直到剩下一个可逆的矩阵.但是这种方法不完美,对于所有测量值而言,我们不知道那些数据是好的,那些是无效的坏数据.我们希望的是利用所有的测量值求出最优质.怎么做呢?</p>
+<p>当<code>b</code> 在列空间外面.消去会到达一个不可能有解的情况,但是我们不能停止,因为测量只是包含了一些噪音而已</p>
+<p>重复一下,误差 <span class="arithmatex">\(e = b-Ax\)</span> 不总是0,如果是0, <code>x</code> 就是 <span class="arithmatex">\(Ax = b\)</span> 的解.其他情况，我们想要e的长度尽可能的小,<span class="arithmatex">\(\hat{x}\)</span>是一个最小二乘解.我们的目标是计算 <span class="arithmatex">\(\hat{x}\)</span> ,这是有现实意义的</p>
+<p>前面的一节强调的是投影 <code>p</code>,这一节强调最小二乘解 <span class="arithmatex">\(\hat{x}\)</span>.它们是通过 <span class="arithmatex">\(p = A\hat{x}\)</span> 联系起来的.基础方程仍然是 <span class="arithmatex">\(A^T Ax=A^T b\)</span>.下面是一个不正式的得到这个方程的介绍:<strong>当 Ax = b 没有解，左乘 <span class="arithmatex">\(A^T\)</span>，求解 <span class="arithmatex">\(A^TAx = A^T b\)</span></strong></p>
+<p><strong>例1.</strong> 最小二乘的一个重要应用是从m个点拟合一条直线,比如,找到最接近点 <code>(0,6),(1,0),(2,0)</code> 的一条直线.首先我们需要知道,没有任何一条直线 <span class="arithmatex">\(b= C+ Dt\)</span> 可以经过这3个点,当 <code>t = 0,1,2</code> 的3个方程是</p>
+<ul>
+<li>t=1: 如果 <code>C+D* 0 = 6</code>,第1个点在直线 <code>b = C+Dt</code> 上</li>
+<li>t=2:如果 <code>C+D* 1 = 0</code>,第2个点在直线 <code>b = C+Dt</code> 上</li>
+<li>t=3: 如果 <code>C+D* 2 = 0</code>,第3个点在直线 <code>b = C+Dt</code> 上</li>
+</ul>
+<p>这个3-2的系统没有解: <code>b = (6,0,0)</code> 不是列 <code>(1,1,1),(0,1,2)</code> 的组合.系统中的A,x,b是
+$$
+A = \left[ \begin{array} { l l } 1 &amp; 0 \ 1 &amp; 1 \ 1 &amp; 2 \end{array} \right] \quad x = \left[ \begin{array} { l } C \ D \end{array} \right] \quad b = \left[ \begin{array} { l } 6 \ 0 \ 0 \end{array} \right] \quad A x = b 无解
+$$
+本节的例3当中,使用的例子和本例是一样的,我们计算 <span class="arithmatex">\(\hat{x} = (5,-3)\)</span>,这些数字就是C,D的最好选择,所以 <code>5 - 3t</code> 是一条拟合这3个点的的最好直线.在实践当中,m=3个点，可以很容易的变成 m = 100 个点,所以经常没有一条直线 C+Dt 可以经过这100个点,我们的例子夸大了误差,使你可以看到 Fig4.6 的 <span class="arithmatex">\(e_1,e_2,e_3\)</span></p>
+<h2 id="31">3.1. 最小化误差</h2>
+<blockquote>
+<p>Minimizing the Error</p>
+</blockquote>
+<p>下面内容以例1为例子。怎么使得误差 <code>e = b - p</code> 尽可能小呢?这个重要的问题有一个漂亮的解答.最好的x(称为<span class="arithmatex">\(\hat{x}\)</span> )可以通过</p>
+<ul>
+<li>几何: 90度角</li>
+<li>代数: 使用投影矩阵P投影</li>
+<li>微积分：把误差的导数设置为0</li>
+</ul>
+<p>得到</p>
+<p><img alt="image-20210121111336840" src="../.assets/image-20210121111336840.png" /></p>
+<p><strong>1. By Geometry</strong></p>
+<p>任何一个 <code>Ax</code> 都是在列 <code>(1,1,1),(0,1,2)</code> 组成的平面上的,是在这个平面上,我们想要寻找最接近 <code>b</code> 的点.这个最接近的点是<strong>投影<code>p</code>.</strong></p>
+<p><span class="arithmatex">\(A\hat{x}\)</span> 的最佳选择就是<code>p</code>.最小的误差是 <code>e = b-p</code>.高度分别是 <span class="arithmatex">\((p_1,p_2,p_3)\)</span> 的三个点确实是在同一条直线上的,因为p是在列空间的.在拟合一条直线的情况下,<span class="arithmatex">\(\hat{x}\)</span>给出了(C,D)的最佳选择</p>
+<p><strong>2. By algebra</strong></p>
+<p>每一个向量b可以分为2部分.列空间部分是<code>p</code>,另外一个在<strong>左零空间</strong>的垂直部分是<code>e</code>.我们不能求解的方程是 <span class="arithmatex">\(Ax = b\)</span>,但是对于Ax = p我们是能求解的(通过把e去掉)
+$$
+Ax = b = p+e \text{ 是不可能的，但 }  \quad  A\hat{x} = p \text{ 是可解的！} \tag{1}
+$$
+解 <span class="arithmatex">\(A\hat{x} = p\)</span> 留下了最小误差e
+$$
+\text{任何x，都有}\quad |Ax- b|^2 = |Ax -p|^2 + |e|^2  \tag{2}
+$$
+参见Fig4.6右边，<code>Eq(2)</code> 就是直角三角形的公式而已.向量 <span class="arithmatex">\(Ax - p\)</span> 是在列空间的,和左零空间的 <code>e</code> 垂直.<strong>通过把 <code>x</code> 选择为 <span class="arithmatex">\(\hat{x}\)</span>,<span class="arithmatex">\(Ax - p\)</span> 变成0</strong>!这样的话就产生了最小误差 <span class="arithmatex">\(e = (e_1,e_2,e_3)\)</span></p>
+<p>注意最小意味着什么:<span class="arithmatex">\(Ax - b\)</span> 的长度的平方是最小的:<strong>最小二乘解(least squares solutions) <span class="arithmatex">\(\hat{x}\)</span> 让 <span class="arithmatex">\(E = |Ax - b|^2\)</span> 尽可能的小</strong></p>
+<ul>
+<li>Fig4.6a展示了最接近的直线,误差是 <span class="arithmatex">\(e_1,e_2,e_3=1,−2,1\)</span>.这些都是<strong>垂直距离.</strong>最小二乘直线最小化了 <span class="arithmatex">\(E = e_1^2+e_2^2+ e_3^2\)</span></li>
+<li>Fig4.6b展示三维空间(b,p,e空间)下的同一个问题.<strong>向量b不在A的列空间里面,这就是我们为什么不能求解 <span class="arithmatex">\(Ax = b\)</span> 的原因.最小的误差是垂直向量<code>e</code>,也就是 <span class="arithmatex">\(e = b - A\hat{x}\)</span>. <code>e</code> 的分量(1,-2,1)是最佳直线到3个点的距离.</strong></li>
+</ul>
+<p>这两个图的背后思想都是方程 <span class="arithmatex">\(A^T A\hat{x}= A^T b\)</span></p>
+<p>注意误差1,-2,1加起来是0,因为误差e是和A的第一列 <span class="arithmatex">\((1,1,1)\)</span> 垂直的,点乘得到 <span class="arithmatex">\(e_1  + e_2+ e_3=0\)</span></p>
+<p><strong>3. By Calculus</strong></p>
+<p>大多求极值的函数都可以通过微积分求解.这里误差函数E是一个平方和函数 <span class="arithmatex">\(E = e_1^2+ e_2^2+ e_3^2\)</span> (也就是每一个方程的误差的平方):
+$$
+E = | A x - b | ^ { 2 } = ( C + D \cdot 0 - 6 ) ^ { 2 } + ( C + D \cdot 1 ) ^ { 2 } + ( C + D \cdot 2 ) ^ { 2 } \tag{3}
+$$
+未知数是C,D,那么有2个偏导数,并且在最小值的时候都是0。 <span class="arithmatex">\(∂E/∂C\)</span>  把D当成了常数,而 <span class="arithmatex">\(∂E/∂D\)</span> 把C当成了常数
+$$
+\begin{array} { l } \partial E / \partial C = 2 ( C + D \cdot 0 - 6 ) + 2 ( C + D \cdot 1 ) + 2 ( C + D \cdot 2 ) = 0 \[2ex] \partial E / \partial D = 2 ( C + D \cdot 0 - 6 ) ( 0 ) + 2 ( C + D \cdot 1 ) ( 1 ) + 2 ( C + D \cdot 2 ) ( 2 ) = 0 \end{array}
+$$
+注意 <span class="arithmatex">\(∂E/∂D\)</span> 包含了来自于链式法则的额外的因子 <code>0,1,2</code>.而 <span class="arithmatex">\(∂E/∂C\)</span> 的额外因子是 <code>1,1,1</code> .<strong>而,1,1,1和0,1,2是A的列,不是一个意外!</strong> 根据这两个导数,可得</p>
+<p>$$
+\begin{aligned}
+    \text{C点导数是0：}3C+3D= 6 \
+    \text{D点导数是0：}3C+5D= 0 \
+\end{aligned}
+ \quad \Rightarrow </p>
+<p>A^TA = \left[\begin{matrix} 3 &amp; 3 \ 3 &amp; 5 \end{matrix} \right] ,\quad  A^T b = \left[\begin{matrix} 6  \0  \\end{matrix} \right]\tag{4}
+$$
+所以，<strong>微积分得到的方程，是和 <span class="arithmatex">\(A^TA\hat{x}= A^T b\)</span> 等价的</strong>.微积分求出来的结果和线性代数的正规方程是一样的.这是最小二乘的关键方程：<strong><span class="arithmatex">\(|Ax - b|^2\)</span> 的偏导数，在 <span class="arithmatex">\(A^TA\hat{x} = A^Tb\)</span> 的时候，都是0！</strong></p>
+<p>解是 C = 5,D= -3,因此 b = 5-3t 就是最佳直线，在t = 0,1,2，直线经过 p = 5,2,-1.误差是e =  1，-2，1.</p>
+<h2 id="32">3.2. 大图像</h2>
+<blockquote>
+<p>The Big Picture</p>
+</blockquote>
+<p>本书的关键一个图是Fig4.3,展示了4个子空间和矩阵的真正作用：左侧的向量 <code>x</code> 可以得到右侧的 <span class="arithmatex">\(b = Ax\)</span>.图中x被分解为<span class="arithmatex">\(x = x_r+ x_n\)</span></p>
+<p><img alt="image-20210121112517756" src="../.assets/image-20210121112517756.png" /></p>
+<p>在这一节情况正好相反,<span class="arithmatex">\(Ax = b\)</span>没有解.我<strong>们分解向量 <code>b</code> 而不是<code>x</code>.我们求解 <span class="arithmatex">\(A\hat{x} =p\)</span> 而不是 <span class="arithmatex">\(Ax = p\)</span></strong>,误差 <span class="arithmatex">\(e = b-p\)</span> 是不可避免的</p>
+<p>注意到零空间 <code>N(A)</code> 是很小的：<strong>只有一个点,当列是独立的时候,<span class="arithmatex">\(Ax = 0\)</span> 的唯一解就是 <code>x = 0</code>.从而 <span class="arithmatex">\(A^T A\)</span> 可逆.方程 <span class="arithmatex">\(A^T A\hat{x}= A^T b\)</span> 完全确定了最好向量 <span class="arithmatex">\(\hat{x}\)</span>.而误差具有 <span class="arithmatex">\(A^T e=0\)</span>，因为 e 在 <span class="arithmatex">\(A^T\)</span> 零空间</strong>  。</p>
+<p><code>&lt;01-07&gt;</code> 会有一个包含四个子空间的完整图像： </p>
+<ul>
+<li>每一个x都分解为 <span class="arithmatex">\(x_r+ x_n\)</span></li>
+<li>每一个b都分解为 <span class="arithmatex">\(p+e\)</span>.</li>
+</ul>
+<p>最好的解是在==行空间==的 <span class="arithmatex">\(\widehat{x_r}\)</span>.我们不需要 <span class="arithmatex">\(x_n\)</span>,而e不能进一步处理--这就产生了 <span class="arithmatex">\(A\widehat{x}= p\)</span></p>
+<h2 id="33">3.3. 拟合一条直线</h2>
+<blockquote>
+<p>Fitting a straight Line</p>
+</blockquote>
+<p>拟合一条直线是最小二乘的最明显的一个应用.从 <code>m&gt;2</code> 个点开始,这些点基本能形成一条直线.在时间 <span class="arithmatex">\(t_1…t_m\)</span> 的时候,这些点的高度是 <span class="arithmatex">\(b_1…b_m\)</span>.最佳直线 <code>C+Dt</code> 和这些点之间的误差是 <span class="arithmatex">\(e_1…e_m\)</span>.没有任何一条直线是完美的,而最小二乘直线最小化了 <span class="arithmatex">\(E =e_1^2+ e_2^2…+ e_m^2\)</span></p>
+<p>本节的第一个例子是 Fig4.6 的3个点.现在我们允许出现m个点,<span class="arithmatex">\(\hat{x}\)</span>的 两个分量还是C,D</p>
+<p>当直线确实经过m个点的时候,我们可以求解 <span class="arithmatex">\(Ax = b\)</span>,但是通常情况下不是这种情况.未知数 <code>C,D</code> 就可以确定一条直线,所以A只有n = 2列.为了拟合这m个点,我们想要求解m个方程(实际上我们只想要的是n = 2个!)
+$$
+Ax = b \quad \text{也就是} \quad </p>
+<div class="arithmatex">\[\begin{aligned}
+    C+Dt_1 &amp;= b_1 \\
+            &amp;\vdots \\
+    C+Dt_m &amp;= b_m \\
+\end{aligned}\]</div>
+<p>\quad \text{其中} \quad  A = \left[\begin{matrix} 
+    1 &amp; t_1 \
+    1 &amp; t_2 \
+    \vdots &amp; \vdots \
+    1 &amp; t_m
+\end{matrix} \right]</p>
+<p>\tag{6}
+$$
+列空间是如此的狭窄,所以b基本上不在列空间里面.当b恰巧在列空间的话,那么这些点就是在一条直线上,这种情况下<span class="arithmatex">\(b= p,Ax = b\)</span> 是有解的而且误差 <span class="arithmatex">\(e = (0,0,...0)\)</span></p>
+<p>**最佳直线 <code>C+Dt</code> 的高度是 <span class="arithmatex">\(p_1...,p_m\)</span>，误差是 <span class="arithmatex">\(e_1...,e_m\)</span>，对 <span class="arithmatex">\(\hat{x} = (C,D)\)</span> 求解 $A^TA\hat{x} = A^T b $,误差是 <span class="arithmatex">\(e_i = b_i -C -Dt\)</span> **</p>
+<p>除非所有的 <code>t's</code> 都是一样的,不然A的2个列就是线性独立的列。因为A的列已经独立，所以我们求解最小二乘  <span class="arithmatex">\(A^T A\widehat{x} = A^Tb\)</span> ,首先看看 <span class="arithmatex">\(A^TA\)</span>,使用点乘的方式，可得：
+$$
+\text{Dot-pdoduct Matrix:}\quad </p>
+<p>A ^ { \mathrm { T } } A = \left[ \begin{array} { c c c } 1 &amp; \cdots &amp; 1 \ t _ { 1 } &amp; \cdots &amp; t _ { m } \end{array} \right] \left[ \begin{array} { c c } 1 &amp; t _ { 1 } \ \vdots &amp; \vdots \ 1 &amp; t _ { m } \end{array} \right] = \left[ \begin{array} { c c } m &amp; \sum t _ { i } \ \sum t _ { i } &amp; \sum t _ { i } ^ { 2 } \end{array} \right]</p>
+<p>\tag{6}
+$$
+在正规方程组的右边,是一个2*1的向量 <span class="arithmatex">\(A^T b\)</span>
+$$
+A ^ { \mathrm { T } } \boldsymbol { b } = \left[ \begin{array} { c c c } 1 &amp; \cdots &amp; 1 \ t _ { 1 } &amp; \cdots &amp; t _ { m } \end{array} \right] \left[ \begin{array} { c } b _ { 1 } \ \vdots \ b _ { m } \end{array} \right] = \left[ \begin{array} { c } \sum b _ { i } \ \sum t _ { i } b _ { i } \end{array} \right]   \tag{7}
+$$
+在一个特定问题当中,这些数字是给出的,最佳解 <span class="arithmatex">\(\widehat{x}=(C,D)\)</span> 是等式 <code>Eq(9)</code> (sp:顺便参见<code>sp-Note3.1</code>)</p>
+<blockquote>
+<p>当 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span>, 直线 <span class="arithmatex">\(C+Dt\)</span> 最小化了 <span class="arithmatex">\(e_1^2 +...+ e_m^2 = |Ax - b|^2\)</span>
+$$
+\left[ \begin{array} { c c } m &amp; \sum t _ { i } \ \sum t _ { i } &amp; \sum t _ { i } ^ { 2 } \end{array} \right] \left[ \begin{array} { l } C \ D \end{array} \right] = \left[ \begin{array} { c } \sum b _ { i } \ \sum t _ { i } b _ { i } \end{array} \right]   \tag{8}
+$$</p>
+</blockquote>
+<p>直线上m个点的垂直误差是 <span class="arithmatex">\(e = b-p  = b - A\hat{x}\)</span> 的分量.e 是和 A 的列垂直的(几何上)，并在左零空间(线性代数).<span class="arithmatex">\(\hat{x} = (C,D)\)</span> 最小化了总的误差.也就是误差分量的平方和
+$$
+E ( x ) = | A x - b | ^ { 2 } = \left( C + D t _ { 1 } - b _ { 1 } \right) ^ { 2 } + \cdots + \left( C + D t _ { m } - b _ { m } \right) ^ { 2 }
+$$
+当微积分把偏导数 <span class="arithmatex">\(∂E/∂D,∂E/∂C\)</span> 设为0之后,可以产生 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span> </p>
+<p>其他最小二乘的问题有多于两个变量.拟合一条最佳抛物线，有n = 3个系数 <code>C,D,E</code> ，如下一小节.一般,我们需要通过n个参数<span class="arithmatex">\(x_1…x_n\)</span> 拟合m个数据点.矩阵有 <code>n</code> 列,而且 <code>n&lt;m</code>.<span class="arithmatex">\(|Ax −b|^2\)</span> 的导数给出了n个方程的 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span> <strong>.平方被导数后是线性的</strong>(The derivative of a square is linear),这就是最小二乘的方法为什么如此流行</p>
+<hr />
+<p><strong>例2.</strong> 当采样时间 <span class="arithmatex">\(t_i\)</span> 加起来是0的时候，A的列是正交的。假设在 t = -2,0,2 的时候， b=1,2,4，那么A的列的点乘是0
+$$
+Ax = \left[\begin{matrix} 1 &amp; -2 \1 &amp; 0 \1 &amp; 2 \\end{matrix} \right]
+= \left[\begin{matrix} 1  \2  \ 4\end{matrix} \right]
+$$
+请看<span class="arithmatex">\(A^TA\)</span> 当中的0
+$$
+A^TA\widehat{x} = A^T b \quad \text{是} \quad \left[\begin{matrix} 3 &amp; 0 \ 0 &amp; 8 \end{matrix} \right] \left[\begin{matrix} C  \D  \\end{matrix} \right]
+= \left[\begin{matrix} 7  \6  \\end{matrix} \right]
+$$
+<strong>重要：</strong> 现在 <span class="arithmatex">\(A^TA\)</span> 是对角的！从而 <span class="arithmatex">\(D= 6/9,C = 3/7\)</span> 可以独立的求出来。 <span class="arithmatex">\(A^TA\)</span> 当中的0是因为A的列是对称的，它的性质和 <code>I</code> 一样好！</p>
+<p>正交的列是非常有帮助的，所以值得<strong>移动时间原点</strong>来取得这种性质。可以这么左，把测量时间都减去 <span class="arithmatex">\(\widehat{t} = (t_1+...+t_m)/m\)</span>,那么平移后的时间是 <span class="arithmatex">\(T_i = t_i - \widehat{t}\)</span>,而且 <span class="arithmatex">\(\sum T_i = m\widehat{t} - m \widehat{t} = 0\)</span>.现在就有了正交的列了，此时 <span class="arithmatex">\(A^TA\)</span> 就是对角矩阵，参见 <code>Eq(6)，(7)</code>,可得到
+$$
+A^TA = \left[ \begin{array} { c c } m &amp; 0 \ 0 &amp; \sum T _ { i } ^ { 2 } \end{array} \right]，
+A^Tb = \left[ \begin{array} { c } \sum b _ { i } \ \sum T _ { i } b _ { i } \end{array} \right]
+$$
+从而，可以直接得到最佳的C和D的公式
+$$
+C = \frac { b _ { 1 } + \cdots + b _ { m } } { m } \quad \text { and } \quad D = \frac { b _ { 1 } T _ { 1 } + \cdots + b _ { m } T _ { m } } { T _ { 1 } ^ { 2 } + \cdots + T _ { m } ^ { 2 } } 
+\quad \color{orange} \text{T is } t - \widehat{t}
+\tag{9}
+$$</p>
+<blockquote>
+<p><strong>sp-Note3.1</strong>;前面提到 <span class="arithmatex">\(\widehat{x}=(C,D)\)</span> 的公式就是 Eq(9),但这里C,D的公式好像只适用于对时间平移后的C,D,其实是一样的，所以一样可以使用。</p>
+</blockquote>
+<p>所以，最佳的直线是 <span class="arithmatex">\(C+DT\)</span> 或者 <span class="arithmatex">\(C + D(t - \widehat{t})\)</span>. 对时间的评议，让 <span class="arithmatex">\(A^TA\)</span> 变成对角，这其实是  Gram-Schmidt  正交化的例子： 提前正交列！</p>
+<h2 id="34">3.4. 拟合抛物线</h2>
+<blockquote>
+<p>Fitting by a Parabola</p>
+</blockquote>
+<p>如果我们扔出一个球,它的轨迹用直线来拟合是傻逼的.抛物线 <span class="arithmatex">\(b = C+Dt + Et^2\)</span> 是先上升再下降的一条曲线(b是时间 <code>t</code> 时,曲线的高度).就算出现了一个非线性的函数 <span class="arithmatex">\(t^2\)</span>,未知数 C,D,E 最后也是线性的！所以，拟合一条嘴角的抛物线还是线代范畴下的问题。</p>
+<p><strong>问题</strong>： 在时间 <span class="arithmatex">\(t_1..t_m\)</span>  的高度是 <span class="arithmatex">\(b_1...b_m\)</span>,用抛物线 <span class="arithmatex">\(b = C+Dt + Et^2\)</span> 去拟合。</p>
+<p>解： 当 m &gt; 3 个方程，想要通过这 m 个方程精确的拟合基本上是不可能的
+$$
+\begin{array} { c l } C + D t _ { 1 } + E t _ { 1 } ^ { 2 } = b _ { 1 } &amp; \ \vdots &amp; \ C + D t _ { m } + E t _ { m } ^ { 2 } = b _ { m } \end{array}</p>
+<p>\text{的矩阵是} \quad  A = \left[ \begin{array} { c c c } 1 &amp; t _ { 1 } &amp; t _ { 1 } ^ { 2 } \ \vdots &amp; \vdots &amp; \vdots \ 1 &amp; t _ { m } &amp; t _ { m } ^ { 2 } \end{array} \right] \tag{10}
+$$
+<strong>最小二乘：</strong> <span class="arithmatex">\(\widehat{x} = C,D,E\)</span> 来自满足3个正规方程的 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span></p>
+<p>请问:这个问题是否可以转换为投影问题?A的列空间的维数是3,b的投影是 <span class="arithmatex">\(p= A\hat{x}\)</span>,也就是把A的三列使用系数 <code>C,D,E</code> 组合在一起.那么第一个数据点的误差是 <span class="arithmatex">\(e_1= b_1  −C −Dt_1  −Et_1^2\)</span>,总的平方误差是 <span class="arithmatex">\(E = e_1^2+ e_2^2+e_3^2\)</span>.如果希望使用微积分,那么对E分别求C,D,E的偏导,这三个导数在 <span class="arithmatex">\(\widehat{x}=(C,D,E)\)</span> 的时候会等于0.从而求解了这个3-3的系统</p>
+<p><code>&lt;01-08 #5&gt;</code>有更多最小二乘的应用,比较重要的是傅里叶级数，其作用是用来逼近函数，而不是逼近向量.在那里，需要被最小化的函数(总误差)，从误差的平方和 <span class="arithmatex">\(e_1^2+…+ e_m^2\)</span> ,变成误差平方的积分。</p>
+<hr />
+<p><strong>例3.</strong>  用抛物线 <span class="arithmatex">\(b = C+Dt + Et^2\)</span>  拟合 在 t = 0,1,2 时，高度是 b = 6，0，0 。这个方程组是
+$$
+Ax= b \quad \Rightarrow \quad  \begin{array} { l } C + D \cdot 0 + E \cdot 0 ^ { 2 } = 6 \ C + D \cdot 1 + E \cdot 1 ^ { 2 } = 0 \ C + D \cdot 2 + E \cdot 2 ^ { 2 } = 0 \end{array}
+$$
+但上面方程组可以精确求解，因为3个方程组，3个未知数，是一个正方形系统,解是 <span class="arithmatex">\(x = (C,D,E) = (6,-9,3)\)</span>,抛物线如Fig4.8(a)。</p>
+<p>那么,有精确解意味着什么？矩阵有3列，生成整个 <span class="arithmatex">\(R^3\)</span>,投影矩阵就是单位矩阵 <code>I</code>,也就是，对b的投影还是b，误差是0。我们不需要求解 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span>,因为可以直接求解 <span class="arithmatex">\(Ax = b\)</span>.当然，我们还是可以左乘<span class="arithmatex">\(A^T\)</span>,但是没必要这么做</p>
+<p>Fig4.8 也画出了 <span class="arithmatex">\(t_4\)</span> 时的点 <span class="arithmatex">\(b_4\)</span>,如果这个点恰好在抛物线上，那么方程还是可解的。如果不在，方程不可解，那么我们切换到 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span>，这里请思考一下：是否抛物线不变，误差全部来自于第4个点？大概率不是！</p>
+<p>最小误差向量 <span class="arithmatex">\((e_1,e_2.e_3,e_4)\)</span> 会和A的第1列 (1,1,1,1) 垂直(sp:因为e在A的左零空间啊！)，所有最小二成会平和4个分量的误差，它们加起来是0！</p>
+<p><img alt="image-20210125144751204" src="../.assets/image-20210125144751204.png" /></p>
+<h2 id="35">3.5. 总结</h2>
+<p>最佳的 <span class="arithmatex">\(\widehat{x}\)</span> 来自于正规方程 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span>, <span class="arithmatex">\(\widehat{x}\)</span> 最小换了 <span class="arithmatex">\(E = |Ax-b|^2\)</span>,也就是m个方程的误差（m&gt;n），最佳直线的高度是 <span class="arithmatex">\(p = (p_1...p_m)\)</span>,和观测点的垂直就是误差 <span class="arithmatex">\(e = (e_1...e_m)\)</span></p>
+<h2 id="36">3.6. 典型例题</h2>
+<p><strong>1.</strong> 9次测量，在 t = 1...9 得到 <span class="arithmatex">\(b_1...b_9\)</span> 都是0，第10次测量得到 <span class="arithmatex">\(b_{10} = 40\)</span> ,这是一个离群值（outlier）.下面分别使用3种对误差不同的衡量方法，求拟合 (1,0),(2,0)...(9,0),(10,40) 的最佳的水平线 y = C,</p>
+<ol>
+<li>最小二乘误差(least square error) <span class="arithmatex">\(E = e_1^2 +...+e_{10}^2\)</span>（这时候C的方程是线性的！)
+   矩阵A仅有1列，且都是1，那么 <span class="arithmatex">\(A^TA = 10，A^Tb = \sum b_i\)</span>,从而等式是 10C= 40,所以水平线是C = 4</li>
+<li>最小最大误差(least maximum error) <span class="arithmatex">\(E_{\infty} = |e_{max}|\)</span> 
+   很明显，这只能是 C = 20.也就是取0-40的中间</li>
+<li>最小误差和(least sum of errors) <span class="arithmatex">\(E_1 = |e_1| +...+|e_m|\)</span>
+   误差和就是 <span class="arithmatex">\(9|C| +|40-C|\)</span>,可以得到C一定是0，C不是0的话误差和肯定会上升</li>
+</ol>
+<p>最小误差和来自于中位数测量(median measurement)，0...40的中位数是0.很多统计学家感觉最小二乘解受离群值，如 <span class="arithmatex">\(b_{10} = 40\)</span> 的影响太大了，所以他们倾向于最小误差和。但这时候等式不是线性的！（sp:为何不是线性的啊？）</p>
+<p>现在通过最小二乘求经过这10个点的直线发那个城 C+Dt,根据 Eq(8)
+$$
+A ^ { \mathrm { T } } A = \left[ \begin{array} { l l } 10 &amp; \sum t _ { i } \ \sum t _ { i } &amp; \sum t _ { i } ^ { 2 } \end{array} \right] = \left[ \begin{array} { r r } 10 &amp; 55 \ 55 &amp; 385 \end{array} \right] \quad A ^ { \mathrm { T } } \boldsymbol { b } = \left[ \begin{array} { c } \sum b _ { i } \ \sum t _ { i } b _ { i } \end{array} \right] = \left[ \begin{array} { c } 40 \ 400 \end{array} \right]
+$$
+那么从正规方程 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span> 得到 C= -8,D = 24/11</p>
+<p>再思考一下，如果把所有 <span class="arithmatex">\(b_i\)</span> 都乘以3，然后再加上30，这时候 <span class="arithmatex">\(b_{new} = (30,30...15)\)</span>,C,D会发生什么？<strong>线性化</strong>让我们可以缩放 <span class="arithmatex">\(b = (0,0...40)\)</span>.把 <span class="arithmatex">\(\vec{b}\)</span> 乘以3，也会把C，D乘以3，所有 <span class="arithmatex">\(b_i\)</span> 加上30，C会加上30！</p>
+<hr />
+<p><strong>2.</strong> 求在 t = -2,-1,0,-1,2 经过 b = (0,0,1,0,0) 的抛物线  <span class="arithmatex">\(C+Dt + Et^2\)</span>.写出3个未知数 x = (C,D,E) 的5个方程，没有解，因为这样的抛物线不存在，然后求解 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span>.</p>
+<p>我预测 D = 0.思考一下，为什么最佳抛物线关于 t = 0 对称？</p>
+<p>解： Ax = b 有一个矩形的范德蒙德矩阵(Vandermonde)A
+$$
+\begin{array} { l } C + D ( - 2 ) + E ( - 2 ) ^ { 2 } = 0 \ C + D ( - 1 ) + E ( - 1 ) ^ { 2 } = 0 \ C + D \quad ( 0 ) + E \quad ( 0 ) ^ { 2 } = 1 \ C + D \quad ( 1 ) + E \quad ( 1 ) ^ { 2 } = 0 \ C + D \quad ( 2 ) + E \quad ( 2 ) ^ { 2 } = 0 \end{array} \quad A = \left[ \begin{array} { l l l l } 1 &amp; - 2 &amp; 4 \ 1 &amp; - 1 &amp; 1 \ 1 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; 4 \end{array} \right] \quad A ^ { \mathrm { T } } A = \left[ \begin{array} { c c c } 5 &amp; 0 &amp; 10 \ 0 &amp; 10 &amp; 0 \ 10 &amp; 0 &amp; 34 \end{array} \right]
+$$
+<span class="arithmatex">\(A^TA\)</span> 当中的0，意味着列2和列1，列3是正交的！从A可以直接发现这个事实。从而，在 <span class="arithmatex">\(A^TA\)</span> 当中，行2列2，除了中间元素，也就是除了D的系数，都是0！所以在 <span class="arithmatex">\(A^TA\hat{x} = A^T b\)</span> 的3个方程当中，方程2和方程1，3解耦了，可以直接从方程2解出D。最佳的CDE是：
+$$
+\left[ \begin{array} { c c c } 5 &amp; 0 &amp; 10 \ 0 &amp; 10 &amp; 0 \ 10 &amp; 0 &amp; 34 \end{array} \right] \left[ \begin{array} { c } C \ D \ E \end{array} \right] = \left[ \begin{array} { c } 1 \ 0 \ 0 \end{array} \right] 
+\Rightarrow \quad
+\begin{array} { l l } C &amp; = 34 / 70 \  D &amp;= 0 \text { as predicted } \ E &amp; = - 10 / 70 \end{array}
+$$</p>
+<h1 id="4-">4. 正交基和格拉姆-施密特</h1>
+<blockquote>
+<p>Orthogonal Bases and Gram-Schmidt </p>
+</blockquote>
+<p>本节有2个目标：</p>
+<ol>
+<li>看看正交的性质如何使得寻找 <span class="arithmatex">\(\hat{x},p,P\)</span> 更简单,</li>
+<li><strong>构建正交向量</strong>： 从A的列这些原始的向量中，进行组合来产生正交向量，这些正交向量将会成为新矩阵Q的列.</li>
+</ol>
+<p>在<code>&lt;01-03&gt;</code>,我们知道基是<strong>独立</strong>的<strong>生成空间</strong>的向量,但是它们之间可以是任何角度(除了0度和180度).但每一次我们脑海中出现坐标轴的时候，都是垂直的方式。正交可以推导过程更交单，极大的简化计算量！</p>
+<p>向量 <span class="arithmatex">\(q_1…q_n\)</span>,当它们的点乘 <span class="arithmatex">\(q_i∗q_j=0,i\ne j\)</span> 的时候,是正交的.更进一步,如果把向量除以它们的长度,就是<strong>单位正交向量(orthogonal unit vectors)</strong>,这样的基叫做<strong>标准正交(orthonormal)</strong></p>
+<blockquote>
+<p><strong>Definition:标准正交</strong></p>
+<hr />
+<p>向量 <span class="arithmatex">\(q_1...q_n\)</span> ，如果满足下面条件，称之为标准正交
+$$
+q_i^Tq_j = \begin{cases}
+  0 &amp;\text{when i } \ne \text{j,这意味着向量之间正交}\
+  1 &amp;\text{when i } = \text{j,这意味着单位向量：} |q_i| = 1
+\end{cases}
+$$
+如果矩阵的列都是单位正交的，用字母 <code>Q</code> 表示</p>
+</blockquote>
+<p>把标准正交向量作为列的矩阵Q，使用起来很简单,<strong>不管Q什么形状</strong>， <span class="arithmatex">\(Q^T Q=I！\)</span></p>
+<blockquote>
+<p>任何列是单位正交向量的 Q 都满足 <span class="arithmatex">\(Q^TQ = I\)</span>:</p>
+<p>$$
+Q^TQ = ​​\left[\begin{matrix}-q_1^T-\\vdots\-q_n^T-\ \end{matrix} \right] 
+\left[\begin{matrix} q_1 &amp; ... &amp; q_n \\end{matrix} \right]</p>
+<p>= \left[\begin{matrix} 
+  1 &amp; 0 &amp; 0 &amp; 0\
+  0 &amp; 1 &amp; 0 &amp; 0\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+  0 &amp; 0 &amp;... &amp; 1
+\end{matrix} \right] = I<br />
+\tag{1}
+$$</p>
+<p>当Q是方阵的时候,<span class="arithmatex">\(Q^TQ = I\)</span> 意味着 <span class="arithmatex">\(Q^T = Q^{-1}\)</span>, <strong>转置=逆！</strong></p>
+</blockquote>
+<p>如果列只是正交，并不是单位向量，点乘还是可以给出一个对角矩阵，只是不是 <code>I</code> 而已。这样的矩阵已经足够好，以为正交是最重要的性质，而单位向量要得到的比较简单的。</p>
+<p>重复一下,当Q不是方阵, <span class="arithmatex">\(Q^T Q=I\)</span> 也是成立的!这种情况下 <span class="arithmatex">\(Q^T\)</span> 只是一个左逆!对于方阵Q,<span class="arithmatex">\(Q^T\)</span> 是两边逆,方阵Q的行和列一样,都是标准正交的.逆就是转置.这时候,方阵Q称为<strong>正交矩阵(orthogonal matrix)</strong>,虽然可能使用<strong>标准正交矩阵(Orthonormal matrix)</strong> 更好，但这个名字没有被使用。任何列是标准正交(orthonormal columns)的矩阵都可以用字母 <code>Q</code> 表示，但==只有在矩阵是正方形的时候，我们才叫它正交矩阵(orthogonal matrix)==.那么方阵的时候有什么特别?<strong>有逆!</strong></p>
+<p>下面例子都是正交矩阵，包括旋转，置换和反射(reflection)，最佳测试正交矩阵的方法是 <span class="arithmatex">\(Q^TQ = I\)</span></p>
+<p><strong>例1.(rotation)</strong> 下面的Q矩阵把平面中的任何向量旋转角度 <span class="arithmatex">\(\theta\)</span></p>
+<div class="arithmatex">\[
+Q = \left[ \begin{array} { c c } \cos \theta &amp; - \sin \theta \\ \sin \theta &amp; \cos \theta \end{array} \right] ,\quad Q ^ { \mathrm { T } } = Q ^ { - 1 } = \left[ \begin{array} { c c } \cos \theta &amp; \sin \theta \\ - \sin \theta &amp; \cos \theta \end{array} \right]
+\]</div>
+<p>Q的列正交，而且是单位向量。这些列，给出了平面 <span class="arithmatex">\(R^2\)</span> 的<strong>标准正交基</strong>。标准基(standard basis) i，j 会被它旋转 <span class="arithmatex">\(\theta\)</span> 角度，如Fig4.10(a). 而<span class="arithmatex">\(Q^{-1}\)</span> 会把它旋转回来。<span class="arithmatex">\(QQ^T =Q^TQ= I\)</span></p>
+<p><strong>例2.(Permutation)</strong> 下面矩阵把 (y,z,x) ；(y,x) 的顺序更改
+$$
+\left[ \begin{array} { l l l } 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 1 \ 1 &amp; 0 &amp; 0 \end{array} \right] \left[ \begin{array} { l } x \ y \ z \end{array} \right] = \left[ \begin{array} { l } y \ z \ x \end{array} \right] \text { and } \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } x \ y \end{array} \right] = \left[ \begin{array} { l } y \ x \end{array} \right]
+$$
+Q的列都是单位向量，而且也是正交的，它们的逆就是转置，其逆可以恢复顺序
+$$
+\left[ \begin{array} { l l l } 0 &amp; 0 &amp; 1 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } y \ z \ x \end{array} \right] = \left[ \begin{array} { l } x \ y \ z \end{array} \right] \text { and } \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } y \ x \end{array} \right] = \left[ \begin{array} { l } x \ y \end{array} \right]
+$$
+<strong>所有的置换矩阵，都是正交矩阵。</strong></p>
+<p><img alt="image-20210125165859269" src="../.assets/image-20210125165859269.png" /></p>
+<p><strong>例3. Relfection</strong> 如果 u 是任何单位向量，设 <span class="arithmatex">\(Q = I - 2uu^T\)</span>,注意 <span class="arithmatex">\(uu^T\)</span> 是一个矩阵，而 <span class="arithmatex">\(u^Tu = |u| = 1\)</span>  是一个数字。 <span class="arithmatex">\(Q^T，Q^{-1}\)</span>  都等于Q
+$$
+\begin{aligned}
+    Q ^ {  { T } } &amp; = (I - 2 u u ^ {T})^T = I - 2 u u ^ {T} = Q \
+    \quad Q ^ { \mathrm { T } } Q &amp;= I - 4 u u ^ { \mathrm { T } } + 4 u u ^ { \mathrm { T } } u u ^ { \mathrm { T } } = I \Rightarrow \quad Q^{-1} = Q^T = Q
+\end{aligned}</p>
+<p>\tag{2}
+$$
+反射矩阵 <span class="arithmatex">\(I - 2uu^T\)</span> 是对称而且正交的，如果你平方它，你得到单位矩阵 <span class="arithmatex">\(Q^2 = Q^TQ = I\)</span>,类似于，对镜子两次反射得到原来的图像。注意 Eq(2) 的<span class="arithmatex">\(4 u u ^ { \mathrm { T } } u u ^ { \mathrm { T } }\)</span> 的 <span class="arithmatex">\(u^Tu = 1\)</span>.</p>
+<p>作为例子，选择2个单位向量 <span class="arithmatex">\(u = (1,0),u = (1/ \sqrt{2},-1/\sqrt{2})\)</span>,计算 <span class="arithmatex">\(I - 2uu^T\)</span>,得到2个反射矩阵 <span class="arithmatex">\(Q_1,Q_2\)</span>
+$$
+Q _ { 1 } = I - 2 \left[ \begin{array} { l } 1 \ 0 \end{array} \right] \left[ \begin{array} { l l } 1 &amp; 0 \end{array} \right] = \left[ \begin{array} { r r } - 1 &amp; 0 \ 0 &amp; 1 \end{array} \right] \text { and } Q _ { 2 } = I - 2 \left[ \begin{array} { r r } .5 &amp; - .5 \ - .5 &amp; .5 \end{array} \right] = \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right]
+$$
+<span class="arithmatex">\(Q_1\)</span> 把 (x,0) 根据y轴反射大 (-x,0),任何向量都被反射到其镜像 <span class="arithmatex">\((-x,y)\)</span>.而 <span class="arithmatex">\(Q_2\)</span> 根据 <span class="arithmatex">\(45^{\circ}\)</span> 直线反射
+$$
+\left[ \begin{array} { r r } - 1 &amp; 0 \ 0 &amp; 1 \end{array} \right] \left[ \begin{array} { l } x \ y \end{array} \right] = \left[ \begin{array} { r } - x \ y \end{array} \right] \text { and } \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l } x \ y \end{array} \right] = \left[ \begin{array} { l } y \ x \end{array} \right]
+$$
+Fig4.10(b)展示了45度反射。注意，类似(3,3)的向量不会移动，因为它在反射线上。</p>
+<hr />
+<p>被任何正交矩阵乘，不会改变角度和长度！</p>
+<blockquote>
+<p>如果Q有标准正交的列，也就是 <span class="arithmatex">\(Q^TQ = I\)</span>,那么</p>
+<p><strong>1.</strong> Q不会对向量的长度做出改变
+$$
+|Qx| = |x| \quad \color{orange} \text{for every vector x} \tag{3}
+$$
+<strong>证明：</strong>  <span class="arithmatex">\(|Qx|^2\)</span> 是等于 <span class="arithmatex">\(|x|^2\)</span> 的，这时因为 <span class="arithmatex">\(( Q x ) ^ { T } ( Q x ) = x ^ { T} ( Q ^ { T} Q) x = x ^ {T } x\)</span>.QED,</p>
+<p><strong>2.</strong> Q也保持点乘不变,从而向量之间的<strong>夹角不变</strong>，参见 <code>&lt;01-01 #3.2&gt;</code>
+$$
+( Q x ) ^ { \mathrm { T } } ( Q y ) = x ^ { \mathrm { T } } ( Q ^ { \mathrm { T } } Q) y = x ^ { \mathrm { T } } y
+$$</p>
+</blockquote>
+<p>正交矩阵在计算的时候很适合消去，而且因为向量的长度是固定的，数字也不会变得太大。稳定的代码，总是尽可能的使用正交矩阵 <span class="arithmatex">\(Q\)</span>!</p>
+<h2 id="41-qa">4.1. 使用正交基投影：Q替换A</h2>
+<blockquote>
+<p>Projections Using Orthogonal Bases:Q Replaces A</p>
+</blockquote>
+<p>本章的知识是关于投影的到子空间的，<strong>A是以子空间的基作为列的</strong>。而且我们已经在 <code>&lt;#2&gt;</code> 得到了 <span class="arithmatex">\(\widehat{x},p,P\)</span> 的等式，所有的等式都涉及到了 <span class="arithmatex">\(A^TA\)</span>,注意，<span class="arithmatex">\(A^TA\)</span> 的元素其实就是 <span class="arithmatex">\(a_i^Ta_j\)</span>.</p>
+<p>假设基向量都是标准正交的,那么 <code>a's</code> 向量其实就是 <code>q's</code> 向量.<span class="arithmatex">\(A^T A\)</span> 简化成 <span class="arithmatex">\(Q^T Q=I\)</span>,这时候看看 <span class="arithmatex">\(\hat{x},p,P\)</span> 变成什么，注意 <span class="arithmatex">\(Q^TQ = I\)</span>! 可以直接不写出来，如下式的下划线
+$$
+\begin{aligned}</p>
+<div class="highlight"><pre><span></span><code>\text{最小二乘解：}  &amp; \quad \underset{\color{orange}Q^TQ}{\_\_\_} \widehat{x} = Q^Tb  \\[2ex]
+\text{投影：} &amp; \quad p = Q\widehat{x} = QQ^Tb= \color{orange} \text{\{b if Q is Square\}}   \\[2ex]
+\text{投影矩阵：} &amp; \quad  P = Q \underset{\color{orange}(Q^TQ)^{-1} = I}{\_\_\_\_\_}Q^T   = \color{orange} \text{\{I if Q is Square\}}
+</code></pre></div>
+<p>\end{aligned}
+\tag{4}
+$$</p>
+<p>不需要对任何矩阵求逆!这就是标准正交基的关键.<span class="arithmatex">\(\hat{x} = Q^T b\)</span> 只是列 <span class="arithmatex">\(q_1..q_n\)</span>  和 <code>b</code> 的点乘,我们拥有n个1维投影!相关矩阵(correlation matrix) <span class="arithmatex">\(A^TA\)</span> 现在仅仅是 <span class="arithmatex">\(Q^TQ = I\)</span>,不会有任何耦合性！这时候,投影 <span class="arithmatex">\(p = Q\hat{x} = QQ^T b\)</span>：
+$$
+\text{Projection onto q's}: \quad</p>
+<p>p = \left[\begin{matrix} | &amp;  &amp; |\q_1 &amp; ... &amp; q_n\| &amp;  &amp; |\\end{matrix} \right]
+​​\left[\begin{matrix}q_1^Tb\\vdots\q_n^Tb\ \end{matrix} \right]</p>
+<p>= q_1(q_1^Tb) + ... + q_n(q_n^Tb) 
+\tag{5}
+$$</p>
+<p>==重要情况:当Q是方阵==,m=n,这时候这个子空间就是<strong>整个空间</strong>,那么</p>
+<ul>
+<li><span class="arithmatex">\(Q^T= Q^{−1},\hat{x} = Q^T b\)</span> 和 <span class="arithmatex">\(x = Q^{−1} b\)</span> 是等价的,注意这意味着 <span class="arithmatex">\(\widehat{x} = x\)</span>,<strong>解精确存在</strong>！</li>
+<li>对 <code>b</code> 投影到整个空间还是b自身:<span class="arithmatex">\(p = b\)</span></li>
+<li>投影矩阵 <span class="arithmatex">\(P = QQ^T=I\)</span></li>
+</ul>
+<p>你可能认为投影到整个空间不值一提.但是当 <code>p = b</code>,我们的公式把 <code>b</code> 组装成是1维的投影.如果 <span class="arithmatex">\(q_1,…q_n\)</span> 是整个空间的标准正交基,Q就是方阵,那么每一个 <span class="arithmatex">\(b = p = QQ^T b\)</span> 是它的分量沿着 <code>q‘s</code> 的和(the sum of its components along the <code>q's</code>)
+$$
+b = q _ { 1 } \underbrace{( q _ { 1 } ^ { T } b )}_{c_1} + </p>
+<p>q _ { 2 } \underbrace{(q _ { 2 } ^ {T} b)}_{c_2} + \cdots + </p>
+<p>q _ { n } \underbrace{(q _ { n }^T b )}_{c_n}
+= c_1q_1 +...+c_nq_n
+\tag{6}
+$$</p>
+<blockquote>
+<p><strong>sp-Note4-1</strong>:注意上式,这明显就是把 b 分别投影到向量 q (一条直线) 上，然后再加起来而已。参见 <code>&lt;#2.1&gt;</code>，当把向量b投影到向量a上的时候，公式是 <span class="arithmatex">\(p = \frac{a^Tb}{a^Ta} a\)</span>，而现在 q 都是正交的单位向量，所以分母 <span class="arithmatex">\(a^Ta\)</span> 也就是 <span class="arithmatex">\(q^Tq = 1\)</span>，所以公式变成 <span class="arithmatex">\(p = a^Tba\)</span>，也就是 <span class="arithmatex">\(p = q(q^Tb)\)</span> !</p>
+</blockquote>
+<p><code>Eq(6)</code> 只是 <strong><code>q's</code> 之间的数乘而已！</strong> 这就是 <span class="arithmatex">\(QQ^T=I\)</span> .<strong>是傅里叶级数和所有不可思议变换的基础</strong>.它把向量或者函数，分成互相垂直的部分.通过把这些部分加起来,逆变换又可以恢复函数!</p>
+<p><strong>例4.</strong> 如下Q的列是标准正交的向量 <span class="arithmatex">\(q_1,q_2,q_3\)</span>
+$$
+Q = \frac { 1 } { 3 } \left[ \begin{array} { r r r } - 1 &amp; 2 &amp; 2 \ 2 &amp; - 1 &amp; 2 \ 2 &amp; 2 &amp; - 1 \end{array} \right] \text { has } Q ^ { \mathrm { T } } Q = Q Q ^ { \mathrm { T } } = I
+$$
+b=(0,0,1) 投影到 <span class="arithmatex">\(q_1,q_2,q_3\)</span> 的结果分别是 <span class="arithmatex">\(p_1,p_2,p_3\)</span>
+$$
+q _ { 1 } \left( q _ { 1 } ^ { \mathrm { T } } b \right) = \frac { 2 } { 3 } q _ { 1 } \quad \text { and } \quad q _ { 2 } \left( q _ { 2 } ^ { \mathrm { T } } b \right) = \frac { 2 } { 3 } q _ { 2 } \quad \text { and } \quad q _ { 3 } \left( q _ { 3 } ^ { \mathrm { T } } b \right) = - \frac { 1 } { 3 } q _ { 3 }
+$$
+<span class="arithmatex">\(p_1,p_2\)</span> 的和就是 b 到 <span class="arithmatex">\(q_1,q_2\)</span> 平面的投影，<span class="arithmatex">\(p_1,p_2,p_3\)</span> 的和就是 b 到整个空间的投影--也就是b自身！如下：
+$$
+\frac { 2 } { 3 } q _ { 1 } + \frac { 2 } { 3 } q _ { 2 } - \frac { 1 } { 3 } q _ { 3 } = \frac { 1 } { 9 } \left[ \begin{array} { r } - 2 + 4 - 2 \ 4 - 2 - 2 \ 4 + 4 + 1 \end{array} \right] = \left[ \begin{array} { l } 0 \ 0 \ 1 \end{array} \right] = b</p>
+<p>\quad \color{orange} \text{Reconstruct }b= p_1+p_2+p_3!
+$$</p>
+<h2 id="42-gs">4.2. 格拉姆-施密特(GS)正交化</h2>
+<blockquote>
+<p>The Gram-Schmidt Process</p>
+</blockquote>
+<p>我们已经知道正交向量的好处,现在是如何构建它们.注意，正交化，可以使得<strong>子空间的非正交基变成正交基</strong></p>
+<p>从3个<strong>独立</strong>向量a,b,c开始,我们想要构建3个正交向量A,B,C.  而标准正交，只要除以本身的长度即可,即 <span class="arithmatex">\(q_1=A/(|A|),q_2=B/(|B|),q_3=C/(|C|)\)</span></p>
+<p><strong>GS正交化流程：</strong></p>
+<blockquote>
+<p>sp:注意以下的大写字母都是向量，所以下面用的是投影到线上也就是一维子空间的公式，参见 <code>&lt;#2.1&gt;</code></p>
+</blockquote>
+<p>首先，选择 A = a，那么第一个方向就确定了。下一个方向 B 必须和 A 垂直：<strong>从 b 开始，减去 b 在A的投影！从而只留下和 A 垂直的部分 B(B其实就是前面投影的误差向量e!)：</strong>
+$$
+\text{First GS Step:} \quad B = b - \frac { A^Tb } { A ^TA } A</p>
+<p>\tag{7}
+$$
+现在，A,B是正交的，如 Fig4.11. 可以点乘验证一下：<span class="arithmatex">\(A^TB = A^Tb - A^Tb = 0\)</span>. <strong>B向量其实就是我们之前的误差向量e,和A垂直。</strong>(sp:A是列空间向量，e是左零空间向量) 。注意，<code>Eq(7)</code> 的 B 向量是不为0的，不然a,b就不是独立向量。现在，A,B的方向都确定了</p>
+<p>第3个方向从 c 开始，注意第3个方向不是A,B的组合(因为c不是a,b的组合。sp:这里的意思是不仅仅是a,b而已，还有c自身，注意a,b,c是独立的)。方法是：<strong>把 c 分别减去在A，B方向上的分量(sp:也就是c分别在A,B上的投影)得到C</strong>：
+$$
+\text{Next GS Step:} \quad C = c - \frac { A ^ { \mathrm { T } } c } { A ^ { \mathrm { T } } A } A - \frac { B ^ { \mathrm { T } } c } { B ^ { \mathrm { T } } B } B  \tag{8}
+$$</p>
+<p><img alt="image-20210126094436644" src="../.assets/image-20210126094436644.png" /></p>
+<p>以上就是GS正交化的过程，基本思想就是：<strong>把每个向量，都减去这个向量在已经确定方向上的投影。</strong>如果有第4个向量d，那么d需要减去，d在A,B,C 三个方向上的投影，从而得到D。最终，得到的正交向量再除以A,B,C,D本身的长度，得到 <span class="arithmatex">\(q_1,q_2,q_3,q_4\)</span> 的标准正交向量.注意,<strong>未正交化之前以a,b,c作为列的矩阵M的列空间,和Q的列空间是同一个!</strong>!因为B是由b和A线性组合得到的,A其实也就是a,所以<strong>正交化的过程都是在一个空间中进行.</strong></p>
+<p><strong>例5</strong> 如下是3个非正交的独立a,b,c向量
+$$
+a = \left[ \begin{array} { r } 1 \ - 1 \ 0 \end{array} \right] \text { and } b = \left[ \begin{array} { r } 2 \ 0 \ - 2 \end{array} \right] \quad \text { and } \quad c = \left[ \begin{array} { r } 3 \ - 3 \ 3 \end{array} \right]
+$$
+设A = a，那么 <span class="arithmatex">\(A^TA = 2\)</span>,将b 减去在 A= (1,-1,0) 的投影
+$$
+\text{First Step:} \quad \boldsymbol { B } = \boldsymbol { b } - \frac { \boldsymbol { A } ^ { \mathrm { T } } \boldsymbol { b } } { \boldsymbol { A } ^ { \mathrm { T } } \boldsymbol { A } } \boldsymbol { A } = \boldsymbol { b } - \frac { 2 } { 2 } \boldsymbol { A } = \left[ \begin{array} { r } 1 \ 1 \ - 2 \end{array} \right]
+$$
+检查一下:<span class="arithmatex">\(A^TB = 0\)</span>,满足要求。现在再把c减去2个方向上的投影
+$$
+\text{Next Step:}\quad 
+C = c - \frac { A ^ { \mathrm { T } } c } { A ^ { \mathrm { T } } A } A - \frac { B ^ { \mathrm { T } } c } { B ^ { \mathrm { T } } B } B = c - \frac { 6 } { 2 } A + \frac { 6 } { 6 } B = \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right]
+$$
+C = (1,1,1) 和 A,B都垂直。我们最后再单位化一下：
+$$
+\boldsymbol { q } _ { 1 } = \frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r } 1 \ - 1 \ 0 \end{array} \right] \quad \text { and } \quad \boldsymbol { q } _ { 2 } = \frac { 1 } { \sqrt { 6 } } \left[ \begin{array} { r } 1 \ 1 \ - 2 \end{array} \right] \quad \text { and } \quad \boldsymbol { q } _ { 3 } = \frac { 1 } { \sqrt { 3 } } \left[ \begin{array} { l } 1 \ 1 \ 1 \end{array} \right]
+$$
+ABC通常包含分数，基本上，<span class="arithmatex">\(q_1,q_2,q_3\)</span> 包含平方根！</p>
+<h2 id="43-a-qr">4.3. 分解：A = QR</h2>
+<blockquote>
+<ul>
+<li>The Factorization  A  =  QR</li>
+<li>sp:如下的A的列可能以a,b,c等字母表示,也可能以 <span class="arithmatex">\(a_1...a_n\)</span> 表示,都代表需要被正交矩阵A的列</li>
+</ul>
+</blockquote>
+<p>就像对消元一样,我们从矩阵角度看待消元就是A = LU.GS正交也是这样的.搞线性代数的人不会直接写出正交的列向量,也不会写出上面的正交公式,而是写出A矩阵和Q矩阵的关系,<strong>A,Q有相同的列空间,存在一个矩阵R联系他们</strong></p>
+<p>从一个列是a,b,c的矩阵A开始，得到列是 <span class="arithmatex">\(q_1,q_2,q_3\)</span> 的矩阵Q。这2个矩阵有什么关系呢？因为向量a,b,c是 <code>q's</code> 向量的组合(反过来也是)，所以肯定存在第3个矩阵R，关联A和Q，这个R就是 A = QR 中三角的R</p>
+<ol>
+<li>第一个步骤是 <span class="arithmatex">\(q_1 = a/|a|\)</span>，这一步没有涉及到其它的向量。</li>
+<li>第2步是 <code>Eq(7)</code>,可以看出，b是A,B的组合，在这里，不涉及到 C和 <span class="arithmatex">\(q_3\)</span>。</li>
+</ol>
+<p><strong>(sp-Lk1)不涉及到后面生成的向量，是GS正交化的关键</strong>：</p>
+<ol>
+<li>向量 <span class="arithmatex">\(a,A,q_1\)</span> 都是在同一条直线上</li>
+<li>向量 <span class="arithmatex">\(a,b;A,B;q_1,q_2\)</span> 都是在同一个平面上</li>
+<li>向量 <span class="arithmatex">\(a,b，c;A,B,C;q_1,q_2,q_3\)</span> 都是在同一个子空间上（维数3） </li>
+</ol>
+<p>在每一步，<span class="arithmatex">\(a_1...a_k\)</span> 都可以表达为 <span class="arithmatex">\(q_1...q_k\)</span> 的组合，而后面的 <code>q's</code> 都不涉及！所以连接A和Q的矩阵是<strong>三角的</strong>，我们有 A = QR
+$$
+\left[\begin{matrix}  &amp;  &amp; \ a &amp; b &amp;c \ &amp;  &amp; \\end{matrix} \right]
+= \left[\begin{matrix}  &amp;  &amp; \ q_1 &amp; q_2 &amp; q_3 \ &amp;  &amp; \\end{matrix} \right]</p>
+<p>\left[\begin{matrix} q_1^Ta &amp; q_1^Tb  &amp; q_1^Tc\  &amp; q_2^Tb &amp; q_2^Tc \ &amp;  &amp; q_3^Tc\ \end{matrix} \right]  \Rightarrow \quad  A = QR  \tag{9}
+$$
+<code>A= QR</code> 就是GS正交化的总结。将 Eq(9) 左乘 <span class="arithmatex">\(Q^T\)</span>,立刻得到 <span class="arithmatex">\(R = Q^T A\)</span></p>
+<blockquote>
+<p><strong>Gram-Schmidt:</strong> 从<strong>独立</strong>向量 <span class="arithmatex">\(a_1...a_n\)</span> 开始，GS正交化构建了标准正交向量 <span class="arithmatex">\(q_1...q_n\)</span>,以这些 q's 为列的矩阵 Q 满足 <span class="arithmatex">\(A = QR\)</span>. 此时 <span class="arithmatex">\(R = Q^TA\)</span> 是一个<strong>上三角</strong>，因为后续的 q's 和前面的 <code>a's</code> 是正交的</p>
+<p><strong>sp-Note4-2</strong>: 如何理解 Eq(9),其实因为是A的列独立,而Q的列也是独立的,所以一定有 <code>A = QR</code> 这个分解,然后左乘 <span class="arithmatex">\(Q^T\)</span>,得到 <span class="arithmatex">\(R = Q^T A\)</span>,从而R的元素确定.</p>
+<hr />
+<p>再分析为何R是上三角的.以Eq(9)为例,根据 <span class="arithmatex">\(R =Q^TA\)</span>,R的(2,2)元素就是 <span class="arithmatex">\(Q^T\)</span> 的行 2 点乘 A的列2,也就是 <span class="arithmatex">\(q_2^T b\)</span>.没问题.至于对角线之下都为0,关键是理解,每次新生成一个 <span class="arithmatex">\(q_k\)</span>,它和前面的 <span class="arithmatex">\(a_1...a_{k-1}\)</span> 都正交.因为在生成 <span class="arithmatex">\(q_k\)</span> 的时候,是 <span class="arithmatex">\(a_k\)</span> 分别减去在 <span class="arithmatex">\(a_1...a_{k-1}\)</span> 上的投影,只留下垂直的部分,如Eq(8)所示.所以任何 <span class="arithmatex">\(q_i^Ta_j\)</span>,只要 <code>i&gt;j</code> ,即为0.</p>
+<hr />
+<p>观察Eq(9) A =  QR 乘法的每一列，其实就是 <code>Eq(6)</code> 的思想！也就是
+$$
+\begin{aligned}
+  a &amp;= q_1q_1^Ta \
+  b &amp;= q_1q_1^Tb + q_2q_2^Tb \
+  c     &amp;= q_1q_1^Tc + q_2q_2^Tc + q_3q_3^Tc<br />
+\end{aligned}
+$$
+就是每个向量，分解到正交基上的分量的和！</p>
+</blockquote>
+<p><strong><span class="arithmatex">\(R = Q^TA\)</span> 的 <code>i,j</code> 元素是 <span class="arithmatex">\(Q^T\)</span> 的行 <code>i</code> 点乘 A 的列 <code>j</code>,也就是 <span class="arithmatex">\(q_i\)</span> 点乘 <span class="arithmatex">\(a_j\)</span></strong>。 以例5为例：
+$$
+A = \left[ \begin{array} { r r r } 1 &amp; 2 &amp; 3 \ - 1 &amp; 0 &amp; - 3 \ 0 &amp; - 2 &amp; 3 \end{array} \right] = \left[ \begin{array} { c c c } 1 / \sqrt { 2 } &amp; 1 / \sqrt { 6 } &amp; 1 / \sqrt { 3 } \ - 1 / \sqrt { 2 } &amp; 1 / \sqrt { 6 } &amp; 1 / \sqrt { 3 } \ 0 &amp; - 2 / \sqrt { 6 } &amp; 1 / \sqrt { 3 } \end{array} \right] \left[ \begin{array} { c c c } \sqrt { 2 } &amp; \sqrt { 2 } &amp; \sqrt { 18 } \ 0 &amp; \sqrt { 6 } &amp; - \sqrt { 6 } \ 0 &amp; 0 &amp; \sqrt { 3 } \end{array} \right] = Q R
+$$
+<strong>A,B,C的长度就是R的对角线 <span class="arithmatex">\(\sqrt{2},\sqrt{6},\sqrt{2}\)</span></strong>.虽然因为根号的存在让 <code>A = QR</code> 的分解没有 <code>A = LU</code> 的分解这么美丽，但这2个分解都是线代的中心！</p>
+<blockquote>
+<p><strong>sp-Note4-3</strong>: 为何R的对角线元素是A,B,C的长度,~~不能理解啊~~. 算一下，以 <span class="arithmatex">\(q_2^Tb\)</span> 为例
+$$
+q_2^Tb = \frac{B^T}{|B|} b
+$$
+注意上式不要把B根据Eq(7)展开，而是要展开b，得到如下:(<span class="arithmatex">\(\frac { A^Tb } { A ^TA }\)</span> 只是一个数字)
+$$
+q_2^Tb = \frac{B^T}{|B|} b =  \frac{B^T}{|B|}(B+\frac { A^Tb } { A ^TA } A)  = \frac{B^T}{|B|}(B+t A)  = \frac{B^T}{|B|}B+t \frac{B^T}{|B|}A =  \frac{B^T}{|B|}B
+$$
+这里就很明显了，因为AB是正交的，所以右边一项为0，最终结果也就是 <span class="arithmatex">\(B^TB/|B| =|B|\)</span> .可以发现，R的对角线元素就是 A,B,C...的长度，这也是因为正交性的存在。如<span class="arithmatex">\(q_3^Tc\)</span> 展开后，是 <span class="arithmatex">\(C/|C|\)</span> 点乘 <span class="arithmatex">\(C+t_1A+t_2B\)</span>,因为存在2个垂直，所以直接等价与 <span class="arithmatex">\(C/|C| \cdot C = |C|\)</span></p>
+</blockquote>
+<p>任何独立列的 m-n 矩阵都可以分解为 A = QR,其中</p>
+<ul>
+<li>Q的列是标准正交基</li>
+<li>R是上三角矩阵，对角线元素是正值</li>
+</ul>
+<p>绝对不能忘记，这对最小二乘是多么有用，当 A分解为 A = QR,那么
+$$
+\begin{aligned}
+    &amp;A^TA\widehat{x} \quad \text{化简为:} \quad R^TQ^TQR\widehat{x} = R^TR\widehat{x}  \
+    &amp; A^Tx \quad \text{化简为:} \quad R^TQ^T b \
+    \text{从而} \quad  &amp;A^TA\widehat{x} = A^Tb \Rightarrow \quad  R^TR\widehat{x} = R^TQ^Tb \Rightarrow \quad  R\widehat{x}  = Q^Tb \Rightarrow \quad \widehat{x} = R^{-1}Q^Tb</p>
+<p>\end{aligned}</p>
+<p>\tag{10}
+$$</p>
+<blockquote>
+<p>sp:R是方阵的上三角，对角线元素不为0，一定有逆，注意把这里和 Eq(4) 对比一下。Eq(4)是以正交列的Q作为A，这里是A = QR分解，有点不一样</p>
+</blockquote>
+<p>通过回代求解 <span class="arithmatex">\(R\widehat{x} = Q^Tb\)</span> 是非常快的，因为R是上三角！</p>
+<hr />
+<h3 id="431-gs">4.3.1. GS代码</h3>
+<p>GS正交化将正交Q和上三角R的花费是 <span class="arithmatex">\(nm^2\)</span> 次乘法。下面是非正式的GS正交化代码，在 <code>k = 1...n</code> 的 n 次 训话其实执行的就是 <code>Eq(11),Eq(12)</code>，每个循坏的最后，都进行归一化(normalizes)，得到单位向量 <span class="arithmatex">\(q_j\)</span>.所以一次等到一个q.注意，代码是<strong>先进行 Eq(12),然后才是Eq(11)</strong>.先看看 <code>Eq(11)</code>。
+$$
+\begin{aligned}
+    r _ { j j } &amp;= \left( \sum _ { i = 1 } ^ { m } v _ { i j } ^ { 2 } \right) ^ { 1 / 2 } \
+    q _ { i j } &amp;= \frac { v _ { i j } } { r _ { j j } } \text { for } i = 1 , \ldots , m <br />
+\end{aligned}</p>
+<p>\qquad \color{orange} \text{Divide by length,}q_j = \text{unit vector}</p>
+<p>\tag{11}
+$$
+<span class="arithmatex">\(r_{jj}\)</span> 是R的对角线元素，就是如例5向量A,B,C的长度。注意，<code>v</code> 代表的是<strong>已经正交化后</strong>的向量，也就是如下代码的第6步。Eq(11) 第2行表示正交化后的向量再除以长度，也就是单位化。
+$$
+\large 
+\begin{aligned}
+r _ { k j } &amp;= \sum _ { i = 1 } ^ { m } q _ { i k } v _ { i j } \
+v _ { i j } &amp;= v _ { i j } - q _ { i k } \underbrace{r _ { k j }  }<em ik="ik">{(q</em>
+\end{aligned}}v_{ij})</p>
+<p>\tag{12}
+$$
+Eq(12)第1行表示，R的 <code>k,j</code> 元素，就是 <span class="arithmatex">\(Q^T\)</span> 的第 <code>k</code> 行和 v 的第 <code>j</code> 列的点乘，即 <span class="arithmatex">\(q_k^T \cdot v_j\)</span> .第2行表示，当前要正交化的向量 <span class="arithmatex">\(v= a_j\)</span> ,减去其在前面正交化后的向量的投影。注意下划线部分就是 R 的 <code>k,j</code> 元素，如 <code>sp-Lk3</code> 所述。</p>
+<p>Eq(12)当中，只要新的 <span class="arithmatex">\(q_k\)</span> 产生了，就第一时间减去在其上的投影，如下代码第4步。这种一次减去1个投影的方式，称为改进GS(<strong>modified Gram-chemidt</strong>),比Eq(8)一次性减去所有投影的稳定一些。</p>
+<p>举例来说，如果从a,b,c = <span class="arithmatex">\(a_1,a_2,a_3\)</span> 开始，代码会构建 <span class="arithmatex">\(q_1,B,q_2,C,q_3\)</span>:
+$$
+\begin{array} { l l l }  </p>
+<p>q _ { 1 } =  { a } _ { 1 } / \left|  { a } _ { 1 } \right| &amp;<br />
+B=a_ 2-(q_1^Ta_2)q_1 &amp;<br />
+{ q } _ { 2 } =  { B } / |  { B } | \  </p>
+<p>C^<em>=a_3-(q_1^Ta_3）q_1&amp;<br />
+C=C^</em>-(q_2^TC^*) q_2  &amp;<br />
+{ q } _ { 3 } =  { C } / |  { C } | </p>
+<p>\end{array}</p>
+<p>\tag{M1}
+$$</p>
+<blockquote>
+<p><strong>sp-Note4-4</strong>:注意这里的 <span class="arithmatex">\(B = a_2 - (q_1^Ta_2)q_1\)</span> ，因为 <span class="arithmatex">\(q_1\)</span> 就是单位化的A，代入 <code>Eq(7)</code> 看看为什么
+$$
+B = b - \frac { A^Tb } { A ^TA } A = b - \frac{q_1^Tb}{q_1^Tq_1}q_1 =  b - (q_1^Tb)q_1 \quad (a_2就是b，所以和Eq(M1)的B等价)
+$$
+所以这里是先单位化，在构建下一个正交向量，而 Eq(7)那里是先构建全部正交向量，再单位化。明显，先单位化代码更简洁,能这么也就是 <code>sp-Lk1</code> 所提到的！最这样方式构建的B还是要再次单位话，因为只是用<strong>前面</strong>单位化的 q‘s 构建 B，B不能保证构建出来就是单位化</p>
+<hr />
+<p>关键是现在<strong>构建过程利用了前面已经单位化的 q's</strong>，如 Eq(M1) 的C为例
+$$
+C^<em>=a_3-  \underline{(q_1^Ta_3)q_1}\<br />
+C=C^</em>- \underline{(q_2^TC^<em>) q_2}
+$$
+下划线元素，其实就是当前要正交的向量(<span class="arithmatex">\(a_3\)</span>) ，要减去的在前面</em><em>已经正交</em><em>向量(并且这里单位化了，所以比EQ(7)更加简介)的</em><em>投影</em><em>。 再次列出投影公式，以便看清！设向量 m 投影到向量 n，投影公式是 <span class="arithmatex">\(\frac{n^Tm}{n^Tn} n\)</span>,其实就是 <code>&lt;#2.2&gt;</code>  <code>Eq(M2)</code>，也是本节 Eq(7).当 n 已经是单位向量，那么公式简化成 <span class="arithmatex">\((n^Tm)n\)</span>.就是下划线部分啊。整个思想就是：</em><em>向量m减去在向量n上的投影，只剩下和向量n垂直的部分</em><em>。只不过因为这里的n</em><em>已经单位化</em>*了，所以很简洁。</p>
+<p>在看看括号部分，和R的元素是非常相似的。这不是偶然！下面再次列出 Eq(9),一定要搞清晰！
+$$
+\left[\begin{matrix}  &amp;  &amp; \ a &amp; b &amp;c \ &amp;  &amp; \\end{matrix} \right]
+= \left[\begin{matrix}  &amp;  &amp; \ q_1 &amp; q_2 &amp; q_3 \ &amp;  &amp; \\end{matrix} \right]</p>
+<p>\left[\begin{matrix} q_1^Ta &amp; q_1^Tb  &amp; q_1^Tc\  &amp; q_2^Tb &amp; q_2^Tc \ &amp;  &amp; q_3^Tc\ \end{matrix} \right]  \Rightarrow \quad  A = QR
+$$
+<span class="arithmatex">\(c = (q_1^Tc)q_1 + (q_2^Tc)q_2 + (q_3^Tc)q_3\)</span>, 加法的每一项，<strong>都是一个投影</strong>！c就是在 <span class="arithmatex">\(q_1,q_2,q_3\)</span> 的投影的和！参见Eq(6)体会一下思想。但Eq(6)说的是，把向量投影到<strong>整个空间</strong>的单位正交基上，比如对于 <span class="arithmatex">\(b = (q_1^Tb)q_1 + (q_2^Tb)q_2\)</span>,b被分解为在 <span class="arithmatex">\(q_1,q_2\)</span> 上的投影，b难道没有<span class="arithmatex">\(q_3\)</span> 方向上的部分吗？！ 注意构建过程！b是减去投影到 <span class="arithmatex">\(q_1\)</span> 上的部分，剩下的部分就是和 <span class="arithmatex">\(q_1\)</span> 部分垂直的 <span class="arithmatex">\(q_2\)</span> 部分，如果写出完整的b应该是 <span class="arithmatex">\(b = (q_1^Tb)q_1 + (q_2^Tb)q_2 + (q_3^Tb)q_3\)</span>,而b和后面要构建的 <span class="arithmatex">\(q_3\)</span> 是垂直的(这也是为什么R是上三角的原因）！所以最后一项投影是0. </p>
+<p>是否还是不能理解？ <span class="arithmatex">\(q_1,q_2,b\)</span> 在同一个平面上(书中强调了，在<code>sp-Lk1</code>)！所以 b 完全没有和 <span class="arithmatex">\(q_1,q_2\)</span> 垂直的 <span class="arithmatex">\(q_3\)</span> 上的投影！ 不要理解为这里的b没有第3个分量一样！ 看例5产生的正交基,<span class="arithmatex">\(q_2\)</span> 都3个分量都有的！是否一直不能完全理解，是被以前的知识给扰乱了，从而总以为b应该有在 <span class="arithmatex">\(q_3\)</span> 上的分量？ 正交化，类似先确定 b 所处的平面，然后在得到这个平面的正交基！</p>
+<p>假设a,b,c 是9维空间下向量，那么都有9个分量</p>
+<ol>
+<li>首先 <span class="arithmatex">\(q_1 = a/|a|\)</span></li>
+<li><span class="arithmatex">\(b,q_1,q_2\)</span> 的同1个平面上！虽然b有9个分量！这个平面只是9维下的2维子空间！</li>
+<li><span class="arithmatex">\(c,q_1,q_2,q_3\)</span> 的同1个子空间上！虽然c有9个分量！这个平面只是9维下的3维子空间！</li>
+</ol>
+<p>所以b就算再多分量而且都有值，也不是所有维数都有贡献！比如 b = (1...1) 全部是1，那么在<strong>原来的标准基i,j</strong>下，是9个维度都有！但是现在构建后的新的基 <code>q's</code>，是从包含b的平面开始，一直递进，每多一条向量，便多覆盖一个维度。 关键是：我们<strong>的目标是构建正交基，正交基和原来的向量所生成的空间，是一样的</strong></p>
+<p>(<code>sp-Lk3</code>) 而R矩阵的元素，就存储了，要被正交的向量，在前面已经正交向量的投影公式的<strong>系数</strong>。R 是 m-m 矩阵，R的第j列，存储的就是A的第 <code>j</code> 列分别投影到 <span class="arithmatex">\(q_1...q_j\)</span> 的投影公式系数。现在再回去看 Eq(12)就很清晰了。</p>
+</blockquote>
+<p>matlab代码如下</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(:,</span><span class="nb">j</span><span class="p">);</span><span class="w">                     </span><span class="c">% 1 </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="w">                   </span><span class="c">% 2 </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w">       </span><span class="c">% 3 </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">v</span><span class="o">-</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span><span class="w">     </span><span class="c">% 4 </span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">end</span><span class="w">                             </span><span class="c">% 5</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w">               </span><span class="c">% 6</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">v</span><span class="o">/</span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span><span class="w">              </span><span class="c">% 7</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">end</span>
+</code></pre></div>
+<ol>
+<li>v是A的第 j 列 <span class="arithmatex">\(a_j\)</span></li>
+<li>Q前面 <code>j-1</code> 列已经完成</li>
+<li>R的 <code>i,j</code> 元素 <span class="arithmatex">\(r_{ij}\)</span> 是Q的行 <code>i</code> 点乘A的列 <code>j</code> : <span class="arithmatex">\(q_i^Ta_j = q_i^Tv\)</span>,如 <code>Eq(9)</code></li>
+<li>就是当前向量分别减去，和前面已经正交向量的投影 <span class="arithmatex">\((q_i^Ta_j)q_i\)</span></li>
+<li>v现在和所有的 <span class="arithmatex">\(q_1...q_{j-1}\)</span> 都正交</li>
+<li>R的对角线元素,注意这里，因为当 j  = 1时，2的循环不执行，所以 R(1,1) 就是 <span class="arithmatex">\(v = a_1 = A\)</span> 的长度。而后续步骤当中，v 经过 4 已经正交化，相当于例5当中的A，B,C,所以这里也就是B,C...的长度。这和 <code>sp-Note4-3</code> 是吻合的。</li>
+<li>到了4，v已经是正交的，就是例5的A,B,C.而 R 的对角线元素就是A,B,C的长度，所以这里把v归一化，作为下一个单位向量 <span class="arithmatex">\(q_j\)</span></li>
+</ol>
+<p>为了恢复A的列 <code>j</code>,<span class="arithmatex">\(R(j,j)q_j\)</span> 就是 <span class="arithmatex">\(a_j\)</span> 在 <span class="arithmatex">\(q_j\)</span> 的投影，这等于 <span class="arithmatex">\(a_j\)</span> 减去在 <span class="arithmatex">\(q_1...q_{j-1}\)</span> 的投影</p>
+<blockquote>
+<p>sp:这里也看出，<span class="arithmatex">\(a_j\)</span> 到 <span class="arithmatex">\(q_1...q_j\)</span> 的投影和，就是 <span class="arithmatex">\(a_j\)</span> 本身，再次想到了 Eq(6) 啊,顺便再次看看 <code>sp-Note4-4</code></p>
+</blockquote>
+<div class="arithmatex">\[
+R ( j , j ) q_j= ( v \text { minus its projections } ) = ( \text { column } j \text { of } A ) - \sum _ { i = 1 } ^ { j - 1 } R ( i , j ) q _ { i } \tag{13}
+\]</div>
+<p><strong>提示：</strong> Matlab,Octave和Python等软件使用的优秀的库如 <code>LAPACK</code> ，不会使用上述的GS代码。因为有一个更好的方法。<code>Householder reflections</code> 可以一次一列的产生上三角R，就像消去产生上三角U一样。</p>
+<p>这些反射矩阵 <span class="arithmatex">\(I - 2uu^T\)</span> 会在 <code>&lt;01-09&gt;</code> 数值线性代数讲解。如果A是三对角的，那么可以更进一步，使用2-2的旋转矩阵。A = QR的Matlab命令是 <code>[Q,R] = qr(A)</code>.虽然反射矩阵和旋转矩阵可以得到更加完美的Q，但是GS是理解原理的好方式。</p>
+<h2 id="44">4.4. 总结</h2>
+<ol>
+<li>如果标准正交的向量 <span class="arithmatex">\(q_1...q_n\)</span> 是Q的列，那么 <span class="arithmatex">\(q_i^Tq_j = 1,q_i^Tq_i = 1\)</span>,也就是 <span class="arithmatex">\(Q^TQ = I\)</span></li>
+<li>Q的列都是标准正交的，如果Q是方阵(这时候才称为正交矩阵，orthogonal matrix)，那么 <span class="arithmatex">\(Q^T = Q^{-1}\)</span>,转置=逆！</li>
+<li>Qx 的长度和 x 一样：<span class="arithmatex">\(|Qx| = |x|\)</span>，Q矩阵也不会改变向量x，y的夹角。</li>
+<li>由 <code>q's</code> 生成的列空间是 <span class="arithmatex">\(P= QQ^T\)</span>,特别如果Q是方阵，<code>P = I</code></li>
+<li>如果Q是方阵，任何 b 都有 <span class="arithmatex">\(b = q_1(q_1^Tb)+...+q_n(q^Tb)\)</span></li>
+<li>GS从独立的向量 <span class="arithmatex">\(a,b,c\)</span> 产生了标准正交的 <span class="arithmatex">\(q_1,q_2,q_3\)</span> 向量，以矩阵形式表达，这就是分解 <code>A = QR = (正交矩阵)(上三角矩阵)</code></li>
+</ol>
+<h2 id="45">4.5. 典型例题</h2>
+<p><strong>1.</strong> <span class="arithmatex">\(H_2\)</span> 的列是正交的，再添加多元素都是1，-1的2列，得到 <span class="arithmatex">\(H_4\)</span>,使得 <span class="arithmatex">\(H_4\)</span> ，称为哈达玛矩阵(Hadamard matrix)的列也是正交的。这个 <span class="arithmatex">\(H_4\)</span> 如何转换为正交矩阵Q呢？
+$$
+H _ { 2 } = \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right] \quad H _ { 4 } = \left[ \begin{array} { r r r r } 1 &amp; 1 &amp; x &amp; x \ 1 &amp; - 1 &amp; x &amp; x \ 1 &amp; 1 &amp; x &amp; x \ 1 &amp; - 1 &amp; x &amp; x \end{array} \right] \quad \text { and } \quad Q _ { 4 } = \left[\begin{matrix} 
+     &amp;  &amp; &amp; &amp;\
+     &amp;  &amp; &amp; &amp;\
+     &amp;  &amp; &amp;  &amp;\
+     &amp;  &amp; &amp; &amp;
+\end{matrix} \right]
+$$
+块矩阵 <span class="arithmatex">\(H_8 = \left[\begin{matrix} H_4 &amp; H_4 \\ H_4 &amp; -H_4 \end{matrix} \right]\)</span> 是下一个哈达玛矩阵，列也都是1,-1。<span class="arithmatex">\(H_8^TH_8\)</span> 是什么？</p>
+<p>b = (6,0,0,2) 投影到 <span class="arithmatex">\(H_4\)</span> 的第一列是 <span class="arithmatex">\(p_1 = (2,2,2,2)\)</span>，投影到第2列是 <span class="arithmatex">\(p_2 = (1,-1,1,-1)\)</span>.那么b到列1和列2的子空间的的投影 <span class="arithmatex">\(p_{1,2}\)</span> 是什么？</p>
+<p>解： <span class="arithmatex">\(H_4\)</span> 的构建方法和 <span class="arithmatex">\(H_8\)</span> 是一样的，也就是
+$$
+H _ { 4 } = \left[ \begin{array} { r r } H _ { 2 } &amp; H _ { 2 } \ H _ { 2 } &amp; - H _ { 2 } \end{array} \right] = \left[ \begin{array} { r r r r } 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; - 1 &amp; 1 &amp; - 1 \ 1 &amp; 1 &amp; - 1 &amp; - 1 \ 1 &amp; - 1 &amp; - 1 &amp; 1 \end{array} \right] \quad \color{orange} \text{都是正交列}
+$$
+<span class="arithmatex">\(H_4\)</span> 的每一列的长度都是2，所以 <span class="arithmatex">\(Q = H/2\)</span> 的列就是标准正交的。注意，5-5的H是不可能的，以为5个1，-1点乘不能得到0.<span class="arithmatex">\(H_8\)</span> 的列也是正交的，长度是 <span class="arithmatex">\(\sqrt{8}\)</span>.作乘法
+$$
+H _ { 8 } ^ {  { T } } H _ { 8 } = \left[ \begin{array} { r r } H ^ {  { T } } &amp; H ^ {  { T } } \ H ^ {  { T } } &amp; - H ^ {  { T } } \end{array} \right] \left[ \begin{array} { r r } H &amp; H \ H &amp; - H \end{array} \right] = \left[ \begin{array} { c c } 2 H ^ {  { T } } H &amp; 0 \ 0 &amp; 2 H ^ {  { T } } H \end{array} \right] = \left[ \begin{array} { c c } 8 I &amp; 0 \ 0 &amp; 8 I \end{array} \right] \cdot Q _ { 8 } = \frac { H _ { 8 } } { \sqrt { 8 } }
+$$
+关于b投影到<span class="arithmatex">\(H_4\)</span> 上，关键是：<strong>可以分别投影b到列1列2上，然后再加起来</strong>！ 不需要像 <code>&lt;#2.2&gt;</code> 投影到子空间那里，涉及到求 <span class="arithmatex">\(A^TA\)</span> 的逆，只是简单的投影到直线上，然后加起来：
+$$
+p _ { 1,2 } = p _ { 1 } + p _ { 2 } = ( 2,2,2,2 ) + ( 1 , - 1,1 , - 1 ) = ( 3,1,3,1 )
+$$</p>
+<blockquote>
+<p>sp:又类似是Eq(6)的思想啊，但是注意，这里投影空间的向量必须是正交的才能成立，如下面强调的。Eq(6)的投影空间向量是<strong>单位</strong>正交的</p>
+</blockquote>
+<p>检查一下，H的列 <span class="arithmatex">\(a_1,a_2\)</span> 要和 $e = b - p_{1,2} = b - p_1 - p_2 $ 垂直,<span class="arithmatex">\(b - p_1 - p_2\)</span> 是：
+$$
+e = b - \frac { a _ { 1 } ^ { \mathrm { T } } b } { a _ { 1 } ^ { \mathrm { T } } a _ { 1 } } a _ { 1 } - \frac { a _ { 2 } ^ { \mathrm { T } } b } { a _ { 2 } ^ { \mathrm { T } } a _ { 2 } } a _ { 2 }
+$$
+那么<span class="arithmatex">\(a_1\)</span> 和e点乘是，<span class="arithmatex">\(a_2\)</span> 类似：
+$$
+a_1^Te =a_1^Tb -  \frac {a_1^Tb} { \enclose{downdiagonalstrike}{a_1^T{a}<em 0="0">1} } \enclose{downdiagonalstrike}{a_1 ^Ta_1} 
+-\frac {a_2^Tb} {a_2^T{a}_2} \underbrace{a_1 ^Ta_2 }</em></p>
+<p>=0
+$$
+GS正交，并不会改变<strong>正交</strong>列 <span class="arithmatex">\(a_1,a_2\)</span> 的方向(如上面产生的 <span class="arithmatex">\(p_1,p_2\)</span> 是和 <span class="arithmatex">\(a_1,a_2\)</span> 平行的！），所以只需要除以长度即可完成正交化。但如果 <span class="arithmatex">\(a_1,a_2\)</span> <strong>不是</strong>正交向量，那么一般 <span class="arithmatex">\(p_{1,2} \ne p_1 + p_2\)</span>, 比如如果 <span class="arithmatex">\(b = a_1\)</span></p>
+<ul>
+<li>那么b到 <span class="arithmatex">\(a_1\)</span> 的投影就是 <span class="arithmatex">\(p_1 = b\)</span></li>
+<li>而且 <span class="arithmatex">\(p_{1,2} = b\)</span>,因为b已经在 <span class="arithmatex">\(a_1,a_2\)</span> 的平面上了</li>
+</ul>
+<p>但这时候 <span class="arithmatex">\(p_2\)</span> 一般不为0，从而 <span class="arithmatex">\(p_{1,2} \ne p_1 + p_2\)</span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.sections", "search.highlight", "search.share", "search.suggest", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>

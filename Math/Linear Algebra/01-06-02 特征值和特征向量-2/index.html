@@ -1,0 +1,2937 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://akane.github.io/blog/Math/Linear%20Algebra/01-06-02%20%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F-2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/MIKASA.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>5. 正定矩阵 - Akane's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Akane&#39;s blog" class="md-header__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Akane's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. 正定矩阵
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/PracticalSkills/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CS
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Akane&#39;s blog" class="md-nav__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    Akane's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/PracticalSkills/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PracticalSkills
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PracticalSkills
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Editor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Editor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emacs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Tool
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fancier Make Options
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debugging Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/GDB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    gdb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Valgrind.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Valgrind
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Compile%20%28gcc%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compile (gcc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大英Ⅲ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            大英Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VLSⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/IC%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ICⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CTF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Crypto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to CryptoHack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于能量的定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      半正定矩阵
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ax22bxycy21" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一个应用:椭圆 \(ax^2+2bxy+cy^2=1\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      正定矩阵和最小值
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型例题
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Akane-6730/blog/edit/master/docs/Math/Linear Algebra/01-06-02 特征值和特征向量-2.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="5">5. 正定矩阵</h1>
+<blockquote>
+<ul>
+<li>Positive Definite Matrices</li>
+<li>综合视频26，28，29</li>
+</ul>
+</blockquote>
+<p>这一节我们的关注点是<strong>特征值都是正的对称矩阵</strong>.如果对称让矩阵变的重要,那么所有的 <code>λ&gt;0</code> 这一额外的性质让矩阵变的真正特殊.注意我说特殊,而不是稀少.正特征值的对称矩阵在所有的应用当中都是处于中心位置,它们被称为正定矩阵</p>
+<blockquote>
+<p>v29:但是正定矩阵从何而来呢?补充一点,它来自最小二乘,实际上大量的物理问题需要用长方形矩阵描述,而最小二乘的关键就在于矩阵 <span class="arithmatex">\(A^TA\)</span>,这就是一个正定矩阵,我们需要证明一下</p>
+<p>首先问一个问题,假设A是正定的,意味着A是对称的(正定的性质),那么我们得到一个对称正定矩阵.那么它的逆也是对称正定的吗?对于逆矩阵的主元,我们所知不多,但是对于逆矩阵的特征值,我们知道,就是原矩阵特征值的倒数.因此只要原矩阵是正定的,那么立刻断定它的<strong>逆矩阵也是正定的,因为逆矩阵的特征值都是正值.</strong></p>
+<p>看看 <span class="arithmatex">\(A^TA\)</span> 为什么是正定的,假设A是m-n的长方形矩阵,不用是对称的,也不是方阵.那么 <span class="arithmatex">\(A^TA\)</span> 是对称的,而且是方阵.如何证明呢?特征值和主元都是比较难搞的,还是需要这个表达式,希望这个表达式恒为正:
+$$
+x^T(A^TA)x
+$$
+如何证明恒为正呢?(或者说非负的),我们还得说明何时等于0,但是绝不是负数.关键在于一步,曾经反复出现在很多证明里面.在适当的地方添加括号
+$$
+x ^ { T } \left( A ^ { T } A \right) x = ( A x ) ^ { T } A x = | A x | ^ { 2 } \geq 0
+$$
+只有是零向量的时候才能得到0,所以=0的情况也可以排除,怎样确保Ax不为0呢?也就是说,如何确保零空间的向量只有0向量?矩阵的秩,只要是满秩,那么零空间就只有零向量.如果A是11-5的,那么 <code>r=5</code> 即可.也就是说,矩阵A的各列线性无关,可以确保 <span class="arithmatex">\(A^TA\)</span> 是正定的!</p>
+<p><strong>如果 <span class="arithmatex">\(A^TA\)</span> 可逆,最小二乘方程存在最优解</strong>,还有就是, <span class="arithmatex">\(A^TA\)</span> 为正定,为数值计算提供了便利,对于正定矩阵,你不需要进行行交换,也不必担心主元过小或者=0,他们是容易计算的矩阵.</p>
+</blockquote>
+<p>第一个问题是怎么分别这些矩阵,你可能会说,找到所有的特征值然后测试 <code>λ&gt;0</code>.但是这正是我们需要避免的方式!当确实需要 <code>λ</code> 的时候,我们需要计算,但只需要知道它是否为正的时候,不要大费周章的计算.下面是这1节的2个目标</p>
+<ol>
+<li>找到快速测试对称矩阵的特征值是否都是正的方法</li>
+<li>解释正定矩阵的重要应用</li>
+</ol>
+<p>注意,当A是对称的时候,λ一定是实数.</p>
+<hr />
+<p>从<code>2-2</code> 矩阵开始, <span class="arithmatex">\(A =\left[\begin{matrix} a &amp; b \\ b &amp; c \end{matrix} \right]\)</span>,它的特征值 <span class="arithmatex">\(λ_1,λ_2\)</span> 什么条件下都是正值？</p>
+<blockquote>
+<p><strong>测试1</strong>：当 <span class="arithmatex">\(A = A^T\)</span> (2-2为例子),<strong>当且仅当 <span class="arithmatex">\(a&gt;0\)</span> 并且 <span class="arithmatex">\(ac-b^2&gt;0\)</span>.</strong> 特征值都是正值</p>
+<blockquote>
+<p>注意，这里的 $ac - b^2 &gt;0 $ <strong>就是</strong> <span class="arithmatex">\(\det A\)</span>，也就是行列式,只是A的元素变了而已</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(A_1  =\left[\begin{matrix} 1 &amp; 2 \\ 2 &amp; 1 \end{matrix} \right]\)</span> 不是正定(indefinite),因为 <span class="arithmatex">\(ac - b^2=1−4&lt;0\)</span> （det A等于 <span class="arithmatex">\(\lambda_1\lambda_2\)</span> = 负数，所以特征值必定一正一负）</li>
+<li><span class="arithmatex">\(A_2=\left[\begin{matrix} 1 &amp; -2 \\ -2 &amp; 6 \end{matrix} \right]\)</span>是正定,因为 <span class="arithmatex">\(a = 1&gt; 0,ac - b^2=6−4&gt;0\)</span></li>
+<li><span class="arithmatex">\(A_3=\left[\begin{matrix} -1 &amp; 2 \\ 2 &amp; -6 \end{matrix} \right]\)</span> 不是正定(虽然 <span class="arithmatex">\(\det A =+2\)</span>),因为 <code>a = -1</code></li>
+</ul>
+<p><img alt="image-20210324172209305" src="../.assets/image-20210324172209305.png" /></p>
+<p>注意,我们并没有计算 <span class="arithmatex">\(A_1\)</span> 的特征值 3 和 -1 .<span class="arithmatex">\(A_1\)</span> 的迹是正的:<code>3 -1 = 2</code>.行列式是负的:<code>3 * -1 = -3</code>.注意 <span class="arithmatex">\(A_3=−A_2,A_3\)</span> 是负定(negative definite),<span class="arithmatex">\(A_2\)</span> 都是正特征值,<span class="arithmatex">\(A_3\)</span> 的都是负特征值.</p>
+<p>上述2-2情况下，测试全部通过了。思考一下为什么？首先，因为 <span class="arithmatex">\(λ_1λ_2  = \det A = ac - b^2&gt;0\)</span>.这就保证了 <span class="arithmatex">\(\lambda_1,\lambda_2\)</span> 同正或同负。其次，a&gt; 0就表示 <span class="arithmatex">\(\lambda_1,\lambda_2\)</span> 都是正的。</p>
+<p>2-2矩阵的这个测试方法，使用了1-1的行列式 <code>a</code> 和2-2的行列式 <span class="arithmatex">\(ac - b^2\)</span>.当A是3-3的时候,<span class="arithmatex">\(\det A &gt;0\)</span> 就是测试的第三部分.<strong>也就是测试n个行列式都大于0！</strong></p>
+<hr />
+<p>而下面的另一种测试方法,要求是正的主元:</p>
+<blockquote>
+<p><strong>测试2</strong>：当 <span class="arithmatex">\(A = A^T\)</span>,当且仅当主元都是正值:
+$$
+a &gt; 0 \quad \text { and } \quad \frac { a c - b ^ { 2 } } { a } &gt; 0
+$$</p>
+</blockquote>
+<p>所以，<span class="arithmatex">\(a&gt;0,ac - b^2&gt;0\)</span> 在2种测试方法都要求.关键在于注意,上面的 <span class="arithmatex">\((ac - b^2)/a\)</span> 是A的第二个主元:
+$$
+A =\left[\begin{matrix} a &amp; b \ b &amp; c \end{matrix} \right] 
+\quad \text{第1个主元=a,乘数}\ell = b/a ,消去 \Rightarrow \left[ \begin{array} { c c } a &amp; b \ 0 &amp; c - \frac { b } { a } b \end{array} \right] \text{第2个主元：}  \frac{a c - b ^ { 2 } } { a }
+$$
+这就联系了线性代数的2个大知识点:<strong>正的特征值意味着正的主元,反过来也是</strong>!在最后一节,我们会给出任何对大小的对称矩阵的证明.重点是,主元让我们可以快速的测试 <span class="arithmatex">\(λ&gt;0\)</span> ,而且比特征值容易计算多了.<strong>主元,特征值和行列式</strong>在这里一起出现了。</p>
+<h2 id="_1">基于能量的定义</h2>
+<blockquote>
+<p>Energy-based definition</p>
+</blockquote>
+<p>下面是以另外一种角度来看正特征值的对称矩阵.</p>
+<p>根据 <code>Ax = λx</code>,2边乘以 <span class="arithmatex">\(x^T\)</span>,得到 <span class="arithmatex">\(x^T Ax= λx^T x\)</span>.右边是正值的λ乘以一个正数 <span class="arithmatex">\(x^T x = |x|^2\)</span>,所以 <span class="arithmatex">\(x^T Ax\)</span> <strong>对于任何特征向量来说都是正值的.</strong></p>
+<p>新的启示关键在于：<strong>对于任何非0的x,而不仅仅是特征向量, <span class="arithmatex">\(x^T Ax\)</span> 都是正值的</strong>.在很多系统当中,数 <span class="arithmatex">\(x^T Ax\)</span> (或者 <span class="arithmatex">\(1/2 x^T Ax\)</span>)都是一个系统的能量.而正的能量的要求(requirment of positive energy)给出了正定矩阵的另外一个定义,我认为基于能量的定义是一个更基础的定义.</p>
+<p>对于 <span class="arithmatex">\(x^T Ax&gt;0\)</span> 的测试，特征值和主元是2种等价的方式。</p>
+<blockquote>
+<p><strong>Definition</strong></p>
+<hr />
+<p>如果对于任何非0向量x，都有 <span class="arithmatex">\(x^TAx &gt; 0\)</span>， 那么A是正定矩阵
+$$
+x ^ { \mathrm { T } } A x = \left[ \begin{array} { l l } x &amp; y \end{array} \right] \left[ \begin{array} { l l } a &amp; b \ b &amp; c \end{array} \right] \left[ \begin{array} { l } x \ y \end{array} \right] = a x ^ { 2 } + 2 b x y + c y ^ { 2 } &gt; 0 
+\tag{1}
+$$</p>
+</blockquote>
+<p><code>a,b,b,c</code> 4个元素组成了 <span class="arithmatex">\(x^T Ax\)</span> 的四部分,<code>a,c</code> 组成的是平方项 <span class="arithmatex">\(ax^2,cy^2\)</span> ,非对角线的2个 <code>b</code> 组成的是 <code>bxy</code> 和 <code>byx</code> .这个基于能量的定义可以得到下面的基本的事实:</p>
+<blockquote>
+<p><strong>如果AB都是对称正定的，那么 A+B 也是对称正定的</strong></p>
+<hr />
+<p><strong>证明：</strong><span class="arithmatex">\(x^T (A+B)x\)</span> 其实就是 <span class="arithmatex">\(x^T Ax+ x^T Bx\)</span> .这2项都是正的(当 <span class="arithmatex">\(x\ne 0\)</span>),所以A+B也是正定的.用  主元和特征值  来判断这种  矩阵相加的情况 是比较困难的,但是能量定义的方式确却是直观的</p>
+</blockquote>
+<p><span class="arithmatex">\(x^T Ax\)</span> 还连接了我们最后一种辨别正定矩阵的方法.从任何矩阵R开始(可能是矩形矩阵).我们知道 <span class="arithmatex">\(A = R^T R\)</span> 是方阵并且对称,更进一步,当R的<strong>列是独立的时候</strong>,A是正定的：</p>
+<blockquote>
+<p><strong>如果R的列是独立的，那么 <span class="arithmatex">\(A= R^TR\)</span> 是正定矩阵</strong></p>
+</blockquote>
+<p>同样的,用特征值和主元很难证明.但是数字 <span class="arithmatex">\(x^T Ax\)</span> 和 <span class="arithmatex">\(x^T R^T Rx\)</span> 是一样的，这其实就是<span class="arithmatex">\((Rx)^T Rx\)</span> --又一个通过括号完成的证明!向量Rx,在 <span class="arithmatex">\(x\ne 0\)</span> 的时候是非0(意味着独立的列).这时候 <span class="arithmatex">\(x^T Ax\)</span> 就是正数<span class="arithmatex">\(|Rx|^2\)</span>,矩阵A是正定的</p>
+<p>把这些理论结合起来,得到关于正定的5个等价的声明.你会看到这些关键概念是把线性代数的整个主题结合在一起的:主元,行列式,特征值,最小二乘( <span class="arithmatex">\(R^TR\)</span> ).然后我们会看到一些应用</p>
+<blockquote>
+<p><strong>当一个对称矩阵有下面其中1个性质，它就具有其中所有的性质</strong></p>
+<hr />
+<ol>
+<li>所有的 n 个主元都是正值</li>
+<li>左上角开始的 n 个行列式都是正值</li>
+<li>n个特征值都是正值</li>
+<li>除非 <span class="arithmatex">\(x = 0\)</span>,不然 <span class="arithmatex">\(x^TAx\)</span> 是正值，这是基于能量的定义</li>
+<li><span class="arithmatex">\(A= R^TR\)</span>,其中R是具有独立列的矩阵</li>
+</ol>
+</blockquote>
+<p>左上角行列式是左上角开始的：<code>1-1,2-2...n-n</code> 行列式,最后一个就是完整矩阵A的行列式.我们相信例子比一个详细的证明更有帮助(我们已经差不多有这个证明了!)</p>
+<hr />
+<p><strong>例1.</strong> 测试下面A,B的正定性
+$$
+A = \left[ \begin{array} { r r r } 2 &amp; - 1 &amp; 0 \ - 1 &amp; 2 &amp; - 1 \ 0 &amp; - 1 &amp; 2 \end{array} \right] \quad \text { ； } \quad B = \left[ \begin{array} { r r r } 2 &amp; - 1 &amp; b \ - 1 &amp; 2 &amp; - 1 \ b &amp; - 1 &amp; 2 \end{array} \right]
+$$</p>
+<p>解： A的主元是 <code>2,3/2,4/3</code> 都是正的,左上角行列式是 <code>2,3,4</code>,都是正的.特征值是 <span class="arithmatex">\(2-\sqrt{2},2+\sqrt{2}\)</span>,都是正的.测试1,2,3通过.</p>
+<p>我们可以把 <span class="arithmatex">\(x^T Ax\)</span> 写成3个平方的和,主元 <code>2,3/2,4/3</code> 出现在平方外面,而来自消去的乘数 <code>−1/2,−2/3</code> 出现在平方里面:
+$$
+\begin{aligned} 
+x ^ { \mathrm { T } } A x &amp; = 2 \left( x _ { 1 } ^ { 2 } - x _ { 1 } x _ { 2 } + x _ { 2 } ^ { 2 } - x _ { 2 } x _ { 3 } + x _ { 3 } ^ { 2 } \right) </p>
+<p>\ 
+&amp; = 2 \left( x _ { 1 } - \frac { 1 } { 2 } x _ { 2 } \right) ^ { 2 } + \frac { 3 } { 2 } \left( x _ { 2 } - \frac { 2 } { 3 } x _ { 3 } \right) ^ { 2 } + \frac { 4 } { 3 } \left( x _ { 3 } \right) ^ { 2 }  \quad \color{orange} \text{和是正数}
+\end{aligned}
+$$</p>
+<blockquote>
+<p><code>sp-note1</code>:为什么呢?A是对称矩阵,那么 <span class="arithmatex">\(A = LDL^T\)</span>,则 <span class="arithmatex">\(x^TAx= x^T LDL^T x=(L^T x)^TD(L^T x)\)</span>,这个式子展开就是平方项的和!注意，D是主元对角矩阵，所以是平方项的因子.详细分析一下：
+$$
+A = \left[ \begin{array} { r r r } 2 &amp; - 1 &amp; 0 \ - 1 &amp; 2 &amp; - 1 \ 0 &amp; - 1 &amp; 2 \end{array} \right] 
+=\left[ \begin{array} { c c c } 1 &amp; 0 &amp; 0 \ -\frac { 1 } { 2 } &amp; 1 &amp; 0 \ 0 &amp; -\frac { 2 } { 3 } &amp; 1 \end{array} \right] 
+\left[ \begin{array} { l l l } 2 &amp; 1 &amp; 0 \ 0 &amp; \frac { 3 } { 2 } &amp; 1 \ 0 &amp; 0 &amp; \frac { 4 } { 3 } \end{array} \right]
+\left[ \begin{array} { c c c } 1 &amp; -\frac { 1 } { 2 } &amp; 0 \ 0 &amp; 1 &amp; -\frac { 2 } { 3 } \ 0 &amp; 0 &amp; 1 \end{array} \right] = LDL^T
+$$
+那么 <span class="arithmatex">\(x^TAx=(L^T x)^TD(L^T x) = 2 \left( x _ { 1 } - \frac { 1 } { 2 } x _ { 2 } \right) ^ { 2 } + \frac { 3 } { 2 } \left( x _ { 2 } - \frac { 2 } { 3 } x _ { 3 } \right) ^ { 2 } + \frac { 4 } { 3 } \left( x _ { 3 } \right) ^ { 2 }\)</span>，QED</p>
+</blockquote>
+<p>对于R有2个候选,任何一个都可以证明 <span class="arithmatex">\(A =R^T R\)</span> 是正定矩阵.R可以是矩形一阶差分矩阵(rectangular first difference matrix) ,4-3,来产生A当中的二阶差分 <code>-1,2,-1</code>
+$$
+\boldsymbol { A } = \boldsymbol { R } ^ { \mathrm { T } } \boldsymbol { R } :
+\quad \left[ \begin{array} { r r r } 2 &amp; - 1 &amp; 0 \ - 1 &amp; 2 &amp; - 1 \ 0 &amp; - 1 &amp; 2 \end{array} \right] = \left[ \begin{array} { r r r r } 1 &amp; - 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; - 1 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; - 1 \end{array} \right] \left[ \begin{array} { r r r } 1 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \ 0 &amp; 0 &amp; - 1 \end{array} \right]
+$$
+R的3列是独立的，A是正定的。另外一个R来自 <span class="arithmatex">\(A=  LDL^T\)</span> ,看:
+$$
+LDL^T =\left[ \begin{array} { c c c } 1 &amp; 0 &amp; 0 \ -\frac { 1 } { 2 } &amp; 1 &amp; 0 \ 0 &amp; -\frac { 2 } { 3 } &amp; 1 \end{array} \right] 
+\left[ \begin{array} { l l l } 2 &amp; 1 &amp; 0 \ 0 &amp; \frac { 3 } { 2 } &amp; 1 \ 0 &amp; 0 &amp; \frac { 4 } { 3 } \end{array} \right]
+\left[ \begin{array} { c c c } 1 &amp; -\frac { 1 } { 2 } &amp; 0 \ 0 &amp; 1 &amp; -\frac { 2 } { 3 } \ 0 &amp; 0 &amp; 1 \end{array} \right] = (L\sqrt{D})(L\sqrt{D})^T = R^TR \tag{2}\
+\color{orange} R= L\sqrt{D}\text{ is the Cholesky factor}
+$$
+这个R的存在平方根,不是那么美丽.但这是唯一的3-3并且是上三角的R.它是A的"Cholesky factor",可以通过Matlab的 <code>R = chol(A)</code> 得到.在应用当中,矩形的R是我们构建A的方式,而Cholesky R使我们分解A的方式!</p>
+<p><strong>特征值给出一个对称的R的选择: <span class="arithmatex">\(R = Q \sqrt{Λ} Q^T\)</span></strong>，这是因为 <span class="arithmatex">\(R^T R=QΛQ^T=A\)</span> ! 上面所有的测试都证明A是正定的。</p>
+<p>现在看看 B,其实就是 <code>(1,3),(3,1)</code> 元素从0变成b!行列式测最简单,1-1行列式是2,2-2行列式是3,3-3行列式就包含b了:
+$$
+\operatorname { det } B = 4 + 2 b - 2 b ^ { 2 } = ( 1 + b ) ( 4 - 2 b ) \quad \color{orange} \text{必须是正值}
+$$
+<code>b=-1,2</code> 的时候,<code>detB = 0</code>,<code>-1&lt;b&lt;2</code> 的时候,<code>detB&gt;0</code>,b必须不能太大！</p>
+<h2 id="_2">半正定矩阵</h2>
+<blockquote>
+<p>positive semidefinite matrices</p>
+</blockquote>
+<p>通常我们会发现处于正定的边缘,行列式是0,最小的特征值是0,特征向量组成的能量是 <span class="arithmatex">\(x^T Ax= x^T 0x=0\)</span>.这些处于边缘的矩阵叫做半正定矩阵,如下2个例子(不可逆)
+$$
+A = \left[ \begin{array} { l l } 1 &amp; 2 \ 2 &amp; 4 \end{array} \right] \text { ； } B = \left[ \begin{array} { r r r } 2 &amp; - 1 &amp; - 1 \ - 1 &amp; 2 &amp; - 1 \ - 1 &amp; - 1 &amp; 2 \end{array} \right]
+$$
+A的特征值是5,0,左上角行列式是1,0.它的秩仅仅是1,这个矩阵可以分解成 <span class="arithmatex">\(R^TR\)</span>,R的列是<strong>非独立</strong>的:
+$$
+\left[ \begin{array} { l l } 1 &amp; 2 \ 2 &amp; 4 \end{array} \right] = \left[ \begin{array} { l l } 1 &amp; 0 \ 2 &amp; 0 \end{array} \right] \left[ \begin{array} { l l } 1 &amp; 2 \ 0 &amp; 0 \end{array} \right] = R ^ { \mathrm { T } } R</p>
+<p>\quad \color{orange} 
+\begin{aligned}
+    &amp;\text{Dependent columns}    \
+    &amp;\text{Positive semidefinite}  <br />
+\end{aligned}
+$$
+如果4哪怕只增加1点点,这个矩阵就变成了正定的</p>
+<p>循环模式的B的行列式是0(其实就是例1 <code>b= -1</code> 的B).它是奇异的.特征向量是 <code>x = (1,1,1)</code>,有 <code>Bx = 0</code> 和 <span class="arithmatex">\(x^T Bx=0\)</span>.而其他不同方向的 <code>x</code> 确实可以给出正能量值.这个B可以有很多种方式写成 <span class="arithmatex">\(R^T R\)</span>,但R一定有依赖的列,并且(1,1,1)在它的零空间
+$$
+\left[ \begin{array} { r r r } 2 &amp; - 1 &amp; - 1 \ - 1 &amp; 2 &amp; - 1 \ - 1 &amp; - 1 &amp; 2 \end{array} \right] = \left[ \begin{array} { r r r } 1 &amp; - 1 &amp; 0 \ 0 &amp; 1 &amp; - 1 \ - 1 &amp; 0 &amp; 1 \end{array} \right] \left[ \begin{array} { r r r } 1 &amp; 0 &amp; - 1 \ - 1 &amp; 1 &amp; 0 \ 0 &amp; - 1 &amp; 1 \end{array} \right]</p>
+<p>\quad \color{orange}
+\begin{aligned}
+    &amp;\text{Senond differences B}\
+    &amp;\text{from first differences }R^TR\
+    &amp;\text{Cyclic B from cyclic R}\
+\end{aligned}
+$$
+半正定矩阵的所有 <span class="arithmatex">\(\lambda \ge 0\)</span>,所有 <span class="arithmatex">\(x^TAx \ge 0\)</span>.这种弱不等性(<span class="arithmatex">\(\ge\)</span> 而不是 <span class="arithmatex">\(&gt;\)</span>)把正定矩阵和奇异矩阵包含在边缘(include positive definite matrices and the singular matrices at the edge)</p>
+<h2 id="ax22bxycy21">第一个应用:椭圆 <span class="arithmatex">\(ax^2+2bxy+cy^2=1\)</span></h2>
+<p>考虑1个倾斜的椭圆 <span class="arithmatex">\(x^TAx = 1\)</span>,中心是 (0,0),如Fig6.7a,旋转它和坐标轴对齐(X,Y)，如Fig6.7b.这2个图片，展示了分解 $A = Q\Lambda Q^{-1}= Q\Lambda Q^T $ 背后的几何：</p>
+<ol>
+<li>倾斜椭圆和A关联，它的方程是 <span class="arithmatex">\(x^TAx = 1\)</span></li>
+<li>对齐椭圆和 <span class="arithmatex">\(\Lambda\)</span> 关联，方程是 <span class="arithmatex">\(X^T\Lambda X = 1\)</span></li>
+<li>把倾斜椭圆旋转为对齐椭圆的矩阵是特征向量矩阵 Q (sp:这句话的意思是： <span class="arithmatex">\(Q^TAQ = \Lambda\)</span>)</li>
+</ol>
+<p><strong>例2.</strong> 求如下倾斜椭圆 <span class="arithmatex">\(5x^2 + 8xy + 5y^2 = 1\)</span> 的轴(axes of this titled ellipse)</p>
+<blockquote>
+<p>sp:axes of  ellipse 指的是椭圆的轴，可以理解为对称轴。而 coordinate axes 表示的是坐标轴</p>
+</blockquote>
+<p><img alt="image-20210315125906897" src="../.assets/image-20210315125906897.png" /></p>
+<p>解： 参见Eq(1),可得到正定矩阵A是
+$$
+A = \left[ \begin{array} { l l } 5 &amp; 4 \ 4 &amp; 5 \end{array} \right] \quad \Rightarrow \quad 
+[x,y] \left[ \begin{array} { l l } 5 &amp; 4 \ 4 &amp; 5 \end{array} \right] \left[\begin{matrix} x  \y  \\end{matrix} \right] = 1
+$$
+特征向量是 <code>(1,1);(1,-1)</code>,除以 <span class="arithmatex">\(\sqrt{2}\)</span> 得到单位向量，得到 <span class="arithmatex">\(A= Q\Lambda Q^{T}\)</span>
+$$
+\left[ \begin{array} { c c } 5 &amp; 4 \ 4 &amp; 5 \end{array} \right] = 
+\frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right] \left[ \begin{array} { l l } 9 &amp; 0 \ 0 &amp; 1 \end{array} \right] \frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right]</p>
+<p>\quad \color{orange} \text{特征值9,1，特征向量是Q的列}
+$$
+现在，左右乘以 <span class="arithmatex">\([x,y]\)</span>,右边乘以 <span class="arithmatex">\(\left[\begin{matrix} x  \\y  \\\end{matrix} \right]\)</span>,再次得到 <span class="arithmatex">\(x^TAx\)</span>：
+$$
+x ^ { \mathrm { T } } A x = \text { sum of squares }：\quad 
+9 \left( \frac { x + y } { \sqrt { 2 } } \right) ^ { 2 } + 1 \left( \frac { x - y } { \sqrt { 2 } } \right) ^ { 2 } = 5 x ^ { 2 } + 8 x y + 5 y ^ { 2 } 
+\tag{3}
+$$</p>
+<blockquote>
+<p>sp:计算一下好理解：
+$$
+\begin{aligned}
+&amp; \left[\begin{matrix} x &amp; y\end{matrix} \right] *
+\frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right] \left[ \begin{array} { l l } 9 &amp; 0 \ 0 &amp; 1 \end{array} \right] \frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right]
+  * \left[\begin{matrix} x  \y  \\end{matrix} \right] \
+  &amp;= \frac{1}{\sqrt{2}} \left[\begin{matrix} x+y &amp; x-y\end{matrix} \right] 
+      \left[ \begin{array} { l l } 9 &amp; 0 \ 0 &amp; 1 \end{array} \right]
+      \frac{1}{\sqrt{2}} \left[\begin{matrix} x+y  \x-y  \\end{matrix} \right] \
+  &amp;= \frac{1}{\sqrt{2}} \left[\begin{matrix} 9(x+y) &amp; 1(x-y)\end{matrix} \right] 
+      \frac{1}{\sqrt{2}} \left[\begin{matrix} x+y  \x-y  \\end{matrix} \right] \
+  &amp;= 9 \left( \frac { x + y } { \sqrt { 2 } } \right) ^ { 2 } + 1 \left( \frac { x - y } { \sqrt { 2 } } \right) ^ { 2 }
+      \quad \color{orange} (sp:= \lambda_1 x_1^Tx + \lambda_2x_2^Tx)
+\end{aligned}
+$$
+和 <code>&lt;#4&gt;</code> 的 <code>Eq(6)</code> 非常像！</p>
+</blockquote>
+<p>系数9，1不是来自 <span class="arithmatex">\(A = LDL^T\)</span> 的D矩阵的主元(<code>sp-Note1</code>是!)5和9/5 ，而是来自 <span class="arithmatex">\(\Lambda\)</span> 的特征值 9,1.平方项里面的是特征值 <span class="arithmatex">\((1,1)/\sqrt{2};(1,-1)/\sqrt{2}\)</span>.</p>
+<p><strong>倾斜矩阵的轴的方向是特征向量的方向！</strong>这就解释了为什么 <span class="arithmatex">\(A = Q\Lambda Q^T\)</span> 被称为主轴定理(principal axis theorem)--它展示了A的"轴"，不仅仅是轴的方向(来自特征向量），还包括轴的长度(根据特征值).为了看清楚，对于对齐的椭圆，我们使用大写字母来表示其坐标:
+$$
+\quad \frac { x + y } { \sqrt { 2 } } = X \quad \text { and } \quad \frac { x - y } { \sqrt { 2 } } = Y \quad \text { and } \quad 9 X ^ { 2 } + Y ^ { 2 } = 1
+$$
+<span class="arithmatex">\(X^2\)</span> 的最大值是 1/9,短轴的端点是 <span class="arithmatex">\(X= 1/3,Y=0\)</span>.注意:<strong>较大的特征值<span class="arithmatex">\(\lambda_1\)</span>给出了较短的轴</strong>：<span class="arithmatex">\(1/\sqrt{\lambda_1}=1/3\)</span>;较短的特征值 <span class="arithmatex">\(\lambda_2 =1\)</span> 给出了较长的轴： <span class="arithmatex">\(1/\sqrt{\lambda_2} = 1\)</span></p>
+<p>在 <code>xy</code> 系统，椭圆轴是沿着 A 的特征向量的方向；在 <code>XY</code> 系统，椭圆轴是沿着 <span class="arithmatex">\(\Lambda\)</span> 特征向量的方向--也就是坐标轴。All coms from <span class="arithmatex">\(A = Q\Lambda Q^T\)</span>.</p>
+<p>假设 <span class="arithmatex">\(A = Q\Lambda Q^T\)</span> 是正定的，所以 <span class="arithmatex">\(\lambda_i &gt;0\)</span>.<span class="arithmatex">\(x^TAx\)</span> 的图像是一个椭圆
+$$
+\left[ \begin{array} { l l } x &amp; y \end{array} \right] Q \Lambda Q ^ { \mathrm { T } } \left[ \begin{array} { l } x \ y \end{array} \right] = \left[ \begin{array} { l l } X &amp; Y \end{array} \right] \Lambda \left[ \begin{array} { l } X \ Y \end{array} \right] = \lambda _ { 1 } X ^ { 2 } + \lambda _ { 2 } Y ^ { 2 } = 1
+$$
+其轴指向特征向量的方向，轴的半长是 <span class="arithmatex">\(1/\sqrt{\lambda_1},1/\sqrt{\lambda_2}\)</span></p>
+<p><code>A=I</code> 给出了圆 <span class="arithmatex">\(x^2+y^2=1\)</span>.如果其中一个特征值是负数(比如把A的4和5交换位置),我们得到的就不是椭圆，平方项的和变成了平方项只差：<span class="arithmatex">\(9X^2-Y^2 = 1\)</span>,从而这个不定矩阵(indefinite matrix)得到的是双曲线(hyperbola).对于一个负定矩阵如 <code>A=-I</code>,2个 <span class="arithmatex">\(\lambda's\)</span> 都是负数， <span class="arithmatex">\(-x^2 - y^2 = 1\)</span> 的图像根本就没有任何点。</p>
+<h2 id="_3">正定矩阵和最小值</h2>
+<blockquote>
+<p>来自V28,顺便参见 <code>典例2</code></p>
+</blockquote>
+<p>看一个例子 <span class="arithmatex">\(\left[\begin{matrix} 2 &amp; 6 \\ 6 &amp; d \end{matrix} \right]\)</span>,想要矩阵正定的话,第4个元素d是多少呢?首先d必须大于18,这是行列式必须满足的,如果是处于临界点的d=18,,那么就是半正定矩阵，而且此时是奇异矩阵,一个特征值是0,另外迹是20,所以另一个特征值是20.只有1个主元是2,是个秩1矩阵.那么主元判定就通不过了.现在看看使用能量定义看看 <span class="arithmatex">\(x^T Ax\)</span></p>
+<p>$$
+[x_1,x_2]\left[\begin{matrix} 2 &amp; 6 \ 6 &amp; 18 \end{matrix} \right]\left[\begin{matrix} x_1  \x_2  \\end{matrix} \right] = 2x_1^2 + 12x_1x_2+18x_2^2
+$$
+注意,<span class="arithmatex">\(x^TAx\)</span> 形式是二次的(quadratic),不再是线性的.Ax是线性的,但是现在引入了 <span class="arithmatex">\(x^T\)</span>,升到了二阶.而且是纯二次形式,没有常数项,也没有三次四次项.现在问题是,这个结果大于0吗?(对于任意的<span class="arithmatex">\(x1,x2\)</span>),这是正定矩阵的新定义,如果对于所有x1,x2,结果都是正的,那么就是正定矩阵.如果d变成7,我们可以通过主元或者行列式测试，发现不是正定矩阵,而这时候,<span class="arithmatex">\(x^T Ax\)</span> 在 <span class="arithmatex">\(x1 = 1,x2 = -1\)</span>,的时候,是小于0的,也可以通过判断.我们画一下 <span class="arithmatex">\(2x^2+12xy+7y^2\)</span> 函数图像</p>
+<p><img alt="image-20210329163155207" src="../.assets/image-20210329163155207.png" /></p>
+<p>某些方向上会出现负值,因为这个矩阵不是正定的.图像不是完全向上的,在 <code>x =-y</code> 方向上不通过,存在一个鞍点(saddle point) ,也就数某些方向上，函数向上,但在另一个方向上，函数向下.这个鞍点,是某个方向上的极大值,又是另一个方向的极小值,实际上最佳的观测方向是沿着特征向量的方向.</p>
+<p>现在把d = 7换成d = 20.这时候我们就能通过测试了,虽然还没证明.首先主元的测试通过,特征值测试也通过,行列式测试也能通过. 看看 <span class="arithmatex">\(2x^2+12xy+20y^2\)</span> 的图像</p>
+<p><img alt="image-20210329163246566" src="../.assets/image-20210329163246566.png" /></p>
+<p>函数除了在极小值(0,0)之外,都是大于0的.</p>
+<p>微积分学过,在极小值,,一阶偏导都是0,还记得微积分怎么判断存在极小值吗?首先导数都是0,但是还不知道是极大值还是极小值,为了确定极小值,还需要看看二阶导数,必须为正.现在在线代这门课中函数有很多自变量
+$$
+f(x) = f(x_1,...x_n)
+$$
+存在极小值的条件是二阶导数矩阵(matrix of second derivatives)是正定的.因此判断方法从一个数为正变成了矩阵是正定的.事实上,我们配方一下,得到
+$$
+2x^2+12xy+20y^2=2(x+3y)^2+2y^2 肯定&gt;=0
+$$
+如果是d =7,那么就是
+$$
+    2(x+3y)^2−11y^2
+$$
+18是一个临界值.</p>
+<p>如果令 <span class="arithmatex">\(z=2x^2+12xy+20y^2\)</span> 的z = 1,那么就是 <span class="arithmatex">\(2x^2+12xy+20y^2=1\)</span>,这是一个椭圆的方程.实际上,这节课中我们已经把要讲的不同知识点融合在一起了.包括正定的判定条件,图像上和极小值的联系,而和切面又是椭圆.如果在鞍点切割,得到的是一个双曲线</p>
+<p>还需要注意一点,<span class="arithmatex">\(2(x+3y)^2+2y^2\)</span> 的系数,括号外面的2,括号里面的3,和最后的2,都是来自于消元.配方是高斯消元法中,将其表示成平方项的好方法.我的意思是是,这些数字不是偶然的,如果对矩阵进行消元,
+$$
+A = \left[\begin{matrix} 2 &amp; 6 \ 6 &amp; d \end{matrix} \right] \rightarrow \quad  \left[\begin{matrix} 2 &amp; 6 \ 0 &amp; 2 \end{matrix} \right]
+$$
+主元都是在括号外面的,乘数是在括号里面的.因此配方法其实就是消元.我为什么很高兴能将这些讲到一起呢?因为我知道n-n矩阵的消元是怎么回事了,对n阶矩阵消元就是配方,很多个平方项,括号里面的数字就是乘数,外边的系数都是主元.这就是为什么正值的主元得到的是平方和,也就是正的主元,产生的平方和,函数图像向上,肯定是正的,原点是极小值点.我们看到了2-2的例子中这些的联系,但是线性代数扩展到了n阶的情况.</p>
+<p>在结束2-2的例子之前,我们看一下二阶导数矩阵.如果是2维的情况,那么会有一个2-2的的导数矩阵
+$$
+\left[\begin{matrix} f_{xx} &amp; f_{xy} \ f_{yx} &amp; f_{yy} \end{matrix} \right]
+$$</p>
+<p>注意这个矩阵肯定是对称的,因为混合导数的值是相等的.对角线元素是纯二阶导数,为了存在极小值,它们必须为正,但是还不够,它们还必须足够大,来抵消混合导数的影响.判定条件就是,这个矩阵必须是正定矩阵.那么现在我们知道了n-n的答案,因为n-n的矩阵是可以消元的,可以得到n-n矩阵的特征值,可以得到一些平方项,一共n项的和.我们看看3-3的例子吧,用我最喜欢的矩阵
+$$
+A = \left[ \begin{array} { c c c } 2 &amp; - 1 &amp; 0 \ - 1 &amp; 2 &amp; - 1 \ 0 &amp; - 1 &amp; 2 \end{array} \right]
+$$</p>
+<ol>
+<li>子行列式是2,3,4</li>
+<li>主元:2,3/2,4/3</li>
+<li>特征值:3次方程比较难计算,但是就算不知道特征值的具体值,我们可以知道这3个特征值什么性质呢?它们都是正值.特征值是 <span class="arithmatex">\(2-\sqrt{2},2,2+\sqrt{2}\)</span></li>
+</ol>
+<p>再看看 <span class="arithmatex">\(x^T Ax\)</span>: <span class="arithmatex">\(x^T Ax=2x_1^2+ 2x_2^2+2x_3^2  −2x_1 x_2  −2x_2 x_3\)</span>.我认为这个式子总是大于0的,但是这个函数图像的维数太多,画不出来,但是函数图像是向上的,像个碗</p>
+<p>我们可以配方,平方项之前的系数就是3个主元,而且主元都为正,所以是一个正函数,图像是一个向上的碗.如果在第4维以高度为1横切这个碗,那么得到的是一个椭圆体(Ellipsoid),像一个橄榄球.2-2的时候是一个椭圆.这个椭圆体的方程是：<span class="arithmatex">\(2x_1^2+ 2x_2^2+2x_3^2  −2x_1 x_2  −2x_2 x_3=1\)</span>.</p>
+<p>有一个长轴,一个中轴,一个短轴,这三个轴的方向就是特征向量的方向.(如果2个轴相等,那么就是类似于矩阵有一个重复的特征值.而三个轴相等的球就是来自于单位矩阵,所有的特征值相同),轴的长度由特征值大小决定.</p>
+<p>注意我们现在把这些东西转换为线性代数.还记得吗,我们可以把A以主轴定理(The Principal axis theorem)写成
+$$
+A=QΛQ^T (因为A对称)
+$$
+特征向量说明主轴的方向,特征值说明轴的长度(可能是一半或者倒数).</p>
+<p>​   </p>
+<p>​ <br />
+​   </p>
+<h2 id="_4">总结</h2>
+<ol>
+<li>
+<p>正定矩阵有整的特征值和主元，快速测试方法是测试左上角的行列式，比如前2个是 <span class="arithmatex">\(a,ac - b^2\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(x^TAx\)</span> 的图像是一个从 <span class="arithmatex">\(\vec{x} = \vec{0}\)</span> 开始的的碗状曲线
+   $$
+   x^TAx= ax^2 + 2bxy+cy^2 \quad \quad \color{orange} \text{is positive except at (x,y)= (0,0)}
+   $$</p>
+</li>
+<li>
+<p>如果 R 有独立的列，那么 <span class="arithmatex">\(A = R^TR\)</span> 就自动是正定的</p>
+</li>
+<li>
+<p>椭圆 <span class="arithmatex">\(x^TAx = 1\)</span>的轴的方向是A的特征向量的方向，长度是 <span class="arithmatex">\(1/\sqrt{\lambda}\)</span></p>
+</li>
+</ol>
+<h2 id="_5">典型例题</h2>
+<p><strong>1.</strong> 对称矩阵的 <span class="arithmatex">\(A = LDL^T\)</span> 分解来自于主元乘数，而 <span class="arithmatex">\(A = Q\Lambda Q^T\)</span> 来自特征值和特征向量.证明，只要主元和特征值都&gt;0,那么对所有的非0x， <span class="arithmatex">\(x^TAx&gt;0\)</span> 。对 <code>pascal(6),ones(6),hilb(6)</code> 都尝试一下n-n的测试</p>
+<p>解： 为了证明 <span class="arithmatex">\(x^TAx&gt;0\)</span> ,在 <span class="arithmatex">\(x^TLDL^Tx,x^TQ\Lambda Q^Tx\)</span> 添加括号：
+$$
+\boldsymbol { x } ^ { \mathrm { T } } A \boldsymbol { x } = \left( L ^ { \mathrm { T } } \boldsymbol { x } \right) ^ { \mathrm { T } } D \left( L ^ { \mathrm { T } } x \right) \quad \text { and } \quad \boldsymbol { x } ^ { \mathrm { T } } A \boldsymbol { x } = \left( Q ^ { \mathrm { T } } \boldsymbol { x } \right) ^ { \mathrm { T } } \Lambda \left( Q ^ { \mathrm { T } } \boldsymbol { x } \right)
+$$
+如果x非0，那么 <span class="arithmatex">\(y = L^Tx,z = Q^Tx\)</span> 也非0(因为L,Q是可逆矩阵)，所以 <span class="arithmatex">\(x^TAx = y^TDy = z^T\Lambda z\)</span> 是平方项的和，而A是正定：
+$$
+\begin{array} { l l } \text { Pivots } &amp; \boldsymbol { x } ^ { \mathrm { T } } A \boldsymbol { x } = \boldsymbol { y } ^ { \mathrm { T } } D \boldsymbol { y } = d _ { 1 } y _ { 1 } ^ { 2 } + \cdots + d _ { n } y _ { n } ^ { 2 } &gt; 0 \ \text { Eigenvalues } &amp; \boldsymbol { x } ^ { \mathrm { T } } A \boldsymbol { x } = { z } ^ { \mathrm { T } } \Lambda \boldsymbol { z } = \lambda _ { 1 } z _ { 1 } ^ { 2 } + \cdots + \lambda _ { n } z _ { n } ^ { 2 } &gt; 0 \end{array}
+$$
+Matlab有一系列特殊矩阵的集合(用help gallry)查看，下面是4种：</p>
+<ul>
+<li>
+<p><code>pascal(6)</code> 是正定的，因为所有的主元都是1(<code>&lt;01-02 #6&gt; 典型例题1</code>)</p>
+</li>
+<li>
+<p><code>ones(6)</code> 是半正定的，特征值是 <code>0,0,0,0,0,6</code></p>
+</li>
+<li>
+<p><code>H = hilb(6)</code> 是正定的，虽然 <code>eig(H)</code> 显示2个特征值非常接近0，有如下公式
+  $$
+  x ^ { \mathrm { T } } H x = \int _ { 0 } ^ { 1 } \left( x _ { 1 } + x _ { 2 } s + \cdots + x _ { 6 } s ^ { 5 } \right) ^ { 2 } d s &gt; 0 , H _ { i j } = 1 / ( i + j + 1 )
+  $$</p>
+</li>
+<li>
+<p><code>rand(6) + rand(6)'</code>  可能是正定的，大约1/10000概率：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">n</span><span class="p">=</span><span class="mi">20000</span><span class="p">;</span><span class="n">p</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="o">+</span><span class="w"> </span><span class="nb">all</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">A</span><span class="o">&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">end</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">p</span><span class="o">/</span><span class="n">n</span>
+</code></pre></div>
+<hr />
+<p><strong>2.</strong> 什么时候对称块矩阵 <span class="arithmatex">\(M = \left[ \begin{array} { c c } A &amp; B \\ B ^ { \mathrm { T } } &amp; C \end{array} \right]\)</span> 正定？</p>
+<p>解： 把M的第1行乘以 <span class="arithmatex">\(B^TA^{-1}\)</span> 然后从第2行减去，在右下角会出现舒尔补(Schur complement) <span class="arithmatex">\(S = C- B^TA^{-1}B\)</span>:
+$$
+\left[ \begin{array} { c c } I &amp; 0 \ - B ^ { \mathrm { T } } A ^ { - 1 } &amp; I \end{array} \right] \left[ \begin{array} { c c } A &amp; B \ B ^ { \mathrm { T } } &amp; C \end{array} \right] = \left[ \begin{array} { c c } A &amp; B \ 0 &amp; C - B ^ { \mathrm { T } } A ^ { - 1 } B \end{array} \right] = \left[ \begin{array} { c c } A &amp; B \ 0 &amp; S \end{array} \right] \tag{4}
+$$
+<strong>2个块矩阵A,S必须是正定的</strong>，它们的主元就是M的主元(sp:行操作不改变主元)</p>
+<hr />
+<p><strong>3. 第2个应用：测试极小值</strong>  如果在点 <code>(0,0)</code>, <span class="arithmatex">\(\partial F/\partial x = 0，\partial F/\partial y = 0\)</span>.那么 <code>F(x,y)</code> 有最小值吗？</p>
+<p>解： 对于微积分，函数f(x)测试最小值的方法是 <span class="arithmatex">\(df/dx = 0,d^2f/dx^2 &gt;0\)</span>.现在有2个变量x,y，从而产生了1个对称矩阵H，它包含了4个F(x,y)的二阶导数。正值的 <code>f''</code> 的要求变为正定的H:
+$$
+\text{Second derivative Matrix:}
+\quad H = \left[ \begin{array} { l l } \partial ^ { 2 } F / \partial x ^ { 2 } &amp; \partial ^ { 2 } F / \partial x \partial y \ \partial ^ { 2 } F / \partial y \partial x &amp; \partial ^ { 2 } F / \partial y ^ { 2 } \end{array} \right]
+$$</p>
+<blockquote>
+<p>sp:这个矩阵就是 <code>&lt;calculus/01-14 #7.1 T11&gt;</code>，如果正定，那么 <span class="arithmatex">\(F_{xx} &gt;0,F_{xx}F_{yy} - F_{xy}^2&gt;0\)</span>.也就是T11的极小值判定！</p>
+</blockquote>
+<p><strong>如果 H 是正定的，那么 <code>F(x,y)</code> 就有极小值</strong>。原因：H揭示了在点 (x,y) = (0,0) 附近的重要项 $a x ^ { 2 } + 2 b x y + c y ^ { 2 } $,F的二阶导数(H的4个元素)是 <code>2a,2b,2b,2c</code>！</p>
+<blockquote>
+<p>sp:最后这句话什么意思？<code>2a,2b,2b,2c</code> 恰好是 $a x ^ { 2 } + 2 b x y + c y ^ { 2 } $ 的4个二阶导数啊。而 <span class="arithmatex">\(a x ^ { 2 } + 2 b x y + c y ^ { 2 } &gt;0\)</span> H就是正定。H正定有极小值理解，但怎么突然冒出 $a x ^ { 2 } + 2 b x y + c y ^ { 2 } $ 呢？</p>
+</blockquote>
+<hr />
+<p><strong>4.</strong> 展出对角线分别是 -1，2，-1的三对角矩阵K的特征值</p>
+<blockquote>
+<p>sp:这题也看不懂啊。。。</p>
+</blockquote>
+<p>解：最佳的方法就是猜！然后检查 <span class="arithmatex">\(Kx = \lambda x\)</span>.猜想在特殊的矩阵是很常见的</p>
+<p>切入点就隐藏在微分方程，二阶差分的K类似于二阶导数，这样特征值就比较容易看出来
+$$
+\begin{aligned}
+    \text{Eigenvalues }\lambda_1,\lambda_2....\
+    \text{Eigenfnctions }y_1,y_2....\
+\end{aligned}
+\quad
+\frac { d ^ { 2 } y } { d x ^ { 2 } } = \lambda y ( x ) \quad \text { with } \quad \begin{array} { l } y ( 0 ) = 0 \ y ( 1 ) = 0 \end{array}
+\tag{5}
+$$</p>
+<blockquote>
+<p>sp:为何二阶导数是 <span class="arithmatex">\(\lambda y(x)\)</span>,还有Eigenfucntion是啥？</p>
+</blockquote>
+<p>尝试 <span class="arithmatex">\(y = \sin cx\)</span>，它的二阶导数是 <span class="arithmatex">\(y'' = -c^2 \sin cx\)</span>,所以特征值是 <span class="arithmatex">\(\lambda = -c^2\)</span>,前提是y(x)满足端点条件  y(0)  = y(1) = 1.</p>
+<p>明显 sin0 = 0,在 x= 1，有 <span class="arithmatex">\(y(1)= \sin c =0\)</span>,所以c必须是 <span class="arithmatex">\(k\pi\)</span>,从而 <span class="arithmatex">\(\lambda = -c^2\)</span>.
+$$
+\begin{aligned}
+    \text{Eigenvalues }\lambda= k^2\pi^2\
+    \text{Eigenfnctions }y=\sin k\pi x\
+\end{aligned}
+\quad
+\frac { d ^ { 2 } } { d x ^ { 2 } }\sin k\pi x =-k^2\pi^2\sin k \pi x
+\tag{6}
+$$
+现在再猜一下它的特征向量。它们来自于 <span class="arithmatex">\(\sin k \pi x\)</span> 的 n 个点 <span class="arithmatex">\(x =h,2h...nh\)</span> ,在 0，1 之间均匀分布，间隔是 <span class="arithmatex">\(\Delta x = h = 1/(n+1)\)</span>,所以第 n+1 个点在 (n+1)h = 1.把sine向量 s 乘以 K
+$$
+K = \text { sine vector } s: \qquad \begin{array} { l } K s = \lambda s = ( 2 - 2 \cos k \pi h ) s \ s = ( \sin k \pi h , \ldots , \sin n k \pi h ) \end{array}
+\tag{7}
+$$
+<span class="arithmatex">\(Ks = \lambda s\)</span> 作为一个挑战问题。注意，重要的是</p>
+<ol>
+<li>所有特征向量 <span class="arithmatex">\(2- 2\cos k\pi h\)</span> 都是正值的，K是正定矩阵</li>
+<li>sine矩阵 S 有正交的列,也就是 K 的特征向量 <span class="arithmatex">\(s_1...s_n\)</span></li>
+</ol>
+<p><img alt="image-20210325141424937" src="../.assets/image-20210325141424937.png" /></p>
+<p>这些特征向量是正交的，就像是 <span class="arithmatex">\(\int_0^1 \sin j\pi x \sin k\pi x dx = 0\)</span></p>
+<h1 id="6">6 相似矩阵</h1>
+<blockquote>
+<ul>
+<li>Similar Matrices</li>
+<li>综合视频29</li>
+</ul>
+</blockquote>
+<p>注意我们讨论的矩阵不再要求是对称的，而是n-n的矩阵</p>
+<h2 id="61">6.1 相似矩阵</h2>
+<p>本章的关键就是用特征向量对角化矩阵.当S是特征向量矩阵,对角矩阵 <span class="arithmatex">\(S^{−1} AS\)</span> 就是 <span class="arithmatex">\(Λ\)</span> -- 特征值矩阵!但对角化不是每一个A都能做到的,有一些矩阵没有足够的特征向量--从而没办法处理.特征向量矩阵S是我们最好的选择,但当S不存在的时候，<strong>我们允许任何可逆矩阵M</strong>。</p>
+<blockquote>
+<p><code>sp-note6-1</code>：提前总结和说明：</p>
+<ol>
+<li>S存在，那么能够对角化，也就是 <span class="arithmatex">\(S^{−1} AS = \Lambda\)</span>。 也就是， S 作为 M 的时候，得到的相似矩阵 <span class="arithmatex">\(\Lambda\)</span> 是最简洁最特殊的！</li>
+<li>但若不存在 S,那么就可以可逆的 M 替换 S，得到 <span class="arithmatex">\(M^{−1} AM= B\)</span>，因为任何可逆的M都可以，所以有1个家族的B矩阵</li>
+<li>而若尔当形式，是B家族当中最简洁，最接近对角的
+   注意，最简洁是指除了 <span class="arithmatex">\(\Lambda\)</span> 的情况，因为如果存在 S ，根据迹和行列式与特征值的关系，总能构造出到对角的 <span class="arithmatex">\(\Lambda\)</span>,而若尔当形，是<strong>非对角里面最简洁</strong>的。如例V2所讲，4I，也就是对角的情况，单独列为1类</li>
+<li>相似矩阵特征值一样，线性无关的特征向量数目也一样不同的M得到不同的相似矩阵，但是特征值都是一样的。但若尔当形的相似矩阵要求更多</li>
+<li>注意，<strong>相似矩阵 ==秩== 相等，因为M是可逆矩阵，满秩！</strong></li>
+<li>在例1说，<strong>2-2矩阵只要特征值一样，矩阵就相似</strong>;在例3，说了特征值相同，特征向量数目一样，就相似。这些都是特例！参见例V3，噩梦矩阵M2，就算特征值一样，特征向量数目1样，也不相似！Jordan block的大小还需要一样！</li>
+</ol>
+</blockquote>
+<p>从A开始,我们可得到 <span class="arithmatex">\(M^{−1}AM\)</span>. 这个矩阵可以是对角的,也可以不是,但它有着和A一样的重要性质.不管我们选择怎么样的M,<strong>特征值保持不变</strong>.矩阵 <code>A</code> 和 <span class="arithmatex">\(M^{−1}AM\)</span> 称为相似的.一个典型的A，和一整个家族的矩阵都相似,因为M有很多种选择</p>
+<blockquote>
+<p><strong>Definition</strong></p>
+<hr />
+<p>设 M 是任何<strong>可逆矩阵</strong>，那么 <span class="arithmatex">\(B = M^{−1}AM\)</span> 和 A 相似</p>
+</blockquote>
+<p>如果 <span class="arithmatex">\(B = M^{−1} AM\)</span>,立刻可以得到 <span class="arithmatex">\(A = MBM^{−1}\)</span> ，意味着:如果B和A相似,那么A和B相似.</p>
+<p><strong>一个可对角化的矩阵和 <code>Λ</code> 相似,这种特殊的情况下M就是S</strong>.我们有 <span class="arithmatex">\(A = SΛS^{−1},Λ= S^{−1} AS\)</span> .它们当然有<strong>相同的特征值</strong>!这一节,我们的<strong>M是任何可逆的矩阵</strong>,得到 <span class="arithmatex">\(B = M^{−1} AM\)</span> ,从而得到相似矩阵，相似的矩阵可以归为1个家族，它们中间任意2个都是相似的。</p>
+<p><span class="arithmatex">\(M^{−1} AM\)</span> ,会在我们改变微分方程的变量的时候出现.从一个 <span class="arithmatex">\(\vec{u}\)</span> 的等式开始:<span class="arithmatex">\(\vec{u} = M\vec{v}\)</span>:
+$$
+\frac { d u } { d t } = A u \quad \text { 变成 } \quad 
+M \frac { d v } { d t } = A M v \quad \text { 也就是 } 
+\quad \frac { d v } { d t } = M ^ { - 1 } A M v
+$$
+原始的系数矩阵是A,而右边新系数矩阵是 <span class="arithmatex">\(M^{−1} AM\)</span> .把 <code>u</code> 变成 <code>v</code> 后,我们得到一个相似矩阵.当 <code>M = S</code>,新的系统就是对角的,最简单的情况.其他的 <code>M</code> 会让新系统变成三角的,非常好求解. 而且我们可以恢复回 <code>u</code>,相似矩阵肯定给出了<strong>同样的</strong>增长或者衰减率.<strong>更精确的说,A,B的特征值是一样的.</strong></p>
+<blockquote>
+<p><strong>特征值不会改变(No change in <span class="arithmatex">\(\lambda\)</span>'s</strong>) :相似矩阵 A 和 <span class="arithmatex">\(M^{−1}AM\)</span> 有用相同的特征。而且，如果 x 是A的特征向量，那么 <span class="arithmatex">\(M^{-1}x\)</span> 是 <span class="arithmatex">\(B= M^{−1}AM\)</span> 的特征向量</p>
+<hr />
+<p><strong>证明：</strong>证明是很快的,因为 <span class="arithmatex">\(B = M^{−1}AM\)</span>,得到 <span class="arithmatex">\(A = MBM^{−1}\)</span>.假设 <span class="arithmatex">\(Ax = λx\)</span>:
+$$
+M B M ^ { - 1 } x = \lambda x \quad \text { 意味着 } \quad B \left( M ^ { - 1 } x \right) = \lambda \left( M ^ { - 1 } x \right)
+$$
+B的特征值是同一个λ,特征向量变成 <span class="arithmatex">\(M^{−1} x\)</span></p>
+<hr />
+<ul>
+<li>sp:注意，<strong>线性无关的特征向量数目也一样</strong>，其实这里可以推出来，因为 <span class="arithmatex">\(M\)</span> 是可逆矩阵，例V2也提到了</li>
+<li>2个矩阵可以有<strong>相同</strong>的<strong>重复</strong>的λ,但是却可能不是相似的,如例2,例V2</li>
+</ul>
+</blockquote>
+<p><strong>例1.</strong> 下面的矩阵 <span class="arithmatex">\(M^{-1}AM\)</span> 都有相同的特征值1,0</p>
+<p>投影矩阵 <span class="arithmatex">\(A = \left[\begin{matrix} .5 &amp; .5 \\ .5 &amp; .5 \end{matrix} \right]\)</span> 和 <span class="arithmatex">\(\Lambda = S^{-1}AS = \left[\begin{matrix} 1 &amp; 0 \\ 0 &amp; 0 \end{matrix} \right]\)</span> 相似. 现在选择 <span class="arithmatex">\(M = \left[\begin{matrix} 1 &amp; 0 \\ 1 &amp; 2 \end{matrix} \right]\)</span> ，相似矩阵 <span class="arithmatex">\(M^{−1}AM\)</span> 是 <span class="arithmatex">\(\left[\begin{matrix} 1 &amp; 0 \\ 1 &amp; 0 \end{matrix} \right]\)</span> .  再选择 <span class="arithmatex">\(M = \left[\begin{matrix} 0 &amp; 1 \\ 1 &amp; 0 \end{matrix} \right]\)</span> ，相似矩阵 <span class="arithmatex">\(M^{−1}AM\)</span> 是 <span class="arithmatex">\(\left[\begin{matrix} .5 &amp; -.5 \\ -.5 &amp; .5 \end{matrix} \right]\)</span> </p>
+<p><strong>所有特征值是1，0的==2-2==矩阵都是互相相似的</strong>。==特征向量随着M改变，但是特征值不变==！</p>
+<p>这个例子的特征值是不重复的，让问题变得简单。如果重复的话,情况就会复杂.参见例2</p>
+<p><strong>例v1</strong> 根据特征值3，1 <strong>构造</strong>  2个矩阵
+$$
+A = \left[\begin{matrix} 2 &amp; 1 \ 1 &amp; 2 \end{matrix} \right],\Lambda = \left[\begin{matrix} 3 &amp; 0 \ 0 &amp; 1 \end{matrix} \right]
+$$
+任意构造1个可逆的M，那么 A 和 <span class="arithmatex">\(B= M^{-1}AM\)</span> 相似：
+$$
+B = \left[\begin{matrix} 1 &amp; -4 \ 0 &amp; 1 \end{matrix} \right] \left[\begin{matrix} 2 &amp; 1 \ 1 &amp; 2 \end{matrix} \right] \left[\begin{matrix} 1 &amp; 4 \ 0 &amp; 1 \end{matrix} \right] = \left[\begin{matrix} -2 &amp; -15 \ 1 &amp; 6 \end{matrix} \right]
+$$
+<span class="arithmatex">\(A,B,\Lambda\)</span> 之间都相似，它们之间有许多共同点:<strong>具有相同的特征值!(相似矩阵最重要的性质)</strong>.所以我们对这一类矩阵特别感兴趣.根据迹，行列式和特征值的㽑，还可以继续构造除相似的矩阵：<span class="arithmatex">\(\left[\begin{matrix} 1 &amp; 7 \\ 0 &amp; 3 \end{matrix} \right]\)</span> </p>
+<p><strong>例2.(重复特征值)</strong> 下面是特征值0,0(重复特征值)的矩阵A的相似矩阵家族
+$$
+A = \left[ \begin{array} { l l } 0 &amp; 1 \ 0 &amp; 0 \end{array} \right] 
+\text { 相似于 } \left[ \begin{array} { r r } 1 &amp; - 1 \ 1 &amp; - 1 \end{array} \right] 
+\text { 和所有的 } B = \left[ \begin{array} { c c } c d &amp; d ^ { 2 } \ - c ^ { 2 } &amp; - c d \end{array} \right] \text { 除了 } \left[ \begin{array} { l l } 0 &amp; 0 \ 0 &amp; 0 \end{array} \right]
+$$
+这些矩阵B的行列式都是0(和A一样),它们的秩都是1(和A一样).其中一个特征值是0,迹 <code>cd -dc = 0</code>,所以另一个特征值也是0.</p>
+<p>这里，对 <span class="arithmatex">\(M = \left[\begin{matrix} a &amp; b \\ c &amp; d \end{matrix} \right]\)</span> 的选择是任何 <code>ad-bc = 1</code> 的M，从而 <span class="arithmatex">\(B = M^{-1}AM\)</span></p>
+<p>而0矩阵，特征值就都是0，但它只和自己相似:<span class="arithmatex">\(M^{−1}0M=0\)</span>,就算变换M也不会得到新的相似成员(sp:例V2的是4I，对角线是4，这里对角线是0，其实是同一种情况)</p>
+<p>这些B矩阵不能被对角化.实际上A已经是尽可能接近对角化了.它是B矩阵家族的"jordan form",是这个家族的杰出代表.这里的 <code>Jordan form J = A</code> 是,只有一个特征向量的时候,我们能对这些矩阵做的最接近对角化的形式了.</p>
+<hr />
+<p><strong>例V2.(重复特征值，怀情况)</strong> 重复特征值的情况.<strong>意味着没有足够的特征向量,矩阵因此可能无法对角化</strong>,所以是坏情况.注意,同一类就是相似的意思.</p>
+<p>假设 <span class="arithmatex">\(\lambda_1 =\lambda_2= 4\)</span>，第一种可能是 <span class="arithmatex">\(4I = \left[\begin{matrix} 4 &amp; 0 \\ 0 &amp; 4 \end{matrix} \right]\)</span>,第二种是形如 <span class="arithmatex">\(\left[\begin{matrix} 4 &amp; 1 \\ 0 &amp; 4 \end{matrix} \right]\)</span> 。问题在于这两种情况不能归为一类,就算特征值是4,4,其实也可以分为2类.首先就是 <code>4I</code> 这个的一类,只有孤零零的一个,也就是说,4I只和自己相似,为什么?考虑 <span class="arithmatex">\(M^{-1}AM =4M^{-1}IM = 4I\)</span>,所以无论M是什么矩阵，都不会增加新的成员。</p>
+<p>其他的矩阵属于另一类,有很多.这1类矩阵不可对角化,不然的话,就相似于第一类矩阵 <code>4I</code> 了.第二类的特征值也是4,4,表明什么?表明只有一个特征向量,因此无法对角化. 而 <span class="arithmatex">\(\left[\begin{matrix} 4 &amp; 1 \\ 0 &amp; 4 \end{matrix} \right]\)</span> 是此类矩阵家族里面最好的一个,虽然不是对角矩阵(只有第一类的4I是对角的),但是它是最好的,它最接近对角,虽然我们也可以把右上角的1改为10,100...这样也可以找到一个可逆矩阵M和原矩阵相似,但是只有 <span class="arithmatex">\(\left[\begin{matrix} 4 &amp; 1 \\ 0 &amp; 4 \end{matrix} \right]\)</span> 是最好的。称为若尔当标准型.这是若尔当研究这一类矩阵发现的,他挑出最简洁,最接近对角阵的一个,但又不完全对角化,这就是若尔当标准型<strong>上方有一个1</strong>的原因.重要的是,第二类相似矩阵的大家族里面,互为相似,而<strong>它们都可以表示成若尔当标准型</strong>,也就是这类矩阵的最佳表示形式.</p>
+<p>再举一些例子，如：
+$$
+\left[\begin{matrix} 4 &amp; 1 \ 0 &amp; 4 \end{matrix} \right]，
+\left[\begin{matrix} 5 &amp; 1 \ -1 &amp; 3 \end{matrix} \right]，
+\left[\begin{matrix} 4 &amp; 0 \ 17 &amp; 4 \end{matrix} \right]
+$$
+上面矩阵肯定是不能对角化的,不然就和4I相似了,我们是通过迹和行列式构造的,比如第2个,我们知道迹是8,那么对角线元素可以分解为5,3,再根据行列式补充其他元素.一般来说,对角线元素分别就是a和8-a,其他元素视情况而定,就能得到所有的同一类矩阵.他们还有一个共同点是:只有一个特征向量.总的性质就是,<strong>具有相同的特征值，而且线性无关的特征向量的数目也需要一样.</strong>但是还不够,比如例v3 <code>M1</code> 噩梦一样的的矩阵.参见例V3！</p>
+<h3 id="611">6.1.1 总结</h3>
+<p>从A到 <span class="arithmatex">\(B = M^{−1} AM\)</span> 的过程当中,有一些东西改变了,有一些没有,下面总结:</p>
+<table>
+<thead>
+<tr>
+<th>Not changed by M</th>
+<th>Changed by M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特征值</td>
+<td>特征向量</td>
+</tr>
+<tr>
+<td>迹和行列式</td>
+<td>零空间</td>
+</tr>
+<tr>
+<td>秩</td>
+<td>列空间</td>
+</tr>
+<tr>
+<td>独立特征向量的个数</td>
+<td>行空间</td>
+</tr>
+<tr>
+<td>Jordan Form</td>
+<td>左零空间</td>
+</tr>
+<tr>
+<td></td>
+<td>奇异值</td>
+</tr>
+</tbody>
+</table>
+<p>相似矩阵的特征值不改变,但是特征向量改变了.</p>
+<ul>
+<li>迹是特征值的和,所以不改变.行列式是特征值的积,所以不改变(因为:<span class="arithmatex">\(\det B = \det M^{−1} \det A \det M = detA\)</span>).</li>
+<li>零空间包含的是λ=0(如果有的话)的特征向量,所以可以改变,但<strong>零空间维数 <code>n-r</code> 并没有改变!</strong></li>
+<li>对于每一个λ，特征向量的<strong>数目</strong>,还是保持不变啊,而特征向量本身,是乘以 <span class="arithmatex">\(M^{−1}\)</span>.</li>
+<li>奇异值取决于 <span class="arithmatex">\(A^T A\)</span>,一定会改变.下一节的知识</li>
+</ul>
+<p>到了这一步,<strong>对于之前无法对角化的矩阵,都可以通过某种特殊方式,完成近似的"对角化",</strong>若尔当当时就是这么做的.如果你希望"对角化"任何矩阵,必须学会这种方式,.这在过去曾经是线代的压轴内容,现在不是了,因为一般形式的矩阵很难化简为Jordan form,因为这依赖于特征值的严格相等,而且还需要确定矩阵的秩.假设矩阵的元素稍有偏差,特征值将不可避免的改变,秩也不可避免的改变,因此对于数值计算而言,不是什么好事.但就代数学本身而言,确实需要理解这样的概念.</p>
+<h2 id="62">6.2 若尔当形式例子</h2>
+<blockquote>
+<p>examples of jordan form</p>
+</blockquote>
+<p>Jordan From是一个重要的的知识点.我们再通过一个相似矩阵的例子来熟悉它:3重特征值,1个特征向量</p>
+<p><strong>例3.</strong> 下面的jordan矩阵 J 的特征值 <code>λ=5,5,5</code>,都在对角线上.它唯一可能的特征向量是 <code>x = (1,0,0)</code>的数乘.代数重数是3,几何重数是1:
+$$
+J = \left[ \begin{array} { l l l } 5 &amp; 1 &amp; 0 \ 0 &amp; 5 &amp; 1 \ 0 &amp; 0 &amp; 5 \end{array} \right] \quad  J - 5 I = \left[ \begin{array} { l l l } 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 \end{array} \right] 的秩=2
+$$</p>
+<ul>
+<li>任何相似矩阵 <span class="arithmatex">\(Ｂ＝M^{−1}JM\)</span> 的特征值都是3重的 <span class="arithmatex">\(５,５,５\)</span></li>
+<li>而且 <code>B-5I</code> 的秩也必须是2，它的零空间的维数是1.</li>
+</ul>
+<blockquote>
+<p>sp:这里，首先J,B相似，J的秩是3.B和J的秩相等，也就是3。然后，J-5I和B-5I也是相似的。因为：
+$$
+M^{-1}(J-5I)M = M^{-1}JM - 5I = B-5I
+$$
+而 <code>J-5I</code> 的秩是2，特征值都是0，从而 <code>B-5I</code> 的秩也是2，特征值都是0。</p>
+<hr />
+<p>sp:A，B相似，A-KI和B-KI还是相似的，如：
+$$
+M^{-1}(A-KI)M = M^{-1}AM - KI = B-KI
+$$
+所以这是普遍现象。</p>
+<hr />
+<p>注意，这里J的特征向量只有1个x=(1,0,0)，所以B的特征向量也只有1个 <span class="arithmatex">\(M^{-1}x\)</span>.</p>
+</blockquote>
+<p>所以任何和这个 <code>J</code> 矩阵相似的矩阵 B 只有一个独立的特征向量 <span class="arithmatex">\(M^{−1}x\)</span></p>
+<p>J 的转置 <span class="arithmatex">\(J^T\)</span> 有<strong>相同的特征值</strong> <code>5,5,5</code>,而且 <span class="arithmatex">\(J^T  −5I\)</span> 也是<strong>相同的秩</strong>2.<strong>若尔当定理(jordan's thorem)说的是：<span class="arithmatex">\(J^T\)</span> 和 J 相似</strong>.而产生这个相似性的矩阵 <code>M</code> 恰好是逆转的单位矩阵(reverse identity):
+$$
+J ^ { \mathrm { T } } = M ^ { - 1 } J M \quad \text { 是 :} \quad </p>
+<p>\left[ \begin{array} { l l l } 5 &amp; 0 &amp; 0 \ 1 &amp; 5 &amp; 0 \ 0 &amp; 1 &amp; 5 \end{array} \right] = 
+\left[\begin{matrix}  &amp;  &amp; 1\ &amp; 1 &amp; \1 &amp;  &amp; \\end{matrix} \right]
+\left[ \begin{array} { l l } 5 &amp; 1 &amp; 0 \ 0 &amp; 5 &amp; 1 \ 0 &amp; 0 &amp; 5 \end{array} \right] 
+\left[\begin{matrix}  &amp;  &amp; 1\ &amp; 1 &amp; \1 &amp;  &amp; \\end{matrix} \right]
+$$
+<span class="arithmatex">\(J^T\)</span> 的一个特征向量是 <span class="arithmatex">\(M^{-1} (1,0,0)=(0,0,1)\)</span>.J的特征向量是一条直线的 <span class="arithmatex">\((x_1,0,0)\)</span>,而 <span class="arithmatex">\(J^T\)</span> 的是另一条直线 <span class="arithmatex">\((0,0,x_3)\)</span></p>
+<p>关键是，<strong>矩阵J和任何特征值是5,5,5,特征向量是一条直线的矩阵相似</strong>.这时候存在M,使得 <span class="arithmatex">\(M^{−1} AM=J\)</span></p>
+<blockquote>
+<p>sp: <span class="arithmatex">\(M^{−1} AM = B\)</span> 是矩阵相似的定义，这里的意思是，只要特征值相同，并且特征向量数目1样(秩相等），那么就相似</p>
+</blockquote>
+<hr />
+<p><strong>例4.</strong> 因为J是尽可能接近对角,所以等式 du/dt=Ju 不能通过改变变量来化简.我们只能通过它来直接求解:
+$$
+\frac { d u } { d t } = J u = \left[ \begin{array} { l l l } 5 &amp; 1 &amp; 0 \ 0 &amp; 5 &amp; 1 \ 0 &amp; 0 &amp; 5 \end{array} \right] \left[ \begin{array} { l } x \ y \ z \end{array} \right] \quad \text { is } \quad \begin{array} { l } d x / d t = 5 x + y \ d y / d t = 5 y + z \ d z / d t = 5 z \end{array}
+$$</p>
+<blockquote>
+<p>sp:这其实就是常系数微分方程，可以通过矩阵指数求解，参见 <code>&lt;#3&gt;</code>!,再参见1下 https://www.quora.com/How-can-I-solve-this-set-of-differential-equations-frac-dx-dt-5x-+-y-frac-dy-dt-y-4x</p>
+</blockquote>
+<p>这个系统是三角的,我们可以自然的通过向后替换来求解.首先求解最后一个等式,然后逐步向上.关键:所有的解都包含<span class="arithmatex">\(e^{5t}\)</span>,因为λ=5</p>
+<ul>
+<li>最后1个等式 <span class="arithmatex">\(dz/dt = 5z\)</span> 得到 <span class="arithmatex">\(z = z(0) e^{5t}\)</span></li>
+<li>第2个等式，注意 <span class="arithmatex">\(t5^t:\)</span>  <span class="arithmatex">\(dy/dt = 5y+z\)</span> 得到 <span class="arithmatex">\(y = (y(0) + tz(0))e^{5t}\)</span></li>
+<li>第1个等式，注意 <span class="arithmatex">\(t^25^t:\)</span>  <span class="arithmatex">\(dx/dt = 5x+y\)</span> 得到 <span class="arithmatex">\(x = (x(0) + ty(0) + \frac{1}{2}t^2z(0))e^{5t}\)</span></li>
+</ul>
+<blockquote>
+<p><code>sp-note6-1</code>:注意为何微分方程的解都带有 <code>z(0),y(0)</code> 因子？参见 <code>&lt;calculus/01-07 #2.2 Eq(2)&gt;</code>.但这种 
+$$
+\begin{array} { l } \frac { d x } { d t } = F ( x , y ) \ \frac { d y } { d t } = G ( x , y ) \end{array}
+$$
+的微分方程组，在 <code>&lt;calculus/01-09 #5&gt;</code> 提到了，但是没有解法啊，不知道怎么解，对于上面 dz/dt 明白，但是dy/dt不知道如何通过微分方程求解的啊啊！后面要学习！<code>&lt;#3 典型例题3&gt;</code> 也是如此!! 有点懵！</p>
+</blockquote>
+<p>产生以y和x表示的 <span class="arithmatex">\(te^{5t},t^2e^{5t}\)</span> 的原因是因为少了2个特征向量，而因子 <span class="arithmatex">\(t,t^2\)</span> 是因为 <span class="arithmatex">\(\lambda = 5\)</span> 是一个3重的特征值，只有1个特征向量</p>
+<hr />
+<p><strong>例V3</strong> 接例V2,噩梦矩阵
+$$
+\left[\begin{matrix} 0 &amp; 1 &amp;0 &amp; 0\0 &amp; 0 &amp;1 &amp; 0\0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 \end{matrix} \right]  \tag{M1}
+$$
+<span class="arithmatex">\(\lambda = 0,0,0,0\)</span>.矩阵的四个特征值都是0! 若尔当是好样的,他考虑到了这种情况,例如特征值出现4重根的情况.这个矩阵的多少个特征向量呢?特征值是0,那么特征向量就在零空间里面,根据特征方程,也就是Ax = 0x.这个矩阵的秩是2,一共有2个线性无关的行，列向量，r = 2,零空间的维数就是4-2 = 2.</p>
+<p>现在把一个0改成7 <span class="arithmatex">\(\left[\begin{matrix} 0 &amp; 1 &amp;7 &amp; 0\\0 &amp; 0 &amp;1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{matrix} \right]\)</span> 特征值仍然是0,r也还是2.实际上和原来的矩阵是相似的,但是看起来不够美观,若尔当选择了原来M1矩阵。<strong>注意对角线之上的1, 每增加1个1,特征向量就减少一个</strong>.M1矩阵对角线上2个1，所以减少了2个特征向量，只剩下 <code>4-2 = 2</code> 个！</p>
+<p>接下来,把1的位置改变一下
+$$
+\left[\begin{matrix} 0 &amp; 1 &amp;0 &amp; 0\0 &amp; 0 &amp;0 &amp; 0\0 &amp; 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 &amp; 0 \end{matrix} \right] \tag{M2}
+$$
+特征值还是全为0, r=2,还是有两个特征向量,但是这个矩阵并不相似于前者!从特征向量数目来看,应该是相似的啊,但是若尔当认为,<code>M1</code>矩阵是由3-3分块和1-1分块组成,,而<code>M2</code>矩阵有2个2-2的分块构成
+$$
+\left[\begin{array}{c c c | c} 0 &amp; 1 &amp; 0 &amp;  0\0 &amp; 0 &amp;1 &amp; 0\0 &amp; 0 &amp; 0 &amp; 0 \ \hline 0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right],
+\left[\begin{array}{c c| c  c} 0 &amp; 1 &amp; 0 &amp;  0\0 &amp; 0 &amp;0 &amp; 0\ \hline 0 &amp; 0 &amp; 0 &amp; 1 \  0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right] \tag{M3}
+$$
+这些分块就称为若尔当块, <span class="arithmatex">\(J_i\)</span> 表示 <code>i</code> 阶的若尔当块,它</p>
+<ul>
+<li>只有<strong>对角线</strong>上<strong>一个，重复的</strong>特征值 <span class="arithmatex">\(\lambda_i\)</span> </li>
+<li>紧贴对角线上全部是1,其他地方都是0</li>
+</ul>
+<p>参见 <code>Eq(2)</code>。如例3的J也是。</p>
+<p>每一个<strong>若尔当块只有一个特征向量</strong>.如M3的2个矩阵都是2个分块，其每个分块对应1个特征向量，总而2个分块，所以2个特征向量。但虽然特征向量的个数都是2,但是<strong>分块的大小</strong>不一样,因而若尔当认为,这两个矩阵并不相似.定义参见 <code>&lt;#6.3&gt;</code></p>
+<hr />
+<p><strong>注意：</strong> <code>&lt;01-07&gt;</code> 会用另外一个角度来解释相似矩阵，不是以 <span class="arithmatex">\(u = Mv\)</span> 变换变量的方式，而是变基(change the basis).在这种方式下，相似矩阵代表的是n为空间下的同一个变换(similar matrices will represent the same transformation if n-dimensional space)。当我们为 <span class="arithmatex">\(R^n\)</span> 选择一个基，我们得到一个矩阵。标准基向量(<code>M= I</code>) 得到 <span class="arithmatex">\(I^{-1}AI\)</span> 也就是A，其他基得到 <span class="arithmatex">\(B = M^{-1}AM\)</span></p>
+<h2 id="63">6.3 若尔当形式</h2>
+<blockquote>
+<p>The jordan form </p>
+</blockquote>
+<p><code>v29-note1</code>:若尔当定理:</p>
+<hr />
+<p>对于每一个矩阵A，我们想要选择一个 M，使得 <span class="arithmatex">\(M^{−1}AM\)</span> <strong>尽可能接近对角</strong>。当A有完整的n个特征向量，这些特征向量可以称为M的列，也就是 M=S，这时A是可对角化的，矩阵 <span class="arithmatex">\(\Lambda = S^{-1}AS\)</span> 是对角的，<span class="arithmatex">\(\Lambda\)</span> 就是A的若尔当形(<span class="arithmatex">\(\Lambda\)</span> 是最解出的若尔当形式，但不一定存在完整的S，所以其他可逆的 <span class="arithmatex">\(M\)</span> 得到的是相似矩阵，而若尔当的M，是要最接近对角的M)。但在一般情况下，特征向量数目不够，不可能得到 <span class="arithmatex">\(\Lambda\)</span>.</p>
+<p>假设A有 s 个独立的特征向量，那么 A 和任何包含 s 个块矩阵的矩阵相似，每一个块矩阵，类似与例3的 J：<strong>特征值就是在对角线元素，对角线之上是1.</strong> 每一个块矩阵，对应A的一个特征向量。当A存在n个特征向量和n个块，那么这些块矩阵都是 1-1 的，这时候 J 就是 <span class="arithmatex">\(\Lambda\)</span></p>
+<blockquote>
+<p><strong>Jordan Form ，Jrodan Theorem</strong></p>
+<hr />
+<p>每一个方阵A都相似于一个若尔当阵 <code>J</code>,<code>·J</code> 就是由若尔当块 <span class="arithmatex">\(J_i\)</span> 构成的矩阵,如 <code>Eq(1)</code>。<span class="arithmatex">\(J_i\)</span> 的数量,等于特征向量的个数,因为每一块对应一个特征向量。</p>
+<p>也就是说，如果A有 s 个独立的特征向量，那么它和<strong>对角线</strong>上有 s 个若尔当块(jordan blocks)的矩阵 J 相似，而且，一些矩阵 M 可以将A变换为若尔当形：
+$$
+\text{Jordan Form}:\quad  M ^ { - 1 } A M = \left[ \begin{array} { l l l } J _ { 1 } &amp; &amp; \ &amp; \ddots &amp; \ &amp; &amp; J _ { s } \end{array} \right] = J
+\tag{1}
+$$
+J 当中的每一个块矩阵 <span class="arithmatex">\(J_i\)</span> 对角线上都是<strong>重复的1个</strong>特征值 <span class="arithmatex">\(\lambda_i\)</span>, 并且 1 紧贴在对角线之上。 一个 <span class="arithmatex">\(J_i\)</span> 对应一个特征向量，
+$$
+\text{Jrodan block}: \quad J_i = \left[ \begin{array} { c c c c } \lambda _ { i } &amp; 1 &amp; &amp; \ &amp; \cdot &amp; \cdot &amp; \ &amp; &amp; \cdot &amp; 1 \ &amp; &amp; &amp; \lambda _ { i } \end{array} \right] 
+\tag{2}
+$$
+<strong>如果A和B拥有相同的若尔当形，那么它们相似--其他情况都不相似</strong></p>
+<p>对于任意矩阵A,如果矩阵的特征值各不相同,它相似于什么?其实A这时候就是一个可对角化的矩阵,所以对应的若尔当阵就是对角阵 <span class="arithmatex">\(\Lambda\)</span> .这种情况下,J就是 <span class="arithmatex">\(\Lambda\)</span>,而 s = n.n个特征向量,n个分块,矩阵可以对角化.这就是非常好的情况。但若尔当研究了所有情况,包括特征值重复，特征向量缺少的情况。这就是若尔当定理.</p>
+<p>我还没告诉你怎么求若尔当阵,这并不容易,但是注意 <span class="arithmatex">\(J =\Lambda\)</span> 的情况,这是线性代数最关心的内容. 而若尔当阵是20年前关心的内容,所以这里介绍一下即可。但正定和奇异值分解真的很重要！</p>
+</blockquote>
+<p>对于每个缺失的特征向量，若尔当形的 J 在非对角线元素有一个1,而且1在特征值之上(The Jordan form J has an off-diagonal 1 for each missing eigenvector (and the 1's are next to the eigenvalues，sp：如例3)。这是关于矩阵相似的伟大理论。每一个相似矩阵家族，都能选出一些杰出代表，也就是 <code>J</code>，它接近对角(如果可能，完全对角).对于这个J，我们可以如例4那样求解 <span class="arithmatex">\(du/dt = Ju\)</span>,也能如习题9-10那样得到幂 <span class="arithmatex">\(J^k\)</span>.这个家族中的任何其他矩阵的形式都是 <span class="arithmatex">\(A = MJM^{-1}\)</span>,这种和M的关联，求解了 <span class="arithmatex">\(du/dt = Au\)</span></p>
+<p>你必须看到的是 <span class="arithmatex">\(MJM^{-1}MJM^{-1} = MJ^2M^{-1}\)</span>,中间的 <span class="arithmatex">\(MM^{-1}\)</span> 被消去了，这在本章已经发生多次(当M是S).从 <span class="arithmatex">\(S\Lambda^{100}S^{-1}\)</span> 我们可以得到 <span class="arithmatex">\(A^{100}\)</span> --这是通过对角化完成的。现在我们不能对角化A，所以我们使用 <span class="arithmatex">\(MJ^{100}M^{-1}\)</span> !</p>
+<p>Jordan的定理在我的另一本书 <code>&lt;Linear and it's applications&gt;</code> 中证明，证明过程是复杂而且需要大量计算，这也是为什么若尔当形不是那么流行的原因--它的计算量不是稳定的。A slight change in A will separate the repeated eigenvalues and remove the off-diagonal 1's-switching to a diagonal <span class="arithmatex">\(\Lambda\)</span> </p>
+<p>不管有没有证明，你需要理解相似性的中心思想：尽可能化简A，同时保持必要的性质.</p>
+<h2 id="64">6.4 总结</h2>
+<ul>
+<li>如果对于某些可逆矩阵M，存在 <span class="arithmatex">\(B = M^{−1}AM\)</span>,那么AB矩阵相似</li>
+<li>相似矩阵拥有相同的特征值，而特征向量乘以 <span class="arithmatex">\(M^{-1}\)</span></li>
+<li>如果A有独立的n个特征向量，那么A和 <span class="arithmatex">\(\Lambda\)</span> 相似，这时候M就是S</li>
+<li>每一个矩阵都和 Jordan Matrix J相似（对角线部分是 <span class="arithmatex">\(\Lambda\)</span>）,J 对于每一个特征向量，都有1个块矩阵与其对应，对于缺失的特征向量，元素1与其对应</li>
+</ul>
+<h2 id="65">6.5 典型例题</h2>
+<p><strong>1.</strong> 如下是4-4 pascal矩阵A和它的逆(正负号变换的对角线)
+$$
+A = \left[ \begin{array} { l l l l } 1 &amp; 0 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 0 &amp; 0 \ 1 &amp; 2 &amp; 1 &amp; 0 \ 1 &amp; 3 &amp; 3 &amp; 1 \end{array} \right] \text { and } A ^ { - 1 } = \left[ \begin{array} { r r r r } 1 &amp; 0 &amp; 0 &amp; 0 \ - 1 &amp; 1 &amp; 0 &amp; 0 \ 1 &amp; - 2 &amp; 1 &amp; 0 \ - 1 &amp; 3 &amp; - 3 &amp; 1 \end{array} \right]
+$$
+检查 <span class="arithmatex">\(A,A^{-1}\)</span> 有相同的特征值，并求一个元素是正负号变换的对角矩阵D，使得 <span class="arithmatex">\(A^{-1} = D^{-1}AD\)</span>.这个A和 <span class="arithmatex">\(A^{-1}\)</span> 形似，这时很难见的。</p>
+<p><span class="arithmatex">\(A,A^{-1}\)</span> 有相同的Jordan Form J，这个J只有1个Jordan block，因为A只有1条直线的特征向量</p>
+<p>解： <span class="arithmatex">\(A,A^{-1}\)</span> 的特征值都是主对角线上的4个1，D如下，而且 <span class="arithmatex">\(D= D^{-1}\)</span>
+$$
+D ^ { - 1 } A D = \left[ \begin{array} { c c c c } - 1 &amp; &amp; &amp; \ &amp; 1 &amp; &amp; \ &amp; &amp; - 1 &amp; \ &amp; &amp; &amp; 1 \end{array} \right] \left[ \begin{array} { l l l l } 1 &amp; 0 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 0 &amp; 0 \ 1 &amp; 2 &amp; 1 &amp; 0 \ 1 &amp; 3 &amp; 3 &amp; 1 \end{array} \right] \left[ \begin{array} { l l l l } - 1 &amp; &amp; &amp; \ &amp; 1 &amp; &amp; \ &amp; &amp; - 1 &amp; \ &amp; &amp; &amp; 1 \end{array} \right] = A ^ { - 1 }
+$$
+注意这个乘法，就是把A的第 <code>i</code> 行乘以 <span class="arithmatex">\((-1)^{i}\)</span>,第 j 列乘以 <span class="arithmatex">\((-1)^j\)</span>,从而给出了 <span class="arithmatex">\(A^{-1}\)</span> 对角线的符号变换。AD的列是正负号变换的。</p>
+<hr />
+<p><strong>2.</strong>  <strong>对大矩阵，求解特征值的最佳方法不是计算 <span class="arithmatex">\(\det (A- \lambda I) = 0\)</span></strong>.这个高阶的多项式是计算的灾难啊。</p>
+<p>实际上，我们是计算相似矩阵 <span class="arithmatex">\(A_1,A_2...\)</span> 从而逼近1个三角矩阵，那么A的特征值(没有改变）基本上就在主对角线上！那么 <span class="arithmatex">\(A_i\)</span> 矩阵是怎么得到的呢？</p>
+<p>分解A的其中1个方法是GS正交化的 A = QR.注意，把 RQ 乘法交换顺序得到的 <span class="arithmatex">\(A_1 = RQ\)</span>,就和A相似！这是因为 <span class="arithmatex">\(RQ = Q^{-1}(QR)Q\)</span> !但请看一个例子，如下 <span class="arithmatex">\(c= cos \theta,s = \sin theta\)</span>,注意，一个很小的非对角线元素 s ，在 <span class="arithmatex">\(A_1\)</span> 被立方了：
+$$
+A = \left[ \begin{array} { c c } c &amp; s \ s &amp; 0 \end{array} \right]</p>
+<p>\text { 分解为 }</p>
+<p>\left[ \begin{array} { c c } c &amp; s \ s &amp; - c \end{array} \right] \left[ \begin{array} { c c } 1 &amp; c s \ 0 &amp; s ^ { 2 } \end{array} \right] = Q R</p>
+<p>\</p>
+<p>A _ { 1 } = R Q = \left[ \begin{array} { c c } c + c s ^ { 2 } &amp; s ^ { 3 } \ s ^ { 3 } &amp; - c s ^ { 2 } \end{array} \right] \quad \color{orange} 注意非对角线元素s^3
+$$
+得到 <span class="arithmatex">\(A_1\)</span> 之后，继续将 <span class="arithmatex">\(A_1\)</span> 正交分解： <span class="arithmatex">\(A_1 = Q_1R_1\)</span>,然后得到 <span class="arithmatex">\(A_2 = R_1Q_1\)</span>.这种 <strong>QR方法</strong>，在 <code>&lt;01-09 #3&gt;</code> 对 <span class="arithmatex">\(A_1\)</span> 做出改进：把 <span class="arithmatex">\(cs^2\)</span> 加到 <span class="arithmatex">\(A_1\)</span> 的对角线上，这样角落的元素就为0.然后在 <span class="arithmatex">\(A_2\)</span> 减回去：
+$$
+A _ { 1 } + c s ^ { 2 } I = Q _ { 1 } R _ { 1 } 
+\color{orange} \quad \text { Shirt and factor }
+\
+A _ { 2 } = R _ { 1 } Q _ { 1 } - c s ^ { 2 } I
+\color{orange} \quad \text { Reverse and shift back }
+$$
+Shifted QR 是巨大的成功--计算特征值最佳的方法！</p>
+<h1 id="7-svd">7 奇异值分解SVD</h1>
+<blockquote>
+<ul>
+<li>Singular Value Decomposition  (SVD)</li>
+<li>综合视频30</li>
+</ul>
+<p><code>sp-note7-1</code>:提前总结：在SVD <span class="arithmatex">\(A=UΣV^{−1}=UΣV^T\)</span> 做的其实就是，在线性代数的四个子空间里面,选择出合适的基.</p>
+<ol>
+<li><span class="arithmatex">\(v_1...v_r\)</span>是行空间的标准正交基，行空间是 <code>r</code> 维子空间，一定有r个基，而且可以通过GS正交化！</li>
+<li><span class="arithmatex">\(u_1...u_r\)</span> 是列空间的标准正交基，列空间也是 <code>r</code> 维子空间，这些列也可以正交化！</li>
+<li>然后用来自零空间的标准正交基 <span class="arithmatex">\(v_{r+1}…v_n\)</span> 补充 <code>v's</code>,从而一共形成了n个 <code>v's</code> 基！注意，零空间和行空间是自动正交的！参见<code>&lt;01-03&gt;</code>.所以所有 <code>v's</code> 都是标准正交的！</li>
+<li><span class="arithmatex">\(u_{1+r}…u_m\)</span> 是 <span class="arithmatex">\(A^T\)</span> 零空间的标准正交基，从而形成 m 个 <code>u's</code> 的基！ <span class="arithmatex">\(A^T\)</span> 零空间的向量也是和列空间向量 <span class="arithmatex">\(u_1...u_r\)</span> 自动正交的！</li>
+</ol>
+<p>这些<strong>正交的</strong>基使得矩阵对角化了,<code>v's</code> 之间没有耦合,<code>u's</code> 之间也没有！A乘以每一个v对应一个u的方向.而且这些基所在空间的维数我们也知道,行列空间是的秩是r,零空间是n-r,左零空间是m-r</p>
+</blockquote>
+<p>SVD是线性代数的亮点. 这是矩阵最终和最好的分解!这个分解非常重要,而且,把这门课的所有知识点融合在一起。被分解的A可以是<strong>任意 <code>m-n</code> 矩阵!不管是方阵还是矩形阵</strong>。</p>
+<p>SVD把矩阵 A 分解成 <code>正交矩阵*对角矩阵*正交矩阵</code> ，注意这里，<strong>需要2个正交矩阵</strong>。我们知道，性质非常好的对称正定矩阵:</p>
+<ul>
+<li>因为对称性,它们的特征向量正交,因此可以得到一个正交矩阵,这时候特征向量矩阵S写成Q.</li>
+<li>而且由于矩阵的正定性,一般的Λ矩阵为正的Λ矩阵</li>
+</ul>
+<p>所以正定矩阵的特征向量分解 <span class="arithmatex">\(A = S\Lambda S^{-1}\)</span> 变成 <span class="arithmatex">\(A = QAQ^T\)</span>.<strong>就是我们对正定矩阵的奇异值分解</strong>,这种情况下,只要一个正交矩阵Q就行了。</p>
+<p>而<strong>SVD对A的分解也是一种对角化！</strong>但不是通过 <span class="arithmatex">\(S^{−1} AS\)</span>.S当中的特征向量有3个问题</p>
+<ol>
+<li>它们通常不是正交的(Q才是）</li>
+<li>特征向量不总是足够的</li>
+<li>而且 Ax = λx 要求A是方阵</li>
+</ol>
+<p>但是A的奇异向量(singular vectors)以一种完美的方式解决了这些问题！我们需要付出的代价是,存在2套奇异向量,<code>u's</code> 和 <code>v's</code> : <code>u's</code> 是 <span class="arithmatex">\(AA^T\)</span> 的特征向量,<code>v's</code> 是 <span class="arithmatex">\(A^T A\)</span> 的特征向量.因为 <span class="arithmatex">\(AA^T,A^TA\)</span> 都是对称的,所以它们的特征向量可以<strong>被选择为标准正交</strong>的.</p>
+<h2 id="71">7.1 原理</h2>
+<blockquote>
+<p>综合V30和书本</p>
+</blockquote>
+<p>还记得下面线性变换的图吗？（这门课最重要的图！）我们想要，在行空间寻找典型<strong>垂直</strong>向量记为 <span class="arithmatex">\(v_1，v_2\)</span> ,然后变换到列空间的一些垂直向量 <span class="arithmatex">\(u_1,u_2\)</span>,所以 <span class="arithmatex">\(Av_1= u_1,Av_2= u_2\)</span></p>
+<p><img alt="image-20210326152808258" src="../.assets/image-20210326152808258.png" /></p>
+<p>这就是，行空间的一个向量,变换到列空间的1个向量！这是什么?在SVD当中,我们要找的是,<strong>行空间的一组正交基,然后变换成列空间的一组正交基</strong>!这就是我们的目标！</p>
+<p>首先,在行空间能找到一组正交基吗?当然可以,GS正交化已经告诉我们怎么做了:从任意一组基开始,都可以得到一组正交基.但是如果取任意行空间的一组正交基,乘以A,为什么可以得到列空间的正交基呢?所以我<strong>要找特殊的,也就是当A作用到行空间的基向量上,在列空间可以得到一组正交向量</strong>.你可能注意到,没有说零空间,其实零空间体现在 <span class="arithmatex">\(\Sigma\)</span> 当中的0元素，这不会带来困难。见后面。</p>
+<p>困难的是怎么找到行空间的基向量.我的意思是
+$$
+A[v_1...v_r]=[Av_1...Av_r]=[u_1...u_r]
+$$
+这里 <code>u's</code> 之间不仅是正交的,还是是单位向量,而且 <code>v's</code> 之间也是正交单位向量.那么 <span class="arithmatex">\(Av_1\)</span> 就是 <span class="arithmatex">\(u_1\)</span> 的某个倍数:<span class="arithmatex">\(σ_1 u_1=Av_1\)</span>.这些基之间都是一个倍数关系,σ是伸缩因子(stretching number),类似的,<span class="arithmatex">\(Av_2= σ_2 u_2...\)</span> (Eq(1)可通过Eq(13),A 乘以 <span class="arithmatex">\(A^TA\)</span> 和  <span class="arithmatex">\(AA^T\)</span>   乘以 A 是相等的的这个简单的事实得到 <code>u's</code> 和 <code>v's</code> 这个令人称赞的性质：)：
+$$
+A v _ { 1 } = \sigma _ { 1 } u _ { 1 } \quad A v _ { 2 } = \sigma _ { 2 } u _ { 2 } \ldots A v _ { r } = \sigma _ { r } u _ { r } \tag{1} \quad \color{orange} \text{A is "diagonalized"}
+$$
+奇异向量 <span class="arithmatex">\(v_1…v_r\)</span> 在A的<strong>行</strong>空间,结果向量 <span class="arithmatex">\(u_1…u_r\)</span> 在A的<strong>列</strong>空间.奇异值 <span class="arithmatex">\(σ_1…σ_r\)</span> 都是<strong>正</strong>数.当 <code>v's</code> 和 <code>u's</code> 变成 <code>V,U</code> 矩阵的列,正交性可以让我们得到 <span class="arithmatex">\(V^T V=I\)</span> 和 <span class="arithmatex">\(U^T U = I\)</span> ,而 <code>σ′s</code> 变成对角矩阵 <span class="arithmatex">\(\Sigma\)</span>.</p>
+<p>就像 <span class="arithmatex">\(Ax_i= λ_ix_i\)</span> 可以得到对角化 <span class="arithmatex">\(AS=SΛ\)</span> ,等式 <span class="arithmatex">\(Av_i= σ_i u_i\)</span> 可以让我们得到 <span class="arithmatex">\(AV=UΣ\)</span>。 现在把这个目标用矩阵的形式表示即可看出来：
+$$
+\begin{aligned}
+    &amp; \text{(m by n)(n by r)} \
+    &amp; \text{equals} \
+    &amp; \text{(m by r)(r by r)} \
+\end{aligned}</p>
+<p>:\quad A \left[ v _ { 1 } \cdots v _ { r } \right] = \left[ u _ { 1 } \cdots u _ { r } \right] \left[ \begin{array} { c c c } \sigma _ { 1 } &amp; &amp; \  &amp; \ddots &amp; \ &amp; &amp; \sigma _ { r } \end{array} \right]<br />
+\quad \color{orange} \text{也就是 } AV = U\Sigma
+\tag{2}
+$$</p>
+<blockquote>
+<p>sp:A是m-n矩阵;  V矩阵的列是A行空间向量，而且行空间维数是r，所以n-r;   U矩阵的列是A列空间向量，而且列空间维数也是r，所以是 m-r.</p>
+</blockquote>
+<p>这就是SVD的核心思想！<strong>寻找行空间的一组标准正交基,得到列空间的一组标准正交基</strong>.从上式也可以看出来,允许有2组不同的基：U和V.(提示：对称正定矩阵是一种特例,<span class="arithmatex">\(AQ = QΣ\)</span>,这里的 <code>U,V</code> 都等于<code>Q</code>）。大部分情况, 如下面的2-2 可逆的 r = 2 的A:
+$$
+A= \left[\begin{matrix} 4 &amp; 4 \ -3 &amp; 3 \end{matrix} \right] \tag{V1}
+$$
+要寻找的是 <span class="arithmatex">\(R^2\)</span> 行空间下的2个向量 <span class="arithmatex">\(v_1,v_2\)</span>； <span class="arithmatex">\(R^2\)</span> 列空间下的 <span class="arithmatex">\(u_1,u_2\)</span>,还要找出系数 <span class="arithmatex">\(σ_1,σ_2\)</span>, 这些 <code>u's,v's</code> 之间是标准正交的.存在2组基</p>
+<p>还有更多！<code>v's</code> 和 <code>u's</code> 对应A的行空间和列空间,而从零空间 <code>N(A)</code> 和左零空间 <span class="arithmatex">\(N(A^T)\)</span> 当中,我们可以得到额外的 <code>n-r</code> 个 <code>v's</code> 和 <code>m-r</code> 个 <code>u's</code> ！ 如果在零空间也可以找出一组基</p>
+<ul>
+<li><code>v's</code> 额外多了A零空间的 <span class="arithmatex">\(v_{r+1}\)</span> 到 <span class="arithmatex">\(v_n\)</span> 的基,全部 <code>v's</code> 成了整个 <span class="arithmatex">\(R^n\)</span> 空间的标准正交基</li>
+<li><code>u's</code> 额外多了<span class="arithmatex">\(A^T\)</span>零空间的 <span class="arithmatex">\(u_{r+1}\)</span> 到 <span class="arithmatex">\(u_m\)</span> 的基,全部 <code>u's</code> 成了整个 <span class="arithmatex">\(R^m\)</span> 空间的标准正交基</li>
+<li>额外的0会出现在对角矩阵 <span class="arithmatex">\(\Sigma\)</span> 的对角线当中</li>
+</ul>
+<p>这些额外的 <code>v,u</code> 可以是这2个零空间的标准正交基(然后自动和前面 <code>r</code> 个 <code>v,u</code>  标准正交！)<strong>.把所有的 <code>v's</code> 和 <code>u's</code> 都组合到V,U矩阵当中,这时候这些矩阵</strong>是方阵,我们仍然有 <code>AV=UΣ</code>**
+$$
+\begin{aligned}
+    &amp; \text{(m by n)(n by n)} \
+    &amp; \text{equals} \
+    &amp; \text{(m by m)(m by n)} \
+\end{aligned}</p>
+<p>:\quad A \left[ v _ { 1 } \cdots v _ { r } \cdots v_n \right] = \left[ u _ { 1 } \cdots u _ { r } \cdots u_m \right] 
+\left[ \begin{array} { c c c c c} \sigma _ { 1 } &amp; &amp; &amp; &amp; \  &amp; \ddots &amp; &amp; &amp; \ &amp; &amp; \sigma _ { r }  &amp;\ &amp; &amp; &amp; 0 &amp; \end{array} \right]<br />
+\tag{3}
+$$</p>
+<blockquote>
+<p>所以存在零空间不仅不是问题，更是一种完善.真正的问题是如 <code>Eq(V1)</code> 的非对称矩阵A,它的特征向量不是正交的,所以不能使用特征向量矩阵S,但SVD的这些 <code>u,v</code>就是正交的标准向量,使等式成立:<span class="arithmatex">\(Av_1=σ_1u_1…\)</span> </p>
+</blockquote>
+<p>新的 <code>Σ</code> 是 <code>m-n</code> 的,它只是,旧的 <code>r-r</code> 矩阵(称为 <span class="arithmatex">\(Σ_r\)</span> )块,多了 <code>m-r</code> 个0行和 <code>n-r</code> 个0列.真正改变的是 <code>U,V,Σ</code> 的形状,并且仍然有 <span class="arithmatex">\(V^T V=I\)</span> 和 <span class="arithmatex">\(U^T U=I\)</span> ,这2个 <code>I</code> 的大小分别是 <code>n-n</code> 和 <code>m-m</code></p>
+<p><strong>V现在就是正交方阵(square orthogonal matrix)</strong>, 有 <span class="arithmatex">\(V^{−1}= V^T\)</span>.所以 <code>AV=UΣ</code> 变成 <span class="arithmatex">\(A=UΣV^T\)</span>.这就是奇异值分解:
+$$
+\text{SVD}: \qquad
+A = U \Sigma V ^ { \mathrm { T } } = u _ { 1 } \sigma _ { 1 } v _ { 1 } ^ { \mathrm { T } } + \cdots + u _ { r } \sigma _ { r } v _ { r } ^ { \mathrm { T } } \tag{4}
+$$
+我会把 <code>Eq(2)</code> 的简化SVD(reduced SVD,<strong>RSVD</strong>) 写成 <span class="arithmatex">\(A = U_r Σ_r V_r^T\)</span> .这也是等价正确的,只是 <code>Σ</code> 当中没有那些额外的0.简化形式SVD同 <code>Eq(4)</code> 一样,把A分成了同样的 <code>r</code> 个<strong>秩一</strong>矩阵的和</p>
+<p>我们会看到， <span class="arithmatex">\(\sigma_i^2 = \lambda_i\)</span> 同时是 <span class="arithmatex">\(A^TA,AA^T\)</span> 的特征值，当我们把特征值以递减的顺序排列：<span class="arithmatex">\(\sigma_1\ge \sigma_2\ge...\sigma_r &gt; 0\)</span>,Eq(4)的分解，给出了<strong>r个，以重要性排序的(in order of importance)，秩一的</strong>矩阵</p>
+<hr />
+<p><strong>例1.</strong> 什么时候,<span class="arithmatex">\(UΣV^T\)</span>(奇异值) 和 <span class="arithmatex">\(SΛS^{−1}\)</span>(特征值) 是一样的?</p>
+<p>解：有2点</p>
+<ol>
+<li>S当中的<strong>特征向量</strong>必须是标准正交的，这时 <span class="arithmatex">\(S=U\)</span></li>
+<li><span class="arithmatex">\(\Lambda\)</span> 当中的<strong>特征值</strong>必须是非负的,这时 <span class="arithmatex">\(\Lambda = \Sigma\)</span></li>
+</ol>
+<p>所以A必须是半正定(或正定)的对称矩阵 <span class="arithmatex">\(Q\Lambda Q^T\)</span></p>
+<p><strong>例2.</strong> 如果 <span class="arithmatex">\(A = xy^T,x,y\)</span> 是单位向量,那么A的SVD是什么</p>
+<p>解: Eq(2)的RSVD其实就是秩 <code>r=1</code> 的 <span class="arithmatex">\(xy^T\)</span>, 也就是 <span class="arithmatex">\(u_1=x,v_1=y,σ_1=1\)</span>.(sp:其实用<code>Eq(4)</code>看才更明显)为了得到完整的SVD,需要把 <span class="arithmatex">\(u_1=x\)</span> 完善为 <code>u's</code> 成为一组标准正交基,而 <span class="arithmatex">\(v_1=y\)</span> 完善成为 <code>v's</code> 一组标准正交基，<span class="arithmatex">\(\sigma's\)</span> 不需要改变</p>
+<hr />
+<p>其实 <span class="arithmatex">\(Av_i= σ_i u_i\)</span> 这个关键的等式,给出了SVD的 <code>Eq(2),(3),(4)</code> 的对角化.现在我们证明 <span class="arithmatex">\(Av_i= σ_i u_i\)</span>。</p>
+<h2 id="72-svd">7.2 基和SVD</h2>
+<blockquote>
+<p>The Base And the SVD</p>
+</blockquote>
+<h3 id="_6">基的求法</h3>
+<p>如下一个 <code>2-2</code> 矩阵A开始,秩 <code>r = 2</code>,(A可逆)
+$$
+\text{非对称矩阵：} \quad A = \left[\begin{matrix} 2 &amp; 2 \ -1 &amp; 1 \end{matrix} \right] \tag{5}
+$$
+我们想要的是： <span class="arithmatex">\(v_1,v_2\)</span> 是垂直单位向量,<strong>也想 <span class="arithmatex">\(Av_1,Av_2\)</span> 也是垂直的</strong>(这就是神奇的部分,也就是使基特殊的地方).如果这个目标达成，那么单位向量 <span class="arithmatex">\(u_1=(Av_1)/(|Av_1 |),u_2=(Av_2)/(|Av_2 |)\)</span> 就是标准正交的.</p>
+<p>因为A非对称，所以没有一个正交矩阵 Q 可以使得 <span class="arithmatex">\(Q^{−1}AQ\)</span> 是对角矩阵.但 <span class="arithmatex">\(U^{−1} AV = \Sigma\)</span> 可以！ 当输入是 <span class="arithmatex">\(v_1\)</span> 的时候,输出是 <span class="arithmatex">\(Av_1= σ_1 u_1\)</span> .奇异值 <span class="arithmatex">\(σ_1,σ_2\)</span> 就是长度 <span class="arithmatex">\(|Av_1 |\)</span> 和 <span class="arithmatex">\(|Av_2 |\)</span>
+$$
+\begin{array} { r l } \boldsymbol { A } \boldsymbol { V } &amp; = \boldsymbol { U } \boldsymbol { \Sigma } \ \boldsymbol { A } &amp; = \boldsymbol { U } \boldsymbol { \Sigma } \boldsymbol { V } ^ { \mathrm { T } }  \end{array} 
+:\quad
+A\left[ \begin{array} { l l } v _ { 1 } &amp;  v_2 \end{array} \right] = \left[ \begin{array} { l l } \sigma _ { 1 } \boldsymbol { u } _ { 1 } &amp; \sigma _ { 2 } \boldsymbol { u } _ { 2 } \end{array} \right] = \left[ \begin{array} { l l } u _ { 1 } &amp; u _ { 2 } \end{array} \right] \left[ \begin{array} { l l } \sigma _ { 1 } &amp; \ &amp; \sigma _ { 2 } \end{array} \right]</p>
+<p>\tag{6}
+$$
+如原理部分提到过(参见 Eq(4)),需要2个正交矩阵：<span class="arithmatex">\(U,V^T\)</span>,我不想一次性找到他们,想做些处理把U消去,只剩下V.(其实遇到矩形阵的时候，我们总会这样处理）注意 <span class="arithmatex">\(AA^T\)</span> 是个性质很好的矩阵,是对称的,是正定的,至少半正定的,所以，把 <span class="arithmatex">\(A^T\)</span> 乘以 A：
+$$
+A ^ { T } A = \left( V \Sigma ^ { T } U ^ { T } \right) \left( U \Sigma V ^ { T } \right) = 
+V\Sigma^2V^T
+=V \left[ \begin{array} { l l l } \sigma _ { 1 } { } ^ { 2 } &amp; \ &amp; \sigma _ { 2 } { } ^ { 2 } &amp; \ &amp; &amp; \ldots \end{array} \right] V ^ { T }  \tag{7}
+$$
+<span class="arithmatex">\(U^T U=I\)</span> ,所以可以去掉.而对角的 <span class="arithmatex">\(Σ,Σ^T\)</span> 相乘,得到<span class="arithmatex">\(σ_1^2,σ_2^2\)</span>,也是一个对角矩阵.从而得到了，<span class="arithmatex">\(A^TA\)</span> 这个极其重要的对称矩阵的常规对角化,它的特征值就是 <span class="arithmatex">\(σ_1^2,σ_2^2\)</span> ：
+$$
+A ^ { \mathrm { T } } A = V \left[ \begin{array} { c c } \sigma _ { 1 } ^ { 2 } &amp; 0 \ 0 &amp; \sigma _ { 2 } ^ { 2 } \end{array} \right] V ^ { \mathrm { T } } \tag{8}
+$$
+现在没有U了,只需要找到V.那<strong>么V是什么呢?特征向量!上面的式子就是 <span class="arithmatex">\(A^TA\)</span> 矩阵的: <span class="arithmatex">\(QΛQ^T\)</span>.</strong>A本身没什么特别,但是 <span class="arithmatex">\(A^T A\)</span> 就很特别,是对称正定矩阵,那么,<strong>V就是特征向量矩阵, <span class="arithmatex">\(σ_i^2\)</span> 就是特征值</strong>,而且特征值是正的,因为矩阵是正定矩阵.</p>
+<p>V求出来了，现在看看怎么计算U矩阵:，有2种方法</p>
+<ol>
+<li>
+<p>计算 <span class="arithmatex">\(AA^T\)</span>,也就是用 <span class="arithmatex">\(A^T\)</span> 右乘A,这样V就在中间,从而消去.也就是：V是 <span class="arithmatex">\(A^T A\)</span> 的特征向量,U是 <span class="arithmatex">\(AA^T\)</span> 的特征向量：
+   $$
+   AA ^ { T } =  \left( U \Sigma V ^ { T } \right)\left( V \Sigma ^ { T } U ^ { T } \right) = 
+   U\Sigma^2U^T =U \left[ \begin{array} { l l l } \sigma _ { 1 } { } ^ { 2 } &amp; \ &amp; \sigma _ { 2 } { } ^ { 2 } &amp; \ &amp; &amp; \ldots \end{array} \right] U^ { T }  \tag{S1}
+   $$</p>
+</li>
+<li>
+<p><strong>计算  <span class="arithmatex">\(A^TA\)</span> 的特征向量 <code>v</code> 和特征值 <span class="arithmatex">\(σ^2\)</span> ,那么每一个 <span class="arithmatex">\(u = Av/σ\)</span></strong>,这其实是根据 <code>Eq(1,2)</code> 得来</p>
+</li>
+</ol>
+<p>对于很大的矩阵,<code>LAPACK</code> 找到一种特别的方式,来在计算 <code>svd(A)</code> 的过程中避免计算 <span class="arithmatex">\(A^TA\)</span> 的乘法</p>
+<hr />
+<p><strong>例3.</strong> 找到 <span class="arithmatex">\(A=\left[\begin{matrix} 2 &amp; 2 \\ -1 &amp; 1 \end{matrix} \right]\)</span> 的SVD</p>
+<p>解: 计算 <span class="arithmatex">\(A^TA\)</span> 和它的特征向量,然后单位化
+$$
+A ^ { \mathrm { T } } A = \left[ \begin{array} { l l } 5 &amp; 3 \ 3 &amp; 5 \end{array} \right] 
+\quad \text{的单位特征向量是:} \quad v _ { 1 } = \left[ \begin{array} { l } 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } \end{array} \right] \quad \text {;} 
+\quad v _ { 2 } = \left[ \begin{array} { c } - 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } \end{array} \right]
+$$
+<span class="arithmatex">\(A^T A\)</span> 的特征值是 <code>8,2</code> .<code>v's</code> 是垂直的(<strong>对称矩阵的特征向量都是垂直的</strong>，而 <span class="arithmatex">\(A^TA\)</span> 一定是一个对称矩阵)。现在 <code>u's</code> 是很容易找出来的,因为 <span class="arithmatex">\(Av_1\)</span> 就是 <span class="arithmatex">\(u_1\)</span> 的方向:</p>
+<p>$$
+A v _ { 1 } = \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { l } 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } \end{array} \right] = \left[ \begin{array} { r } 2 \sqrt { 2 } \ 0 \end{array} \right] 
+\quad \text{单位化，得到} u_1 = \left[\begin{matrix} 1  \0  \\end{matrix} \right]
+$$
+明显的, <span class="arithmatex">\(Av_1=2\sqrt{2} u_1\)</span>,那么第一个奇异值就是 <span class="arithmatex">\(σ_1=2\sqrt{2}\)</span>,从而 <span class="arithmatex">\(\sigma_1^2 = 8\)</span>
+$$
+A v _ { 2 } = \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { r } - 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } \end{array} \right] = \left[ \begin{array} { r } 0 \ \sqrt { 2 } \end{array} \right] 
+\quad \text{单位化，得到} u_2 = \left[\begin{matrix} 0  \1  \\end{matrix} \right]
+$$
+现在 <span class="arithmatex">\(Av_2=\sqrt{2} u_2,σ_2=\sqrt{2}\)</span> 因此，<span class="arithmatex">\(σ_2^2\)</span> 和 <span class="arithmatex">\(A^TA\)</span> 的特征值2吻合
+$$
+A = U \Sigma V ^ { \mathrm { T } } \quad \text { 是 } \quad \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] = \left[ \begin{array} { l l } 1 &amp; 0 \ 0 &amp; 1 \end{array} \right] \left[ \begin{array} { l l } 2 \sqrt { 2 } &amp; \ &amp; \sqrt { 2 } \end{array} \right] \left[ \begin{array} { r r } 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \ - 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \end{array} \right] 
+\tag{9}
+$$
+这个矩阵,和任何一个2-2的矩阵,<strong>把一个圆变换为椭圆(transform the unit circle to an ellipse).</strong>如Fig6.8.</p>
+<blockquote>
+<p>sp:这幅图有点理解，但又不是太理解.....和 <code>&lt;#5.3&gt;</code> 有点类似</p>
+</blockquote>
+<p><img alt="image-20210316125121692" src="../.assets/image-20210316125121692.png" /></p>
+<p>现在，我们在通过另一种方式直接找到u呢.只要把 <span class="arithmatex">\(AA^T\)</span> 相乘:
+$$
+\text{使用 }V ^TV = I：  \quad A A ^ { \mathrm { T } } = \left( U \Sigma V ^ { \mathrm { T } } \right) \left( V \Sigma ^ { \mathrm { T } } U ^ { \mathrm { T } } \right) = U \Sigma \Sigma ^ { \mathrm { T } } U ^ { \mathrm { T } }
+\tag{10}
+$$
+<span class="arithmatex">\(\Sigma,\Sigma^T\)</span> 相乘和之前一样得到 <span class="arithmatex">\(\sigma_1^2,\sigma_2^2\)</span>, 这时候,<code>u's</code> 是 <span class="arithmatex">\(AA^T\)</span> 的特征向量
+$$
+A A ^ { \mathrm { T } } = \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] \left[ \begin{array} { r r } 2 &amp; - 1 \ 2 &amp; 1 \end{array} \right] = \left[ \begin{array} { l l } 8 &amp; 0 \ 0 &amp; 2 \end{array} \right] \quad \text{本例}AA^T对角
+$$
+特征向量是 <code>(1,0),(0,1)</code> ,和前面求得的一致.但是考虑一下,为什么我们选择 <code>(1,0)</code> 作为第1个特征向量，而不是 <code>(-1,0)</code> 或者 <code>(0,1)</code> 呢?这是因为,我们必须保持 <span class="arithmatex">\(Av_1\)</span> 和 <span class="arithmatex">\(u_1\)</span> 同一个方向啊。注意 <span class="arithmatex">\(AA^T\)</span> 和 <span class="arithmatex">\(A^TA\)</span> 有相同的特征值8,2. </p>
+<hr />
+<p><strong>例V1.</strong> 以 Eq(v1) 的A为例：
+$$
+A ^T A = \left[ \begin{array} { c c } 4 &amp; - 3 \ 4 &amp; 3 \end{array} \right] \left[ \begin{array} { c c } 4 &amp; 4 \ - 3 &amp; 3 \end{array} \right]
+= \left[ \begin{array} { c c } 25 &amp; 7 \ 7 &amp; 25 \end{array} \right]
+$$
+<span class="arithmatex">\(A^TA\)</span> 特征值是32，18，特征向量是(1,1),(1,-1),有
+$$
+A^TA(1,1) = 32(1,1) \quad;\quad  A^TA(1,-1) = 18(1,-1)
+$$
+特征值取平方根就得到σ.注意,还没有标准化!为了使一切成立,应该将特征向量标准化!注意标准化后还是特征向量,那么得到的就是v了.这时候我们得到
+$$
+\left[ \begin{array} { c c } 4 &amp; 4 \ - 3 &amp; 3 \end{array} \right] = \left[\begin{matrix} - &amp; - \ - &amp; - \end{matrix} \right] \left[\begin{matrix} \sqrt{32} &amp; 0 \ 0 &amp; \sqrt{18} \end{matrix} \right]
+\left[\begin{matrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \ 1/\sqrt{2} &amp; -1/\sqrt{2} \end{matrix} \right]
+$$
+最后需要得到U,一种方法是,这里使用 <span class="arithmatex">\(AA^T\)</span> 的方式：
+$$
+AA^T=(UΣV^T )(VΣ^T U^T )=UΣΣ^T U^T = U\Sigma^2U^T
+$$
+<span class="arithmatex">\(AA^T\)</span> 也只至少是半正定矩阵,计算出来后,特征向量就是U.意外的是,这里的<span class="arithmatex">\(AA^T\)</span> 恰好是对角
+$$
+A A ^T = \left[ \begin{array} { c c } 4 &amp; 4 \ - 3 &amp; 3 \end{array} \right] \left[ \begin{array} { l l } 4 &amp; - 3 \ 4 &amp; 3 \end{array} \right] = \left[ \begin{array} { l l } 32 &amp; 0 \ 0 &amp; 18 \end{array} \right]
+$$
+特征向量是<code>(1,0),(0,-1)</code> 特征值是32,18.我们又得到32,18了!这不是偶然! <strong><span class="arithmatex">\(AA^T\)</span> 的特征值和<span class="arithmatex">\(A^TA\)</span> 的特征值是完全相同的,因为AB和BA的特征值是一样的</strong>.这是个很好的性质,改变相乘的顺序,特征值保持不变.所以看到32,18就不奇怪了.</p>
+<p>那么最后得到
+$$
+\left[ \begin{array} { c c } 4 &amp; 4 \ - 3 &amp; 3 \end{array} \right] = \left[\begin{matrix} 1 &amp; 0 \ 0 &amp; -1 \end{matrix} \right] \left[\begin{matrix} \sqrt{32} &amp; 0 \ 0 &amp; \sqrt{18} \end{matrix} \right]
+\left[\begin{matrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \ 1/\sqrt{2} &amp; -1/\sqrt{2} \end{matrix} \right]
+$$</p>
+<blockquote>
+<p>注意:V30的 <span class="arithmatex">\(u_2\)</span> 是 (0,1),方向的的选择是有误的！教授也提出来了，以上已更改.一旦 <code>v</code> 确定了,其实 <code>u</code> 也就确定了,因为规定了 <span class="arithmatex">\(Σ\)</span> 矩阵非负,关键是,选择 <code>u</code> 向量的时候,要记得它们的方向和 <code>Av</code> 的方向一致</p>
+</blockquote>
+<hr />
+<p><strong>例4.</strong> 找到 <span class="arithmatex">\(A=\left[\begin{matrix} 2 &amp; 2 \\ 1 &amp; 1 \end{matrix} \right]\)</span> 的SVD。A的秩 r = 1</p>
+<p>解: 行空间只有一个基向量 <span class="arithmatex">\(v_1  = (1,1)/\sqrt{2}\)</span>,列空间只有1个基向量 <span class="arithmatex">\(u_1=(2,1)/\sqrt{5}\)</span>,那么 <span class="arithmatex">\(Av_1=(4,2)/\sqrt{2}\)</span> 必须等于 <span class="arithmatex">\(σ_1 u_1\)</span>,确定 <span class="arithmatex">\(σ_1= \sqrt{10}\)</span></p>
+<p><img alt="image-20210326143658810" src="../.assets/image-20210326143658810.png" /></p>
+<p>SVD可以在行空间,列空间的基找到之后停止(一般不这样),通常会习惯性的让 <code>U,V</code> 成为方阵，<strong><span class="arithmatex">\(v_2\)</span> 是在零空间</strong>,和行空间的 <span class="arithmatex">\(v_1\)</span> 垂直,而且 <span class="arithmatex">\(Av_2  = 0\)</span>.我们可以说第二个奇异值 <span class="arithmatex">\(σ_2\)</span> 是0,但是奇异值就像是主元--只有r个非0的才算是奇异值
+$$
+\text{(Full size) } A = U\Sigma V^T :\quad
+\left[ \begin{array} { l l } 2 &amp; 2 \ 1 &amp; 1 \end{array} \right] = \frac { 1 } { \sqrt { 5 } } \left[ \begin{array} { r r } 2 &amp; 1 \ 1 &amp; - 2 \end{array} \right] \left[ \begin{array} { r r } \sqrt { 10 } &amp; 0 \ 0 &amp; 0 \end{array} \right] \frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right] \tag{11}
+$$</p>
+<hr />
+<p><strong>例V2.</strong> 再看看一个奇异矩阵 <span class="arithmatex">\(A = \left[\begin{matrix} 4 &amp; 3 \\ 8 &amp; 6 \end{matrix} \right]\)</span> ,r=1，所以存在零空间,行、列空间都是1维的一条直线。行空间是 <code>(4,3)</code>的倍数， 列空间是 <code>(4,8)</code> 的倍数,<span class="arithmatex">\(A^T\)</span> 的零空间是和列空间垂直的.</p>
+<p>V是多少呢?,<span class="arithmatex">\(v_1\)</span> 应该是一个单位向量,这里的只有一个<span class="arithmatex">\(v_1\)</span> 可选,,只需要变成单位向量即可,那么 <span class="arithmatex">\(v_1 = (.8 .6)\)</span> .<span class="arithmatex">\(u_1\)</span>也同样的道理,<span class="arithmatex">\(u_1 = 1/\sqrt{5} (1,2)\)</span>,<strong>现在不用求额外的u,v，它们就是这些零空间！</strong></p>
+<p>注意,因为是秩一矩阵,所以 <span class="arithmatex">\(Σ\)</span> 对角线会出现0,我们只需要求出一个 <span class="arithmatex">\(σ_1\)</span> 即可,我们先求一下 <span class="arithmatex">\(Σ\)</span> 矩阵,是从 <span class="arithmatex">\(A^T A\)</span> 得来的, <span class="arithmatex">\(A^T A\)</span> 的结果还是一个秩一矩阵,每行都是(4,3)的倍数
+$$
+A^T A = \left[ \begin{array} { l l } 4 &amp; 8 \ 3 &amp; 6 \end{array} \right] \left[ \begin{array} { l l } 4 &amp; 3 \ 8 &amp; 6 \end{array} \right] = \left[ \begin{array} { l l } 80 &amp; 60 \ 60 &amp; 45 \end{array} \right]
+$$
+因为秩一,那么其中一个特征值就是0,另外是125.所以可得
+$$
+\begin{array}{c c c c}</p>
+<div class="highlight"><pre><span></span><code>&amp; \left[\begin{matrix} 4 &amp; 3 \\ 8 &amp; 6 \end{matrix} \right] =
+</code></pre></div>
+<p>\frac{1} {\sqrt{5}} &amp; \left[\begin{matrix} 1 &amp; 2 \ 2 &amp; -1 \end{matrix} \right]
+&amp;\left[\begin{matrix} \sqrt{125} &amp; 0 \ 0 &amp; 0 \end{matrix} \right]
+&amp;\left[\begin{matrix} .8 &amp; .6 \ .6 &amp; -.8 \end{matrix} \right]</p>
+<p>\</p>
+<p>&amp; A &amp; U &amp; \Sigma &amp; V^T</p>
+<p>\end{array}
+$$
+注意 <span class="arithmatex">\(v_2,u_2\)</span> 是怎么来的<strong>,其实只是需要完成v和u的标准正交基.<span class="arithmatex">\(v_2\)</span> 就是在零空间的,和在行空间的 <span class="arithmatex">\(v_1\)</span> 垂直.同样,<span class="arithmatex">\(u_2\)</span> 也是如此</strong></p>
+<p>这个例子告诉我们.零空间的的向量，也就是这里的 <span class="arithmatex">\(v_2,u_2\)</span>,出现的时候,完整的SVD的形式：<span class="arithmatex">\(v_2,u_2\)</span> 都是零空间的,而 <span class="arithmatex">\(Σ\)</span> 矩阵的对角线也会对应的出现0元素.</p>
+<h3 id="721-svd">7.2.1 SVD证明</h3>
+<blockquote>
+<p><strong>矩阵U,V包含了所有4个子空间的标准正交基:</strong></p>
+<ol>
+<li>V 的前 r 列： A 的行空间</li>
+<li>V 的后 n-r 列： A 的零空间</li>
+<li>U 的前 r 列： A 的列空间</li>
+<li>U 的后 m-r 列： <span class="arithmatex">\(A^T\)</span> 的零空间</li>
+</ol>
+</blockquote>
+<p>V,U 的 前r个列 <span class="arithmatex">\(v_1...v_r\)</span> 和 <span class="arithmatex">\(u_1…u_r\)</span> 是 <span class="arithmatex">\(A^TA\)</span> 和 <span class="arithmatex">\(AA^T\)</span> 的特征向量.现在解释,为什么 <span class="arithmatex">\(Av_i\)</span> 会落到 <span class="arithmatex">\(u_i\)</span> 方向上？而后面的 n-r,m-r 个  <code>v's</code> 和 <code>u's</code> (在零空间)是简单的,只要它们是标准正交的，SVD就会是正确的。</p>
+<blockquote>
+<p>证明过程怪怪的，现在好像再说，已经存在SVD，再去证明它存在一样...特别是Eq(13)，得到 <span class="arithmatex">\(Av_i\)</span> 是 <span class="arithmatex">\(AA^T\)</span> 的特征向量又如何呢？发现 https://math.stackexchange.com/questions/2276374/strangs-proof-of-svd-and-intuition-behind-matrices-u-and-v 有同样的疑问：</p>
+<hr />
+<p>教书的证明过程是这样的： <span class="arithmatex">\(A^TA\)</span> 是正定矩阵，所以可被正交矩阵对角化，而且所有非0的特征值都是正值的。这就是SVD能存在的关键。注意，前面讲过 <span class="arithmatex">\(r = rank(A^TA)= rank(A)\)</span>.现在，设 <span class="arithmatex">\(v_1...v_r\)</span> 是那 <code>r</code> 个正值特征值的标准正交的特征向量集合，而 <span class="arithmatex">\(v_{r+1}...v_n\)</span> 是0特征值对应的特征空间(zerp-eigen space),也就是 <span class="arithmatex">\(A^TA\)</span> 的零空间</p>
+<p>教授证明的是： <strong>==如果== v 是 <span class="arithmatex">\(A^TA\)</span> 对应特征值 <span class="arithmatex">\(\sigma^2\)</span> 的单位特征向量，==那么==<span class="arithmatex">\(^{Mark1}\)</span>, <span class="arithmatex">\(u =\frac{1}{\sigma}Av\)</span>  是 <span class="arithmatex">\(AA^T\)</span> 对应特征值为 <span class="arithmatex">\(\sigma^2\)</span> 的单位特征向量。</strong> 这也就是SVD的关键联系。也就是说，如果 V 是 n-n 的矩阵，其中第 <code>i</code> 是 <span class="arithmatex">\(v_i\)</span>,<span class="arithmatex">\(V_r\)</span> 是 V 的前 r 列; <span class="arithmatex">\(\Sigma_r\)</span> 是对角矩阵，第 <code>i</code> 个元素是 <span class="arithmatex">\(\sigma_i\)</span>; <span class="arithmatex">\(U_r\)</span> 是 m-r 矩阵，第 <code>i</code> 列是 <span class="arithmatex">\(u_i =\frac{1}{\sigma}Av_i\)</span> ,我们有
+$$
+U_r= AV_r\Sigma^{-1} \quad \Rightarrow U_r\Sigma_r = AV_r
+$$</p>
+<blockquote>
+<p>sp:第一步成立，是因为 <span class="arithmatex">\(u =\frac{1}{\sigma}Av\)</span>,也就是 <span class="arithmatex">\(U = \Sigma^{-1} AV\)</span>，注意 <span class="arithmatex">\(\Sigma\)</span> 是对角，逆就是元素取倒数 !</p>
+</blockquote>
+<p>现在两边同时乘以 <span class="arithmatex">\(V_r\)</span> 的转置，注意 <span class="arithmatex">\(V_r\)</span> 的列是单位正交的，得到
+$$
+U_r\Sigma_rV_r^T = AV_rV_r^T = AI_r = A
+$$
+注意，<span class="arithmatex">\(v_{r+1}...v_n\)</span> 是 <span class="arithmatex">\(A^TA\)</span> 的零空间，<strong>而 <span class="arithmatex">\(A^TA\)</span> 的零空间是和A的一样的！</strong> 向量 <span class="arithmatex">\(u_1...u_r\)</span> 是A的列空间的单位正交向量(注意 r 是A的秩)，它们生成A列空间(<span class="arithmatex">\(R^m\)</span> 的子空间)，而且我们能够用 <span class="arithmatex">\(u_{r+1}...u_m\)</span> 来完善 <span class="arithmatex">\(u_1...u_r\)</span> 得到完整的 <span class="arithmatex">\(R^m\)</span> 的标准正交基。</p>
+<p>到这里，我们有r组元素 <span class="arithmatex">\((v_i,u_i,\sigma_i)\)</span> 满足 <span class="arithmatex">\(Av_i = \sigma_iu_i\)</span>，而且有 <span class="arithmatex">\(v_{r+1}...v_n\)</span> 满足 <span class="arithmatex">\(Av_i=0\)</span> .所以设 <span class="arithmatex">\(\Sigma\)</span> 是 <span class="arithmatex">\(\Sigma_r\)</span> 矩阵增广了 n - r 个0列 和 m-r 个0行，U 是 m-m 的矩阵，第 i 行是 <span class="arithmatex">\(u_i\)</span>,那么仍然有
+$$
+A = U\Sigma V^T
+$$</p>
+<hr />
+<p>sp:到这里，根据前面的 <strong>"如果"</strong>，只要 <code>Mark1</code> 部分的 <strong>“那么” ** 成立，就可以一直证明下去。（sp:这个如果其实明显成立的！）而Eq(13)就是证明： <span class="arithmatex">\(u =\frac{1}{\sigma}Av\)</span>  是 <span class="arithmatex">\(AA^T\)</span> 对应特征值为 <span class="arithmatex">\(\sigma^2\)</span> 的单位特征向量.所以下面的证明开始，也就是 <code>Mark2</code>，是已经假设：</strong>v 是 <span class="arithmatex">\(A^TA\)</span> 对应特征值 <span class="arithmatex">\(\sigma^2\)</span> 的单位特征向量**。</p>
+<hr />
+<p>网站上还有这样1个证明，感觉非常好：</p>
+<p>通常，为了证明正确，先假设其正确然后证明没有矛盾是错误的。但，如果每一个证明步骤都能逆转，那么这个证明过程是正确的。现在我们看看教授的证明过程</p>
+<ol>
+<li>假设 <span class="arithmatex">\(v_i\)</span> 是 <span class="arithmatex">\(A^TA\)</span> 的标准正交的特征向量，这总是存在的</li>
+<li>假设 <span class="arithmatex">\(\sigma_i^2\)</span> 是对应的特征值，也总是存在，并且正值</li>
+</ol>
+<p>根据上面2个假设，得到
+$$
+A^TAv_i  = \sigma_i^2v_i
+$$
+现在设 <span class="arithmatex">\(u_i =\frac{1}{\sigma_i}Av_i\)</span>,这也总是存在的，而且可被证明为标准正交的。那么，如下也总是正确的：
+$$
+A A ^ { T } u _ { i } = A A ^ { T } \frac { A v _ { i } } { \sigma _ { i } } = \frac { A } { \sigma _ { i } } A ^ { T } A v _ { i } = \frac { A } { \sigma _ { i } } \sigma _ { i } ^ { 2 } v _ { i } = \sigma _ { i } ^ { 2 } \frac { A v _ { i } } { \sigma _ { i } } = \sigma _ { i } ^ { 2 } u _ { i }
+$$
+也就是说 <span class="arithmatex">\(u_i\)</span> 是 <span class="arithmatex">\(AA^T\)</span> 的特征向量，而 <span class="arithmatex">\(\sigma_i^2\)</span> 的特征值。</p>
+<p>所以，根据定义，有
+$$
+Av_i = \sigma_iv_i
+$$
+这就是RSVD！</p>
+</blockquote>
+<p><strong>svd证明：</strong> 从包含 <span class="arithmatex">\(v's,\sigma's\)</span> 的 <span class="arithmatex">\(A^TAv_i = \sigma_i^2 v_i\)</span> 开始 <span class="arithmatex">\(^{Mark2}\)</span>，两边同时乘以 <span class="arithmatex">\(v_i^T\)</span>，得到</p>
+<p>$$
+\begin{aligned}</p>
+<p>v _ { i } ^ { \mathrm { T } } A ^ { \mathrm { T } } A v _ { i } = \sigma _ { i } ^ { 2 } v _ { i } ^ { \mathrm { T } } v _ { i } \quad </p>
+<p>&amp;\Rightarrow  </p>
+<p>(A v _ { i })^TAv_i = \sigma _ { i } ^ { 2 } v _ { i } ^ { \mathrm { T } } v _ { i } \quad  \</p>
+<p>&amp;\Rightarrow  </p>
+<p>|A v _ { i }|^2 = \sigma _ { i } ^ { 2 } v _ { i } ^ { \mathrm { T } } v _ { i }  \</p>
+<p>&amp;\Rightarrow  \left| A v _ { i } \right| ^ { 2 } = \sigma _ { i } ^ { 2 } \quad  \quad  \quad \color{orange} v_i\text{单位向量} \</p>
+<p>&amp; \Rightarrow \left| A v _ { i } \right| = \sigma _ { i }
+\end{aligned}
+\tag{12}
+$$
+Eq(12)求得了 <span class="arithmatex">\(Av_i\)</span> 的长度。现在，为了得到 <span class="arithmatex">\(Av_i = \sigma_iu_i\)</span>,关键是乘以 A：
+$$
+\begin{aligned}
+    A A ^T A v _ { i } &amp;= (AA^T)(Av_i)= A(A^TAv_i) &amp;\color{orange} v_i\text{是}A^TA特征向量, \sigma^2是特征值\</p>
+<div class="highlight"><pre><span></span><code>&amp; = A(\sigma_i^2v_i) = \sigma _ { i } ^ { 2 } (A v _ { i }) 
+&amp;\color{orange} Av_i\text{是}AA^T的特征向量 \\
+
+
+&amp;\Rightarrow  \quad u _ { i } = A v _ { i } / \sigma _ { i } 
+&amp;\color{orange}\text{根据Eq(12),}\text{除以长度得到单位特征向量}
+</code></pre></div>
+<p>\end{aligned}</p>
+<p>\tag{13}
+$$
+Eq(13)表明， <strong><span class="arithmatex">\(Av_i\)</span>是 <span class="arithmatex">\(AA^T\)</span> 的特征向量</strong>，然后除以长度 <span class="arithmatex">\(\sigma_i\)</span> 得到单位向量 <span class="arithmatex">\(u_i = Av_i / \sigma_i\)</span>.这些 u's 是正交的，因为：
+$$
+（Av_i)^T(Av_j)  = v_i^T(A^TAv_j) = v_i^T(\sigma_j^2v_j) = 0
+$$</p>
+<p>到这里，表明我们前面假设的目标是正确的，QED。</p>
+<hr />
+<p>我直接说出自己的看法：SVD是这个线代课程的高潮，它就是基础定理的最后1步：</p>
+<ol>
+<li>首先是4个子空间的维数</li>
+<li>然后是它们之间的正交性</li>
+<li>然后是标准正交基对角化A( orthonormal bases diagonalize A)</li>
+</ol>
+<p>上面3点都包含在公式 <span class="arithmatex">\(A = U\Sigma V^T\)</span>  当中！</p>
+<h2 id="73-eigshowpart2">7.3 Eigshow(part2)</h2>
+<p><code>&lt;#1&gt;</code>  展示了Matlab的 <code>eigshow</code> 的例子。第1个选项是 <code>eig</code>： x 在圆周运动，而 Ax 的轨迹是一个椭圆。第2个选项是 <code>svd</code>,有2个向量x,y，它们在沿着圆周运动的时候保持正交；Ax,Ay也会跟着移动（通常不垂直）。</p>
+<p>当 Ax 和 Ay 垂直的时候，你可以图形化的看到SVD，此时它们的方向，给出了标准正交基 <span class="arithmatex">\(u_1,u_2\)</span>,它们的长度给出了奇异值 <span class="arithmatex">\(\sigma_1,\sigma_2\)</span>.这时，向量x,y就是标准正交基 <span class="arithmatex">\(v_1,v_2\)</span> </p>
+<h2 id="74">7.4 图像压缩</h2>
+<p>一张图片实际上就是元素值是像素的矩阵,每一个像素都有一个灰度值(gray scale number),这个值在黑和白之间(实际上就是3个数字指定图像颜色).这个图像可能每行的像素个数是 <span class="arithmatex">\(512 = 2^9\)</span> ,而每列是 <span class="arithmatex">\(256 = 2^8\)</span> 个像素.这样的话图像就是 <code>256-512</code> 的矩阵,一共 <span class="arithmatex">\(2^{17}\)</span> 元素! 计算机保存这个图片是完全没问题的,但是 <code>CT</code> 或者 <code>MR</code> 就有大问题了：每一次扫描都会产生一个图片,如果图片是以30帧每秒的方式做成视频的话,1小时就有 <code>108000</code> 张图片...必须压缩图片</p>
+<p>什么是压缩呢?我们想要把 <span class="arithmatex">\(2^{17}\)</span> 个矩阵元素换为一批更少的数字,但却不丢失图像的质量.一个简单的方法就是使用更大的像素点:把每4个像素看成一组,然后把这4个像素替换成它们的平均值.这是 <code>4:1</code> 的压缩.但是如果想要更进一步的话,比如 <code>16:1</code> ,图像就变的不堪入目了.我们想要的是，把 <code>mn</code>个 元素替换后，人眼发觉不出来</p>
+<p>压缩是一个价值几百万的问题啊.本书稍后会讲的是 <code>jpeg</code> 使用的傅里叶变换和 <code>JPEG2000</code> 使用的小波(wavelets).现在我们试试一个SVD的方案.把这个 <code>256-512</code> 的矩阵<strong>替换成一个秩一矩阵:一行乘以一列</strong>.如果这种方案成功的话,那么存储空间就会变成 <code>512 + 256</code> (从乘法变成加法).这时候压缩率是 <span class="arithmatex">\(256*512/(256+512)&gt;170\)</span>.这甚至比我们预料的更好.实际上我们最终可能使用5个秩一矩阵(这是秩5的矩阵近似,a matrix approximation of rank 5).压缩率还是 <code>34:1</code> ,关键问题是图片的质量.</p>
+<p>SVD怎么发挥作用？A的最好的秩一矩阵的近似就是 <span class="arithmatex">\(σ_1 u_1 v_1^T\)</span>,使用的是最大的奇异值 <span class="arithmatex">\(σ_1\)</span>.而最好的秩5近似(rank 5 approximation) 就是前面5个秩1近似的和： <span class="arithmatex">\(σ_1u_1v_1^T + σ_2 u_2v_2^T+…+σ_5 u_5v_5T\)</span>.<strong>SVD把A的部分以重要性递减的顺序排序好！</strong></p>
+<hr />
+<p>图书馆要压缩的是不同的矩阵：行对应关键字(keyword)，列对应了书籍的标题(title)。这个 <code>word-title</code> 矩阵，如果关键字 <code>i</code> 出现在标题 <code>j</code>，那么矩阵元素 <span class="arithmatex">\(a_{ij}=1\)</span>.而且A的元素可以表示搜索的频率。参见 <code>&lt;01-08 #6&gt;</code> SVD在统计学当中的应用。</p>
+<p>一旦索引矩阵建立完成，那么搜索就是线代需要解决的问题了。这个巨大的矩阵，需要被压缩。SVD给出的就是一种极优的低秩近似(optimal low rank approximatin)，在实践中，比较适合处理图书馆的索引矩阵，而不是图像处理。</p>
+<p>总是需要权衡的就是，计算 <code>u's,v's</code> 的耗费。我们需要更好的方法：使用稀疏矩阵。</p>
+<h2 id="75">7.5 搜索引擎</h2>
+<blockquote>
+<p>这个算法可参见 https://en.wikipedia.org/wiki/HITS_algorithm</p>
+</blockquote>
+<p>作为SVD的应用的最后1个例子，我们看看网络搜索引擎，当你在GG钩锁的时候，结果就是一些以重要度排序(in order of importance)的网页.搜索引擎更多是基于链接，而不是网页内容(Search engines are link-based more than content-based)</p>
+<p>我们将要描述的HITS算法，就是生成网页列表的算法.假设我们要搜索的网页是200个，这其中还包含所有指向这些网页的链接，和这200个网站指向的链接。为了排序，假设重要度是以links out加上links in。</p>
+<ol>
+<li>如果这个网站有很多指向它的链接，特别是来自于导航网站的，那么这个网站称为权威网站(<strong>authority</strong>)</li>
+<li>如果这个网站有很多指出去的的链接，特别是来这指向那些权威网站的，那么这个网站称为导航网站(<strong>hub</strong>)</li>
+</ol>
+<p>我们想要数字 <span class="arithmatex">\(x_1...x_N\)</span> 来排序权威网站，这些值是权威值(authoritiy values); 而数字 <span class="arithmatex">\(y_1...y_N\)</span> 来排序导航网站，这些值就是导航值(hub values)。<strong>起始值<span class="arithmatex">\(x_i^0,y_i^0\)</span> 是简单的：分别表示网页 <code>i</code> 的links in和links out</strong></p>
+<blockquote>
+<p>sp:这就话的意思是，每个网页都有2个值：权威值和导航值</p>
+</blockquote>
+<p>下面是关键点：</p>
+<ul>
+<li>如果有很多重要的网站(如导航网站)的链接指向一个网页，那么这个网页可以认为是一个好的权威网站，比如，来自于大学网页的链接，比个人博客的链接更有价值</li>
+<li>而一个好的导航网站，有很多指向重要网页的链接(不幸的是，链接到 amazon.com是比链接到 welleslecambridge.com更有价值的，哈哈教授好幽默:))</li>
+</ul>
+<p>数字 <span class="arithmatex">\(x^0,y^0\)</span> 更新到 <span class="arithmatex">\(x^1,y^1\)</span> 的时候，要把链接的价值考虑进来：
+$$
+\text{Authority values:}\quad  x _ { i } ^ { 1 } = \sum _ { j \text { links to } i } y _ { j } ^ { 0 }</p>
+<p>\qquad</p>
+<p>\text{Hub values:}\quad  y _ { i } ^ { 1 } = \sum _ { i \text { links to } j } x _ { j } ^ { 0 }</p>
+<p>\tag{14}
+$$</p>
+<blockquote>
+<p>sp:也就是说</p>
+<ul>
+<li><span class="arithmatex">\(x_i^1\)</span> 的值，是其他网页到此网页的hub value的和</li>
+<li><span class="arithmatex">\(y_i^1\)</span> 的值，是这个网页到其他网页的authoritiy value的和</li>
+</ul>
+</blockquote>
+<p>用矩阵语言表示，这就是 <span class="arithmatex">\(x^1 = A^Ty^0;y^1 = Ax^0\)</span>,其中，如果 <code>i</code> 链接到 <code>j</code> ，矩阵A的 <span class="arithmatex">\(a_{ij}\)</span> 元素为1，否则为0.用图的术语来说，A是网页的邻接矩阵(adjacensy matrix).</p>
+<p>现在 <span class="arithmatex">\(x^1,y^1\)</span> 是比 <span class="arithmatex">\(x^0,y^0\)</span> 更好的排序。但还不是最好的。Eq(14)再进行1次，得到 <span class="arithmatex">\(x^2,y^2\)</span>: 
+$$
+\color{orange} \text{出现}A^TA,AA^T:\quad
+\quad \color{white}</p>
+<p>x ^ { 2 } = A ^ { \mathrm { T } } y ^ { 1 } = A ^ { \mathrm { T } } A x ^ { 0 } \quad \text { and } \quad y ^ { 2 } = A ^ { \mathrm { T } } x ^ { 1 } = A A ^ { \mathrm { T } } y ^ { 0 }
+\tag{15}
+$$
+进行2次之后，我们得到了 <span class="arithmatex">\(A^TA,AA^T\)</span>,进行20次之后，我们得到的就是 <span class="arithmatex">\((A^TA)^{10}，(AA^T)^{10}\)</span> . 当我们使用矩阵的幂后，最大的特征值 <span class="arithmatex">\(\sigma_1^2\)</span> 开始取得统治地位，而且向量x,y开始和 <span class="arithmatex">\(A^TA,AA^T\)</span> 的统治地位的特征向量 <span class="arithmatex">\(v1,u_1\)</span> 对齐(line up)，这也就是计算 SVD 的最大的一项，<code>&lt;01-09 #3&gt;</code> 的Power Method就是一个方法。线代能帮助理解互联网，真是神奇啊</p>
+<p>GG是随机沿着链接前进(random walk that follows web link)从而创建排名的。如果这个随机进入1个网站更多次，那么这个网站的排名就越高。The frequency of visits gives the leading eigenvector ( <span class="arithmatex">\(\lambda = 1\)</span> ) of the normalized adjacency matrix for the Web. <strong>That Markov matrix has 2.7 billion rows and columns,jrom 2.7 billion web sites.</strong>  </p>
+<p>这时目前为止遇到的最大的特征值问题！参见由<code>Langville</code> 和 <code>Meyer</code> 的书籍： <code>&lt;Google's PageRank and Beyond&gt;</code> , 详细介,链接是 <code>mathworks.com/company/newsletter/clevescorner/oct02_cleve.shtml</code> .但还是有很多秘密被GG隐藏了</p>
+<h2 id="76">7.6 总结</h2>
+<ol>
+<li>
+<p>SVD把A分解为 <span class="arithmatex">\(U\Sigma V^T\)</span>,并产生 r 个奇异值 <span class="arithmatex">\(\sigma_1\ge ... \ge \sigma_r &gt; 0\)</span></p>
+</li>
+<li>
+<p>数字 <span class="arithmatex">\(\sigma_1^2...\sigma_r^2\)</span> 是 <span class="arithmatex">\(AA^T,A^TA\)</span> 的非0特征值</p>
+</li>
+<li>
+<p>U,V的标准正交的列，是 <span class="arithmatex">\(AA^T,A^TA\)</span> 的特征向量，这些列，<strong>是A的4个子空间的标准正交基</strong>！这些基可以对角化矩阵:
+   $$
+   Av_i = \sigma_iu_i \quad \text{for } i \le r
+   $$
+   这就是 <span class="arithmatex">\(AV = U\Sigma\)</span></p>
+</li>
+</ol>
+<h2 id="77">7.7 典型例题</h2>
+<p><strong>1.</strong> 如下的3个分解，都是对一个秩是 r 的 m-n 矩阵 A 的分解，而且形式都可以写成是 <span class="arithmatex">\(A= c_1b_1+...+c_rb_r\)</span>,每一项都是1个秩1矩阵(列 c 乘以行 b).</p>
+<ol>
+<li>正交列 <span class="arithmatex">\(c_1...c_r\)</span> ，正交行 <span class="arithmatex">\(b_1...b_r\)</span></li>
+<li>正交列 <span class="arithmatex">\(c_1...c_r\)</span> ，三角行(triangular rows) <span class="arithmatex">\(b_1...b_r\)</span>，B上三角。</li>
+<li>三角列 <span class="arithmatex">\(c_1...c_r\)</span> ，三角行 <span class="arithmatex">\(b_1...b_r\)</span>，C是下三角，B是上三角</li>
+</ol>
+<p>A = CB 的乘法形式是 <span class="arithmatex">\(m-r\)</span> 乘以 <span class="arithmatex">\(r-n\)</span>. 那么，这3种分解是什么？秩，主元，奇异值什么时候出现？</p>
+<p>解： 3种形式的 A=CB 的分解不管是在应用数学，还是纯数学，都是及其重要的</p>
+<ol>
+<li>是SVD <span class="arithmatex">\(A = U \Sigma V^T\)</span>,正交的U，正交的 <span class="arithmatex">\(\Sigma V^T\)</span></li>
+<li>是GS正交化 <span class="arithmatex">\(A= QR\)</span>,正交的Q，三角的R</li>
+<li>是高斯消去 <span class="arithmatex">\(A = LU\)</span>,三角U，三角R</li>
+</ol>
+<p>让我们分解除奇异值 <span class="arithmatex">\(\sigma_i\)</span>，主元 <span class="arithmatex">\(d_i\)</span> 和高度 <span class="arithmatex">\(h_i\)</span>.</p>
+<ol>
+<li><span class="arithmatex">\(A = U \Sigma V^T\)</span> 当中，U,V的都是单位向量，奇异值在 <span class="arithmatex">\(\Sigma\)</span></li>
+<li><span class="arithmatex">\(A = QHR\)</span> 当中，Q当中的是单位向量，R的对角线都是1，高度 <span class="arithmatex">\(h_i\)</span> 在H（sp:这个高度是啥）</li>
+<li><span class="arithmatex">\(A= LDU\)</span> 当中，L,U的对角线都是1，主元在D</li>
+</ol>
+<p>一个满n维的盒子(r=m=n)的体积同时来自于  <span class="arithmatex">\(A = U \Sigma V^T=LDU=QHR\)</span>:
+$$
+| \operatorname { det } A | = \mid \text { product of } \sigma \text { 's } | = | \text { product of } d \text { 's } | = | \text { product of } h
+$$</p>
+<hr />
+<p><strong>2.</strong> 对于 2-2 的秩1的 <span class="arithmatex">\(A = xy^T\)</span>,比较一下 <span class="arithmatex">\(A = U \Sigma V^T\)</span> 和 <span class="arithmatex">\(A = S\Lambda S^{-1}\)</span></p>
+<p>解：  sp:不知道如何说</p>
+<p><img alt="image-20210329152743975" src="../.assets/image-20210329152743975.png" /></p>
+<hr />
+<p><strong>3.</strong> </p>
+<ul>
+<li>证明 <span class="arithmatex">\(\sigma_1 \ge |\lambda|_{max}\)</span>,也就是最大的奇异值统治所有特征值</li>
+<li>证明 <span class="arithmatex">\(\sigma_1 \ge |a_{ij}|\)</span>,也就是最大的奇异值统治所有元素值</li>
+</ul>
+<p>解： 注意，被正交矩阵乘，并不会改变长度 : 
+$$
+|Qx|^2 = x^TQ^TQx = x^Tx =  |x| ^2
+$$
+所以，对于 <span class="arithmatex">\(A = U \Sigma V^T\)</span>,<span class="arithmatex">\(U,V^T\)</span> 都是正交矩阵
+$$
+| A \boldsymbol { x } | = \left| U \Sigma V ^ { \mathrm { T } } \boldsymbol { x } \right| 
+= \left| \Sigma V ^ { \mathrm { T } } \boldsymbol { x } \right| 
+\leq \sigma _ { 1 } \left| V ^ { \mathrm { T } } \boldsymbol { x } \right| 
+= \sigma _ { 1 } | \boldsymbol { x } |
+\tag{16}
+$$
+而特征值是 <span class="arithmatex">\(|Ax| = |\lambda|| x|\)</span>,所以Eq(16)证明了 <span class="arithmatex">\(|\lambda|| x| \le \sigma_1 x\)</span> ,也就是 <span class="arithmatex">\(|\lambda|&lt; \sigma_1\)</span></p>
+<p>现在，假设对 x = (1,0...0),那么 Ax 就是 A 的第1列，根据 Eq(16),这个列的长度 <span class="arithmatex">\(\le \sigma_1\)</span>,从而所有的列的长度都小于 <span class="arithmatex">\(\sigma_1\)</span> !</p>
+<hr />
+<p><strong>例5.</strong> 估计下面 <span class="arithmatex">\(A,A^{-1}\)</span> 的奇异值 <span class="arithmatex">\(\sigma_1,\sigma_2\)</span>
+$$
+\text{eigenvalues}= 1: \quad A = \left[ \begin{array} { l l } 1 &amp; 0 \ C &amp; 1 \end{array} \right] \text { and } A ^ { - 1 } = \left[ \begin{array} { r r } 1 &amp; 0 \ - C &amp; 1 \end{array} \right]
+$$
+解： A的第1列的长度是 <span class="arithmatex">\(\sqrt{1+C^2} \le \sigma_1\)</span>,也就是 <code>典例3</code>。从而，<span class="arithmatex">\(\sigma_1 \ge 1,\sigma_1 \ge C\)</span>.而且 <span class="arithmatex">\(\sigma_1\)</span> 会统治特征值1，1和元素C。如果 <span class="arithmatex">\(C\)</span> 很大，那么<span class="arithmatex">\(\sigma_1\)</span> 也会比特征值大很多</p>
+<p>矩阵A的行列式是1，<span class="arithmatex">\(A^TA = \left[\begin{matrix} 1 &amp; 0 \\ 2c &amp; 1 \end{matrix} \right]\)</span> 的行列式也是1，那么 <span class="arithmatex">\(\sigma_1 \sigma_2 = 1\)</span>.对于这个矩阵，以为 <span class="arithmatex">\(\sigma_1 \ge 1,\sigma_1 \ge C\)</span>,可得 <span class="arithmatex">\(\sigma_2 \le 1,\sigma_2 \le 1/C\)</span></p>
+<p>结论： 如果 C = 1000,那么 <span class="arithmatex">\(\sigma_1 \ge 1000,\sigma_2 \le 1000\)</span>.A的生病的(ill conditioned)...A的逆在代数上是很容易求的，但通过 Ax = b来消去得到是很危险的，因为A很接近奇异矩阵，虽然特征值都是 <span class="arithmatex">\(\lambda = 1\)</span>.只要把A的 (1,2) 元素从0改为 1/C= 1/1000，矩阵就变为奇异的。(sp:这里应该值舍去的误差)</p>
+<p><code>&lt;01-09 #2&gt;</code> 会截杀 <span class="arithmatex">\(\sigma_{max} /\sigma_{min}\)</span> 为何控制了消去当中的舍去误差(roundoff error)。而且 Matlab也会通过在这个临界数字过大的时候警告你，本例是  <span class="arithmatex">\(\sigma_1/\sigma_2 \ge C^2\)</span></p>
+<h1 id="lk1">Lk1:特殊的特征值/向量</h1>
+<p>矩阵的性质如果关联的特征值和特征向量呢？这时本章的关键。下表总结</p>
+<table>
+<thead>
+<tr>
+<th>矩阵</th>
+<th>特征值</th>
+<th>特征向量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对称矩阵 <span class="arithmatex">\(A^T = A\)</span></td>
+<td><span class="arithmatex">\(\lambda\)</span> 都是实数</td>
+<td>特征向量垂直 <span class="arithmatex">\(x_i^Tx_j = 0\)</span></td>
+</tr>
+<tr>
+<td>正交矩阵 <span class="arithmatex">\(Q^T = Q^{-1}\)</span></td>
+<td>所有 $</td>
+<td>\lambda</td>
+</tr>
+<tr>
+<td>Complex Hermitian: <span class="arithmatex">\(\bar{A}^T = A\)</span></td>
+<td><span class="arithmatex">\(\lambda\)</span> 都是实数</td>
+<td>特征向量垂直 <span class="arithmatex">\(\overline{x_i}^Tx_j = 0\)</span></td>
+</tr>
+<tr>
+<td>反对称：<span class="arithmatex">\(A^T=-A\)</span></td>
+<td><span class="arithmatex">\(\lambda\)</span> 都是虚数</td>
+<td>特征向量垂直 <span class="arithmatex">\(\overline{x_i}^Tx_j = 0\)</span></td>
+</tr>
+<tr>
+<td>正定：<span class="arithmatex">\(x^TAx&gt;0\)</span></td>
+<td>所有 <span class="arithmatex">\(\lambda\)</span> &gt;0</td>
+<td>因为 <span class="arithmatex">\(A^T = A\)</span>,所以正交</td>
+</tr>
+<tr>
+<td>马尔科夫：<span class="arithmatex">\(m_{ij}&gt;0,\sum_{i=1}^n m_{ij} =1\)</span></td>
+<td><span class="arithmatex">\(\lambda_{max}=1\)</span></td>
+<td>稳态 x&gt;0</td>
+</tr>
+<tr>
+<td>相似矩阵: <span class="arithmatex">\(B = M^{-1}AM\)</span></td>
+<td><span class="arithmatex">\(\lambda(B) = \lambda (A)\)</span></td>
+<td><span class="arithmatex">\((x(B) = M^{-1}x(A)\)</span></td>
+</tr>
+<tr>
+<td>投影矩阵：<span class="arithmatex">\(P = P^2 = P^T\)</span></td>
+<td><span class="arithmatex">\(\lambda = 1；0\)</span></td>
+<td>特征向量就是列空间，零空间向量。参见 <code>&lt;#1 例2&gt;</code></td>
+</tr>
+<tr>
+<td>Plane Rotation</td>
+<td><span class="arithmatex">\(e^{i\theta},e^{-i\theta}\)</span></td>
+<td><span class="arithmatex">\(x=(1,i),(1,-i)\)</span></td>
+</tr>
+<tr>
+<td>反射：<span class="arithmatex">\(I - 2uu^T\)</span></td>
+<td><span class="arithmatex">\(\lambda = -1;1...1\)</span></td>
+<td>u和整个平面 <span class="arithmatex">\(u^{\perp}\)</span></td>
+</tr>
+<tr>
+<td>秩1：<span class="arithmatex">\(uv^T\)</span></td>
+<td><span class="arithmatex">\(\lambda=v^Tu;0...0\)</span></td>
+<td>u和整个平面 <span class="arithmatex">\(v^{\perp}\)</span></td>
+</tr>
+<tr>
+<td>逆 <span class="arithmatex">\(A^{-1}\)</span></td>
+<td><span class="arithmatex">\(1/\lambda(A)\)</span></td>
+<td>A的特征向量</td>
+</tr>
+<tr>
+<td>平移：<span class="arithmatex">\(A+CI\)</span></td>
+<td><span class="arithmatex">\(\lambda(A)+C\)</span></td>
+<td>A的特征向量</td>
+</tr>
+<tr>
+<td>Stable power:<span class="arithmatex">\(A^n \rightarrow 0\)</span></td>
+<td>所有 $</td>
+<td>\lambda</td>
+</tr>
+<tr>
+<td>Stable Exponential:<span class="arithmatex">\(e^{At}\rightarrow0\)</span></td>
+<td>all re <span class="arithmatex">\(\lambda &lt;0\)</span></td>
+<td>任何特征向量</td>
+</tr>
+<tr>
+<td>Cyclic Permutation:row 1 of <code>I</code> Last</td>
+<td><span class="arithmatex">\(\lambda _ { k } = e ^ { 2 \pi i k / n }\)</span></td>
+<td><span class="arithmatex">\(x_k = (1,\lambda_k...\lambda_k^{n-1})\)</span></td>
+</tr>
+<tr>
+<td>三对角：-1，2，-1在对角线</td>
+<td><span class="arithmatex">\(\lambda _ { k } = 2 - 2 \cos \frac { k \pi } { n + 1 }\)</span></td>
+<td><span class="arithmatex">\(x _ { k } = \left( \sin \frac { k \pi } { n + 1 } , \sin \frac { 2 k \pi } { n + 1 } , \ldots \right)\)</span></td>
+</tr>
+<tr>
+<td>Diagonalizable： <span class="arithmatex">\(A= S\Lambda S^{-1}\)</span></td>
+<td>$\Lambda $ 的对角线</td>
+<td>S的列是独立的</td>
+</tr>
+<tr>
+<td>Symmetric: <span class="arithmatex">\(A =Q\Lambda A^T\)</span></td>
+<td><span class="arithmatex">\(\Lambda\)</span> 的对角线(实数）</td>
+<td>Q的列是标准正交的</td>
+</tr>
+<tr>
+<td>Schur:<span class="arithmatex">\(A= QTQ^{-1}\)</span></td>
+<td>T的对角线</td>
+<td>如果<span class="arithmatex">\(A^TA = AA^T\)</span>,那么就是Q的列</td>
+</tr>
+<tr>
+<td>jordan:$ J = M^{-1}AM$</td>
+<td>J的对角线</td>
+<td>每一个块都给出 <span class="arithmatex">\(x=(0...1...0)\)</span></td>
+</tr>
+<tr>
+<td>矩形： <span class="arithmatex">\(A = U\Sigma V^T\)</span></td>
+<td>rank(A) = rank(<span class="arithmatex">\(\Sigma\)</span>)</td>
+<td><span class="arithmatex">\(A^TA,AA^T\)</span> 的特征向量在V,U</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2">复习2</h1>
+<blockquote>
+<p>视频25</p>
+</blockquote>
+<p><strong>1.</strong> 向量 <span class="arithmatex">\(a = \left[\begin{matrix}2\\1\\2\\ \end{matrix} \right]\)</span>,a所在直线的投影矩阵P是?</p>
+<p>解: 注意这里的a是向量,那么
+$$
+P = \frac { a a ^ { T } } { a ^ { T } a } = \frac { 1 } { 9 } \left[ \begin{array} { l } 2 \ 1 \ 2 \end{array} \right] [ 212 ] = \frac { 1 } { 9 } \left[ \begin{array} { l l l } 4 &amp; 2 &amp; 4 \ 2 &amp; 1 &amp; 2 \ 4 &amp; 2 &amp; 4 \end{array} \right]
+$$
+P的特征值，特征向量，秩是多少?秩是1,因为P的每个列都是a向量线性组合在一起的,列空间其实就是通过a的一条直线.秩为1,所以是奇异矩阵,所以0一定是一个特征值,而秩1,意味着零空间是二维的,那么会有两个特征值是0!有两个独立的特征向量,对应的特征值都是0.第三个特征值是1(从迹得到)</p>
+<p>特征值为1对应的特征向量是多少呢?也就是说那个向量不会动,所以a也是特征值1对应的特征向量. 因为如果我将投影矩阵作用到a上,还是会得到a.也就是Pa = a.所以特征值1. 再进一步,求解,初值 <span class="arithmatex">\(u_0=(9,9,0),u_(k+1)=Pu_k\)</span>.算一下 <span class="arithmatex">\(u_1  = (6,3,6)\)</span>.还需要继续计算吗,不需要了,因为已经在a这条直线上了,不管多少次,还是在a上
+$$
+    u_k= P^k u_0=(5,3,6))
+$$
+关键就是,当P是一个投影矩阵, <span class="arithmatex">\(P^2,P^3…\)</span> 都等于P,就不用按部就班,求特征值和特征向量.如果P不是投影矩阵,需要将<span class="arithmatex">\(u_0\)</span> 展开成特征向量的线性组合: $    u_0= c_1 x_1+ c_2 x_2+…$.然后 $A^k  u_0= c_1λ_1^k x_1+ c_2 λ_2^k x_2+… $ ,找出 <span class="arithmatex">\(c_1,c_2…\)</span></p>
+<p>步骤就是找特征值,特征向量,使用初值确定c</p>
+<p>但是P是投影矩阵的时候,两个特征值都是0,第3个是1,因此 <span class="arithmatex">\(c_2 λ_2^k x_2  + c_3λ_3^k x_3\)</span> 可以丢弃掉,不管投影几遍都只是<span class="arithmatex">\(c_1 λ_1^k x_1\)</span>,要学会举一反三啊</p>
+<hr />
+<p><strong>2.</strong> 这个问题是关于讲点拟合到直线上 <code>t = 1,y = 4;t =  2,y = 4;t = 3,y = 8</code>.试图把这些点拟合到过原点的线.线的方程是 <code>y = Dt</code>.只有一个未知数D.三个方程,但是我们知道不存在切确的D,只能求最优解.Ax =b类型的矩阵方程是:
+$$
+\left[\begin{matrix}1\2\3\ \end{matrix} \right]D = ​​\left[\begin{matrix}4\5\8\ \end{matrix} \right]
+$$
+为求得最优的D.我们需要
+$$
+    A^T AD^′= A^T b⇒14D^′=38⇒D=38/14
+$$
+最优直线找到了.还有个问题,我们把什么向量投影到什么线上(或者说子空间)了?这是最小二乘那一节的关键.我想让你们从两种角度考虑最小二乘,一种就是 <code>y=Dt</code> 的图像上直线本身,另外一种就是我们的投影情况. 将整个问题以向量形式看待,<code>b = (4,5,8)</code> 就是向量,将b向量投影到了A的列空间.这个例子就是 <code>(1,2,3)</code> 那条线.最小二乘的投影角度就是向量b投影到A的列空间,<code>x'</code>就是投影的最优组合.</p>
+<hr />
+<p><strong>3.</strong> (特征值） 一个4-4的矩阵A的特征值分别是 <span class="arithmatex">\(λ_1,λ_2,λ_3,λ_4\)</span>. </p>
+<ol>
+<li>这些特征值满足什么条件的时候,矩阵可逆?
+   特征值都不为0的时候，这时候行列式不为0，可逆</li>
+<li>A逆的行列式是多少?(这里不知道为啥)
+   <span class="arithmatex">\(1/(λ_1 λ_2 λ_3 λ_4 )\)</span></li>
+<li>A+I的迹是多少?
+   <span class="arithmatex">\(λ_1+λ_2+λ_3+λ_4+4\)</span></li>
+</ol>
+<hr />
+<p><strong>4.</strong> (行列式代数余子式) 有这样一种矩阵,对角线和对角线上下的元素都为1,其他是0(其实就是三对角矩阵)能否通过公式来表示 <span class="arithmatex">\(A_n\)</span> 的行列式<span class="arithmatex">\(D_n\)</span>?
+$$
+A _ { 4 } = \left[ \begin{array} { l l l } 1 &amp; 1 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 1 &amp; 0 \ 0 &amp; 1 &amp; 1 &amp; 1 \ 0 &amp; 0 &amp; 1 &amp;1 \end{array}  \right]
+$$
+解:其实三对角矩阵的行列式存在递归.递归是什么呢?我们设是 <span class="arithmatex">\(D_n=xD_{n−1}+yD_{n−2}\)</span>. 以4-4为研究对象,根据代数余子式沿着第一行展开,只有第1行的2个 <code>1,1</code> 需要计算</p>
+<p>首先，第1个1，去掉第一行第一列之后,还是个三对角矩阵,那么x = 1.</p>
+<p>再看去掉行1列2(注意代数余子式会带1个负号),不是三对角矩阵了,如下：
+$$
+\left[ \begin{array} { l l l } 1  &amp; 1 &amp; 0 \ 0  &amp; 1 &amp; 1 \ 0 &amp; 1 &amp; 1 \end{array}  \right]
+$$
+但沿第一列展开,又变成三对角矩阵了,可以确定 <code>y = -1</code>,那么
+$$
+    D_n=D_{n−1}−D_{n−2}
+$$
+现在的问题是,把这个递归当做方程组来解.首先我们得到 <span class="arithmatex">\(D_1=1,D_2=0\)</span>,那么：
+$$
+\left[\begin{matrix} D_n  \ D_{n-1}  \\end{matrix} \right] =\left[\begin{matrix} - &amp; - \ - &amp; - \end{matrix} \right] \left[\begin{matrix} D_{n-1}  \ D_{n-2}  \\end{matrix} \right]
+$$
+我们要确定的是那个矩阵是多少?这里就是处理二阶差分方程!通过引入向量,原方程变成一阶向量方程.我们最终可以确定方程如下所示
+$$
+\left[\begin{matrix} D_n  \ D_{n-1}  \\end{matrix} \right] =\left[\begin{matrix} 1 &amp; -1 \ 1 &amp; 0 \end{matrix} \right] \left[\begin{matrix} D_{n-1}  \ D_{n-2}  \\end{matrix} \right]
+$$
+接下来干嘛?特征值特征向量! <span class="arithmatex">\(\lambda^2-\lambda+1 = 0\)</span>.必须求解出 <span class="arithmatex">\(\lambda\)</span> ,否则不足以判断这个矩阵到底稳不稳定.随着计算单额次数越来越多,D的值不断增加,收敛于0,还是周期变化?答案就在特征值里面.我们想要找到λ到底有多大.
+$$
+\lambda = \frac{1\pm\sqrt{-3}}{2} \Rightarrow \quad =  \frac{1+\sqrt{3}i}{2}，\frac{1-\sqrt{3}i}{2}
+$$
+是复数.λ的大小 <code>|λ|</code> 是判断稳定性的关键.这两个复数有点眼熟,它们是共轭复数，它们离原点多远呢？实部的平方加上虚部的平方=1.它们是位于单位圆上的复数 <span class="arithmatex">\(e^{iθ}\)</span>.  即 <span class="arithmatex">\(cosθ+isinθ\)</span>,θ是多少? <span class="arithmatex">\(\pi/3\)</span>,所以两个特征值分别是 <span class="arithmatex">\(e^{i\pi/3},e^{−i\pi/3}\)</span>,那么它们和稳定性有什么联系?它的6次方旋转一周,最后回到1,特征值的6次方等于1.这对矩阵本身又有什么影响?<strong>矩阵A的6次方的特征值分别是1,1!因此A的6次方是一个单位阵</strong>!所以上面的递归周期变化,不收敛也不发散.</p>
+<blockquote>
+<p>这里和 <code>sp-ques1</code> 有点像啊，真的能得出这个结论吗？</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.sections", "search.highlight", "search.share", "search.suggest", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>

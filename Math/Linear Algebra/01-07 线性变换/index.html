@@ -1,0 +1,3124 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://akane.github.io/blog/Math/Linear%20Algebra/01-07%20%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/MIKASA.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>01 07 线性变换 - Akane's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Akane&#39;s blog" class="md-header__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Akane's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 07 线性变换
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/PracticalSkills/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CS
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Akane&#39;s blog" class="md-nav__button md-logo" aria-label="Akane's blog" data-md-component="logo">
+      
+  <img src="../../../assets/MIKASA.png" alt="logo">
+
+    </a>
+    Akane's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Akane-6730/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/PracticalSkills/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PracticalSkills
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PracticalSkills
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Editor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Editor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emacs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Tool
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fancier Make Options
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debugging Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/GDB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    gdb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Valgrind.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Valgrind
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/PracticalSkills/Compile%20%28gcc%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compile (gcc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大英Ⅲ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            大英Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/VLS%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VLSⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/English/%E5%A4%A7%E8%8B%B1%E2%85%A2/IC%E2%85%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ICⅡ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CTF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Crypto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CTF/Crypto/Introduction%20to%20CryptoHack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to CryptoHack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 直线还是直线，三角形还是三角形
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 变换的例子
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 平面的线性变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 总结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 典例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Akane-6730/blog/edit/master/docs/Math/Linear Algebra/01-07 线性变换.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<blockquote>
+<ul>
+<li>Linear Transformation</li>
+<li>综合V31,V32，V33</li>
+<li>先提前阅读 <code>&lt;#Lk1,Lk2&gt;</code> 理清楚概念!</li>
+<li>还没有理解的是：为何<span class="arithmatex">\(AA^+,A^+A\)</span> 是行列空间的投影？</li>
+</ul>
+</blockquote>
+<h1 id="1">1 线性变换的概念</h1>
+<blockquote>
+<ul>
+<li>The Idea of a Linear Transformation</li>
+<li>综合V31一部分</li>
+</ul>
+</blockquote>
+<p>线性变换是学习线代的另一个开始点.即使不知道什么是矩阵,也能理解线性变换.物理学家,并不关心坐标系和坐标值,他们只关心如何描述这一变换.在大多数情况下,每个线性变换都对应一个矩阵,而矩阵的背后,正是线性变换的概念.</p>
+<p><strong>例V1</strong> 不通过任何矩阵,也可以通过线性变换描述一个投影.如，把 <span class="arithmatex">\(R^2\)</span> 平面内的一个向量,变成 <span class="arithmatex">\(R^2\)</span> 平面内另一个向量(<span class="arithmatex">\(R^2 \rightarrow R^2\)</span>),这种关系通常称为映射(mapping).现在映射规则呢?假设平面上有一条直线,我打算把平面内的所有向量v投影到直线上,那么线性变换生成另一个向量 <code>T(v)</code>,<code>T(v)</code>就是投影到直线上的向量,T就就像是一个函数,对某输入进行变换,得到一个输出.你看到,这里其实没有坐标.事实上,也可以把坐标轴去掉 </p>
+<hr />
+<p>当矩阵A乘以一个向量 <code>v</code>,就变换 <code>v</code> 为另外一个向量 <code>Av</code>.输入是 <code>v</code>,输出是 <span class="arithmatex">\(T(v) = Av\)</span>.变换 <code>T</code> 的概念和函数是一样的,输入是 <code>x</code>,输出是 <code>f(x)</code>.我们用矩阵乘以一个向量 <code>v</code> ，或者用函数计算一个数字 <code>x</code>.更重要的是,一次性看清楚所有 <code>v</code> 的变换.<strong>当所有v都乘以A的时候,我们变换的是所有v组成的空间V</strong></p>
+<p>A把 <code>v</code> 变换为 <code>Av</code>,把 <code>w</code> 变换为 <code>Aw</code> ,可以知道 <span class="arithmatex">\(u = v+w\)</span> 发生什么吗?没有疑问,<code>Au</code> 就是 <span class="arithmatex">\(Av +Ａｗ\)</span>.矩阵乘法 <code>T(v) = Av</code> 是<strong>线性变换</strong></p>
+<blockquote>
+<p><strong>一个变换T对每一个 V 当中的输入向量 v 都给出1个输出 T(v).</strong> 如果对与所有的v,w，T变换都满足下面2个条件，那么这个T变换就是<strong>线性的(linear)</strong>:</p>
+<ol>
+<li><span class="arithmatex">\(T(v+w) = T(v) +T(w)\)</span></li>
+<li>$T(cv) = cT(v) $ for all c</li>
+</ol>
+<p>这其实就是向量的加法和数乘.线性变换应该保证这两种运算的不变性。 如投影就是一种线性变换,可以验证这一点.如果v变成了原来的两边,投影也是,如果变成-v,投影的方向也会相反.</p>
+<hr />
+<p>如果输入 <code>v = 0</code> ,输出 <code>T(v)</code> 必须是0.<strong>零向量通过线性变换一定是0向量，所以可以通过T(0)来判断是不是线性变换.</strong>.所以例V2平面平移不是一个线性变换。我们可以把 (1,2) 的要求组成一个:
+$$
+\color{orange} \text{Liear Transformation:} \qquad
+\color{white} T(cv+dw) \quad \text{必须等于} \quad  cT(v) +dT(w)</p>
+<p>\tag{M1}
+$$
+上式的意思就是：<strong>任何v,w线性组合的线性变换,肯定会产生对T(v),T(w)的同样的线性组合</strong>。而矩阵乘法是线性的:<span class="arithmatex">\(A(cv+dw) = cAv +dAw\)</span>！</p>
+</blockquote>
+<p><strong>例V2</strong> 线性变换是有很多限制的.假设 <code>T</code> 把 <span class="arithmatex">\(u_0\)</span> 加到每一个变换向量上,那么 <span class="arithmatex">\(T(v) = v + u_0,T(w) = w + u_0\)</span>.这不是线性的!把T应用到v+w,我们得到 <span class="arithmatex">\(T(v+w) = v+w+u_0\)</span>,和 <code>T(v) + T(w)</code> 是不等价的
+$$
+\quad v + w + u _ { 0 } \quad \text { 不等于 } \quad T ( v ) + T ( w ) = v + u _ { 0 } + w + u _ { 0 } .  </p>
+<p>\quad \color{orange} \text{Shift is not linear!}
+$$
+例外就是当 <span class="arithmatex">\(u_0= 0\)</span> ，这时 <span class="arithmatex">\(T(v) = v\)</span>,这是<strong>恒等变换(identity transformation)</strong>，明显是线性的,这时输入空间V = 输出空间W(<code>sp-mark-A1</code>)</p>
+<p>线性-平移(linear-plus-shift)的变换 <span class="arithmatex">\(T(v) = Av + u_0\)</span> 被称为<strong>仿射(affine)</strong>.虽然 T 不再是线性的,但是直线还是直线.计算机图形学的仿射变换将在 <code>&lt;01-08 #6&gt;</code> 学习,因为我们必须能够移动图片啊</p>
+<p><strong>例1.</strong> 选择 <code>a = (1,3,4)</code>,设 <code>T(v)</code> 是点乘: <code>a∙v</code>,那么输入是 <span class="arithmatex">\(v=(v_1,v_2,v_3)\)</span>,输出是 <span class="arithmatex">\(T(v) = a\cdot v = v_1 + 3v_2 + 4v_3.\)</span> 这是线性的.输入的v来自于3维空间,所以 <span class="arithmatex">\(V=R^3\)</span>.输出只是简单的一个数字,所以输出空间 <span class="arithmatex">\(W = R^1\)</span>.这其实是，用只有一行的矩阵 <span class="arithmatex">\(A = [1，3，4]\)</span> 乘以向量v,也就是 <span class="arithmatex">\(T(v) = Av\)</span>.</p>
+<hr />
+<p>如果输出包含了乘积或者长度: <span class="arithmatex">\(v_1^2\)</span> 或者 <span class="arithmatex">\(v_1 v_2\)</span> 或者 <span class="arithmatex">\(|v|\)</span>,那么T不是线性的</p>
+<p><strong>例2.</strong> 长度 <span class="arithmatex">\(T(v) = |v|\)</span> 不是线性的.虽然向量翻倍,长度也会翻倍,这没错,但是如果向量乘以<code>-2</code>,长度还是翻倍,而不是乘以<code>-2</code>,明显错了。要求(1) 是 <span class="arithmatex">\(|v+w| =|v|+|w|\)</span>,要求(2)是 <span class="arithmatex">\(|cv| = c|v|\)</span>,2个都不成立!因为</p>
+<ol>
+<li><span class="arithmatex">\(|v+w|\le |v|+|w|\)</span></li>
+<li><span class="arithmatex">\(|-v| \ne -|v|\)</span>,c是负数的时候不正确</li>
+</ol>
+<hr />
+<p><strong>例3.(重要)</strong>   T是一个把任何向量旋转30度的变换.定义域(domain)是xy平面(所有输入向量v来自的地方),值域(range)也是xy平面(所有旋转后的向量T(v)).没有矩阵的时候,我们这样描述T:旋转30度</p>
+<p>旋转是线性的吗?是的,我们可以旋转2个向量,然后加载一起,和T(v) + T(w)和T(v+w)是一样的.整个输入平面都旋转了.</p>
+<p><strong>例V3</strong>  再看一个旋转45度的例子.平面内的一个向量映射到平面内另一个向量,任何输入向量被逆时针旋转45度</p>
+<p><img alt="image-20210701172345101" src="../.assets/image-20210701172345101.png" /></p>
+<p>如果v翻倍,旋转后的向量同样翻倍,对于v+w,无论先旋转后加,还是加后旋转,结果是一样的.因此这是线性变换.</p>
+<h2 id="11">1.1 直线还是直线，三角形还是三角形</h2>
+<blockquote>
+<p>Lines to Lines,Triangles to Triangles</p>
+</blockquote>
+<p><img alt="image-20210329165335473" src="../.assets/image-20210329165335473.png" /></p>
+<p>Fig7.1最左边2条直线，展示了输入空间的 v 到 w 的直线,也展示了输出空间的 <code>T(v)</code> 到 <code>T(w)</code> 的直线.线性化告诉我们:输入线上的每个点,都到了输出线的点上.而且,<strong>等距的点在输出空间还是等距的点(Equally spaced points go to equally spaced points).</strong> 输入线上的中心点 <span class="arithmatex">\(u = 1/2 v+1/2 w\)</span>,变换到输出线上的中心点:<span class="arithmatex">\(T(u) = 1/2 T(v)+1/2 T(w)\)</span></p>
+<p>Fig7.1右边2增加了一维.现在我们有3个顶点 <span class="arithmatex">\(v_1,v_2,v_3\)</span>.这些输入有3个输出 <span class="arithmatex">\(T(v_1),T(v_2),T(v_3)\)</span>.输入的三角形,输出还是一个三角形.等距的点还是等距的(边上,和边之间).中心点是 <span class="arithmatex">\(u = 1/3(v_1+v_2+v_3)\)</span>,输出的中心点是 <span class="arithmatex">\(T(u) = 1/3 (T(v_1 )+T(v_２ )+T（v_３ )\)</span>.</p>
+<blockquote>
+<p><strong>线性化的规则，可以扩展到3个或者n个向量的组合：</strong>
+$$
+\text{Linearity:} \quad 
+u=c_1v_1+...+c_nv_n 
+\quad \text{transform to}\quad
+T(u) = c_1T(v_1)+...+c_nT(v_n) \tag{1}
+$$</p>
+</blockquote>
+<p><strong>注意：</strong>变换有自己的语言,当没有矩阵的时候,我们不能讨论列空间.但概念是可以继续使用的。如</p>
+<ol>
+<li>列空间包含了所有的输出Av</li>
+<li>零空间包含的是所有Av = 0的输入</li>
+</ol>
+<p>上面2个概念在变换可以用"<strong>值域(range)</strong>"和"<strong>内核(kernel)</strong>"来表示：</p>
+<ul>
+<li>T的值域 = 所有输出 T(v) 的集合 (对应列空间Av)</li>
+<li>T的内核 = 所有 <code>T(v) = 0</code> 的输入的集合(对应零空间)</li>
+</ul>
+<p>值域在输出空间W.内核在输入空间V.当 <code>T</code> 可用一个矩阵乘法表示的时候,就有 <span class="arithmatex">\(T(v) = Av\)</span>,这时候,你可以把这些概念理解为零空间和列空间</p>
+<h2 id="12">1.2 变换的例子</h2>
+<blockquote>
+<p>Example of Transformation(mostly linear)</p>
+</blockquote>
+<p><strong>例4.</strong> 直接投影任何3维向量到xy平面,那么 <span class="arithmatex">\(T(x,y,z) = T(x,y,0)\)</span>.值域就是这个平面,包含了所有的T(v).内核是z轴(投影为0).这个投影是线性的.</p>
+<p><strong>例5.</strong> 投影任何3维向量到水平面z = 1,那么 <span class="arithmatex">\(v = (x,y,z)\)</span> 变成 <span class="arithmatex">\(T(v) = (x,y,1)\)</span>.这个变换不是线性的.因为它甚至不能把 <code>v = 0</code> 投影到 <span class="arithmatex">\(T(v) = 0\)</span></p>
+<p>3-3矩阵A乘以任何3维向量,这个 <span class="arithmatex">\(T(v) = Av\)</span> 是线性的:
+$$
+T ( v + w ) = A ( v + w ) \quad \text { 确实等于 } \quad A v + A w = T ( v ) + T ( w )
+$$</p>
+<p><strong>例6.</strong> 假设T变换可用矩阵A表示，并且A是可逆矩阵.那么T的内核是0向量,值域 W 等于定义域 V</p>
+<blockquote>
+<p>sp:可逆矩阵，只有零向量能产生Ax = 0,并且因为可逆，各列独立，所以列空间 Av 等于矩阵A本身的列生成的空间</p>
+</blockquote>
+<p>另外一个线性变换是乘以 <span class="arithmatex">\(A^{−1}\)</span>.这是逆变换(inverse transform <span class="arithmatex">\(T^{−1}\)</span>),把任何T(v)向量变换回v
+$$
+T^{-1}(T(v)) =v \quad \text{符合矩阵乘法} \quad  A^{-1}(Av) = v
+$$</p>
+<hr />
+<p>思考1个问题： 所有的输入空间 <span class="arithmatex">\(V = R^n\)</span> 到输出空间 <span class="arithmatex">\(W = R^m\)</span> 的<strong>线性变换</strong>，都可以由矩阵产生吗？当线性的 T 被描述为旋转或者投影....等等的时候，总会有一个矩阵隐藏在这个变换T下吗?</p>
+<p><strong>是的</strong>.这是一种学习线性代数的方式,不是从矩阵开始学起.下一节我们将看到,这一切都是矩阵</p>
+<blockquote>
+<p>sp:注意，必须是线性变换。也就是说，一切线性变换都可以用一个矩阵表示！</p>
+</blockquote>
+<h2 id="13">1.3 平面的线性变换</h2>
+<blockquote>
+<p>Linear Transformation of the plane</p>
+</blockquote>
+<p>看一个变换的效果,比定义它有趣多了.当一个2-2矩阵A乘以所有 <span class="arithmatex">\(R^2\)</span> 的向量,我们可以看到它怎么作用.我们从一个有11个顶点的房子开始,有11个向量 <code>v</code>，它们变换为11向量 <code>Av</code> .v之间的直线变成Av之间的直线(这个变换是线性的!).把A作用到一个标准的房子上,可以产生一个新的房子--可能拉伸或者旋转等等</p>
+<p><img alt="image-20210329170026615" src="../.assets/image-20210329170026615.png" /></p>
+<p>矩阵H的列是第1个房子的11个顶点，矩阵A乘以H产生了其他形状的房子</p>
+<blockquote>
+<p>sp:plot2d是TeachingCode里面的函数</p>
+</blockquote>
+<h2 id="14">1.4 总结</h2>
+<ol>
+<li>一个变换T,把输入空间的每一个v,变换成输出空间的T(v)</li>
+<li>如果 <span class="arithmatex">\(T(v+w) = T(v) + T(w),T(cv) = cT(v)\)</span>,那么T是线性的:直线变换后还是直线</li>
+<li><strong>线性组合，变换之后，还是线性组合</strong>:<span class="arithmatex">\(T(c_1 v_1+…+ c_n v_n) = c_1 T(v_1 )+…+c_n T(v_n )\)</span></li>
+<li>只有当 <span class="arithmatex">\(v_0=0\)</span>,的时候,<span class="arithmatex">\(T(v) = Av +v_0\)</span> 才是线性的.其实这时候就是 <span class="arithmatex">\(T(v) = A(v)\)</span></li>
+</ol>
+<h2 id="15">1.5 典例</h2>
+<p><strong>1.</strong> 消去矩阵 <span class="arithmatex">\(\left[\begin{matrix} 1 &amp; 0 \\ 1 &amp; 1 \end{matrix} \right]\)</span> 定义了一个<strong>偏移变换(sheer transformation)</strong>,把 <code>(x,y)</code> 变换成 <code>T(x,y) = (x,x+y)</code>.画出xy平面,然后看看向量 <code>(1,0),(1,1)</code> 变换成什么.对 <code>x = 0</code> 和 <code>x= a</code> 这样的垂直线,发生了什么?如果输入空间是单位正方形 <span class="arithmatex">\(0\le x \le 1,0\le y \le 1\)</span>,画出输出(变换后的正方形)</p>
+<p>解: x轴上的点 <code>(1,0),(2,0)</code> 被T变换成(1,1),(2,2),也就是水平的x轴变成逆时针旋转45度的直线(当然还经过原点).在y轴的点没有移动,因为 <code>T(0,y) = (0,y)</code> .<strong>y轴是 <span class="arithmatex">\(λ=1\)</span> 时T的特征向量所在的直线</strong>.</p>
+<blockquote>
+<p>sp: <span class="arithmatex">\(\left[\begin{matrix} 1 &amp; 0 \\ 1 &amp; 1 \end{matrix} \right]\)</span> 的特征值是 <span class="arithmatex">\(\lambda = 1,1\)</span>，特征向量是 <span class="arithmatex">\(x = (0,1)\)</span></p>
+</blockquote>
+<p>而x = a的直线会向上移动a</p>
+<p><img alt="image-20210330101335663" src="../.assets/image-20210330101335663.png" /></p>
+<hr />
+<p><strong>2.</strong> 一个<strong>非线性</strong>变换T,如输出输空间的每一个b,都是由输入空间的单独一个x变换而来的,那么它是可逆的(invertible).也就是:<code>T(x) = b</code> <strong>恰好仅有一个解</strong>.下面的哪些变换(x是实数)是可逆的,<span class="arithmatex">\(T^{−1}\)</span> 是什么呢?注意，<strong>下面的变换没有一个是线性的,就算 <span class="arithmatex">\(T_3\)</span> 也不是</strong>.当你求解 <code>T(x) = b</code> 的时候,你在逆转T.</p>
+<ol>
+<li><span class="arithmatex">\(T _ { 1 } ( x ) = x ^ { 2 }\)</span></li>
+<li><span class="arithmatex">\(T _ { 2 } ( x ) = x ^ { 3 }\)</span></li>
+<li><span class="arithmatex">\(T _ { 3 } ( x ) = x + 9\)</span></li>
+<li><span class="arithmatex">\(T _ { 4 } ( x ) = e ^ { x }\)</span></li>
+<li><span class="arithmatex">\(T _ { 5 } ( x ) = \frac { 1 } { x } \text { for nonzero } x ^ { \prime } \mathrm { s }\)</span></li>
+</ol>
+<p>解:</p>
+<ul>
+<li><span class="arithmatex">\(T_1\)</span> 是不可逆的,因为 <span class="arithmatex">\(x^2=1\)</span> 有2个解,<span class="arithmatex">\(x^2=−1\)</span> 没有解</li>
+<li><span class="arithmatex">\(T_4\)</span> 是不可逆的,因为 <span class="arithmatex">\(e^x=−1\)</span> 没有解(如果输出空间变成正值的b,那么 <span class="arithmatex">\(e^x=b\)</span> 的逆是 <span class="arithmatex">\(x = \ln b\)</span>)</li>
+</ul>
+<p>注意.<span class="arithmatex">\(T_5^2=identity\)</span>.但是<span class="arithmatex">\(T_3^2=x+18\)</span>.  <span class="arithmatex">\(T_2,T_3,T_3\)</span> 是可逆的.解 <span class="arithmatex">\(x^3=b,x+9=b,1/x=b\)</span> 是唯一的
+$$
+x = T _ { 2 } ^ { - 1 } ( b ) = b ^ { 1 / 3 } \quad x = T _ { 3 } ^ { - 1 } ( b ) = b - 9 \quad x = T _ { 5 } ^ { - 1 } ( b ) = 1 / b
+$$</p>
+<h1 id="2">2 线性变换的矩阵</h1>
+<blockquote>
+<ul>
+<li>The Matrix  of  a Linear Transformation</li>
+<li>综合V31后半部分</li>
+</ul>
+<p>V31:<strong>理解线性变换,就是确定它背后的矩阵,这才是线性变换的本质</strong>.为了做到这一点,我们需要<strong>引入坐标值,确定一组基</strong>.下面开始讲解</p>
+<p>假设有一个线性变换<code>T</code>,输入是3维向量,输出是2维向量,就是把三维空间的向量映射到二维空间,这可以轻易通过矩阵乘法实现.这时候A是一个2-3的矩阵.
+$$
+\text{Start:} \quad T : R^3 \rightarrow  R^2 \
+\text{Example:} \quad T(v) = Av
+$$
+注意，上面的 <span class="arithmatex">\(T(v) = Av\)</span> 当中:</p>
+<ul>
+<li>Av的v是输入向量，3维的</li>
+<li>整个T(v)是输出向量，2维的</li>
+</ul>
+<hr />
+<p>线性变换对所有向量的意义不要通过1个个向量的看，应该见微知著,<strong>对整个向量空间线性变换</strong>！而对于向量空间，只需要知道<strong>基向量</strong>,就能掌握一切,所以,只需要确定基向量 <span class="arithmatex">\(v_1...v_n\)</span> ，也就是输入基的变换 <span class="arithmatex">\(T(v_1)...T(v_n)\)</span> ，就足以确定任何向量v的线性变换T(v),因为任何v都是基的线性组合.
+$$
+v = c_1v_1+...+v_nc_n  \tag{V1}
+$$
+从而根据<strong>线性化性质</strong>，我们一定有：
+$$
+T(v) = c_1T(v_1) +... +c_nT(v_n)
+$$
+现在问题是,如何把一个和坐标无关的线性变换变成一个与坐标有关的矩阵呢?<strong>矩阵源于坐标系,坐标的存在意味着，基已经被确立了!</strong>一旦选定了一组基,坐标也随着确定了,如 <code>Eq(V1)</code> 的 <span class="arithmatex">\(v_1...v_n\)</span> 就是已经确立的基，而 <span class="arithmatex">\(c_1,c_2...c_n\)</span> 就是坐标值.而其他向量，如 <span class="arithmatex">\(\vec{v}\)</span> 表示成<strong>基向量的线性组合,就是向量唯一的表达式,系数就是坐标值.</strong></p>
+<blockquote>
+<ul>
+<li>坐标源于一组基(coordinates come from a basis)</li>
+<li>在 <code>Eq(V1)</code> <span class="arithmatex">\(\vec{v}\)</span> 的坐标就是数字 <span class="arithmatex">\(c_1...c_n\)</span>,这些数字表示 <span class="arithmatex">\(\vec{v}\)</span> 有多少基向量组成。如果基改变了,坐标也就改变了</li>
+</ul>
+</blockquote>
+<p>一般来说,坐标系建立在标准基的基础上,所以平时你甚至不会意识到标准基的存在,<span class="arithmatex">\(\vec{v} = (3,2,4)\)</span>,你早就接受了这样的假设:存在这样一组标准基:
+$$
+\vec{v} = \left[ \begin{array} { l } 3 \ 2 \ 4 \end{array} \right] = 3 \left[ \begin{array} { l } 1 \ 0 \ 0 \end{array} \right] + 2 \left[ \begin{array} { l } 0 \1 \ 0 \end{array} \right] + 4 \left[ \begin{array} { l } 0\ 0 \ 1 \end{array} \right]
+$$
+但你可以选择其他基,<strong>例如矩阵的特征向量也是一个很好的选择</strong>，然后坐标这有跟着基的改变而改变</p>
+<p>现在我们希望通过矩阵描述线性变换:构造一个矩阵A,用于表示线性变换T,T可以是任何从n维到m维 <span class="arithmatex">\(T:R^n \rightarrow R^m\)</span> 的变换(例如T可能表示投影、旋转、房子的镜像等)。关键在于</p>
+<ul>
+<li>确定n维的输入空间一组输入基,以描述输入向量的坐标</li>
+<li>确定m维的输出空间的一组输出基，以描述输出向量的坐标.</li>
+</ul>
+<p>所以</p>
+<ul>
+<li>令 <span class="arithmatex">\(v_1...v_n\)</span> 作为输入空间的基,这些向量来自于 <span class="arithmatex">\(R^n\)</span></li>
+<li>令 <span class="arithmatex">\(w_1...w_m\)</span> 作为输出空间的基,来自于<span class="arithmatex">\(R^m\)</span></li>
+</ul>
+<p><strong>基已经确定,对应的矩阵也就确定,就可以引入坐标了！</strong>怎么做呢？</p>
+<ol>
+<li>首先选择一个向量v,通过输入基把它表示出来,于是得到它的<strong>坐标</strong> <span class="arithmatex">\(c_1...c_n\)</span></li>
+<li>然后把这些坐标值 <span class="arithmatex">\(c_1...c_n\)</span> 乘以某个矩阵A,得到的就是通过输出空间的基表示的，输出向量的<strong>坐标</strong> ！这个矩阵A的构造，就是<code>&lt;#2.1&gt;</code>！
+</li>
+</ol>
+</blockquote>
+<p>根据上一节可知，<strong>任何线性变换 T 都对应一个矩阵，每一个不同的矩阵都对应于一个变换,矩阵乘以向量就代表一个线性变换</strong>。输入v在 <span class="arithmatex">\(V = R^n\)</span> ,输出 T(v)在 <span class="arithmatex">\(W = R^m\)</span> 也就是Av.T对应的矩阵是 <code>m-n</code> 的.<strong>对V,W的基做出不同的选择,矩阵A是也会不一样</strong>：</p>
+<ol>
+<li>如果输出、输出的 <span class="arithmatex">\(R^n,R^m\)</span> 空间都选择标准基(单位矩阵 <code>I</code> 的列),那么A是标准矩阵,这时 <span class="arithmatex">\(T(v) = Av\)</span> 是一般的形式(in a normal way).</li>
+<li><strong>但这些空间还有其他的基</strong>,所以同一个变换T就被其他矩阵所表示。每一种基的选择,都可以得到T的一个矩阵.<strong>当输入的基(input basis)不等于输出的基(output basis)时,<code>T(v) = v</code> 对应的矩阵A就不是单位矩阵<code>I</code>.它是"变基矩阵(change of basis matrix)"</strong> </li>
+</ol>
+<blockquote>
+<p>sp:上句话的意思就是，T(v)= v是恒等变换，当基不同，矩阵A是变基矩阵。参见<code>&lt;#2.3&gt;</code></p>
+</blockquote>
+<p>线性代数的一个重要主题就是选择基,得到最好的代表T的矩阵</p>
+<blockquote>
+<p><strong>本节关键概念</strong></p>
+<hr />
+<p>假设我们对<strong>基向量</strong> <span class="arithmatex">\(v_1...v_n\)</span> 都知道 <span class="arithmatex">\(T(v_1)...T(v_n)\)</span>,那么线性化，可以对任何 v 都能得出 T(v)</p>
+<hr />
+<p>原因：任何向量v，都可以表达为基向量 <span class="arithmatex">\(v_1...v_n\)</span> 的<strong>唯一</strong>线性组合 <span class="arithmatex">\(c_1v_1+...+c_nv_n\)</span>；而因为T是一个线性变换，所以 <strong>v 的变换 T(v),肯定是已知的基向量变量 <span class="arithmatex">\(T(v_i)\)</span> 的线性变换的==同一个==组合 <span class="arithmatex">\(T(v) = c_1T(v_1)+...+c_nT(v_n)\)</span></strong></p>
+</blockquote>
+<p><strong>例1. 标准基向量(1,0),(0,1)作为输入基时候的T(v)</strong>   </p>
+<ul>
+<li>假设T把 <span class="arithmatex">\(v_1=(1,0)\)</span> 变换成 <span class="arithmatex">\(T(v_1)=(2,3,4)\)</span>，所以A的第1列是(2,3,4)</li>
+<li>而 <span class="arithmatex">\(v_2=(0,1)\)</span> 变换成 <span class="arithmatex">\(T(v_2) = (5,5,5)\)</span>,所以A的第2列是(5，5，5)</li>
+</ul>
+<p>输出 <span class="arithmatex">\(T(v_1),T(v_2)\)</span> 成为了矩阵的列。T是从 <span class="arithmatex">\(R^2\)</span> 到 <span class="arithmatex">\(R^3\)</span> 的线性变换,所以矩阵是 <code>3-2</code> 的.并且，<span class="arithmatex">\(v=v_1+v_2\)</span> 的现象变换就是 <span class="arithmatex">\(T(v_1)+T(v_2)\)</span>,<strong>线性组合在线性变换后不变：</strong>
+$$
+A = \left[ \begin{array} { l l } 2 &amp; 5 \ 3 &amp; 5 \ 4 &amp; 5 \end{array} \right] . \quad 
+\begin{array} { l } T \left( v _ { 1 } + v _ { 2 } \right) = T \left( v _ { 1 } \right) + T \left( v _ { 2 } \right) \ \text { combines the columns } \end{array} 
+\quad
+\left[ \begin{array} { l l } 2 &amp; 5 \ 3 &amp; 5 \ 4 &amp; 5 \end{array} \right] \left[ \begin{array} { l } 1 \ 1 \end{array} \right] = \left[ \begin{array} { l } 7 \ 8 \ 9 \end{array} \right]
+$$</p>
+<hr />
+<p><strong>例2+例V</strong> 介绍一个不一样的线性变换：求导 <span class="arithmatex">\(T =\frac{d}{dx}\)</span>. 假设</p>
+<ul>
+<li>输入是函数 <span class="arithmatex">\(c_1+c_2x+c_3x^2\)</span>,输入基是简单的幂函数<span class="arithmatex">\(1,x,x^2\)</span> </li>
+<li>输出是导数 <span class="arithmatex">\(c_2+2c_3x\)</span>,输出基是 <span class="arithmatex">\(1,x\)</span></li>
+</ul>
+<p>我们看看矩阵A是什么(sp:其实A的求法需要在<code>&lt;#2.1&gt;</code>学习，下式是为了说明：一个函数(向量)的系数(基下的坐标)，经过求导变换后，得到了求导结果的系数)</p>
+<p>$$
+A \left[ \begin{array} { l } c _ { 1 } \ c _ { 2 } \ c _ { 3 } \end{array} \right] = \left[ \begin{array} { l } c _ { 2 } \ 2 c _ { 3 } \end{array} \right]</p>
+<p>\Rightarrow\quad </p>
+<p>\left[\begin{matrix} 0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 2\\end{matrix} \right]
+\left[ \begin{array} { l } c _ { 1 } \ c _ { 2 } \ c _ { 3 } \end{array} \right] = \left[ \begin{array} { l } c _ { 2 } \ 2 c _ { 3 } \end{array} \right]
+$$</p>
+<p>这是一个三维空间到2维空间的线性变换. 不知你是否意识到求导是线性运算。我们之所以能够对函数求导,因为我们知道这是一个线性变换,只需要找我少量函数的求导法则,比如<span class="arithmatex">\(cosx,sinx,e^x\)</span>,我们就可以求出它们线性组合的导数。</p>
+<p>函数 <span class="arithmatex">\(1,x,x^2,x^3\)</span> 的导数是 <span class="arithmatex">\(0,1,2x,3x^2\)</span>.<strong>求导可以看成是一个变换T.输入和输出都是函数!</strong>注意,"求导变换"T是线性的!
+$$
+T ( v ) = \frac { d v } { d x } \quad \text { 遵循线性规则 } \quad \frac { d } { d x } ( c v + d w ) = c \frac { d v } { d x } + d \frac { d w } { d x } .
+\tag{1}
+$$
+就是因为这个线性关系,所以才能够找到其他所有函数的导数.根据每一个不同幂的函数 <span class="arithmatex">\(1,x,x^2,x^3\)</span> (其实就是基向量 <span class="arithmatex">\(v_1,v_2,v_3,v_4\)</span>)的导数,你可以找到任何其他多项式如 <span class="arithmatex">\(4+x+x^2+ x^3\)</span> 的导数</p>
+<p>$$
+\frac { d } { d x } \left( 4 + x + x ^ { 2 } + x ^ { 3 } \right) = 1 + 2 x + 3 x ^ { 2 } \quad  \quad \color{orange} \text{because of linearity!}
+$$
+上式，把T变换(求导d/dx)应用到输入 <span class="arithmatex">\(v = 4v_1+v_2+v_3+v_4\)</span>,这里的输入空间 V 包含所有 <span class="arithmatex">\(1,x,x^2,x^3\)</span> 的<strong>所有组合</strong>.你可能会叫他们函数，但我称它们为向量！ 这4个向量是3次多项式(cubic polunomials,degree &lt;=3) 空间V的基.<strong>只要这四个基向量的导数,我们可以知道V中的全部导数</strong></p>
+<p>为了求矩阵A的零空间,我们求解 <code>Av = 0</code>.为了得到求导变换T的内核,我们求解 dv/dx = 0.解是 <code>v=constant</code>,所以T的零空间是一维的,包含所有的常数函数(比如第一个基函数 <span class="arithmatex">\(v_1=1\)</span>)</p>
+<p>为了找到值域(其实就是列空间),看看输出 <span class="arithmatex">\(T(v) = dv/dx\)</span>.输入是三次多项式 <span class="arithmatex">\(a+bx+cx^2+dx^3\)</span>,所以值域是2次多项式(quadratic polynomials,degree&lt;=2).对于输出空间W，我们可以做出选择</p>
+<ol>
+<li>如果设 <code>W=cubics</code>,那么T的值域(the quadratics)是W的子空间</li>
+<li>如果设 <code>w=quadratics</code>,那么值域就是整个W</li>
+</ol>
+<blockquote>
+<p>sp:这里的意思就是：<strong>输出空间 W 可以比 变换T的输出结果，也就是值域大,不是值域定义输出空间,值域是包含在输出空间W的。</strong> </p>
+</blockquote>
+<p>注意如上的第2个选择，强调了定义域，也就是输入空间(V=cubics)和输出空间(W=quadraticcs)之间的不同.V的维数是4,W的维数是3.<strong>这个导数矩阵应该是3-4的</strong></p>
+<p>T的值域是一个3维子空间，所以矩阵的秩将会是r = 3.而内核是1维的.和3+1= 4是输入空间的维数.其实这就是r+(n-r)＝n,线性代数的基础定理.总有:
+$$
+\text{(dimension of range) + (dimension of kernel) = dimension of input space}
+$$</p>
+<blockquote>
+<p><code>sp-note7.2-3</code>:真神奇啊。注意</p>
+<ul>
+<li>值域是列空间</li>
+<li>内核就是零空间</li>
+</ul>
+<p>列空间维数+零空间维数=n！这里的n，表示 <span class="arithmatex">\(R^n\)</span> 的维数，也就是输入向量 v 可以是 <span class="arithmatex">\(R^n\)</span> 下的任何向量！</p>
+</blockquote>
+<p>导数变换把3次的空间V变换成2次的空间W.V的基是 <span class="arithmatex">\(1,x,x^2,x^3\)</span>.W的基是 <span class="arithmatex">\(1,x,x^2\)</span>,导数矩阵是3-4的
+$$
+A = \left[ \begin{array} { l l l l } 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 2 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 3 \end{array} \right] = \text { matrix form of derivative } T \tag{2}
+$$
+为什么A是正确的呢?<strong>因为乘以A和T做的变换是吻合的</strong>.<span class="arithmatex">\(v= a+bx+cx^2+dx^3\)</span> 的导数是 <span class="arithmatex">\(T(v) = b+2cx+3dx^2\)</span>.b,2c,3d这些数字也同样会出现在乘以A的时候:
+$$
+\text{求导}\quad</p>
+<p>\left[ \begin{array} { l l l l } 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 2 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 3 \end{array} \right] \left[ \begin{array} { l } a \ b \ c \ d \end{array} \right] = \left[ \begin{array} { c } b \ 2 c \ 3 d \end{array} \right] 
+\tag{3}
+$$</p>
+<hr />
+<p><strong>例3.</strong> 积分是导数的逆，这是微积分基础定理。我们现在可以在线代看到这个定理！在 0-x 区间积分 对应的 变换 <span class="arithmatex">\(T^{−1}\)</span> 也是线性的! 如，把 <span class="arithmatex">\(T^{−1}\)</span> 应用到 <span class="arithmatex">\(1,x,x^2\)</span>,也是是例2的输出结果： <span class="arithmatex">\(w_1,w_2,w_3\)</span> 作为输入：
+$$
+\text{积分是}T ^ { - 1 }： \quad \int _ { 0 } ^ { x } 1 d x = x , \quad \int _ { 0 } ^ { x } x d x = \frac { 1 } { 2 } x ^ { 2 } , \quad \int _ { 0 } ^ { x } x ^ { 2 } d x = \frac { 1 } { 3 } x ^ { 3 }
+$$
+根据线性化,对 <span class="arithmatex">\(w = B+Cx+Dx^2\)</span> 的积分是 <span class="arithmatex">\(T^{−1} (w)=Bx+1/2 Cx^２+1/3 Dx^3\)</span>.也就是，对二次函数的积分得到3次函数。输入空间是2次的,输出空间是3次的.积分把W变换成V,<strong>矩阵应该是4-3的</strong></p>
+<ul>
+<li><span class="arithmatex">\(T^{-1}\)</span> 的值域：也就是输出 <span class="arithmatex">\(T^{−1} (w)=Bx+1/2 Cx^２+1/3 Dx^3\)</span> ，是3次的，没有常数项</li>
+<li><span class="arithmatex">\(T^{-1}\)</span> 的内核：输出仅在 B = C= D 的是时候为0，所有零空间是 <span class="arithmatex">\(Z= \{0\}\)</span></li>
+</ul>
+<p><strong>线代基础定理：3+0 =3 是 <span class="arithmatex">\(T^{-1}\)</span> 的输入空间 W 的维数！</strong></p>
+<p>再看看 <span class="arithmatex">\(T^{−1}\)</span>,积分矩阵是4-3.注意看下面的矩阵是怎么从 <span class="arithmatex">\(w = B+Cx+Dx^2\)</span>,产生积分 <span class="arithmatex">\(0 +Bx + 1/2Cx^2+1/3Dx^3\)</span></p>
+<blockquote>
+<p>sp:现在要被变换的"V"的基是 <span class="arithmatex">\(1,x,x^2\)</span>,结果"W"的基是 <span class="arithmatex">\(1,x,x^2,x^3\)</span></p>
+</blockquote>
+<div class="arithmatex">\[
+\text{积分} \quad 
+\left[ \begin{array} { c c c } 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; \frac { 1 } { 2 } &amp; 0 \\ 0 &amp; 0 &amp; \frac { 1 } { 3 } \end{array} \right] \left[ \begin{array} { c } B \\ C \\ D \end{array} \right] = \left[ \begin{array} { r } 0 \\ B \\ \frac { 1 } { 2 } C \\ \frac { 1 } { 3 } D \end{array} \right]
+\tag{4}
+\]</div>
+<p>我想把 <code>Eq(4)</code> 矩阵的称为 <span class="arithmatex">\(A^{−1}\)</span>,但是你知道矩形阵并没有逆.最起码它们没有双边逆.矩形阵A有一个单边的逆.积分的矩阵是导数矩阵的单边逆!
+$$
+A A ^ { - 1 } = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 1 \end{array} \right] \quad \text { 但 } \quad A ^ { - 1 } A = \left[ \begin{array} { l l l l } 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]
+$$</p>
+<blockquote>
+<p>sp:matlab可以用 <code>pinv</code> 得到伪逆,在列满秩的情况下就是左逆啊，所以上式好像把顺序写反了...</p>
+</blockquote>
+<p>如果你先积分一个函数然后求导,你回到原点,也就是 <span class="arithmatex">\(AA^{−1}=I\)</span>.但是如果你先求导然后积分,常数项丢失了.<strong>对1的导数的积分是0:</strong>
+$$
+T^{-1}T(1) = \text{integral of zero function } = 0
+$$
+这也吻合 <span class="arithmatex">\(A^{−1} A\)</span>,第一列全部都是0.<strong>导数T有内核(也就是常数函数)，所以它对应的矩阵A有零空间.</strong></p>
+<h2 id="21">2.1 构造变换矩阵</h2>
+<blockquote>
+<p>Construction of the matrix</p>
+</blockquote>
+<p>现在我们对任何线性变换构建矩阵A.</p>
+<p>假设 T 把空间V(n维的) 变换到 空间W(m维的).对V的基的选择是 <span class="arithmatex">\(v_1,…v_n\)</span>,W的基是 <span class="arithmatex">\(w_1…w_m\)</span>.那么矩阵A是m-n的.为了得到A的第一列,把 T 应用到 V 的第一个基 <span class="arithmatex">\(v_1\)</span>,那么输出 <span class="arithmatex">\(T(v_1)\)</span> 是在W空间的</p>
+<blockquote>
+<p><strong><span class="arithmatex">\(T(v_1)\)</span> 是输出空间W中的基向量的组合： <span class="arithmatex">\(a_{11}{w_1}+...+a_{m1}w_m\)</span></strong> (<span class="arithmatex">\(v_1\)</span> 是 V的第1个基向量)。<span class="arithmatex">\(a_{11}…a_{m1}\)</span>  这些数字形成了A的第一列。验证一下：把 <span class="arithmatex">\(v_1\)</span> 变换为 <span class="arithmatex">\(T(v_1)\)</span>,和A乘以 <code>(1,0...0)</code> 是匹配的$ ^{sp-Mark7.2-1}$</p>
+<blockquote>
+<p>理解<code>&lt;sp-Mark7.2-1&gt;</code> (来自V):假设输入是第1个基 <span class="arithmatex">\(v_1 = (1...0)\)</span>,那么被A乘之后，就得到A的第1列，也就是数字 <span class="arithmatex">\(a_{11},a_{21}...a_{m1}\)</span>,明显，这就是 <span class="arithmatex">\(T(v_1)\)</span> 在输出基下的坐标。其他所有的基向量都是如此，从而输入空间内的所有基向量也是如此</p>
+</blockquote>
+<p>构建A的<strong>关键规则</strong>就是： A的第 <code>j</code> 列，是通过 把 T 应用到 <strong>V的</strong> 第 j 个基向量 <span class="arithmatex">\(v_j\)</span> 求得的：
+  $$
+  T(v_j) = \text{W 基向量的线性组合} = a_{1j}w_1 + ....+a_{mj}w_m 
+  \tag{5}
+  $$</p>
+<blockquote>
+<p>sp:应该这样理解：已经知道 <span class="arithmatex">\(T(v_j)\)</span> 是什么，然后再用W的基向量去匹配！</p>
+</blockquote>
+<p><span class="arithmatex">\(a_{1j}…a_{mj}\)</span> 形成A的第 <code>j</code> 列.<strong>这样构造出来的矩阵A，能正确表示V的基向量，从而线性化让所有V空间下的向量都是正确的(The matrix is constructed to get the basis vector right,Then linearity gets all the other vectors right)</strong>.</p>
+<p>V下的每一个v都是基向量的组合： <span class="arithmatex">\(c_1 v_1+…+c_n v_n\)</span> ,而<strong>T(v)是W的基 w's 的组合</strong>.当A乘以v向量在V空间下的系数向量(cofficients vector，也就是坐标) <span class="arithmatex">\(c = (c_1…c_n)\)</span> ,Ac产生的系数就是 <code>T(v)</code> 在W的基下组合的系数，也就是T(v) 在W空间下的坐标！这是因为矩阵乘法(列的线性组合)和T一样是线性的.</p>
+<p><strong>矩阵A告诉我们T做了什么.每一个从V到W的线性变换都可以转换成矩阵.而且这个矩阵取决于基.</strong></p>
+<hr />
+<p>总结(来自V):<strong>确定线性变换的矩阵A呢？</strong></p>
+<p><strong>1</strong> 首先确定两组基,输入基 <code>v1...vn</code>,和输出基 <code>w1...wm</code></p>
+<p><strong>2</strong> 然后确定A的第一列,怎么做呢？最直接的方法是,对输入v1进行线性变换,写出输出T(v1),并把T(v1)写成是 <code>w1...wm</code> 的组合,线性组合的系数就是矩阵的第一列
+  $$
+  T(v_1) = a_{11}w_1+a_{21}w_2 + ... + a_{m1}w_m
+  $$
+  上式的 <span class="arithmatex">\(a_{11},a_{21}...a_{m1}\)</span> 就是矩阵A的第1列</p>
+<p><strong>3</strong> 矩阵的第2列和第2步一样，只不过这次换成 v2进行步骤
+  $$
+  T(v_2) = a_{12}w_1+a_{22}w_2 + ... + a_{m2}w_m
+  $$
+  上式的 <span class="arithmatex">\(a_{12},a_{22}...a_{m2}\)</span> 就是矩阵A的第2列</p>
+</blockquote>
+<p>如：</p>
+<ul>
+<li>在例2，T是求导变换，V的第一个基向量是1,它的导数是 <span class="arithmatex">\(T(v_1) = 0\)</span>,所以对于求导变换矩阵,A的第一列都是0.</li>
+<li>在例3，<span class="arithmatex">\(T^{-1}\)</span>积分变换,V的第一个基函数还是1.它的积分是==W的== (注意是==W的！==)第二个基函数x,所以 <span class="arithmatex">\(A^{−1}\)</span> 的第一列是 <span class="arithmatex">\((0,1,0,0).\)</span></li>
+</ul>
+<blockquote>
+<p><strong>理解</strong>：A的列j，是把V的基 <span class="arithmatex">\(v_j\)</span> 用W的基表示的系数(也就是坐标),而V下的任何向量V都是 <span class="arithmatex">\(v_1...v_n\)</span> 的组合，也就是 <span class="arithmatex">\(v= c_1v_1 + ...+c_nv_n\)</span>,v线性变换后的T(v),因为是<strong>线性</strong>变换，所以T(v)还是这样组合的！也就是 <span class="arithmatex">\(T(v)= c_1T(v_1) + ...+c_nT(v_n)\)</span></p>
+<p><strong>证明</strong>：设v在V的基下的坐标是<span class="arithmatex">\((c_1,...,c_n)\)</span>，也就是：
+  $$
+  v = [v_1,...,v_n] \left[\begin{matrix}c_1\\vdots\c_n\ \end{matrix} \right] \tag{S1}
+  $$
+  T(v) 在W的基的坐标是 <span class="arithmatex">\((b_1...b_m)\)</span>，也就是
+  $$
+  T(v) = [w_1,...,v_m] \left[\begin{matrix}b_1\\vdots\b_m\ \end{matrix} \right] \tag{S2}
+  $$
+  Ac乘法，得到的就是 T(v) 在W空间下的坐标
+  $$
+  \left[\begin{matrix} a_{11} &amp; \dots &amp; a_{1n}\ \vdots &amp; \dots &amp; \vdots\ a_{m1} &amp; \dots &amp; a_{mn}\\end{matrix} \right] 
+  \left[\begin{matrix}c_1\\vdots\c_n\ \end{matrix} \right] 
+  = \left[\begin{matrix}b_1\\vdots\b_m\ \end{matrix} \right]  \tag{S3}
+  $$</p>
+<p>也就是说：</p>
+<ul>
+<li>矩阵A是通过，将V的 n 个基的T变换，用W的基来表示，从而得到A的n个列。A的第1列就是第1个基 <span class="arithmatex">\(v_1\)</span> 的变换 <span class="arithmatex">\(T(v_1)\)</span> 在W基线性组合下的系数...A的第n列就是基 <span class="arithmatex">\(v_n\)</span> 的变换 <span class="arithmatex">\(T(v_n)\)</span> 在W基线性组合下的系数</li>
+<li><strong>因为已经将V的基的T变换，成功用W基的线性组合表示，所以任何v的变换 <span class="arithmatex">\(T(v)\)</span>，都可用W的基表示！</strong>(<code>Eq(S3)</code>为何成立?参见<code>Eq(S7)</code>！)</li>
+<li>矩阵A的作用是：<strong>在V的==一组基== <span class="arithmatex">\(v_1...v_n\)</span> 下坐标为 <span class="arithmatex">\((c_1...c_n)\)</span> 的向量，被A乘以后，得到其在 W ==一组基== <span class="arithmatex">\((w_1...w_m)\)</span> 下的坐标<span class="arithmatex">\((b_1...b_m)\)</span></strong>.所以，T变化(A矩阵)是取决于V,W的基的，只要选择的基不同，A矩阵就不同.</li>
+</ul>
+<hr />
+<p><strong>证明Eq(S3)</strong> 先不要管矩阵乘法 Av,只看变换结果 <span class="arithmatex">\(T(v_i)\)</span>!因为 <span class="arithmatex">\(T(v_1)\)</span> 是空间W<span class="arithmatex">\(R^m\)</span>下的向量，所以肯定可用 W 的基向量(<span class="arithmatex">\(R^m\)</span>) 表示！ 为了求得A 的第 <code>i</code> 列，分别对 V 空间的第 <code>i</code> 个基向量应用上述过程，得到
+  $$
+  T(v_i)=  a_{1i}{w_1}+...+a_{mi}w_m    = \sum_{j=1}^m a_{ji}w_j  \tag{S4}
+  $$
+  从而，A矩阵是如下的系数矩阵：
+  $$
+  A= \left[\begin{matrix} a_{11} &amp; \dots &amp; a_{1n}\ \vdots &amp; \dots &amp; \vdots\ a_{m1} &amp; \dots &amp; a_{mn}\\end{matrix} \right]
+  $$
+  那么：
+  $$
+  T\left[\begin{matrix} | &amp; ... &amp; |\v_1 &amp; ... &amp; v_n\| &amp; ... &amp; |\\end{matrix} \right]
+  = \left[\begin{matrix} | &amp; ... &amp; |\T(v_1) &amp; ... &amp; T(v_n)\| &amp; ... &amp; |\\end{matrix} \right]
+  = \left[\begin{matrix} | &amp; ... &amp; |\w_1 &amp; ... &amp; w_m\| &amp; ... &amp; |\\end{matrix} \right] * \left[\begin{matrix} a_{11} &amp; \dots &amp; a_{1n}\ \vdots &amp; \dots &amp; \vdots\ a_{m1} &amp; \dots &amp; a_{mn}\\end{matrix} \right] =  \color{orange} \text{W的基<em>矩阵A！}
+  \tag{S8}
+  $$
+  <span class="arithmatex">\(v_1...v_n\)</span> 都是</em><em>V的基</em>*,也就说，将T对V的基的变换，用W的基线性组合的来表示，从而得到矩阵A。</p>
+<p>参见 <code>Eq(S1,S2)</code>,v在V空间的坐标是 <span class="arithmatex">\((c_1...c_n)\)</span>;T(v) 在 W 空间的坐标是 <span class="arithmatex">\((b_1...b_m)\)</span>,首先
+  $$
+  \mathrm { T } ( \mathrm { v } ) = \mathrm { T } \left( \sum _ { i = 1 } ^ { n } c _ { i } v _ { \mathrm { i } } \right) = \sum _ { i = 1 } ^ { n } c _ { \mathrm { i } } T \left( v _ { \mathrm { i } } \right) = c _ { 1 } T \left( v _ { 1 } \right) + \cdots + c _ { \mathrm { n } } T \left( v _ { n } \right) = 
+  \left[ T \left( v _ { 1 } \right) \ldots T \left( v _ { n } \right) \right] 
+  \left[ \begin{array} { c } c _ { 1 } \ c _ { 2 } \ \ldots \ c _ { n } \end{array} \right]
+  \tag{S5}
+  $$
+  将 <span class="arithmatex">\(T(v_i)\)</span> 使用 Eq(S4) 替换，得到：
+  $$
+  \begin{aligned}
+      T(v) &amp; = \sum _ { i = 1 } ^ { n } c _ { i } \left( \sum _ { j = 1 } ^ { m } a _ { j i } w _ { \mathrm { j } } \right) = </p>
+<div class="highlight"><pre><span></span><code>  \begin{aligned}
+      &amp;c_1[a_{11}w_1 + ... + a_{m1}w_m]  \\
+      &amp;+  \\
+      &amp;\vdots\\
+      &amp;+  \\
+      &amp; c_n[a_{1n}w_1 + ... + a_{mn}w_m]
+
+  \end{aligned}
+
+  =   \begin{aligned}
+      &amp; w_1[c_1 a_{11} + ... + c_n a_{1n}] +  \\
+      &amp;+  \\
+      &amp;\vdots\\
+      &amp;+  \\
+      &amp;w_m[c_1a_{m1} + ... + c_n a_{mn}]
+
+  \end{aligned}
+
+  \\[4ex]
+
+  &amp;= \sum _ { j = 1 } ^ { m } \left( \sum _ { i = 1 } ^ { n } c _ { i } a _ { j i } \right) w _ { j }
+</code></pre></div>
+<p>= [w_1...w_m]​​\left[\begin{matrix}  \sum _ { i = 1 } ^ { n }c_i a_{1i}  \\vdots\  \sum _ { i = 1 } ^ { n }c_ia_{mi} \ \end{matrix} \right]
+  \end{aligned}</p>
+<p>\tag{S6}
+  $$
+  因为 <span class="arithmatex">\(w_1...w_m\)</span> 是基，所以 <code>Eq(S3)</code> 的基坐标 <span class="arithmatex">\((b_1..b_m)\)</span> 唯一，而且 <span class="arithmatex">\([w_1...w_m]\)</span> 可逆。所以
+  $$
+  \left[\begin{matrix}b_1\\vdots\b_m\ \end{matrix} \right] = ​\left[\begin{matrix}  \sum _ { i = 1 } ^ { n }c_i a_{1i}  \\vdots\  \sum _ { i = 1 } ^ { n }c_ia_{mi} \ \end{matrix} \right] = </p>
+<p>\left[\begin{matrix} a_{11} &amp; \dots &amp; a_{1n}\ \vdots &amp; \dots &amp; \vdots\ a_{m1} &amp; \dots &amp; a_{mn}\\end{matrix} \right]​​\left[\begin{matrix}c_1\\vdots\c_n\ \end{matrix} \right]  = </p>
+<p>Ac  \tag{S7}
+  $$
+  得证！(sp:,其实<code>&lt;#Lk1&gt; Eq(K3)</code> 就是Eq(S7)的特殊形式啊)</p>
+</blockquote>
+<p><strong>例4.</strong>  <strong>如果基改变了,T还是相同的变换,但是矩阵A改变了</strong></p>
+<p>在例2当中，假设对 V 当中的3次多项式的重新排列基为 <span class="arithmatex">\(x,x^2,x^3,1\)</span>.而W的二次多项式保持不变,还是 <span class="arithmatex">\(1,x,x^2\)</span>.那么第一个基 <span class="arithmatex">\(v_1 =x\)</span> 的导数是第一个基向量 <span class="arithmatex">\(w_1=1\)</span>.所以和原来的 <code>Eq(1)</code> 的A对比，现在的A的第一列是不一样的:
+$$
+A _ { \text {new } } = \left[ \begin{array} { l l l l } 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 2 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 3 &amp; 0 \end{array} \right]
+$$
+<strong>当我们重新排列了V的基,我们重新排列了A的列</strong>.</p>
+<ul>
+<li>输入基向量 <span class="arithmatex">\(v_j\)</span> 是对矩阵A的第 j 列负责的</li>
+<li>而输出基向量 <span class="arithmatex">\(w_i\)</span>  是对矩阵A的第 <code>i</code> 行负责的</li>
+</ul>
+<p>稍后我们会看到,基的改变,不仅仅只是排列顺序改变而已</p>
+<h2 id="22-abts">2.2 乘积AB匹配变换TS</h2>
+<blockquote>
+<p>Products AB Match Transformations TS</p>
+</blockquote>
+<p>求导和积分的例子有3点需要注意</p>
+<ol>
+<li>线性变换T存在于任何地方-微积分,微分方程和线性代数.</li>
+<li>不仅仅是 <span class="arithmatex">\(R^n\)</span>,还有其他很多空间也是很重要的,比如V,W可以是函数空间</li>
+<li>T可以用一个矩阵A表示.</li>
+</ol>
+<p>下一个例子当中,V=W.而且对2个空间都选择一样的基,然后我们可以比较一下矩阵 <span class="arithmatex">\(A^2,AB\)</span> 和变换 <span class="arithmatex">\(T^2,TS\)</span></p>
+<p><strong>例5(旋转).</strong> T旋转每一个向量角度θ,这里,<span class="arithmatex">\(V = W= R^2\)</span>,求A。注意这里，V,W的基都是 <code>(1，0),(0，1)</code></p>
+<p>解:V,W标准基是 <span class="arithmatex">\(v_1=(1,0),v_2=(0,1).\)</span>为了找到A,把T应用到这些标准基.在Fig7.3左边,它们被旋转了角度θ,第1个基向量(1,0)被旋转到 <span class="arithmatex">\((cosθ,sinθ)\)</span>,这等于 <span class="arithmatex">\(cosθ*(1,0)\)</span> + <span class="arithmatex">\(sinθ*(0,1)\)</span> ,因此 <span class="arithmatex">\(cosθ,sinθ\)</span> 变成A的第一列 $\left[ \begin{array} { c } \cos \theta \ \sin \theta \end{array} \right] $。 为了找到第2列,发现第2个基(0,1)变换为(-sinθ,cosθ),这就是A的第2列，所以完整的A是 <span class="arithmatex">\(A = \left[ \begin{array} { r r } \cos \theta &amp; - \sin \theta \\ \sin \theta &amp; \cos \theta \end{array} \right]\)</span></p>
+<p><img alt="image-20210331104501522" src="../.assets/image-20210331104501522.png" /></p>
+<hr />
+<p><strong>例6(投影,结合V31的例子).</strong>  假设T把每一个平面向量投影到45度直线(下图蓝色直线).找到这个投影的2组不同的基对应的矩阵.</p>
+<p><img alt="image-20210702112149052" src="../.assets/image-20210702112149052.png" /></p>
+<p>解: </p>
+<p><strong>1 特征向量为基：</strong> 从特殊的基开始，并且输入基=输出基：</p>
+<ol>
+<li>假设基向量 <span class="arithmatex">\(v_1\)</span> 就是在这条45度直线上的单位向量.它的投影就是它的自身:<span class="arithmatex">\(T(v_1) = v_1\)</span>.</li>
+<li>第2个基向量 <span class="arithmatex">\(v_2\)</span> 和这条45度的直线垂直(<span class="arithmatex">\(135^{\circ}\)</span>),这个基向量投影成0.</li>
+</ol>
+<p>现在问题是,这个矩阵是什么?我们知道，任意向量v,都可以表示成基向量的组合 <span class="arithmatex">\(v = c_1v_1+c_2v_2\)</span>，坐标就是 <span class="arithmatex">\((c_1,c_2)\)</span>.这时候 T(v)是什么呢？(sp:<strong>注意T(v)要表示成输入基的组合</strong>，在这里也就是等数输入基的输出基 <span class="arithmatex">\(w_1,w_2\)</span>)</p>
+<p>观察 <span class="arithmatex">\(v = c_1v_1+c_2v_2\)</span>，我们分别看看<strong>变换对输入基 <span class="arithmatex">\(v_1,v_2\)</span> 做了什么：</strong></p>
+<ul>
+<li>当输入为基向量<span class="arithmatex">\(v_1\)</span>,那么 <span class="arithmatex">\(T(v_1)\)</span> 还是 <span class="arithmatex">\(v_1\)</span> ,因为它就在投影直线上，它的投影就是它本身.所以我们知道了投影对于第1个基向量的影响.(所以A的第一列是(1,0))</li>
+<li>如果输入是第2个基向量 <span class="arithmatex">\(v_2\)</span> ,投影是0（所以A的第二列是(0,0)）</li>
+</ul>
+<p>所以，对于任何 <span class="arithmatex">\(v = c_1v_1+c_2v_2\)</span>, v的2个基向量组合当中，会保留 <span class="arithmatex">\(c_1v_1\)</span>,而丢弃 <span class="arithmatex">\(c_2v_2\)</span>.那么
+$$
+T(v) = T(c_1v_1+c_2v_2) = c_1T(v_1)+c_2T(v_2) = c_1v_1
+$$
+现在我们看看代表这个变换的矩阵是什么。这个矩阵的作用就是：输入 <span class="arithmatex">\([c_1,c_2]\)</span>,得到输出 <span class="arithmatex">\([c_1,0]\)</span>!如下</p>
+<blockquote>
+<p>sp:矩阵是对<strong>坐标</strong>起作用！</p>
+</blockquote>
+<p>$$
+\underbrace{\left[ \begin{array} { l l } 1 &amp; 0 \ 0 &amp; 0 \end{array} \right] }_{A}</p>
+<p>\underbrace{\left[ \begin{array} { l } c _ { 1 } \ c _ { 2 } \end{array} \right] }_{\quad \color{orange} \text{input coords}}</p>
+<p>= </p>
+<p>\underbrace{\left[ \begin{array} { c } c _ { 1 } \ 0 \end{array} \right]}_{\quad \color{orange} \text{output coords}}</p>
+<p>\tag{V2}
+$$</p>
+<p>这里需要强调2点</p>
+<ol>
+<li>首先，矩阵起到了应有的作用。原来的线性变换是不涉及到坐标值的。现在有了矩阵，这个矩阵，正确的通过输入坐标，得到输出坐标！</li>
+<li>在这个例子里,<strong>输入和输出空间使用了同一组基</strong>,实际上这组基都是投影的<strong>特征向量</strong>.所以得到的矩阵是<strong>对角矩阵 <span class="arithmatex">\(\Lambda\)</span></strong>,这组基很好.因为，<strong>如果以特征向量为基,可以得到对角阵,对角线上都是特征值</strong>.这是物理学家的最爱,他们不情愿地引入坐标系,而最好的坐标系有特征向量构成.</li>
+</ol>
+<p><strong>2 选择标准基作为输入和输出空间的基</strong>： <code>(1,0),(0,1)</code> .Fig7.3右边展示了 <code>(1,0)</code> 投影成 <code>(1/2,1/2)</code>,这就得到了A的第一列.而另外一个基向量也同样成(1/2,1/2),所以这个标准的矩阵是:
+$$
+A = \left[ \begin{array} { c c } \frac { 1 } { 2 } &amp; \frac { 1 } { 2 } \ \frac { 1 } { 2 } &amp; \frac { 1 } { 2 } \end{array} \right] \quad \quad \color{orange} \text{Same prjection for the standard basis}
+$$
+这其实就是投影矩阵，可以如下求得(a是代表投影直线的向量，如 <span class="arithmatex">\((1,1)\)</span>）：
+$$
+A = \frac { a a ^ { T } } { a ^ { T } a } = \left[ \begin{array} { l } \frac { 1 } { 2 } \frac { 1 } { 2 } \ \frac { 1 } { 2 } \frac { 1 } { 2 } \end{array} \right]
+$$
+但矩阵不是对角矩阵,因为基不是最佳的基.但是也不算太差,是一个对称矩阵,满足 <span class="arithmatex">\(P^2 = P\)</span> 等优良性质.</p>
+<p><strong>总结：</strong> 2个A都是投影矩阵.你平方A的话是没有改变的.注意这句话背后隐藏的意思: <strong><span class="arithmatex">\(T^2\)</span> 对应的矩阵是 <span class="arithmatex">\(A^2\)</span></strong>。</p>
+<blockquote>
+<p>sp-Note-7.2.6:以特征向量为基的变换矩阵是简单很多，参见 <code>&lt;#LK1.4&gt;</code>，还有<code>&lt;V31总结&gt;</code>
+</p>
+</blockquote>
+<hr />
+<p>我们必须思考一个重要的事情--矩阵为何这样相乘的真正原因.设</p>
+<ul>
+<li>S变换由B矩阵表示</li>
+<li>T变化由A矩阵表示</li>
+</ul>
+<p>当对 <code>S</code> 的输出应用 <code>T</code> ,得到的是复合(composition) 的TS.当我们在B之后应用A,得到的是乘积AB.<strong>矩阵乘法给出了表示TS的正确矩阵AB</strong></p>
+<ul>
+<li>变换S是从空间U到V,在U中,它的矩阵B使用的是 U 的基 <span class="arithmatex">\(u_1,u_2…u_p\)</span>  和V的基 <span class="arithmatex">\(v_1…v_n\)</span>.</li>
+<li>变换T是从V到W的.它的矩阵A使用的必须是一样的V的基 <span class="arithmatex">\(v_1…v_n\)</span> </li>
+</ul>
+<p>也就是说，S输出了V空间的<strong>一组基</strong>，同时，T的输入空间必须是<strong>V空间</strong>，并且恰好是V空间的<strong>这组基</strong>。 这时候,AB和TS是匹配的.</p>
+<blockquote>
+<p><strong>Multiplication</strong></p>
+<hr />
+<p>线性变换 TS 是</p>
+<ol>
+<li>从空间 U 当中的任何向量 u 开始，变换其到空间 V 当中的向量 S(u)</li>
+<li>然后 T(S(u)) 变换空间 V 的向量 S(u) 到空间 W</li>
+</ol>
+<p>而矩阵乘法 AB,从任何 <span class="arithmatex">\(R^p\)</span> 下的向量 x 开始，先把 x 变为 <span class="arithmatex">\(R^n\)</span> 下的向量 Bx,再变为 <span class="arithmatex">\(R^m\)</span> 下的向量 ABx.<strong>矩阵乘法AB代表了变换TS</strong>:
+$$
+TS:\quad U \rightarrow  V\rightarrow  W  \qquad \qquad A B :  ( m \text { by } n ) ( n \text { by } p ) = ( m \text { by } p ) .
+$$
+最开始的输入向量是 <span class="arithmatex">\(u = x_1u_1+...+x_pu_p\)</span>,最终的输出 T(S(u)) 匹配了乘法 <span class="arithmatex">\(ABx\)</span>. <strong>Product of transformations matches product of matrices.</strong></p>
+<p>最重要的情况是，当<strong>U,V,W是同1个空间，并且拥有相同的一组基</strong>。此时 m=n=p,矩阵都是方阵！</p>
+</blockquote>
+<p><strong>例7.</strong>  S旋转角度θ,T也是旋转θ,那么TS旋转2θ,变换 <span class="arithmatex">\(T^2\)</span> 和旋转2θ的旋转矩阵 <span class="arithmatex">\(A^2\)</span> 是对应的
+$$
+T = S \quad A = B \quad T ^ { 2 } = \text { rotation by } 2 \theta \quad A ^ { 2 } = \left[ \begin{array} { c r } \cos 2 \theta &amp; - \sin 2 \theta \ \sin 2 \theta &amp; \cos 2 \theta \end{array} \right]
+\tag{6}
+$$
+通过这个  <span class="arithmatex">\((变换)^2= (矩阵)^2\)</span> ,我们甚至可以可以得到cos2θ和sin2θ的公式，也就是 A*A:</p>
+<p>$$
+\left[ \begin{array} { r r } \cos \theta &amp; - \sin \theta \ \sin \theta &amp; \cos \theta \end{array} \right] \left[ \begin{array} { r r } \cos \theta &amp; - \sin \theta \ \sin \theta &amp; \cos \theta \end{array} \right] = \left[ \begin{array} { c c } \cos ^ { 2 } \theta - \sin ^ { 2 } \theta &amp; - 2 \sin \theta \cos \theta \ 2 \sin \theta \cos \theta &amp; \cos ^ { 2 } \theta - \sin ^ { 2 } \theta \end{array} \right]
+\tag{7}
+$$
+我们从线代得到了三角函数的恒等式！</p>
+<p><strong>例8.</strong> S旋转角度θ,T也是旋转-θ,那么TS=I 和 AB=I是对应的</p>
+<p>解:在这种情况下T(S(u)) = u.为了能够匹配成功，<code>ABx</code> 必须等于x。所以A,B应该是互逆矩阵.下面检查一下，注意 <span class="arithmatex">\(\cos(-\theta) = \cos \theta,\sin(-\theta) = -\sin\theta\)</span>:
+$$
+A B = \left[ \begin{array} { r r } \cos \theta &amp; \sin \theta \ - \sin \theta &amp; \cos \theta \end{array} \right] \left[ \begin{array} { c c } \cos \theta &amp; - \sin \theta \ \sin \theta &amp; \cos \theta \end{array} \right] = \left[ \begin{array} { c c } \cos ^ { 2 } \theta + \sin ^ { 2 } \theta &amp; 0 \ 0 &amp; \cos ^ { 2 } \theta + \sin ^ { 2 } \theta \end{array} \right] = I
+$$
+在例2，例3，我们的求导和积分的例子，T是导数变换，S是积分变换，那么变换TS是 identity,但ST不是！因为AB矩阵是单位矩阵，而BA不是单位矩阵：
+$$
+A B = \left[ \begin{array} { l l l l } 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 2 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 3 \end{array} \right] \left[ \begin{array} { l l l } 0 &amp; 0 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; \frac { 1 } { 2 } &amp; 0 \ 0 &amp; 0 &amp; \frac { 1 } { 3 } \end{array} \right] = I \quad \text { but } \quad B A = \left[ \begin{array} { l l l l } 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]
+$$</p>
+<h2 id="23">2.3 恒等变换和变基矩阵</h2>
+<blockquote>
+<p>The identity transformation and the Change of Basis Matrix</p>
+</blockquote>
+<p>我们现在,求一下特别又普通的 <span class="arithmatex">\(T(ｖ) = v\)</span> 变换对应的矩阵.这是<strong>恒等变换(identity transformation)</strong>,对v没做任何改变</p>
+<ol>
+<li>如果<strong>输出基和输入基是一样的，</strong>那么T = I，对应的矩阵也没做任何事情。变换的<strong>每一个输出 <span class="arithmatex">\(T(v_j) = v_j\)</span>  都等于</strong> <span class="arithmatex">\(w_j\)</span>,那么变换对应的矩阵其实就是单位矩阵 <code>I</code> 。 <span class="arithmatex">\(T(v_1) = v_1 = w_1\)</span>，<span class="arithmatex">\(v_1\)</span> 就是 <span class="arithmatex">\(w_1\)</span>,所以A的第一列是(1,0...0)。这是很直观的:恒等变换由单位矩阵表示。</li>
+<li>但如果<strong>输入输出基基是不同的</strong>.那么 <span class="arithmatex">\(T(v_1) = v_1\)</span> 就是w's的组合，假设组合是 <span class="arithmatex">\(m_{11} w_1+…. + m_{n1} w_n\)</span> ，它将告诉了我们矩阵(称为M)的第一列</li>
+</ol>
+<blockquote>
+<p><strong>Identity transformation</strong> and <strong>change of basis matrix</strong>:(sp-mark7.2-5)</p>
+<hr />
+<p>当输入和输出空间的基是<strong>不是同一组基</strong>，那么恒等变换 <span class="arithmatex">\(T(v_j) = v_j\)</span> 就是输出基 w's 的<strong>组合</strong> <span class="arithmatex">\(\sum_{i=1}^n m_{ij}w_i\)</span>,此时矩阵M称为<strong>变基矩阵(change of basis matrix).</strong></p>
+<blockquote>
+<p>sp:注意上面的<code>组合</code>二字，所以 <span class="arithmatex">\(T(v_j),v_j\)</span> 都是向量形式，也就是需要 <code>基*坐标</code> 的形式</p>
+</blockquote>
+<p><strong>基改变了,但是向量自身没有改变:T(v) 还是等于 v.</strong>  而且矩阵M不是 <code>I</code></p>
+<p><code>sp-note7.2-6</code>:确实 <span class="arithmatex">\(T(v_j) = v_j\)</span> ，但是 <span class="arithmatex">\(v\)</span> 在变换前和变换后的==坐标并不相同==！</p>
+<p>以例9为例，设向量v在输入基的坐标是 (5,3)</p>
+<ul>
+<li>输入基是 <span class="arithmatex">\(v_1=(3,7),v_2=(2.5)\)</span>, 从而得到输入基下的<strong>向量形式</strong>是 <span class="arithmatex">\(v=\left[\begin{matrix} 21  \\50  \\\end{matrix} \right]\)</span></li>
+<li>根据 <code>Eq(S7)</code>,经过T变换后，在W基下的<strong>向量形式</strong>也是 <span class="arithmatex">\(Ac  = \left[ \begin{array} { l l } 3 &amp; 2 \\ 7 &amp; 5 \end{array} \right]\left[\begin{matrix} 5  \\3  \\\end{matrix} \right] = \left[\begin{matrix} 21  \\50  \\\end{matrix} \right]\)</span>.W的基是 <span class="arithmatex">\(w_1=(1,0),w_2=(0,1)\)</span>,是标准基。所以v在W的坐标是 (21,50)</li>
+</ul>
+<p><strong>v在2个基下的==坐标并不相同==！只是==v向量的形式不变==而已！</strong> 以上式子就是就是 <code>&lt;#Lk1 Eq(K3)&gt;</code>.参见Eq(S7),线性变换的矩阵A，<strong>变换了向量在不同基下的==坐标==！</strong>最终，向量的形式是什么，是要以这组基和这组基下的坐标共同确认！而对于恒等变换 <span class="arithmatex">\(T(v_j) = v_j\)</span> 的变基矩阵，因为<strong>限制了v的形式不变，所以改变的是基，同时坐标也改变了！</strong> (参见<code>&lt;sp-note-N1&gt;</code>)</p>
+</blockquote>
+<p><strong>例9.</strong> 输入基 <span class="arithmatex">\(v_1=(3,7),v_2=(2.5)\)</span>,输出基是 <span class="arithmatex">\(w_1=(1,0),w_2=(0,1)\)</span>,矩阵M是容易计算出来的
+$$
+T ( v ) = v \text{ 对应的矩阵是} \quad  \quad M = \left[ \begin{array} { l l } 3 &amp; 2 \ 7 &amp; 5 \end{array} \right]
+ \quad \color{orange} \text{Change of basis}
+$$
+因为:第一个输入基 <span class="arithmatex">\(v\)</span> 对应的输出必须是(3,7),也就是 <span class="arithmatex">\(3w_1+7w_2\)</span>,所以M的第一列是3,7</p>
+<p>这看起来好像太简单了,没什么重要的.但是当基变换以另一种方式出现的时候,会变的棘手.下面的例子,我们得到的是这个M的逆矩阵</p>
+<p><strong>例10.</strong> 输入基现在是 <span class="arithmatex">\(v_1=(1，0),v_2=(0，1)\)</span>,输出是 <span class="arithmatex">\(T(v) = v\)</span>,输出基是 <span class="arithmatex">\(w_1=(3,7),w_2=(2,5)\)</span>
+$$
+T ( v ) = v \quad \text { 对应的矩阵是 } \left[ \begin{array} { l l } 3 &amp; 2 \ 7 &amp; 5 \end{array} \right] ^ { - 1 } = \left[ \begin{array} { r r } 5 &amp; - 2 \ - 7 &amp; 3 \end{array} \right]</p>
+<p>\quad 
+\begin{aligned}
+    \color{orange} \text{reverse the bases}\
+    \color{orange} \text{invert the matrix}
+\end{aligned}
+$$
+因为：第一个输入基是 <span class="arithmatex">\(v_1=(1,0)\)</span>,输出也是 <span class="arithmatex">\(v_1\)</span>,但需要表示为 <span class="arithmatex">\(5w_1  −7w_2\)</span>.检查一下 :<code>5（3，7）- 7（2，5）= (1,0)</code>.我们这里做的是,把例9M的列组合起来产生 <code>I</code> 的列.能做这件是的矩阵就是 <span class="arithmatex">\(M^{−1}\)</span>
+$$
+\left[ \begin{array} { l l } w _ { 1 } &amp; w _ { 2 } \end{array} \right] \left[ \begin{array} { r r } 5 &amp; - 2 \ - 7 &amp; 3 \end{array} \right] = \left[ \begin{array} { l l } v _ { 1 } &amp; v _ { 2 } \end{array} \right] \text { 其实是 } M M ^ { - 1 } = I</p>
+<p>\quad 
+\begin{aligned}
+    \color{orange} \text{Change basis}\
+    \color{orange} \text{Change back}
+\end{aligned}
+\tag{M1}
+$$</p>
+<p>通过这2个例题,我们从基 <code>(1,0),(0,1)</code>开始,也从 基 <code>(1,0),(0,1)</code> 结束.矩阵乘法必须得到 <code>I</code>.所以这2个基变换矩阵必须是逆矩阵</p>
+<blockquote>
+<p>sp:例9，例10想表达的是：在恒等变换 T(v) = v当中，矩阵M从基A变到基B,那么矩阵 <span class="arithmatex">\(M^{-1}\)</span> 就从基B变到基A。但注意<strong>基A、B有1个是标准基！</strong>这其实就是 <code>&lt;#Lk1&gt;</code> 的Eq(k3,k4)</p>
+</blockquote>
+<h2 id="24">2.4 小波变换=变为小波基</h2>
+<blockquote>
+<p>Wavelet Transform=Change to wavelet Basis</p>
+</blockquote>
+<p>小波基有不同的长度而且分布位置也是不同的,下面的第一个基向量其实不是一个小波,它是一个很有用的分量都是1的向量.下面的是Haar Wavelet:
+$$
+\text{Haar basis: }\quad w _ { 1 } = \left[ \begin{array} { l } 1 \ 1 \ 1 \ 1 \end{array} \right] \quad w _ { 2 } = \left[ \begin{array} { r } 1 \ 1 \ - 1 \ - 1 \end{array} \right] \quad w _ { 3 } = \left[ \begin{array} { r } 1 \ - 1 \ 0 \ 0 \end{array} \right] \quad w _ { 4 } = \left[ \begin{array} { r } 0 \ 0 \ 1 \ - 1 \end{array} \right]</p>
+<p>\tag{8}
+$$
+这些向量是<strong>正交</strong>的,非常好.注意看 <span class="arithmatex">\(w_3\)</span> 的只有前半部分有分量,而 <span class="arithmatex">\(w_4\)</span> 只在后半部分有分量.小波变换,当输入信号 <span class="arithmatex">\(v = (v_1,v_2,v_3,v_4)\)</span> 表达为小波基的时候,就是寻找系数 <span class="arithmatex">\(c_1 ,c_2,c_3,c_4\)</span>,把v表示为小波基: 
+$$
+\text {Transform v  to c:}  \quad v = c _ { 1 } w _ { 1 } + c _ { 2 } w _ { 2 } + c _ { 3 } w _ { 3 } + c _ { 4 } w _ { 4 } = W c
+ \tag{9}
+$$
+系数 <span class="arithmatex">\(c_3\)</span> 和 <span class="arithmatex">\(c_4\)</span> 告诉我们的是v的前半部分和后半部分的细节,而 <span class="arithmatex">\(c_1\)</span> 表示的则是平均数</p>
+<p>为什么我们要变基?设 <span class="arithmatex">\(v_1,v_2,v_3,v_4\)</span> 可以是信号的强度,如在音频当中是声音的大小.在图片当中可以是灰度的像素值.当然n = 4很短,当n = 10000是比较符合现实的.我们需要压缩这个非常长的信号,只保留最大的5%的系数.这就是20:1的压缩，也就是因为我们这样做了，才有高清电视和视频会议</p>
+<p>但如果我们保持的是5%标准基的系数,我们就丢失了95%的信号.但是如果我们选择了更好的基 <code>w's</code>,这些基组合起来可以很接近原始的信号,你甚至发现不了有什么差别,原理上来说，我们不需要其他的95%!</p>
+<p>第1个基向量是 <span class="arithmatex">\((1,1,1,1)\)</span> 是不错的，它可以单独可以表示我们需要压缩图片的背景，而类似于 <code>(0,0,1,-1)</code> 的短波(当然可以更高维度，如 <code>(0,0,0,0,0,0,1,-1)</code>)可以代表信号末尾的细节</p>
+<blockquote>
+<p><strong>变换有3个步骤：变换，压缩，逆变换(inverse transform)</strong>
+$$
+\large
+\text{input v}  \underbrace{\rightarrow}<em lossy="lossy">{lossless} \text{ coefficients  c} 
+\underbrace{\rightarrow}</em> \
+\underbrace{\rightarrow}_{resconstruct}  \text{compressed }  \widehat{v}
+$$
+}  \text{compressed }  \widehat{c</p>
+</blockquote>
+<p>在线代，因为任何事情都是完美的,所以我们省略压缩环节，也就是说，输出 <span class="arithmatex">\(\widehat{v}\)</span>' 和输入 <code>v</code> 是一样的.变换给出 <span class="arithmatex">\(c = w^{−1} v\)</span>,而重建可以返回得到 <span class="arithmatex">\(v = Wc\)</span>.但在实际的信号压缩当中,没有任何东西是完美的,但速度是很快的,变换(不丢失信息)和压缩(丢失了不重要的信息)是成功的关键(the transform (lossless) and the compression (which only loses unnecessary information) are absolutely the keys to success.),输出是 <span class="arithmatex">\(\widehat{v} = W\widehat{c}\)</span>.</p>
+<p>我会对一个典型向量 <code>v = (6,4,5,1)</code> 展示一下这些步骤,它的小波系数是 <span class="arithmatex">\(c = (4,1,1,2).v = Wc\)</span> 就是 <span class="arithmatex">\(4w_1  + w_2+ w_3+2w_4\)</span>
+$$
+\left[ \begin{array} { l } 6 \ 4 \ 5 \ 1 \end{array} \right] = 4 \left[ \begin{array} { l } 1 \ 1 \ 1 \ 1 \end{array} \right] + \left[ \begin{array} { r } 1 \ 1 \ - 1 \ - 1 \end{array} \right] + \left[ \begin{array} { r } 1 \ - 1 \ 0 \ 0 \end{array} \right] + 2 \left[ \begin{array} { r } 0 \ 0 \ 1 \ - 1 \end{array} \right] = \left[ \begin{array} { r r r r } 1 &amp; 1 &amp; 1 &amp; 0 \ 1 &amp; 1 &amp; - 1 &amp; 0 \ 1 &amp; - 1 &amp; 0 &amp; 1 \ 1 &amp; - 1 &amp; 0 &amp; - 1 \end{array} \right] \left[ \begin{array} { l } 4 \ 1 \ 1 \ 2 \end{array} \right]
+\tag{10}
+$$
+系数c是 <span class="arithmatex">\(W^{−1} v\)</span>.而求W的逆是很简单的,因为W的列是正交的,虽然不是单位,但是我们可以缩放,把W变成单位正交,那么 <span class="arithmatex">\(W^{−1}= W^T\)</span>
+$$
+W ^ { - 1 } = \left[ \begin{array} { r r r r r } \frac { 1 } { 4 } &amp; &amp; &amp; \ &amp; \frac { 1 } { 4 } &amp; &amp; \ &amp; &amp; \frac { 1 } { 2 } &amp; \ &amp; &amp; &amp; \frac { 1 } { 2 } \end{array} \right] \left[ \begin{array} { r r r r } 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; 1 &amp; - 1 &amp; - 1 \ 1 &amp; - 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; - 1 \end{array} \right]
+$$
+<span class="arithmatex">\(c= W^{−1} v\)</span> 的的第一行的1/4表示,<span class="arithmatex">\(c_1=4\)</span> 是6,4,5,1(原始向量v的分量)的平均值</p>
+<p><strong>例11. Same Wavelet Basis By recursion</strong>. 我忍不住想要展示一个快速找到c的方法.小波基的特点是你可以在选择出 <span class="arithmatex">\(c_2\)</span> 的粗略细节和 <span class="arithmatex">\(c_1\)</span> 的整体平均之前,选择出 <span class="arithmatex">\(c_3,c_4\)</span> 的细节.下图展示了这个多尺度(multiscale)方法(此图也在我的书籍<code>&lt;Wavelets  and  Filter Banks&gt;</code>第一章）</p>
+<p><img alt="image-20210406091544878" src="../.assets/image-20210406091544878.png" /></p>
+<blockquote>
+<p>sp:不懂这幅图是什么意思....</p>
+</blockquote>
+<p>​ <br />
+​   </p>
+<h2 id="25-dft">2.5 傅里叶变换（DFT) = 变为傅里叶基</h2>
+<blockquote>
+<p>Fourier Transform(DFT) = change to Fourier Basis</p>
+</blockquote>
+<p>一个电机工程师(electrical enigneer)对信号做的第一件事就是进行傅里叶变换.对于有限的向量,我们说的其实是离散傅里叶变换(Discrete Fourier transform),DFT涉及到复数 (<span class="arithmatex">\(e^{2πi/n}\)</span> 的幂)但是当我们选择n = 4,矩阵是比较小的,唯一涉及到的复数是 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(i^3=−i\)</span>.
+$$
+F = \left[ \begin{array} { c c c c } 1 &amp; 1 &amp; 1 &amp; 1 \ 1 &amp; i &amp; i ^ { 2 } &amp; i ^ { 3 } \ 1 &amp; i ^ { 2 } &amp; i ^ { 4 } &amp; i ^ { 6 } \ 1 &amp; i ^ { 3 } &amp; i ^ { 6 } &amp; i ^ { 9 } \end{array} \right]</p>
+<p>\quad \color{orange} \text{Fourier basis } w_1 \text{ to }w_4 \text{in the columns of F}
+$$
+第一列仍然是那个有用的向量 <code>(1,1,1,1)</code>.它代表是的平均信号或者当前电流，其频率是0.第3列是 <code>(1,-1,1,-1)</code>，以最高频率交替。傅里叶变换把信号分解为频率均匀分布的波(The Fourier transform decomposes the signal into waves at equally spaced frequencies)</p>
+<p>傅里叶矩阵F绝对是数学,科学和工程上最重要的复数矩阵.<code>&lt;01-10 #3&gt;</code> 会讨论快速傅里叶变换(FFT):可以看成是把F分解成很多个元素是很多0的矩阵组.FFT变革了整个工业!美丽的事实是,<span class="arithmatex">\(F^{−1}\)</span> 和 F 很类似,只是 <code>i</code> 变成 <code>-i</code></p>
+<p><img alt="image-20210403021307790" src="../.assets/image-20210403021307790.png" /></p>
+<p>Matlab命令 <code>c = fft(v)</code> 产生的是向量v的傅里叶系数 <span class="arithmatex">\(c_1...c_n\)</span>，也就是v 被 <span class="arithmatex">\(F^{−1}\)</span> 乘 (很快!) </p>
+<h2 id="26-v32-1">2.6 V32-1：图像压缩</h2>
+<blockquote>
+<ul>
+<li>这里是V32的一部分，其他部分总结到合适的地方，请搜索V32即可</li>
+</ul>
+</blockquote>
+<p>信号压缩,图像压缩,本质上就是基变换.本章的主题是线性变换和矩阵的关联,线性变换不需要在坐标系内,而矩阵则把线性变换用坐标的方式表示，<strong>矩阵是基于坐标描述线性变换的.</strong></p>
+<p>首先说图像压缩的基础知识，如课程的录像就是压缩过的,你会看到黑板上的东西很清晰,但如果我来回走动,会需要相当多的字节,我就会被压缩的很厉害.</p>
+<p>有些压缩是无损的，只压掉多余的,而我们要讲的是有损压缩。如果是一个<code>512*512</code>像素构成的黑白静态图片,那么像素就是灰度值(gray-scale),从0到255,<span class="arithmatex">\(2^8\)</span> 种可能,8个比特位.这个值可以表示为 <span class="arithmatex">\(x_i\)</span>.每一个像素都有这个值,共有 <span class="arithmatex">\(512^2\)</span> 个像素,那么我们实际上是对 <span class="arithmatex">\(R^n\)</span> 中的向量x做操作,n是 <span class="arithmatex">\(512^2\)</span> !一个图像就是一个向量! 如果是彩色彩图,那么长度就会是这个3倍,因为我们还需要3个值来表示其他信息,长度就是 <span class="arithmatex">\(3*512^2\)</span>,相当大的信息量.所以如果不压缩,根本无法发送这些课程的视频</p>
+<p>标准压缩法叫做JPEG,表示联合图像专家组（Joint Photographic Experts Group),原理就是基变换!以上述图片为例，我们有什么样的基呢?可以认为是,每一个像素的每一个值都是标准基的一个分量,那么我们有分量长度为 <span class="arithmatex">\(512^2\)</span>的向量x.有一些像素很相似,如空白黑板上的黑色部分,这使得他们相互关联,这就有压缩的可能性了.</p>
+<p>标准基是如下:
+$$
+\left[\begin{matrix}1\ \vdots \0 \0 \end{matrix} \right] \quad
+​​\left[\begin{matrix}0\ 1 \\vdots \0 \end{matrix} \right] \quad \cdots</p>
+<p>​​\left[\begin{matrix}0\ 0 \\vdots \1 \end{matrix} \right] \quad
+$$
+空白黑板就是一副标准基很差的图像, 因为大部分的像素点的灰度值,和相邻的差不多.而标准基根本没有利用这一点。那么怎么利用这一点呢?一个非常好的基向量就是所有元素都为1的向量：
+$$
+\left[\begin{matrix}1\ \vdots \1 \1 \end{matrix} \right] \quad
+​​\left[\begin{matrix} 1 \\vdots \ 1 \-1 \ \vdots\-1 \end{matrix} \right] \quad \cdots</p>
+<p>​​\left[\begin{matrix}1\ -1 \1 \ -1 \\vdots \1 \ -1 \end{matrix} \right] \quad
+$$
+注意</p>
+<ul>
+<li>分量全是1的基向量：这个单一的向量,就能完整的给出这个所有像素基本相同的图像的信息.</li>
+<li>最后一个向量是一个棋盘向量，1、-1交替出现。如果图像是一个很大的棋盘,一格白一格黑,那么第3个向量就能表示这个棋盘所有信息了</li>
+<li>更常见的是一半图像暗,另一半亮,这时候第2个向量就是很有用的向量,一半是1一半是-1</li>
+</ul>
+<p>如果选择基？归根结底是线性代数的问题,基的选择问题.</p>
+<p>提一下JPEG使用的最好的基：傅里叶基!注意，对于512-512的图片，JPEG会做的就是，把图片分解成8-8的小块，每个8-8的小块有64个系数(也就是64个像素)，然后在这个8-8的小块上做基变换，因为一次处理512*512太大了.如下图</p>
+<p><img alt="image-20210705103730961" src="../.assets/image-20210705103730961.png" /></p>
+<p>如下是 8-8 的傅里叶基
+$$
+(参见视频24或27),这里教授没写出来    </p>
+<p>\tag{F1}
+$$
+每一个小块内,有64个系数,64个基向量,64个像素,所以我们是在64维空间中,利用傅里叶向量做基变换,注意,这是无损压缩步骤.</p>
+<p><strong>压缩步骤：</strong></p>
+<ol>
+<li>输入向量x,然后进行基变换,选择一组更好的基,得到系数c.所以输入64个像素,得到64个系数,然后是压缩,这是无损压缩.</li>
+<li>我们知道<span class="arithmatex">\(R^{64}\)</span> 有很多组基,我们已经选了一组,我们用那组基把信号表达出来压缩的时候,就要开始丢失信息了.我们做了什么,一个是我们可以扔掉小的系数,叫做阈值量化(thresholding),我们设定一些阈值,如肉眼看不出区别的阈值.因此压缩之后得到压缩后的一套系数.</li>
+<li>经过压缩步骤之后，我们就得到了系数 <code>c'</code>,它的分量很多是0。可能 <code>Eq(F1)</code> 全是1的基向量很少扔掉，因为它的系数比较大。但类似 <code>1,-1</code> 交替出现的基向量就会被扔掉很多，因为它是高频信号(1,-1...变化很大，而类似与 <code>1...1</code> 的全1向量就是频率为0).</li>
+<li>然后系数 <code>c'</code> 重建信号： <span class="arithmatex">\(x' = \sum c_i'v_i\)</span>,但现在这个求和不再是64项，而可能只有2，3项，得到了超过20的压缩比</li>
+</ol>
+<p><img alt="image-20210705104505439" src="../.assets/image-20210705104505439.png" /></p>
+<p>对于视频,可认为是一幅幅静态图像,压缩,然后播放成视频.这不是理想的方法，因为视频是一系列连续图像,一副图像和下一副相当接近,所以得用预估和修正(prediction and correction),你要假设图像都是上一副图,加一点小的修正，得到下一副图.压缩总是用到关联性[correlated],实际上,在时间空间上,物体不会变幻剧烈,而是平滑的变换,所以可以根据前一个值预测下一个值.</p>
+<p>再讲一点傅里叶基的竞争对手：小波(wavelets).以8-8为例.如下就是小波基 <span class="arithmatex">\(w_1...w_8\)</span>
+$$
+\left[\begin{matrix}1\1\1\ 1 \ 1\1\1\1 \end{matrix} \right]
+\left[\begin{matrix}1\1\1\ 1 \ -1\-1\-1\-1 \end{matrix} \right]
+\left[\begin{matrix}1\1\-1\ -1 \ 0\0\0\0 \end{matrix} \right]
+\left[\begin{matrix}0\0\0\ 0 \ 1\1\-1\-1 \end{matrix} \right]</p>
+<p>\qquad</p>
+<p>\left[\begin{matrix}1\-1\0\ 0 \ 0\0\0\0 \end{matrix} \right]
+...  \tag{F0}
+$$</p>
+<ol>
+<li>先是8个1</li>
+<li>然后4个1,4个-1,</li>
+<li>然后是2个1,2个-1,4个0,</li>
+<li>然后4个0,2个1,2个-1</li>
+<li>然后1,-1,6个0</li>
+<li>后面略</li>
+</ol>
+<p>这就是8维空间下的小波基(这个比较简单，还有更精密的小波基).</p>
+<p>现在问，对于  <code>[1,-1...1,-1]</code> 这样的向量，这么用小波基去表示？其实就是上述小波基后面4个之和。而线代就是要,给定基(如小波基),找出系数 <code>c'</code>（上面压缩步骤第3步）。</p>
+<p>现在假设使用小波基，然后给定像素值 <span class="arithmatex">\(P_1 \sim P_8\)</span>.要干什么呢? <span class="arithmatex">\(P_i\)</span>都是标准基的<strong>系数</strong>,那么要确定的就是使用小波基表示成组合形式
+$$
+P = c_1w_1+...+c_8w_8 \tag{F2}
+$$
+上式就是这是无损变换.要确定的就是那些系数<span class="arithmatex">\(c_i\)</span>.那么怎么求这些 <span class="arithmatex">\(c_i\)</span> 呢？也就是数，给定8个基向量 <span class="arithmatex">\(w_1...w_8\)</span> 和一个输入信号 (8个分量的向量)，怎么求用基向量表达这个输入信号的系数？也就是<code>Eq(F2)</code>的 <span class="arithmatex">\(c_i\)</span>. Eq(F2) 其实就是方程组啊，我们写成矩阵表示
+$$
+P =</p>
+<p>\underbrace{ \left[\begin{matrix} 
+1 &amp; 1 &amp;\cdots\
+1 &amp; 1 &amp; \cdots \ 
+1 &amp; 1 &amp;\cdots \
+1 &amp; 1 &amp;\cdots \
+1 &amp; -1 &amp;\cdots \
+1 &amp; -1 &amp;\cdots \
+1 &amp; -1 &amp;\cdots \
+1 &amp; -1 &amp;\cdots \</p>
+<p>\end{matrix} \right]
+}_{ \text{Eq(F0),8-8 wavlets basis Matrix W}} * </p>
+<p>\left[\begin{matrix}c_1\c_2\\vdots\c_8 \end{matrix} \right]
+\tag{F3}
+$$</p>
+<p>小波基组成的矩阵W。终于到了基变换的步骤。求解 <span class="arithmatex">\(P = Wc\)</span>,那么 <span class="arithmatex">\(c = W^{−1} P\)</span>,关键点是：<strong>优秀的基就是能很快的求逆!</strong>性质好的基与如下要求</p>
+<p><strong>1 计算快</strong>。也就是乘以基向量组成的矩阵<span class="arithmatex">\(W，W^{-1}\)</span>要很快。</p>
+<ul>
+<li>傅里叶基可以快速傅里叶变换（FFT)</li>
+<li>小波基快速小波变换（FWT)</li>
+</ul>
+<p>而且小波矩阵很容易求逆,因为</p>
+<ol>
+<li>Eq(F0)的基向量，都是由 <code>1,-1,0</code> 构成,所以乘法非常快.</li>
+<li>它们是正交的!基向量正交!虽然目前不是标准正交的，但化为标准正交也很简单。正交之后，<span class="arithmatex">\(W^{−1}\)</span> 是多少?,参见 <code>&lt;01-04&gt;</code>,如果列向量标准正交,那么逆就是转置!超级快！</li>
+</ol>
+<p><strong>2 性质好</strong>。如果我们不改变基,保持标准基不变,是一点都不菲时间，但是从压缩的角度来看就不好了,因为不能扔掉系数,不能压缩.相反,如果基性质很好,扔掉一些基,比如 <span class="arithmatex">\(w_5-w_8\)</span> 的系数 <span class="arithmatex">\(c5 - w_8\)</span>,扔掉的只是很少的点.所以第2个要求就是良好的压缩性.也就是说.<strong>少量的基向量，就能很接近信号!</strong>JPEG2000,就是图像压缩的下一个标准,将会包含小波基.</p>
+<hr />
+<h3 id="261">2.6.1 特征向量作为基</h3>
+<p>复习一下上节课，假设基 <span class="arithmatex">\(v_1 \sim v_8\)</span> 表示变换T,要点是,如果我知道作用在8个基向量 <span class="arithmatex">\(v_1 \sim v_8\)</span> 上的T变换 <span class="arithmatex">\(T(v_1) \sim T(v_8)\)</span> 是什么,那么我完全了解T.为什么呢？因为T是一个线性变换，而每个向量 x 是基向量 <span class="arithmatex">\(v_1 \sim v_8\)</span> 的某个组合：</p>
+<blockquote>
+<p>sp:本段参见V32 40分开始。一直以为讲授讲错了，把新的基和旧的基混合成同一组，但不是啊，这里的意思就是输入、输出基相同的情况下，T变换对应的矩阵</p>
+</blockquote>
+<div class="arithmatex">\[
+x = c_1v_1 +... + c_8v_8
+\]</div>
+<p>从而 x 的变换T(x)就是 <span class="arithmatex">\(T(v_1) \sim T(v_8)\)</span> 的同一个组合
+$$
+T(x) = c_1T(v_1) +... + c_8T(v_8)
+$$
+现在问题是，要把变换 <span class="arithmatex">\(T(v_1) \sim T(v_8)\)</span> 用基 <span class="arithmatex">\(v_1 \sim v_8\)</span> 表示，也就是
+$$
+T(v_1) = a_{11}v_1+a_{21}v_2+...+a_{81}v_8\
+T(v_2) = a_{12}v_1+a_{22}v_2+...+a_{82}v_8 \</p>
+<p>\vdots\
+T(v_8) = a_{18}v_1+a_{28}v_2+...+a_{88}v_8
+$$
+得到矩阵A
+$$
+A = \left[\begin{matrix} 
+a_{11} &amp; \cdots &amp; a_{81}\
+\vdots &amp; \cdots &amp; \vdots\
+a_{81} &amp; \cdots &amp; a_{88}\
+\end{matrix} \right]
+$$
+也就是说，给定条件</p>
+<ul>
+<li>一组基</li>
+<li>一个变换T</li>
+</ul>
+<p>然后需要你计算，每个基向量的变换 <span class="arithmatex">\(T(v_i)\)</span>,得到代表变换的系数矩阵A</p>
+<p>现在假设 <span class="arithmatex">\(v_1 \sim v_8\)</span> 是特征向量！那么 <span class="arithmatex">\(T(v_i)\)</span> 和 <span class="arithmatex">\(v_i\)</span> 是同向：<span class="arithmatex">\(T(v_i) = \lambda_i v_i\)</span>，那么现在A是什么？特征向量基是完美的基，但会增加计算时间，所以在信号处理当中，人们会说：使用傅里叶基，小波基把，但最好的基是特征向量基</p>
+<p>首先我们确认一下A的第一列：取第1个基向量 <span class="arithmatex">\(v_1\)</span>,看看它的变换是什么，其实就是 <span class="arithmatex">\(T(v_1) = \lambda_1 v_1\)</span>,再把 <span class="arithmatex">\(T(v_1) = \lambda_1 v_1\)</span> 表达为基向量的线性组合，其实 <span class="arithmatex">\(\lambda_1 v_1\)</span> 已经是基向量的线性组合了，也就是第1个系数是<span class="arithmatex">\(\lambda_1\)</span>，其他都是0 ，所以得到A的第1列就是：
+$$
+\left[\begin{matrix}\lambda_1\0\\vdots\0\ \end{matrix} \right]
+$$
+其他基向量同样如此处理，最终得到 
+$$
+A = \left[\begin{matrix} </p>
+<p>\lambda_1 &amp; 0 &amp;  &amp;0\</p>
+<p>0 &amp; \lambda_2 &amp;  &amp; 0\</p>
+<p>0 &amp; 0 &amp;  \cdots  &amp; \vdots\</p>
+<p>\vdots &amp; \vdots &amp;  &amp; \lambda_n\</p>
+<p>\end{matrix} \right]
+$$
+在特征向量基下，矩阵是对角阵！使我们在图像处理当中的完美矩阵，但是求特征向量的代价太大了</p>
+<blockquote>
+<p>sp:这里可以参见<code>&lt;#Lk1.4&gt;</code> 的特征向量为基的例子</p>
+</blockquote>
+<h2 id="27">2.7 总结</h2>
+<ol>
+<li>如果对于一组基 <span class="arithmatex">\(v_1...v_n\)</span> 我们知道了 <span class="arithmatex">\(T(v_1)...T(v_n)\)</span>，那么通过线性化，我们可以知道其他所有的 <span class="arithmatex">\(T(v)\)</span></li>
+<li>输入基是 <span class="arithmatex">\(v_1...v_n\)</span> ，输出基是 <span class="arithmatex">\(w_1...w_m\)</span> 的线性变换，可由 m-n 的矩阵A表示</li>
+<li>如果A,B代表了变换T和S，而且S的输出基是T的输入基，那么矩阵AB代表了变换 T(S(u))</li>
+<li>(来自V31):<strong>矩阵的逆相当于线性变换的逆!矩阵的乘积相当于线性变换的乘积,实际上矩阵乘法也来源于线性变换!</strong></li>
+</ol>
+<h2 id="28">2.8 典例</h2>
+<p><strong>1.</strong> 使用标准基，求一个表示循环排列变换(cyclic permutation) T 的4-4的矩阵P，也就是把 <span class="arithmatex">\(x = (x_1,x_2,x_3,x_4)\)</span> 变换为 <span class="arithmatex">\(T(x) = (x_4,x_1,x_2,x_3)\)</span>.再求 <span class="arithmatex">\(T^2\)</span> 的变换矩阵，最后， <span class="arithmatex">\(T^3(x)\)</span> 是什么变换？为什么 <span class="arithmatex">\(T^3 = T^{-1}\)</span>?</p>
+<p>解： 在标准基下，设 <span class="arithmatex">\(x= (1,0,0,0)\)</span>,这是第1个基向量。变换后 <span class="arithmatex">\(T(x) =(0,1,0,0)\)</span>,这是第2个基向量，所以P的第1列是 <span class="arithmatex">\((0,1,0,0)\)</span>,其他3个列向量也可以如此求，得到
+$$
+P = \left[ \begin{array} { l l l l } 0 &amp; 0 &amp; 0 &amp; 1 \ 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \end{array} \right] \quad \rightarrow P \left[ \begin{array} { l } x _ { 1 } \ x _ { 2 } \ x _ { 3 } \ x _ { 4 } \end{array} \right] = \left[ \begin{array} { l } x _ { 4 } \ x _ { 1 } \ x _ { 2 } \ x _ { 3 } \end{array} \right]
+$$
+因为使用的是标准基，所以T变换就是乘以P矩阵(sp:这里的意思是输入基和输出基是同1个，所以<span class="arithmatex">\(T^2,T^3\)</span> 的矩阵都可以直接表达为矩阵的幂）。</p>
+<ul>
+<li><span class="arithmatex">\(T^2\)</span> 的矩阵就是 <span class="arithmatex">\(P^2\)</span>,把 <span class="arithmatex">\(x = (x_1,x_2,x_3,x_4)\)</span> 变换为 <span class="arithmatex">\(x = (x_3,x_4,x_1,x_2)\)</span></li>
+<li><span class="arithmatex">\(T^3\)</span> 的矩阵就是 <span class="arithmatex">\(P^3\)</span>,把 <span class="arithmatex">\(x = (x_1,x_2,x_3,x_4)\)</span> 变换为 <span class="arithmatex">\(T^3(x) = (x_2,x_3,x_4,x_1)\)</span></li>
+</ul>
+<p>如果对 <span class="arithmatex">\(T^3\)</span> 再应用一次变换，那么我们回到了原来的x，所以 <span class="arithmatex">\(T^4\)</span>  是Identity transformation,<span class="arithmatex">\(P^4 = I\)</span>.也即是 <span class="arithmatex">\(P^3 P = I,P^3 = P^{-1}\)</span>.</p>
+<p>P的实数特征向量是：<span class="arithmatex">\(\lambda_1 = 1,x_1 = (1,1,1,1);\lambda_2 =-1,x_2 = (1,-1,1,-1)\)</span>.T变换对 <span class="arithmatex">\(x_1\)</span> 无任何改变，但对 <span class="arithmatex">\(x_2\)</span>,它改变了其正负性！(sp:也就是每次变换都乘以-1！）其他2个特征值是 <span class="arithmatex">\(i,-i\)</span>,有 <span class="arithmatex">\(\lambda_1\lambda_2\lambda_3\lambda_4 = -1\)</span>.</p>
+<p>注意 <span class="arithmatex">\(1,-1,i,-i\)</span> 加起来等于迹：0.它们分别是1的4阶根(4th roots),因为 <span class="arithmatex">\(\det(P - \lambda I)= \lambda^4 - 1\)</span>,在复平面，它们分别位于 <span class="arithmatex">\(0,90,180,270\)</span> 度角！<strong>傅里叶矩阵F就是P的特征向量矩阵！</strong></p>
+<hr />
+<p><strong>2.</strong> 2-2的矩阵有4个 "向量" 作为基：
+$$
+\boldsymbol { v } _ { 1 } = \left[ \begin{array} { l l } 1 &amp; 0 \ 0 &amp; 0 \end{array} \right] \quad \boldsymbol { v } _ { 2 } = \left[ \begin{array} { l l } 0 &amp; 1 \ 0 &amp; 0 \end{array} \right] \quad \boldsymbol { v } _ { 3 } = \left[ \begin{array} { l l } 0 &amp; 0 \ 1 &amp; 0 \end{array} \right] \quad \boldsymbol { v } _ { 4 } = \left[ \begin{array} { l l } 0 &amp; 0 \ 0 &amp; 1 \end{array} \right]
+$$
+设T是转置任何2-2矩阵的线性变换，那么在上面的基作为输入基和输出基的时候，什么矩阵A能表示这样的变换？<span class="arithmatex">\(A^{-1}\)</span> 是什么？变换 <span class="arithmatex">\(T^{-1}\)</span> 呢？</p>
+<p>解：我们变换4个基得到A的4列,发现矩阵A直接调换了 <span class="arithmatex">\(v_2,v_3\)</span>
+$$
+\begin{array} { l } T \left( v _ { 1 } \right) = v _ { 1 } \ T \left( v _ { 2 } \right) = v _ { 3 } \ T \left( v _ { 3 } \right) = v _ { 2 } \ T \left( v _ { 4 } \right) = v _ { 4 } \end{array}  </p>
+<p>\quad \Rightarrow \quad 
+A = \left[ \begin{array} { l l l l } 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]
+$$
+<span class="arithmatex">\(A^{-1}\)</span> 和A是一样的，<span class="arithmatex">\(T^{-1}\)</span> 和 T 也是一样的。如果我们转置再转置，得来最初的输入向量。</p>
+<h1 id="3">3 对角化和伪逆</h1>
+<blockquote>
+<ul>
+<li>Diagonalization and the Pseudoinverse</li>
+</ul>
+</blockquote>
+<p>通过选择更好的基,可以产生更好的线性变换矩阵!如果想要矩阵是对角矩阵：</p>
+<ul>
+<li>第1个方法是把<strong>特征向量作为基</strong></li>
+<li>第2个方法是2组不同的基：输入基和输出基不同，也就是SVD当中学习的：左右奇异向量是A的四个基础子空间的<strong>单位正交</strong>基向量。<strong>通过逆转这些输入输出基，我们可以得到A的伪逆</strong>。矩阵 <span class="arithmatex">\(A^+\)</span> 把向量从 <span class="arithmatex">\(R^m\)</span> 切换回 <span class="arithmatex">\(R^n\)</span>,也就是把列空间转换为行空间(By reversing those input and output bases, we will find the "pseudoinverse" of A. This matrix <span class="arithmatex">\(A^+\)</span> sends <span class="arithmatex">\(R^m\)</span> back to <span class="arithmatex">\(R^n\)</span> , and it sends column space back to row space.)</li>
+</ul>
+<p><strong>事实上,对A所有的伟大的分解,都可以看成是变基</strong>.但这一节篇幅太小,我们把注意力集中到2个突出的例子:<strong>变换T对应的矩阵A都是对角矩阵:</strong></p>
+<blockquote>
+<p><strong>1组基情况(&lt;#3.1&gt;)：</strong> 以矩阵A的特征向量同时作为输入、输出基，这时 <span class="arithmatex">\(S^{-1}AS = \Lambda\)</span>,那么在特征向量基下，变换对应矩阵是对角矩阵是 <span class="arithmatex">\(\Lambda\)</span>！此时输出输出基是一样的，而且 <code>m=n</code>,矩阵A必须是方阵(但注意有些方阵的没有n个独立的特征向量，不能对角化）。</p>
+<blockquote>
+<p>sp:矩阵A的特征向量，什么矩阵A？应该理解为标准基下T变换对应的矩阵A！以下是V31视频下网友的总结</p>
+<p><code>&lt;V31总结&gt;</code>：教授讲解时，提到了以特征向量为基时，线性变换的矩阵是对角阵的结论。</p>
+<ol>
+<li>首先，谁的特征向量？不妨说就是线性变换<strong>标准基下对应矩阵的特征向量</strong>。</li>
+<li>其次，特征向量和特征值的几何意义是什么？不妨设标准基下的线性变换对应矩阵A，<span class="arithmatex">\(T(v）=Av\)</span>，则A的特征向量表示的就是<strong>线性变换的变换方向</strong>，即向量v旋转伸缩的方向，<strong>特征值就是伸缩的幅度</strong>。那么如果以矩阵A的变换方向（特征向量）作为基构造坐标系，线性变换的旋转伸缩<strong>方向指向了自身，改变的只有幅度</strong>，所以这组基对应的线性变换的作用就是只改变幅度不改变方向，能起到这种作用的线性变换矩阵就是以<strong>特征值为对角的对角阵</strong>。</li>
+</ol>
+</blockquote>
+<hr />
+<p><strong>2组基情况</strong>(&lt;#3.2&gt;)：基分别是 <span class="arithmatex">\(A^TA\)</span> 和 <span class="arithmatex">\(AA^T\)</span> 的特征向量，<span class="arithmatex">\(U^{-1}AV = \Sigma\)</span>,对角矩阵是 <span class="arithmatex">\(\Sigma\)</span></p>
+<p>此时输入输出基是不一样的.矩阵A可以是矩形的.基是<strong>单位正交</strong>的，因为 <span class="arithmatex">\(A^T A,AA^T\)</span> 是对称的.那么<span class="arithmatex">\(U^{−1}= U^T,V^{−1}= V^T\)</span>.任何矩阵阵A都是可以的，A的对角形式是 <span class="arithmatex">\(Σ\)</span>,这是<code>&lt;01-06&gt;</code> 的SVD知识！</p>
+</blockquote>
+<p>只有当 <span class="arithmatex">\(A^TA = AA^T\)</span>,特征向量的基才是单位正交的。这包括 对称、反对称、和正交(orthogonal)矩阵。此时，<span class="arithmatex">\(\Sigma\)</span> 当中的奇异值是绝对值 <span class="arithmatex">\(\sigma_i = |\lambda_i|\)</span>,所以 <span class="arithmatex">\(\Sigma = abs(\Lambda)\)</span>.而且当 <span class="arithmatex">\(A^TA = AA^T\)</span>,2种方式的对角化形式是一样的,仅仅是因子可能不同：实数的时候是-1，虚数的时候是 <span class="arithmatex">\(e^{i\theta}\)</span></p>
+<p>提醒一下，GS分解 A=QR 只能给出1组新的基：也就是由Q得到的正交输出基。 而输入基是 <code>I</code> 指定的标准基。我们没有得到对角的 <span class="arithmatex">\(\Sigma\)</span>,但我们确实得到了矩形的R，在等式 <span class="arithmatex">\(A= QRI\)</span>,输出基矩阵在左边，输入基矩阵在右边</p>
+<h2 id="32-a-s-1as-w-1aw">3.2 相似矩阵：A和 <span class="arithmatex">\(S^{-1}AS\)</span> 和 <span class="arithmatex">\(W^{-1}AW\)</span></h2>
+<p>首先从输入输出基相等的时候开始，这会产生 <span class="arithmatex">\(S,S^{-1}\)</span>。</p>
+<p>从方阵和1组基：<code>I</code> 的列，也就是标准基开始，输入空间 V 是 <span class="arithmatex">\(R^n\)</span> ，输出空间 W 也是 <span class="arithmatex">\(R^n\)</span>。矩阵是 n-n 的，称为A，线性变换T就是乘以A</p>
+<ul>
+<li><code>&lt;01-02&gt;</code>,我们通过消去化简矩阵是上下三角</li>
+<li><code>&lt;01-04&gt;,&lt;01-06&gt;</code>,我们通过GS正交化和特征向量，把矩阵化为对角(diagonal)</li>
+</ul>
+<p>现在我们把A化为 <span class="arithmatex">\(\Lambda\)</span>,这时通过变基完成的：<strong>来自特征向量基的特征值矩阵(Eigenvalue matrix from eigenvector basis)</strong></p>
+<p>提前说一下</p>
+<ol>
+<li>当你改变了V的基，矩阵A变为AM。因为V是输入空间，所以矩阵M是在右边的(首先起作用)</li>
+<li>当你改变了W的基，矩阵A变为<span class="arithmatex">\(M^{-1}A\)</span>。因为W是输出空间，所以矩阵<span class="arithmatex">\(M^{-1}\)</span>是在左边的(最后起作用)</li>
+<li><strong>如果2个空间都变基，那么变换T对应的新矩阵是 <span class="arithmatex">\(M^{-1}AM\)</span>(sp:和原来的A相似,这里说的就是Eq(2)啊）</strong>.而A的特征向量是基的一个非常好的选择，如果2个空间都选择特征向量作为基，这时变换对应的新矩阵为 <span class="arithmatex">\(S^{-1}AS = \Lambda\)</span>！</li>
+</ol>
+<blockquote>
+<p><strong>当基是由特征向量 <span class="arithmatex">\(x_1...x_n\)</span> 组成，T变换对应的矩阵就是 <span class="arithmatex">\(\Lambda\)</span>.</strong>(sp:注意这里输入、输出基都是同一组基：特征向量！)</p>
+<p><strong>原因</strong>：为了得到矩阵的第1列，首先输入第一个基向量 <span class="arithmatex">\(x_1\)</span>.因为变换可被A乘表示，也就是输出结果是 <span class="arithmatex">\(Ax_1 = \lambda x_1\)</span>,这就是 <span class="arithmatex">\(\lambda_1\)</span> 乘以第1个基向量，加上0乘以其他基向量。因此矩阵的第一列是 <span class="arithmatex">\((\lambda_1,0...,0)\)</span>.所以，<strong>以特征向量为基，线性变换的矩阵是对角的</strong></p>
+</blockquote>
+<p><strong>例1</strong> 把向量投影到直线 y= -x上，向量(1,0)投影为 <code>(.5,-.5）</code>;而 <code>(0,1)</code> 投影为 (-.5,.5)。如果使用标准基，那么这个投影变换对应的矩阵就是：
+$$
+\text{1.Standard matrix: Project standard basis} :\quad A = \left[\begin{matrix} .5 &amp; -.5 \ -.5 &amp; .5 \end{matrix} \right]
+$$
+现在，使用特征向量基，会得到什么样的对角的 <span class="arithmatex">\(\Lambda\)</span> 呢？这个投影对应的特征向量是 <span class="arithmatex">\(x_1= (1,-1),x_2 = (1,1)\)</span>.特征值是 <span class="arithmatex">\(\lambda_1 = 1,\lambda_2 = 0\)</span>（sp:这个投影矩阵就是上面的A啊）</p>
+<ul>
+<li><span class="arithmatex">\(x_1\)</span> 在 <span class="arithmatex">\(135^{\circ}\)</span> 直线上，其投影和就是自身 <span class="arithmatex">\(x_1\)</span></li>
+<li><span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(x_1\)</span> 垂直，也就是在<span class="arithmatex">\(45^{\circ}\)</span> 直线上,其投影是 <span class="arithmatex">\(\vec{0}\)</span></li>
+</ul>
+<p>所以使用特征向量做投影的矩阵
+$$
+\text{2 Diagonalized matrix: Project eigenvectors:} \quad \Lambda =\left[\begin{matrix} 1 &amp; 0 \ 0 &amp; 0 \end{matrix} \right] 
+$$
+现在如果使用新的基 <span class="arithmatex">\(v_1= w_1 = (2,0),v_2 = w_2 = (1,1)\)</span> 作为输入输出空间的基进行投影，这个矩阵B是什么呢？</p>
+<p><span class="arithmatex">\(w_1\)</span> 不是特征向量，所以这个基下的矩阵B不是对角的。得到B的方法就是 <code>&lt;#2&gt;</code> 所讲的方法：<strong>矩阵的列 j 是通过把变换  <span class="arithmatex">\(T(v_j)\)</span> 写成 w's 的组合</strong></p>
+<ul>
+<li>把 T 应用到 <span class="arithmatex">\(v_1=(2,0)\)</span> 得到 <code>(1,-1)</code>,也就是 <span class="arithmatex">\(w_1- w_2\)</span>,所以B的列1是 <code>1，-1</code></li>
+<li>把 T 应用到 <span class="arithmatex">\(v_2=(1,1)\)</span> 得到 <code>(0，0)</code>,所以B的列2是 (0,0)</li>
+</ul>
+<p>所以
+$$
+\text{3. Third similar matrix: Project }w_1\text{ and } w_2 : \quad<br />
+B = \left[\begin{matrix} 1 &amp; 0 \ -1 &amp; 0 \end{matrix} \right] \tag{1}
+$$
+还有一种更精妙的方法求B矩阵：使用 <span class="arithmatex">\(W,W^{-1}\)</span> 来在标准基和 W 的的基 w's 之间切换！这些<strong>变基矩阵代表着恒等变换</strong>！变换的乘积是 <span class="arithmatex">\(ITI\)</span></p>
+<blockquote>
+<p>sp:这个<code>I</code>代表恒等变换，由W矩阵表示,也就是发生变基操作</p>
+</blockquote>
+<p>而矩阵的乘积就是 <span class="arithmatex">\(B=W^{-1}AW\)</span>,这意味着 B 相似与 A （B is similar to A）</p>
+<blockquote>
+<p>对任何基 <span class="arithmatex">\(w_1...w_n\)</span> 用3步求的B矩阵的方法：</p>
+<ol>
+<li>使用W将输入基变为标准基(</li>
+<li>而标准基下变换对应的矩阵是A </li>
+<li>使用 <span class="arithmatex">\(W^{-1}\)</span> ，把输出基再变换回 w's </li>
+</ol>
+<p>那么， <span class="arithmatex">\(B = W^{-1} AW\)</span> 代表了变换 <code>ITI</code>:
+$$
+B_{\text{w's to w's}} = W^{-1}<em _text_standard="\text{standard">{\text{standard to w's}} \quad A</em>
+$$}} \quad W_{\text{w's to standard}} \tag{2</p>
+<hr />
+<p>sp:注意：</p>
+<ol>
+<li>第1步其实就是<code>&lt;Lk1.2&gt; Eq(K3)</code>：先将输入基切换到标准基</li>
+<li>第2步是用标准基下的变换矩阵A进行变换</li>
+<li>第3步是<code>&lt;Lk1.2&gt; Eq(K4)</code>，将输出基再次切换回去</li>
+</ol>
+<p>整个过程其实就是 <code>&lt;#Lk1.3&gt;的Eq(K7)</code>!而Eq(k7)的推导，是同一个空间下的变基，所以本节也是同一个空间下的变基！</p>
+</blockquote>
+<p><strong>一个变基过程，产生了矩阵当中的相似变换 <span class="arithmatex">\(W^{-1}AW\)</span> (A change of basis produces a similarity transformation to <span class="arithmatex">\(W^{-1}AW\)</span> in the matrix)</strong></p>
+<hr />
+<p><strong>例2</strong> 继续例1，使用 <span class="arithmatex">\(W^{-1}AW\)</span> 的规则来得到矩阵B，注意基 <code>(2,0),(1,1)</code> 是W的列</p>
+<p>解：
+$$
+W ^ { - 1 } A W = \left[ \begin{array} { r r } \frac { 1 } { 2 } &amp; - \frac { 1 } { 2 } \ 0 &amp; 1 \end{array} \right] \left[ \begin{array} { r r } \frac { 1 } { 2 } &amp; - \frac { 1 } { 2 } \ - \frac { 1 } { 2 } &amp; \frac { 1 } { 2 } \end{array} \right] \left[ \begin{array} { l l } 2 &amp; 1 \ 0 &amp; 1 \end{array} \right] = \left[ \begin{array} { r r } 1 &amp; 0 \ - 1 &amp; 0 \end{array} \right] .
+$$</p>
+<p>这和 Eq(1) 的矩阵B是一样的，矩阵AB是相似的，它们有相同的特征值（1，0），而且 <span class="arithmatex">\(\Lambda\)</span> 也是相似的</p>
+<p>注意一下，投影矩阵还是有性质 <span class="arithmatex">\(A^2 = A,B^2 = B,\Lambda^2 = \Lambda\)</span>。</p>
+<h3 id="v32-2">V32-2</h3>
+<blockquote>
+<ul>
+<li>V32-2:其实讲的就是同一个变换T对应的矩阵，在同一空间下不同基的联系，也就是相似矩阵！还是<code>&lt;#Lk1.3&gt;</code>的内容！</li>
+</ul>
+</blockquote>
+<p>现在回到数学上面来.基表换,就一个基上的向量,想要变换成不同基上的向量.假设W的列是新的基向量,1个旧基向量下的x,转换成新基向量下的c,关系就是
+$$
+x_{\text{old basis}} = Wc_{\text{new basis}} \tag{F4}
+$$
+矩阵W给出了一个基变换.</p>
+<p>假设已知线性变换T(是对于n-n矩阵),假设其是从8维空间到8维空间的变换.现在引入矩阵。 </p>
+<ol>
+<li>第一组基, <span class="arithmatex">\(v_1-v_8\)</span>,得到矩阵A</li>
+<li>第二组基,<span class="arithmatex">\(w_1-w_8\)</span>,得到矩阵B</li>
+</ol>
+<p>那么A,B之间是什么关系呢?变换T是已知的,比如旋转。不管线性变换是什么，我们得知道，AB表示同一个变换T，AB之间肯定有某种联系。它们是相似的！也就是说:
+$$
+B = M^{−1} AM \tag{F5}
+$$
+M就是变基矩阵(change of basis matrix).发生基变换，会发生2件事情</p>
+<ol>
+<li>每个向量都有了新坐标，也就是 Eq(F4),这就是新旧坐标之间的关系.</li>
+<li>不同基的下的同一个变换对应的矩阵不一样,它们的联系就是Eq(F5),其中 <strong>Eq(F5)当中的M，就是 Eq(F4) 的W</strong>(sp:M,W就是Eq(K7)的C啊)</li>
+</ol>
+<h2 id="33-svd">3.3 SVD</h2>
+<p>如果输入基 <span class="arithmatex">\(v_1...v_n\)</span> 和输出基 <span class="arithmatex">\(u_1...u_m\)</span> 不同，实际上甚至输入空间 <span class="arithmatex">\(R^n\)</span> 和输出空间 <span class="arithmatex">\(R^m\)</span> 都是不一样的。最好的矩阵还是对角的(但现在是m-n)。为了得到对角的矩阵 <span class="arithmatex">\(\Sigma\)</span>,每<strong>一个</strong>输入向量 <span class="arithmatex">\(v_j\)</span>,必须变换为输出向量 <span class="arithmatex">\(u_j\)</span> 的一个数乘，这个乘数就是 <span class="arithmatex">\(\Sigma\)</span> 主对角线上的奇异值 <span class="arithmatex">\(\sigma_j\)</span>：
+$$
+A v _ { j } = \left{ \begin{array} { l l } \sigma _ { j } u _ { j } &amp; \text { for } j \leq r \ 0 &amp; \text { for } j &gt; r \end{array} \quad \right. \text { with orthonormal bases. }
+\tag{3}
+$$
+奇异值的排序是 <span class="arithmatex">\(\sigma_1 \ge \sigma_2 \ge ... \sigma_r\)</span>.秩r出现在这里，是因为根据定义，奇异值是不为0的。上式值得注意的是，当 <span class="arithmatex">\(j=r+1...n\)</span>,<span class="arithmatex">\(v_j\)</span> 是在A的零空间的。这就给出了正确的零空间的基向量个数：n-r</p>
+<p>现在把矩阵和它们所代表的线性变换联系起来。<span class="arithmatex">\(A，\Sigma\)</span> 代表了同一个变换，只是使用的基不同：</p>
+<ul>
+<li><span class="arithmatex">\(A = U\Sigma V^T\)</span> 使用了 <span class="arithmatex">\(R^n,R^m\)</span> 下的标准基;</li>
+<li>对角的 <span class="arithmatex">\(\Sigma\)</span> 使用了输入基 v's 和输出基 w's;</li>
+</ul>
+<p>正交矩阵V,U导致了基的改变，它们代表 <span class="arithmatex">\(R^n,R^m\)</span> 下的恒等变换。变换的乘积是 <code>ITI</code>，这个变换由v's和u's的基的 <span class="arithmatex">\(\Sigma = U^{-1}AV\)</span> 表示。</p>
+<p>v's和u's的基下的 <span class="arithmatex">\(\Sigma\)</span> 由标准基下的A通过 <span class="arithmatex">\(U^{-1}AV\)</span> 而得来：
+$$
+\Sigma_{\text{v's to u's}} = U^{-1}<em _text_standard="\text{standard">{\text{standard to u's}} \quad A</em>
+$$}} \quad V_{\text{v's to standard}} \tag{4</p>
+<blockquote>
+<p>sp:这其实就是：1：乘以V矩阵得到AV，将输入基从v's变换到标准基； 2：用标准基下的A做变换；3：<span class="arithmatex">\(U^{-1}\)</span> 再去乘，将输出基变换回u's。  所以这个过程类似与Eq(2,F5),只是不再是相似矩阵</p>
+</blockquote>
+<p>SVD选择了标准正交基 (<span class="arithmatex">\(U^{-1} = U^T,V^{-1} = V^T\)</span>) ，从而对角化了A。</p>
+<p>SVD下的2组标准正交基来自于 <span class="arithmatex">\(A^TA\)</span> (v's) 和 <span class="arithmatex">\(AA^T\)</span> (u's) 的特征向量，因为它们都是对称矩阵，所以它们的单位特征向量是标准正交的。它们的特征值是 <span class="arithmatex">\(\sigma_j^2\)</span>. <code>&lt;01-06 #7&gt;</code> 的Eq(10),Eq(11)证明了这些基可以把标准基下的A化为 <span class="arithmatex">\(\Sigma\)</span></p>
+<blockquote>
+<p>sp:注意这一小节的意思，是说，标准基下的变换对应的矩阵是A,但如果把输入基变为 v's，输出基变为 u's，那么变换对应的矩阵就是对角的 <span class="arithmatex">\(\Sigma\)</span></p>
+</blockquote>
+<h2 id="34">3.4 极坐标分解</h2>
+<blockquote>
+<ul>
+<li>Polar decomposition</li>
+<li>完全不知道这节在干啥</li>
+</ul>
+</blockquote>
+<p>每个复数都有极坐标形式 <span class="arithmatex">\(re^{i\theta}\)</span>:一个非负的数字r乘以单位圆上的一个数字(回忆一下， <span class="arithmatex">\(|e^{i\theta}| = |\cos \theta + i \sin \theta | = 1\)</span>).把复数项想象为一个1-1矩阵</p>
+<ul>
+<li><span class="arithmatex">\(r\ge 0\)</span> 对应一个半正定矩阵，称为H</li>
+<li><span class="arithmatex">\(e^{i\theta}\)</span> 对应一个正交矩阵Q</li>
+</ul>
+<p>极坐标分解把这个因子分解扩展到了矩阵：正交  * 半正定：A = QH</p>
+<p>每一个实数方阵，都可以分解为 <span class="arithmatex">\(A= QH\)</span></p>
+<ul>
+<li>Q是正交矩阵</li>
+<li>H是对称半正定矩阵(如果A是可逆的，H正定）</li>
+</ul>
+<p>证明只需要将 <span class="arithmatex">\(V^TV = I\)</span> 插入到SVD的中间
+$$
+\text{Polar decomposition:}\quad A = U \Sigma V ^ { \mathrm { T } } = \left( U V ^ { \mathrm { T } } \right) \left( V \Sigma V ^ { \mathrm { T } } \right) = ( Q ) ( H ) .</p>
+<p>\tag{5}
+$$
+第1个因子 <span class="arithmatex">\(UV^T\)</span> 是Q，2个正交矩阵的乘积结果也是正交矩阵。第2个因子 <span class="arithmatex">\(V\Sigma V^T\)</span> 是H，它是半正定矩阵，因为它的特征值都在 <span class="arithmatex">\(\Sigma\)</span>.如果A是可逆的，那么<span class="arithmatex">\(\Sigma,H\)</span>也是可逆的.H是<strong>对称正定矩阵，等于 <span class="arithmatex">\(A^TA\)</span> 的平方根，也就是 <span class="arithmatex">\(H^2 = V\Sigma^2V^T = A^TA\)</span></strong></p>
+<p>极坐标还有另外一种形式：A = KQ，Q还是正交的，但 <span class="arithmatex">\(K=U\Sigma U^T\)</span>,它是 <span class="arithmatex">\(AA^T\)</span> 的对称正定的平方根。</p>
+<p><strong>例3</strong> 求如下 <code>&lt;01-06 #7&gt;</code> 出现过的SVD的 A = QH的极坐标分解
+$$
+A = \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] = \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right] \left[ \begin{array} { l l } \sqrt { 2 } &amp; \ &amp; 2 \sqrt { 2 } \end{array} \right] \left[ \begin{array} { r r } - 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \end{array} \right] = U \Sigma V ^ { \mathrm { T } }
+$$
+解： 
+$$
+\begin{array} { l l } \text { Orthogonal } &amp; Q =UV^T= \left[ \begin{array} { l l } 0 &amp; 1 \ 1 &amp; 0 \end{array} \right] \left[ \begin{array} { r r } - 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \end{array} \right] = \left[ \begin{array} { r r } 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \ - 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \end{array} \right] \ </p>
+<p>\text { Positive definite } &amp; H =V\Sigma V^T= \left[ \begin{array} { l r } 1 / \sqrt { 2 } &amp; - 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \end{array} \right] \left[ \begin{array} { r r } 2 &amp; 2 \ - 1 &amp; 1 \end{array} \right] = \left[ \begin{array} { l l } 3 / \sqrt { 2 } &amp; 1 / \sqrt { 2 } \ 1 / \sqrt { 2 } &amp; 3 / \sqrt { 2 } \end{array} \right] . \end{array}
+$$
+注意，<span class="arithmatex">\(H = Q^{-1}A = Q^TA\)</span>（因为Q正交）</p>
+<p>在力学(mechanics)当中，极坐标分解把Q当中的旋转(rotation)和H当中的伸展(stretching)分离开来。H的特征值是A的奇异秩，它们给出了伸展因子(stretching factor)。H的特征向量是 <span class="arithmatex">\(A^TA\)</span> 的特征向量，它们给出了伸展方向(stretching direction)，也就是主轴(the principal axes)，然后Q绕着这些轴旋转</p>
+<p>极坐标分解把关键等式 <span class="arithmatex">\(Av_i = \sigma_i u_i\)</span> 以2个步骤分解：</p>
+<ul>
+<li>H部分把 <span class="arithmatex">\(\sigma_i\)</span> 乘以<span class="arithmatex">\(v_i\)</span></li>
+<li>The"Q" part swings <span class="arithmatex">\(v_i\)</span> around into <span class="arithmatex">\(u_i\)</span></li>
+</ul>
+<h2 id="35">3.5 左右逆和伪逆</h2>
+<blockquote>
+<p>The Pseudoinverse</p>
+</blockquote>
+<h3 id="v33-1">V33-1 左右逆</h3>
+<p>在<code>&lt;01-02&gt;</code>,我们学习，双边逆的意思是 <span class="arithmatex">\(AA^{-1} = I = A^{-1}A\)</span>。 这时，矩阵列数：n,行数m，秩r的关系是：r=m=n,也就是矩阵满秩。零空间只有0向量</p>
+<p>在<code>&lt;01-03&gt;</code>,我们开始讨论矩阵不满秩的情况：</p>
+<p>当列满秩，列向量线性无关，r=n，这时候零空间只有0向量，Ax=b有0或1个解，此时 <span class="arithmatex">\(A^TA\)</span> 是n-n的，而且满秩可逆，此时A存在左逆：
+$$
+\underbrace{(A^TA)^{-1} A^T}<em left="left">{\quad \color{orange} A^{-1}</em>  A =  I 
+\}</p>
+<p>[n-m ] * [m-n] = [n-n]
+$$
+但注意 <span class="arithmatex">\(AA^T\)</span> 是不可逆的。注意，如果左逆 <span class="arithmatex">\((A^TA)^{-1} A^T\)</span> 在右边，也就是 <span class="arithmatex">\(A * (A^TA)^{-1} A^T\)</span>,结果是什么？投影矩阵P（<code>&lt;01-04 #2.2&gt; Eq(7)</code>）！是列空间的投影。一个投影矩阵，会尽量靠近单位矩阵！它的投影结果想尽可能的接近列空间！</p>
+<p>当行满秩，行向量线性无关，r=m，这时候 <span class="arithmatex">\(A^T\)</span> 的零空间只有0向量，A的有n-m个自由变量，Ax=b一定有无穷多解，A的右逆是：
+$$
+A\underbrace{A^T(AA^T)^{-1}}<em right="right">{\quad \color{orange} A^{-1}</em>   =  I
+$$
+如果此时把右逆 }<span class="arithmatex">\(A^T(AA^T)^{-1}\)</span> 放在左边，得到 <span class="arithmatex">\(A^T(AA^T)^{-1} * A\)</span>,这是什么？也是投影矩阵！投影到行空间上，也是尽可能靠近单位矩阵，投影结果尽可能靠近行空间</p>
+<blockquote>
+<p>sp:为什么右逆放在左边是投影到行空间呢？注意观察：<span class="arithmatex">\(A^T(AA^T)^{-1} * A\)</span> 当中，把<span class="arithmatex">\(A^T\)</span> 换为B，得到 <span class="arithmatex">\(B(B^TB)^{-1} * B^T\)</span>,这就是<code>&lt;01-04 #2.2&gt; Eq(7)</code>啊，只是现在B代表<span class="arithmatex">\(A^T\)</span> ，所以是行空间！</p>
+</blockquote>
+<h3 id="_1">伪逆</h3>
+<blockquote>
+<p><strong>V33-2</strong>:左、右逆是列、行满秩的时候才能出现。一般情况下，对r&lt;n，r&lt;m 的一个常规矩阵来说，它合理逆是什么呢？</p>
+<p>行空间的一个向量x有n个分量，A乘以它，也就是Ax，结果是列空间的向量。而且，A乘以行空间的<strong>所有</strong>向量，得到的恰好就是列空间的<strong>所有</strong>向量。也就是，<strong>行空间的向量x，和列空间的向量Ax,是一一对应的。</strong>(最起码，因为行列空间都是r维，所以这个可能性是存在的)。而且，矩阵A有零空间存在，Ax将产生0向量，而所有的向量都是与行空间分量+零空间分量组成的，乘法Ax会消去零空间分量。而当我们只看行空间向量，Ax乘法会把它们变换到列空间向量。我这里的意思是:</p>
+<blockquote>
+<p><code>Mark1:</code>x,y是行空间的<strong>不同</strong>向量，和A乘得到Ax,Ay.  Ax和Ay肯定是<strong>不同</strong>的<strong>列空间</strong>向量.</p>
+</blockquote>
+<p>从行空間到列空間，A是完美的映射。換句話說，<strong>如果限制在這2個r维空間，A是可逆的</strong>(sp:因爲是單射啊),这就是所謂的伪逆。也就是说：</p>
+<ul>
+<li>从行空间的x到列空间的Ax，矩阵A起作用,A消除了x向量的零空间部分</li>
+<li>从列空间空间的Ax回到行空间的x，矩阵<span class="arithmatex">\(A^+\)</span>起作用:<span class="arithmatex">\(x= A^+(Ax)\)</span>，<span class="arithmatex">\(A^+\)</span> 消除了 <span class="arithmatex">\(A^T\)</span> 的零空间部分</li>
+</ul>
+<p><strong>证明</strong>:假设 <code>Mark1</code>这句话是错误的，也就是 <code>Ax= Ay</code>,会发生什么？也就是 <span class="arithmatex">\(A(x-y)= 0\)</span>,也就是 x-y 是零空间向量。前面说过，x,y都是行空间向量，所以x-y也必须在行空间向量。现在 x-y 既是行空间向量，也是零空间向量，只能是0向量。从而x = y。也就是说，如果Ax =Ay,那么x必须等于y。得证</p>
+<p>所以矩阵<span class="arithmatex">\(A\)</span>是很好的，它是从行空间到列空间的<strong>可逆</strong>映射。它的逆叫做伪逆。那么如何求出伪逆 <span class="arithmatex">\(A^+\)</span>?<strong>SVD！</strong></p>
+<p>在SVD当中，有 <span class="arithmatex">\(A = U\Sigma V^T\)</span>,<span class="arithmatex">\(\Sigma\)</span> 是对角的，它的形式如下：
+$$
+\Sigma = \left[ \begin{array} { c c c c c} \sigma _ { 1 } &amp; &amp; &amp; &amp; \  &amp; \ddots &amp; &amp; &amp; \ &amp; &amp; \sigma _ { r }  &amp;\ &amp; &amp; &amp; 0 
+&amp; \</p>
+<p>&amp; &amp; &amp; &amp; \ddots\end{array} \right]
+$$
+现在问你，<strong>m-n</strong> <span class="arithmatex">\(\Sigma\)</span> 的伪逆是什么？它的秩是r，这是伪逆最简单的情况。
+$$
+\Sigma^+ = \left[ \begin{array} { c c c c c} </p>
+<p>1/\sigma _ { 1 } &amp; &amp; &amp; &amp; \  &amp; \ddots &amp; &amp; &amp; \ &amp; &amp; 1/\sigma _ { r }  &amp;\ &amp; &amp; &amp; 0 
+&amp; \</p>
+<p>&amp; &amp; &amp; &amp; \ddots\end{array} \right]
+$$
+注意它的尺寸是 <strong>n-m</strong>。现在看看
+$$
+\Sigma \Sigma^+ = 
+ \left[ \begin{array} { c c c c c} </p>
+<p>1 &amp; &amp; &amp; &amp; \  &amp; \ddots &amp; &amp; &amp; \ &amp; &amp; 1  &amp;\ &amp; &amp; &amp; 0 
+&amp; \</p>
+<p>&amp; &amp; &amp; &amp; \ddots\end{array} \right]_{m-m}
+$$
+这是到<strong>列空间的投影</strong>。而
+$$
+\Sigma^+ \Sigma = 
+ \left[ \begin{array} { c c c c c} </p>
+<p>1 &amp; &amp; &amp; &amp; \  &amp; \ddots &amp; &amp; &amp; \ &amp; &amp; 1  &amp;\ &amp; &amp; &amp; 0 
+&amp; \</p>
+<p>&amp; &amp; &amp; &amp; \ddots\end{array} \right]_{n-n}
+$$
+这是到<strong>行空间的投影</strong>。</p>
+<p>这就是伪逆所做的事情：左乘，右乘它，虽然都得不到单位矩阵，但它把你代入2个很好的空间：行空间和列空间</p>
+<hr />
+<p>现在回到  <span class="arithmatex">\(A = U\Sigma V^T\)</span>, </p>
+<ul>
+<li><span class="arithmatex">\(V^T\)</span> 是一个正交矩阵，它的逆是 V </li>
+<li><span class="arithmatex">\(\Sigma\)</span> 的伪逆是 <span class="arithmatex">\(\Sigma^+\)</span></li>
+<li>U的逆是 <span class="arithmatex">\(U^T\)</span></li>
+</ul>
+<p>所以 <span class="arithmatex">\(A^+ = V\Sigma^+U^T\)</span>。 
+</p>
+</blockquote>
+<p>通过选择合适的基，A乘以行空间当中的<span class="arithmatex">\(v_i\)</span> ，可以得到列空间当中的 <span class="arithmatex">\(\sigma_i u_i\)</span> ,而且有一个<strong>特殊的</strong> <span class="arithmatex">\(A^{+}\)</span> 可以逆转这个过程！也就是：如果 <span class="arithmatex">\(Av = \sigma u\)</span>,那么 <span class="arithmatex">\(A^{+} u= v/\sigma\)</span>.<span class="arithmatex">\(A^{+}\)</span> 的奇异值是 <span class="arithmatex">\(1/\sigma\)</span>,就像 <span class="arithmatex">\(A^{-1}\)</span> 的特征值是 <span class="arithmatex">\(1/\lambda\)</span>.</p>
+<p>这个乘以 <span class="arithmatex">\(u_i\)</span> 来产生 <span class="arithmatex">\(v_i/\sigma_i\)</span> 的矩阵确实存在，它为伪逆 <span class="arithmatex">\(A^+\)</span>:
+$$
+A^+_{\text{n by m}} = V\Sigma^+U^T =  </p>
+<p>\underbrace{ \left[ v _ { 1 } \cdots v _ { r } \cdots v _ { n } \right] }_{\text{n by n}}</p>
+<p>\underbrace{ \left[ \begin{array} { c c c } \sigma _ { 1 } ^ { - 1 } &amp; &amp; &amp;\ &amp; \ddots &amp; &amp;\ &amp; &amp; \sigma _ { r } ^ { - 1 } &amp; \ &amp; &amp; &amp; 0\end{array} \right] }_{\text{n by m}}</p>
+<p>\underbrace{ \left[ u _ { 1 } \cdots u _ { r } \cdots u _ { m } \right] ^ { \mathrm { T } }}_{\text{m by m}}</p>
+<p>\qquad \color{orange} \text{Pseudoinverse}
+$$
+- 如果A可逆( <span class="arithmatex">\(A^{-1}\)</span> 存在)，那么 <span class="arithmatex">\(A^+\)</span> 就是 <span class="arithmatex">\(A^{-1}\)</span>,这时是 m = n = r。 求逆就是逆 <span class="arithmatex">\(U\Sigma V^T\)</span> 得到 <span class="arithmatex">\(V\Sigma^{-1}U^T\)</span>
+- 而如果 <code>r&lt;m</code> 或 <code>r&lt;n</code>. 那么A没有双边逆，但它一定有秩为 r(和A一样) 的伪逆 <span class="arithmatex">\(A^+\)</span></p>
+<p>$$
+A ^ { + } \boldsymbol { u } _ { i } = \frac { 1 } { \sigma _ { i } } v _ { i } \quad \text { for } i \leq r \quad \text { and } \quad A ^ { + } { u } _ { i } = \vec { 0 } \quad \text { for } i &gt; r
+$$
+被A乘后，A列空间当中的向量 <span class="arithmatex">\(u_1...u_r\)</span> 回到了行空间的向量 <span class="arithmatex">\(v_1...v_r\)</span>,而行空间的其他向量<span class="arithmatex">\(u_{r+1}...u_m\)</span> 位于左零空间，<span class="arithmatex">\(A^+\)</span> 把它们消除为0！当我们知道了每个基向量 <span class="arithmatex">\(u_i\)</span> 发生了什么，我们就知道了 <span class="arithmatex">\(A^+\)</span></p>
+<p>注意对角矩阵 <span class="arithmatex">\(\Sigma\)</span> 的伪逆 <span class="arithmatex">\(\Sigma^+\)</span>,它就是 <span class="arithmatex">\(\Sigma\)</span> 对角线的 <span class="arithmatex">\(\sigma\)</span> 替换为 <span class="arithmatex">\(\sigma^{-1}\)</span>.乘积 <span class="arithmatex">\(\Sigma^+\Sigma\)</span> 是尽可能接近单位矩阵的(它是一个投影矩阵,部分是<code>I</code>,部分是0)，它有r个1，其他都是0.如下例子展示 <span class="arithmatex">\(\sigma_1 = 2,\sigma_2 =3\)</span>
+$$
+\Sigma ^ { + } \Sigma = \left[ \begin{array} { c c c } 1 / 2 &amp; 0 &amp; 0 \ 0 &amp; 1 / 3 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{array} \right] \left[ \begin{array} { l l l } 2 &amp; 0 &amp; 0 \ 0 &amp; 3 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{array} \right] = \left[ \begin{array} { l l l } 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{array} \right] = \left[ \begin{array} { l l } I &amp; 0 \ 0 &amp; 0 \end{array} \right] .
+$$
+伪逆是 n-m 的矩阵，它让 <span class="arithmatex">\(AA^+,A^+A\)</span> 成为投影矩阵：</p>
+<p><img alt="image-20210705164146530" src="../.assets/image-20210705164146530.png" /></p>
+<blockquote>
+<p><strong>sp:mark7.3-1</strong></p>
+<ul>
+<li><span class="arithmatex">\(AA^+\)</span> = 投影到A列空间的投影矩阵</li>
+<li><span class="arithmatex">\(A^+A\)</span> = 投影到A行空间的投影矩阵</li>
+</ul>
+<p>sp:Fig7.4什么意思？首先要明白A的作用，下图来自 <code>&lt;01-04 #1&gt;</code>  Fig4.2</p>
+<p><img src=".assets/image-20210120170219809.png" alt="image-20210120170219809" style="zoom:67%;" /></p>
+<p>A的作用是</p>
+<ul>
+<li>将行空间的向量 <span class="arithmatex">\(x_r\)</span> 转换为列空间向量</li>
+<li>将行空间的向量 <span class="arithmatex">\(x_n\)</span> 变为0</li>
+</ul>
+<p>而任何向量 <span class="arithmatex">\(R^n\)</span> 的向量 x 都是行空间和零空间向量的组合(行、零空间构成正交补(<code>&lt;01-04 #2&gt;</code>)).所以A作用是<strong>将任何 <span class="arithmatex">\(R^n\)</span> 下的向量切换到 <span class="arithmatex">\(R^m\)</span> 下的向量</strong></p>
+<p>在Fig7.4当中，列空间和<span class="arithmatex">\(A^T\)</span> 零空间是正交补，向量b可拆分成列空间分量p(也就是列空间投影p)和<span class="arithmatex">\(A^T\)</span> 零空间分量e（投影产生的误差e）</p>
+<ol>
+<li>投影p在列空间，可由矩阵A乘以行空间的 <span class="arithmatex">\(x^+\)</span> 得来，也就是 <span class="arithmatex">\(p = Ax^+\)</span></li>
+<li>而伪逆<span class="arithmatex">\(A^+\)</span> 可以把 p 切换为回去行空间，也就是 <span class="arithmatex">\(A^+p = x^+\)</span></li>
+<li><span class="arithmatex">\(A^+b = x^+\)</span> 是因为，<span class="arithmatex">\(A^+\)</span> 消去 <span class="arithmatex">\(A^T\)</span> 零空间的误差e</li>
+</ol>
+<hr />
+<p>但 <code>sp:mark7.3-1</code> 怎么理解？真的有点难以理解，参见</p>
+<p>https://math.stackexchange.com/questions/3025109/projection-matrices-mathbfa-mathbfa-and-mathbfa-mathbfa
+https://math.stackexchange.com/questions/2209379/singular-value-decomposition-proof/2211001#2211001
+https://en.m.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse#Projectors
+https://math.stackexchange.com/questions/578376/least-square-with-homogeneous-solution?noredirect=1&amp;lq=1
+https://math.stackexchange.com/questions/3888531/prove-aa-projects-onto-the-column-space-of-a</p>
+</blockquote>
+<p><strong>例4</strong> 求r=1,不可逆矩阵 <span class="arithmatex">\(A = \left[\begin{matrix} 2 &amp; 2 \\ 1 &amp; 1 \end{matrix} \right]\)</span> 的伪逆,它唯一的特征值是 <span class="arithmatex">\(\sqrt{10}\)</span>，它在 <span class="arithmatex">\(\Sigma^+\)</span> 中被逆为 <span class="arithmatex">\(1/\sqrt{10}\)</span>
+$$
+A ^ { + } = V \Sigma ^ { + } U ^ { \mathrm { T } } = \frac { 1 } { \sqrt { 2 } } \left[ \begin{array} { r r } 1 &amp; 1 \ 1 &amp; - 1 \end{array} \right] \left[ \begin{array} { c c } 1 / \sqrt { 10 } &amp; 0 \ 0 &amp; 0 \end{array} \right] \frac { 1 } { \sqrt { 5 } } \left[ \begin{array} { r r } 2 &amp; 1 \ 1 &amp; - 2 \end{array} \right] = \frac { 1 } { 10 } \left[ \begin{array} { l l } 2 &amp; 1 \ 2 &amp; 1 \end{array} \right]
+$$
+<span class="arithmatex">\(A^+\)</span> 的秩也是1，它的列空间是A的行空间。A乘以行空间的向量 (1,1），会得到列空间的 (4,2).而 <span class="arithmatex">\(A^+\)</span> 则逆转了这个过程：<span class="arithmatex">\(A^+(4,2) = (1,1)\)</span></p>
+<p>任何秩1矩阵都是一列乘以一行。对于单位向量 <span class="arithmatex">\(u,v\)</span>,这就是 <span class="arithmatex">\(A = \sigma uv^T\)</span>.此时这个秩1矩阵最佳的秩1逆是 ：<span class="arithmatex">\(A^+ = vu^T/\sigma\)</span>.乘积 <span class="arithmatex">\(AA^+\)</span> 是 <span class="arithmatex">\(uu^T\)</span>,投影到经过<code>u</code>的直线上;乘积 <span class="arithmatex">\(A^+A\)</span> 是 <span class="arithmatex">\(vv^T\)</span></p>
+<h4 id="_2">伪逆和最小二乘应用</h4>
+<p>在 <code>&lt;01-02&gt;</code>,我们通过最小二乘，探讨了在 Ax = b无解的情况下，求得一个最佳解 <span class="arithmatex">\(\hat{x}\)</span>.关键等式就是 $A^TA\hat{x} = A^Tb $,但注意，这是假设 <span class="arithmatex">\(A^TA\)</span> 是可逆的。</p>
+<p>如果A有非独立的列(r&lt;n),那么 $A^TA\hat{x} = A^Tb $ 可能有非常多的解，而<strong>最佳的解就是来自于伪逆的 <span class="arithmatex">\(x^+ = A^+b\)</span>.</strong> 可以检查一下：<span class="arithmatex">\(A^TAA^+b = A^Tb\)</span>,参见上图Fig7.4，展示了 <span class="arithmatex">\(e = b - AA^+b\)</span>,是b在 <span class="arithmatex">\(A^T\)</span> 的零空间的部分。任何在A的零空间当中的向量都可以被加到 <span class="arithmatex">\(x^+\)</span>,产生 $A^TA\hat{x} = A^Tb $ 的<strong>额外</strong>一个解，但 <span class="arithmatex">\(x^+\)</span> 是所有 <span class="arithmatex">\(\hat{x}\)</span> 里面最短(shortest)的(书本习题16）： <strong>Ax =b 的最短的最小二乘解是 <span class="arithmatex">\(x^+ = A^+b\)</span></strong></p>
+<p>伪逆 <span class="arithmatex">\(A^+\)</span> 和最佳解 <span class="arithmatex">\(x^+\)</span> 在统计学经常出现。统计学家很喜欢伪逆，因为它们经常使用最小二乘。在统计中，不断做实验的时候，列，行很可能不是线性无关的，这时候就无法使用左右逆，这时候就需要伪逆了！</p>
+<p>这就是SVD的神奇之处！</p>
+<h2 id="36">3.6 总结</h2>
+<ol>
+<li>对角化 <span class="arithmatex">\(S^{-1}AS = \Lambda\)</span> 等价于变换到特征向量基</li>
+<li>SVD选择v's作为输入基，u's作为输出基，这些标准正交的基对角化了A，也就是 <span class="arithmatex">\(Av_i = \sigma_i u_i\)</span>,矩阵形式就是 <span class="arithmatex">\(A = U\Sigma V^T\)</span></li>
+<li>极坐标分解把A分解为QH，也就是旋转的 <span class="arithmatex">\(UV^T\)</span> 乘以伸展的 <span class="arithmatex">\(V\Sigma V^T\)</span></li>
+<li>伪逆 <span class="arithmatex">\(A^+ = V\Sigma^+U^T\)</span> 把A的列空间转换回行空间，<span class="arithmatex">\(A^+A\)</span> is the identity on the row space (and zero on the nullspace)  </li>
+</ol>
+<h2 id="37">3.7 典例</h2>
+<p><strong>1.</strong> </p>
+<ul>
+<li>如果A列满秩(r=n),那么它有一个左逆 <span class="arithmatex">\(C = (A^TA)^{-1}A^T\)</span>,矩阵C可得 <span class="arithmatex">\(CA = I\)</span>.解释一下为何此时 <span class="arithmatex">\(A^+= C\)</span>.</li>
+<li>如果A行满秩(r=m),那么它有一个右逆 <span class="arithmatex">\(B = A^T(AA^T)^{-1}\)</span>,矩阵B可得 <span class="arithmatex">\(AB = I\)</span>.解释一下为何此时 <span class="arithmatex">\(A^+= B\)</span>.</li>
+</ul>
+<p>对于如下矩阵，求<span class="arithmatex">\(A_1\)</span> 的右逆B,<span class="arithmatex">\(A_2\)</span> 的左逆C，同时求出 <span class="arithmatex">\(A_1,A_2,A_3\)</span> 的伪逆 <span class="arithmatex">\(A^+\)</span>
+$$
+A _ { 1 } = \left[ \begin{array} { l } 2 \ 2 \end{array} \right] \quad A _ { 2 } = \left[ \begin{array} { l l } 2 &amp; 2 \end{array} \right] \quad A _ { 3 } = \left[ \begin{array} { l l } 2 &amp; 2 \ 2 &amp; 2 \end{array} \right]
+$$
+解：如果A列满秩，那么 <span class="arithmatex">\(A^TA\)</span> 是可逆的(<code>&lt;01-04 #2&gt;</code>)，那么，明显的，<span class="arithmatex">\(CA = (A^TA)^{-1}A^T * A = I\)</span>,如果调换乘法顺序，得到 <span class="arithmatex">\(AC =  A*(A^TA)^{-1}A^T\)</span>,这是一个列空间的投影矩阵(还是 <code>&lt;01-04 #2&gt;</code> 知识点。所以C满足了<span class="arithmatex">\(A^+\)</span> 的要求。而且CA，AC都是投影！</p>
+<p>如果A行满秩，那么 <span class="arithmatex">\(AA^T\)</span> 是可逆的，这时 <span class="arithmatex">\(AB = A * A^T(AA^T)^{-1} = I\)</span>.如果调换乘法顺序，得到 <span class="arithmatex">\(BA = A^T(AA^T)^{-1} * A\)</span>  ,是行空间的投影矩阵
+$$
+\boldsymbol { A } _ {1} ^ { + } = \left( A _ { 1 } ^ { \mathrm { T } } A _ { 1 } \right) ^ { - 1 } A _ { 1 } ^ { \mathrm { T } } = \frac { 1 } { \sqrt { 8 } } \left[ \begin{array} { l l } 2 &amp; 2 \end{array} \right] \quad A _ { 2 } ^ { + } = A _ { 2 } ^ { \mathrm { T } } \left( A _ { 2 } A _ { 2 } ^ { \mathrm { T } } \right) ^ { - 1 } = \frac { 1 } { \sqrt { 8 } } \left[ \begin{array} { l } 2 \ 2 \end{array} \right]
+$$
+注意 <span class="arithmatex">\(A_1^+A_1= [1],A_2A_2^+ = [1]\)</span>,但秩1的 <span class="arithmatex">\(A_3\)</span> 没有左逆、右逆，因为它不满秩。它的伪逆是 <span class="arithmatex">\(A_3^+ = \sigma _ { 1 } ^ { - 1 } v _ { 1 } u _ { 1 } ^ { \mathrm { T } } = \left[ \begin{array} { l l } 1 &amp; 1 \\ 1 &amp; 1 \end{array} \right] / 4\)</span></p>
+<h1 id="4-lk1">4 Lk1:导入</h1>
+<blockquote>
+<p>线性变换的概念不复杂，但是一定要理清楚是什么意思。特别是对于</p>
+<ul>
+<li>变基矩阵</li>
+<li>线性变换矩阵</li>
+</ul>
+<p>等需要搞清楚概念。本节导入摘抄 <a href="https://www.khanacademy.org/math/linear-algebra/alternate-bases/change-of-basis/v/linear-algebra-coordinates-with-respect-to-a-basis">可汗学院</a> 等知识点，和自己的一些理解，方便后文理解阅读</p>
+</blockquote>
+<h2 id="41">4.1 基下的坐标</h2>
+<blockquote>
+<p>coordinate with respct to a basis</p>
+</blockquote>
+<p>设V是 <span class="arithmatex">\(R^n\)</span> 下的一个子空间,而 <span class="arithmatex">\(B=\{v_1...v_k\}\)</span> 是V的一组基,所以V是一个k维的子空间,<strong>k最大是n,但可能比n小</strong>。 所以,任何 <span class="arithmatex">\(\vec{a} \in V\)</span>,都可以用B基表示.也就是</p>
+<p>$$
+\vec{a} \in V = c_1\vec{v_1}+...+ c_k \vec{v_k}
+=
+\underbrace{
+\left[ \begin{array}{c} | &amp; &amp; | \ </p>
+<p>v_1 &amp; \dots &amp; v_k
+\
+| &amp; &amp; |
+\end{array} \right]
+}_{\color{orange}\text{基矩阵C}}</p>
+<p>\left[ \begin{array}{c} c_1 \ \vdots \ c_k\end{array} \right]</p>
+<p>\tag{K1}
+$$
+现在 <span class="arithmatex">\(c_1...c_k\)</span> 就是<strong>向量 a 在基B下的坐标(coordinate of a with respect to B)</strong>,并且这个坐标写成 :
+$$
+[\vec{a}]_B = \left[ \begin{array}{c} c_1 \
+\vdots \ c_k\end{array} \right]
+\tag{K2}
+$$
+设 <span class="arithmatex">\(\vec{v_1} =  \left[ \begin{array}{c} 2 \\1\end{array} \right],\vec{v_2} =  \left[ \begin{array}{c} 1 \\2\end{array} \right]\)</span>,那么 <span class="arithmatex">\(B= \{v_1,v_2\}\)</span> 是 <span class="arithmatex">\(R^2\)</span> 下的一组基(因为它们线性独立).现在对于 <span class="arithmatex">\(\vec{a} = 3v_1 + 2v_2 = \left[ \begin{array}{c} 8 \\7\end{array} \right]\)</span>,如下图,还是可以画出向量a,注意是如何确定a的位置的,也就是横坐标8个单位,纵坐标7个单位(sp:这样做,其实隐含还是以标准基去定位)</p>
+<p><img alt="1617279583103" src="../.assets/1617279583103.png" /></p>
+<p>但此时,a在基B下的坐标是 $[a]_B =  \left[ \begin{array}{c} 3 \2\end{array} \right] $.也就是说,3倍的 <span class="arithmatex">\(v_1\)</span> 加上2倍的 <span class="arithmatex">\(v_2\)</span>,肯定是在上图的 <code>(8,7)</code> 位置.</p>
+<p>以前我们说的坐标,都隐含是关于标准基的,,在标准基下的坐标也成为<strong>标准坐标(standard coordinate)</strong>,现在有不同的基,<strong>而且不同的基下,同一个向量的坐标不一样.</strong> 向量 a,在标准基下<strong>直接写为 <span class="arithmatex">\(\vec{a}\)</span>,</strong> 在<strong>基B下写为 <span class="arithmatex">\([\vec{a}]_B\)</span></strong>.</p>
+<h2 id="42">4.2 变基和变基矩阵</h2>
+<blockquote>
+<p>change of basis ,change of basis matrix</p>
+</blockquote>
+<h3 id="421">4.2.1 非标准基到标准基</h3>
+<p>现在思考,假设给出了 <code>Eq(K2)</code> 的 <span class="arithmatex">\([\vec{a}]_B\)</span>,和表示基B的矩阵 C (<code>Eq(K1)</code> 的C矩阵).那么怎么得到在标准基下的坐标 <span class="arithmatex">\(\vec{a}\)</span> 呢?就是把<code>Eq(K1)</code> 的基矩阵C乘以 <span class="arithmatex">\([\vec{a}]_B\)</span>!
+$$
+C [\vec{a}]_B = \vec{a} 
+\tag{K3}
+$$
+右边的 <span class="arithmatex">\(\vec{a}\)</span> 表示向量 a 在标准基下的坐标,所以<strong>矩阵C称为变基矩阵(有的也叫转移矩阵，transition matrix)</strong>! 听起来有点难以理解,其实<strong>C矩阵就是基B作为列的矩阵</strong></p>
+<p>分析一下Eq(K3)是怎么得来的。对于 <span class="arithmatex">\(R^2\)</span> 下标准基，我们有
+$$
+\vec { v }  = \left[ \begin{array} { l }  v_1\ v_2\end{array} \right]<br />
+= v_{ 1 } \left[ \begin{array} { l } 1 \ 0 \end{array} \right] + \vec { v } _ { 2 } \left[ \begin{array} { l } 0 \ 1 \end{array} \right] 
+= v _ { 1 } \vec { i } + v _ { 2 } \vec { j } 
+$$
+但 <span class="arithmatex">\(R^2\)</span> 可以有其他的基，从而向量v在这个基下的坐标就不相同了。设新的基是 <span class="arithmatex">\(\begin{array} { c }  \vec { u } _ { 1 } = \left[ \begin{array} { l } 1 \\ 2 \end{array} \right] \quad \vec { u } _ { 2 } = \left[ \begin{array} { l } 3 \\ 3 \end{array} \right]  \end{array}\)</span>， 在新的基下 $\vec { v } = v _ { 1 } ^ { \prime } \vec { u } _ { 1 } + v _ { 2 } ^ { \prime } \vec { u } _ { 2 } $；其中 <span class="arithmatex">\(v_1',v_2'\)</span> 就是在<strong>新的基下的坐标</strong>。 虽然变基了，但<strong>还是同一个向量</strong>，也就是说，如下2个等式相等
+$$
+v _ { 1 } ^ { \prime } \vec { u } _ { 1 } + v _ { 2 } ^ { \prime } \vec { u } _ { 2 }  = v _ { 1 } \vec { i } + v _ { 2 } \vec { j }<br />
+\tag{N1}
+$$</p>
+<blockquote>
+<p><code>sp-note-N1</code>：注意 <code>Eq(N1)</code> 就是 <code>&lt;sp-mark7.2-5&gt;</code> 处，变基矩阵定义的意思<strong>。变基矩阵也是一种变换：恒等表换，但变换后，向量在标准基下的坐标是不变的</strong>。</p>
+</blockquote>
+<p>而新的基 <span class="arithmatex">\(u_1,u_2\)</span> 也可以表示为标准基下的向量：
+$$
+\begin{array} { r } 
+\vec { u } _ { 1 } = 1\left[ \begin{array} { l } 1 \ 0 \end{array} \right] + 2 \left[ \begin{array} { l } 0 \ 1 \end{array} \right] = 1\vec { i } + 2 \vec { j} \ </p>
+<p>\vec { u } _ { 2 } = 3 \left[ \begin{array} { l } 1 \ 0 \end{array} \right] + 3 \left[ \begin{array} { l } 0 \ 1 \end{array} \right] = 3 \vec { i } + 3 \vec { j } 
+\end{array}
+$$
+现在，把上式代入 <code>Eq(N1)</code>:
+$$
+v _ { 1 } ^ { \prime } \vec { u } _ { 1 } + v _ { 2 } ^ { \prime } \vec { u } _ { 2 } = v _ { 1 }  \vec { i } + v _ { 2 } \vec { j} \ </p>
+<p>\Downarrow\</p>
+<p>v _ { 1 } ^ { \prime } ( \vec { i } + 2 \vec { j } ) + v _ { 2 } ^ { \prime } ( 3 \vec { i } + 3 \vec { j } ) = v _ { 1 } \vec { i } + v _ { 2 }\vec{j} \ </p>
+<p>\Downarrow（提取i,j）\</p>
+<p>\left( v _ { 1 } ^ { \prime } + 3 v _ { 2 } ^ { \prime } \right) \vec { i } + \left( 2 v _ { 1 } ^ { \prime } + 3 v _ { 2 } ^ { \prime } \right) \vec { j } = v _ { 1 } \hat { \imath } + v _ { 2 }\vec{j}
+$$
+也就是
+$$
+\left[ \begin{array} { c } v _ { 1 } ^ { \prime } + 3 v _ { 2 } ^ { \prime } \ 2 v _ { 1 } ^ { \prime } + 3 v _ { 2 } ^ { \prime } \end{array} \right]
+= \left[ \begin{array} { l l } 1 &amp; 3 \ 2 &amp; 3 \end{array} \right] \left[ \begin{array} { l } v _ { 1 } ^ { \prime } \ v _ { 2 } ^ { \prime } \end{array} \right]
+= \left[ \begin{array} { l } v _ { 1 } \ v _ { 2 } \end{array} \right] 
+\qquad \color{orange} \vec{v} = C\vec{v}'
+\tag{N2}
+$$</p>
+<p>注意，<strong>这个C矩阵就是空间<span class="arithmatex">\(R^2\)</span>以基B的基向量 <span class="arithmatex">\(u_1,u_2\)</span> 作为列的矩阵，也就是 <code>Eq(k3)</code> 的C矩阵！</strong></p>
+<hr />
+<p><strong>例K1</strong> 现在，设
+$$
+\vec { v } _ { 1 } = \left[ \begin{array} { l } 1 \ 2 \ 3 \end{array} \right] \quad \vec { v } _ { 2 } = \left[ \begin{array} { l } 1 \ 0 \ 1 \end{array} \right]，B={v_1,v_2},[\vec{a}]_B= \left[\begin{matrix} 7  \-4  \\end{matrix} \right]
+$$
+那么向量a在标准基下的坐标 <span class="arithmatex">\(\vec{a}\)</span> 是什么呢？现在使用 <code>Eq(k3)</code> ：
+$$
+C [\vec{a}]_B  = \left[ \begin{array} { l l } 1 &amp; 1 \ 2 &amp; 0 \ 3 &amp; 1 \end{array} \right] \left[ \begin{array} { c } 7 \ - 4 \end{array} \right] = \left[\begin{matrix} 3  \14   \ 17 \end{matrix} \right] = \vec{a}
+$$
+注意，向量a在基B下是2个分量的 <span class="arithmatex">\(\left[\begin{matrix} 7  \\-4  \\\end{matrix} \right]\)</span>，在标准基下是3个分量的 <span class="arithmatex">\(\left[\begin{matrix} 3  \\14   \\ 17 \end{matrix} \right]\)</span> </p>
+<hr />
+<p><strong>例K2.</strong> 承接例K1,现在假设知道 <span class="arithmatex">\(\vec{d} = \left[\begin{matrix} 8  \\-3   \\ 2 \end{matrix} \right]\)</span>  是基B表示的空间V下的一个向量，也就是d可用B的基向量： <span class="arithmatex">\(v_1,v_2\)</span> 的线性组合表示；而且我们知道基B表示的矩阵C。也就是说，我们有：
+$$
+C [\vec{d}]_B =  \vec{d} = \left[\begin{matrix} 8  \-3   \ 2 \end{matrix} \right]
+$$
+现在我们有了 <span class="arithmatex">\(\vec{d}\)</span>,要求 $[\vec{d}]_B <span class="arithmatex">\(! 首先，我们知道，\)</span>C [\vec{d}]_B $ 肯定是2个分量的，我们其实就是要得到如下的 <span class="arithmatex">\(c_1,c_2\)</span>
+$$
+\left[ \begin{array} { l l } 1 &amp; 1 \ 2 &amp; 0 \ 3 &amp; 1 \end{array} \right] \left[ \begin{array} { c } c_1 \ c_2 \end{array} \right] = \left[\begin{matrix} 8  \-3   \ 2 \end{matrix} \right]
+$$
+直接<strong>高斯消去解方程组</strong>即可得到 $c_1 =-3 ,c_2 =11 $,也即是 $ [\vec{d}]_B = \left[\begin{matrix} -3  \11  \\end{matrix} \right] $. 重要的是，只要有了 <code>Eq(K3)</code>，我们可以从 $C [\vec{a}]_B $ 的到 <span class="arithmatex">\(\vec{a}\)</span>,也可以从 <span class="arithmatex">\(\vec{a}\)</span> 得到 $C [\vec{a}]_B $。</p>
+<h3 id="422">4.2.2 标准基到非标准基</h3>
+<p>现在我们假设 <code>Eq(K1)</code> 的变基矩阵C是可逆的，这意味着什么？</p>
+<ul>
+<li>C是方阵，所以 k 就是 n，C矩阵有n个列</li>
+<li>C的列是线性独立的</li>
+</ul>
+<p>所以，我们有了 <span class="arithmatex">\(R^n\)</span> 下的n个线性独立的向量，也就是，B就是 <span class="arithmatex">\(R^n\)</span> 的一组完整的基。<strong>任何标准基表示的向量a，也可被基B表示。</strong></p>
+<p>可逆的C是很有用的，意味这什么呢？参见 <code>Eq(K3)</code></p>
+<ul>
+<li>在 例K1，我们可用变基矩阵C直接乘以 $[\vec{a}]_B $ 得到标准基下的 <span class="arithmatex">\(\vec{a}\)</span></li>
+<li>在 例K2, 我们可以解方程组，从标准基下的 <span class="arithmatex">\(\vec{a}\)</span> 得到基B下的 <span class="arithmatex">\([\vec{a}]_B\)</span></li>
+</ul>
+<p>如果C可逆，那么在 例K2 求 <span class="arithmatex">\([\vec{a}]_B\)</span> 可以变成：
+$$
+\begin{aligned}
+     &amp;C [\vec{a}]_B = \vec{a} \ 
+    \Rightarrow &amp;C^{-1}C [\vec{a}]_B = C^{-1}\vec{a}\
+    \Rightarrow &amp;[\vec{a}]_B = C^{-1}\vec{a}
+\end{aligned}</p>
+<p>\tag{K4}
+$$</p>
+<hr />
+<p><strong>例K3</strong> 设 <span class="arithmatex">\(v_1 = (1,3),v_2 = (2,1),B = \{v_1,v_2\}\)</span>,而 <span class="arithmatex">\(\vec{a} = (7,2)\)</span>,现在，求向量a在基B下的坐标：</p>
+<p>解：直接应用Eq(K4) 得到
+$$
+[\vec{a}]_B = C^{-1}\left[\begin{matrix} 7  \2  \\end{matrix} \right] = 
+ -\frac{1}{5}\left[\begin{matrix} 1 &amp; -2 \ -3 &amp; 1 \end{matrix} \right]  \left[\begin{matrix} 7  \2  \\end{matrix} \right] = -\frac{1}{5}\left[\begin{matrix} 3  \-19  \\end{matrix} \right]
+$$</p>
+<h3 id="423">4.2.3 非标准基之间的转换</h3>
+<p>以上，C矩阵联系的是一个标准基和1个非标准基，<strong>如果2组都是非标准基，需要以标准基作为跳板。</strong></p>
+<p>设2组新基
+$$
+\vec { u } _ { 1 } = \left[ \begin{array} { l } 1 \ 2 \end{array} \right], \vec { u } _ { 2 } = \left[ \begin{array} { l } 3 \ 3 \end{array} \right] \ 
+\vec { w }_ { 1 } = \left[ \begin{array} { l } - 1 \ - 1 \end{array} \right] \vec { w } _ { 2 } = \left[ \begin{array} { l } 3 \ 0 \end{array} \right]
+$$
+根据 <code>Eq(K3或N2)</code>:
+$$
+\begin{array} { l l } 
+    \mathrm { U } = \left[ \begin{array} { l l } 1 &amp; 3 \ 2 &amp; 3 \end{array} \right]&amp;: \vec { v }= U   \vec { v }  _ { u}  \ </p>
+<div class="highlight"><pre><span></span><code>\mathrm { W } = \left[ \begin{array} { l l } - 1 &amp; 3 \\ - 1 &amp; 0 \end{array} \right]&amp;:  \vec { v }  =  W   \vec { v }  _ {  w }
+</code></pre></div>
+<p>\end{array}
+$$
+设为相等，得到
+$$
+\vec{v}= U   \vec { v }  _ { u} =  W   \vec { v }  _ { w}
+$$
+从而得到
+$$
+\vec{v}_u = U^{-1} W   \vec { v }  _ { w}\qquad    \vec{v}_w = W^{-1}  U   \vec { v }  _ { u} \tag{K4-1}
+$$</p>
+<h2 id="43">4.3 涉及基的变换矩阵</h2>
+<blockquote>
+<p>transformation matrix with respect to a basis</p>
+</blockquote>
+<p>设<strong>变换T是 <span class="arithmatex">\(R^n\)</span> 变换到 <span class="arithmatex">\(R^n\)</span> 的</strong>（sp-mark-A2），而且变换可用矩阵A表示，也就是 $T(\vec{x}) = A\vec{x} $.如下图</p>
+<p><img alt="image-20210402111047162" src="../.assets/image-20210402111047162.png" /></p>
+<p>这时候，A称为：T变换的变换矩阵(<strong>A is the transfomation matrix for T</strong>)</p>
+<p>但在上一节，我们学习了，同一个向量，在不同的基下，有不同的坐标！当我们写下向量 <span class="arithmatex">\(\vec{x}\)</span>,其实隐含的意思就是，<span class="arithmatex">\(\vec{x}\)</span> 是基于标准基的。所以，上面的矩阵A的说法还不严谨：<strong>只有当 <span class="arithmatex">\(\vec{x}\)</span> 是以标准基表示的，A才是T的变换矩阵</strong>。更严谨的说法是：A是T变换关于标准基的变换矩阵(A is the transfomation matrix for T <strong>with respect to the standard basis</strong>) 也就是说，<strong>变换矩阵是绑定在一组基上的！</strong><span class="arithmatex">\(R^n\)</span> 有很多基，<strong>同一个变换，在不同的基下的变换矩阵是不一样的！</strong> (<code>Mark-k1</code>)</p>
+<p>现在，设 <span class="arithmatex">\(B = \{v_1...v_n\}\)</span> 是 <span class="arithmatex">\(R^n\)</span> 下的一组基，用变基矩阵==C==表示。那么变换前的向量x的坐标可用基B表示为 <span class="arithmatex">\([\vec{x}]_B\)</span>,同样，变换后的可表示为 <span class="arithmatex">\([T(\vec{x})]_B\)</span>。现在就出现1个有意思的问题</p>
+<ol>
+<li>如果从标准基的向量 <span class="arithmatex">\(\vec{x}\)</span> 开始应用变换T，得到标准基下的变换  <span class="arithmatex">\(T(\vec{x}) = Ax\)</span></li>
+<li>但如果我们从<strong>非标准基</strong>的 <span class="arithmatex">\([\vec{x}]_B\)</span> 开始应用变换T，设变化后的结果是 <span class="arithmatex">\([T(\vec{x})]_B\)</span>，变换矩阵还是A吗？注意<strong>T还是同1个变换。</strong></li>
+</ol>
+<blockquote>
+<p>sp:注意这里几个字母的概念</p>
+<p>1 基B的变基矩阵是C，也就是</p>
+<ul>
+<li>
+<p>Eq(k3)：标准基下的坐标转换为基B下的坐标：$C [\vec{a}]_B = \vec{a} $</p>
+</li>
+<li>
+<p>Eq(k4)：基B坐标转换为标准基下的坐标：<span class="arithmatex">\([\vec{a}]_B = C^{-1}\vec{a}\)</span></p>
+</li>
+</ul>
+<p>2 标准基下 x 的T变换对应的矩阵是A,也就是 <span class="arithmatex">\(T(x) = Ax\)</span></p>
+<p>3 基B下 <span class="arithmatex">\([x]_B\)</span> T变换对应的矩阵是 D，也就是 <span class="arithmatex">\(T([x]_B) = D[x]_B\)</span></p>
+<p>下文的 <span class="arithmatex">\(T([x]_B)，[T(x_B)]\)</span> 是同一个意思</p>
+</blockquote>
+<p>现在，假设 <span class="arithmatex">\([\vec{x}]_B\)</span> 的T变换的对应矩阵是D，也就是 <span class="arithmatex">\([T(\vec{x})]_B =D[\vec{x}]_B\)</span>,这时矩阵D称为：D是变换T关于基B的变换矩阵(D is the transformation matrix for T with repsct to the Basis B.) 现在，我们感兴趣的是，D和A之间有什么关系？</p>
+<hr />
+<p>回顾一下 <code>Eq(k3,K4)</code>，也就是向量的坐标在标准基和非标准基之间的切换。因为T是同1个变换，所以我们可以得到
+$$
+[T(\vec{x})]_B =D[\vec{x}]_B = 
+\color{orange} [A\vec{x}]_B  \tag{K5}
+$$
+注意 <span class="arithmatex">\([A\vec{x}]_B\)</span>,是把标准基下x的变换结果 <span class="arithmatex">\(T(x) = Ax\)</span> ，再用基B表示。  因为T是同1个变换，所以</p>
+<ul>
+<li>x经过T变换到 T(x)=Ax 再用基B表示得到 <span class="arithmatex">\([A\vec{x}]_B\)</span></li>
+<li><span class="arithmatex">\([\vec{x}]_B\)</span> 经过T变换得到 <span class="arithmatex">\([T(\vec{x})]_B =D[\vec{x}]_B\)</span> </li>
+</ul>
+<p>应该是等价的！ 也就是 <span class="arithmatex">\(D[\vec{x}]_B = [A\vec{x}]_B\)</span>! 而且，参见 <code>Eq(K4,K3)</code>:
+$$
+[A\vec{x}]<em _color_orange="\color{orange">B = \underbrace{ C^{-1} (A\vec{x})}</em> =
+C^{-1}A\vec{x} = 
+C^{-1}A   \underbrace{ \left( C [\vec{x}]} \text{Eq(K4)}<em _color_orange="\color{orange">B \right)}</em>
+\tag{K6}
+$$
+最终，我们得到
+$$
+D[\vec{x}]_B =C^{-1}A    C [\vec{x}]_B \Rightarrow\quad D = C^{-1}AC \tag{K7}
+$$
+所以，基B下的向量 } \text{Eq(K3)}<span class="arithmatex">\([\vec{x}]_B\)</span>,经过T变换得到的 <span class="arithmatex">\([T(\vec{x})]_B =D[\vec{x}]_B\)</span>,等于：</p>
+<ol>
+<li><strong>(转换到标准基) </strong>变基矩阵C乘以<span class="arithmatex">\([\vec{x}]_B\)</span> ,得到 <span class="arithmatex">\(C[\vec{x}]_B\)</span>,注意，参见Eq(K3),这是向量x在标准基下的坐标： <span class="arithmatex">\(C[\vec{x}]_B=\vec{x}\)</span> !</li>
+<li><strong>(在标准基下应用变换)</strong> 第1步得到了 <span class="arithmatex">\(\vec{x}\)</span>,然后再应用变换矩阵A，得到 <span class="arithmatex">\(A\vec{x} (= AC[\vec{x}]_B)\)</span> </li>
+<li><strong>(转换回去非标准基)</strong> 最后，对 <span class="arithmatex">\(A\vec{x}\)</span> 应用Eq(K4),也就是把标准基下的向量Ax,再次用基B表示：<span class="arithmatex">\(C^{-1}A\vec{x}(= C^{-1}AC[\vec{x}]_B)\)</span></li>
+</ol>
+<p><strong>也就是，非标准基下的==变换==，需要以标准基为跳板。</strong></p>
+<p>回顾 <code>&lt;Mark-k1&gt;</code> 这句话，Eq(k7)，就是我们<strong>得到同一个变换T，在不同基下对应的变换矩阵的方法！</strong></p>
+<hr />
+<p><strong>例K4</strong> 设 <span class="arithmatex">\(T:R^2 \rightarrow R^2\)</span>,标准基下的变换是 <span class="arithmatex">\(T(\vec{x})= Ax= \left[\begin{matrix} 3 &amp; -2 \\ 2 &amp; -2 \end{matrix} \right]\vec{x}\)</span>.再设基 <span class="arithmatex">\(B= \left\{\left[\begin{matrix} 1  \\2  \\\end{matrix} \right],\left[\begin{matrix} 2  \\1  \\\end{matrix} \right] \right\}\)</span>，B的变基矩阵是 <span class="arithmatex">\(C = \left[ \begin{array} { l l } 1 &amp; 2 \\ 2 &amp; 1 \end{array} \right],C^{-1} =-\frac{1}{3} \left[ \begin{array}{c c} 1 &amp; -2 \\ -2 &amp; 1 \end{array} \right]\)</span>.我们现在要求的就是矩阵D，使得 <span class="arithmatex">\(T([\vec{x}]_B) = D[\vec{x}]_B\)</span>.
+$$
+D = C^{-1}AC = \left[\begin{matrix} -1 &amp; 0 \ 0 &amp; 2 \end{matrix} \right]
+$$
+设 <span class="arithmatex">\(x= \left[\begin{matrix} 1  \\-1  \\\end{matrix} \right]\)</span>,现在我们验证一下
+$$
+\begin{CD}</p>
+<p>\vec{x} @&gt;A&gt;&gt; T(\vec{x}) = A\vec{x} =\left[\begin{matrix} 5  \4  \\end{matrix} \right]\
+@V V C^{-1} V @V V C^{-1} V\</p>
+<p>[\vec{x}]_B = C^{-1}\vec{x} = \left[\begin{matrix} -1  \1  \\end{matrix} \right] @&gt;&gt;D&gt; </p>
+<p>[T(\vec{x})]_B = D[\vec{x}]_B = \left[\begin{matrix} 1  \2  \\end{matrix} \right] = [\vec{Ax}]_B = C^{-1}(A\vec{x}) 
+\end{CD}</p>
+<p>\tag{K8}
+$$
+注意以上从 <span class="arithmatex">\(\vec{x}\)</span> 得到最终结果的2个不同路径</p>
+<ol>
+<li><span class="arithmatex">\(\vec{x}\)</span> <strong>往右</strong>经过T变换得到 Ax;在<strong>往下</strong>变到基B <span class="arithmatex">\([\vec{Ax}]_B\)</span></li>
+<li><span class="arithmatex">\(\vec{x}\)</span> <strong>往下</strong>变基到B：<span class="arithmatex">\([\vec{x}]_B\)</span>,再<strong>往右</strong>应用T变换：:<span class="arithmatex">\(D[\vec{x}]_B\)</span></li>
+</ol>
+<p>2种方式是等价的</p>
+<hr />
+<p>我们为什么要变基？其实<strong>线代就是选择合适基的艺术</strong>，看2个变化矩阵A和D,A是普通的变换矩阵，但D是对角矩阵啊，它用来做变换矩阵，很容易计算，如果要计算T变换100次，可以先把向量切换到基B下，然后应用对角矩阵D的100次幂，最后在切换回原来的基！</p>
+<h2 id="44">4.4 改变坐标系以求变换矩阵</h2>
+<blockquote>
+<p>Changing coordinate systems to help find a transformation matrix</p>
+</blockquote>
+<p>设 <span class="arithmatex">\(T:R^2 \rightarrow R^2\)</span>, 以前，我们想要求得T变换的矩阵A时，是把对标准基(1,0),(0,1)应用T变换，并把结果作为矩阵A的列，也就是
+$$
+A = \left[\begin{matrix} </p>
+<div class="highlight"><pre><span></span><code>T(\left[\begin{matrix} 1  \\0  \\\end{matrix} \right])
+
+&amp; 
+T(\left[\begin{matrix} 0  \\1  \\\end{matrix} \right])
+</code></pre></div>
+<p>\end{matrix} \right]<br />
+\tag{K9}
+$$
+但现在，假设我们想找出关于 <span class="arithmatex">\(L:y = 2x\)</span> 的反射变换，如下图，<span class="arithmatex">\(v_1 = (2,-1)\)</span> 经过变换之后变成 <span class="arithmatex">\(T(v_1)= (-2,1)\)</span>,我们当然可以继续用上面的方法，根据几何知识确定 (1,0),(0,1) 变换后的向量，并把它们作为T的列，但这并不简单。</p>
+<p><img alt="image-20210402140820707" src="../.assets/image-20210402140820707.png" /></p>
+<p>但我们可以变基啊！把 <span class="arithmatex">\(v_1,L\)</span> 作为基！ 当<strong>标准基下求变换矩阵A比较困难的时候，我们先变基，然后求变换矩阵D</strong>!而A,D矩阵的联系就是 <code>Eq(K7)</code> 啊！</p>
+<p>现在，设L所在的直线是 <span class="arithmatex">\(v_2= (1,2)\)</span>,设新的基 <span class="arithmatex">\(B= \{v_1,v_2\} = \{\left[\begin{matrix} 2  \\-1  \\\end{matrix} \right],\left[\begin{matrix} 1  \\2  \\\end{matrix} \right]\}\)</span>,此时，变基矩阵是
+$$
+C = \left[ \begin{array} { l l } 2 &amp; 1 \ -1 &amp; 2 \end{array} \right],
+C^{-1} =\frac{1}{5} \left[ \begin{array}{c c} 2 &amp; -1 \ 1 &amp; 2 \end{array} \right]
+$$
+注意，这时<strong>，<span class="arithmatex">\(v_1,v_2\)</span> 还是标准基表示的，首先转换为基B下的坐标</strong> 
+$$
+[v_1]_B = \left[\begin{matrix} 1  \0  \\end{matrix} \right],[v_2]_B = \left[\begin{matrix} 0  \1  \\end{matrix} \right]
+$$</p>
+<blockquote>
+<p>sp:基向量在自身基下，当然是(1,0),(0,1)啊</p>
+</blockquote>
+<p>设基B下，反射变换对应的矩阵是D，那么根据Eq(K9)
+$$
+D= \left[\begin{matrix} [T(v_1)]_B &amp; [T(v_2)]_B\end{matrix} \right] =</p>
+<p>\left[\begin{matrix}  D[v_1]_B &amp; D[v_2]_B\end{matrix} \right]
+$$
+其中
+$$
+D[v_1]_B = \left[\begin{matrix} | &amp; | \d_1  &amp; d_2\| &amp; |\\end{matrix} \right] \left[\begin{matrix} 1  \0  \\end{matrix} \right] = \vec{d_1}</p>
+<p>;\quad
+D[v_2]_B = \left[\begin{matrix} | &amp; | \d_1  &amp; d_2\| &amp; |\\end{matrix} \right] \left[\begin{matrix} 0  \1  \\end{matrix} \right] = \vec{d_2}
+$$
+意思就是，求出新的基B下的T变换 <span class="arithmatex">\([T(v_i)]_B\)</span>,而 <span class="arithmatex">\([T(v_1)]_B\)</span> 就是<strong>基B的</strong>变换矩阵D乘以<strong>基B下</strong>，基B的<strong>基</strong>向量 <span class="arithmatex">\([v_i]_B\)</span>,也就是 <span class="arithmatex">\(D[v_i]_B\)</span>,这些 <span class="arithmatex">\(D[v_i]_B\)</span>，既是矩阵D的列。</p>
+<p>现在，在新基B下，因为 <span class="arithmatex">\(v_1,v_2\)</span> 是垂直的,T变换是很容易得到的:</p>
+<blockquote>
+<p>T变换就是关于y = 2x的反射,所以</p>
+<ul>
+<li><span class="arithmatex">\(v_1 = (2,-1)\)</span> 变换后是 (-2,1),其实就直接是 <span class="arithmatex">\([v_1]_B = （1，0）\)</span> 变换后得到 (-1,0)</li>
+<li><span class="arithmatex">\(v_2 = (1,2)\)</span> 变换后不改变，就在原来的位置</li>
+</ul>
+<p>sp:这个例子其实就是切换到特征向量基，求除变换矩阵，然后根据 Eq(k7) 的到标准基下的变换矩阵！</p>
+</blockquote>
+<div class="arithmatex">\[
+[T(v_1)]_B = \left[\begin{matrix} -1  \\0  \\\end{matrix} \right]，\quad
+[T(v_2)]_B = \left[\begin{matrix} 0  \\1  \\\end{matrix} \right]
+\]</div>
+<p>从而得到，在基B下，T变换的矩阵是
+$$
+D  = \left[\begin{matrix} -1 &amp; 0 \ 0 &amp; 1 \end{matrix} \right]
+$$
+那么
+$$
+A = CDC^{-1} = \frac{1}{5} \left[\begin{matrix} -3 &amp; 4 \ 4 &amp; 3 \end{matrix} \right]
+$$
+这样就求出了反射变换在标准基下的变换矩阵A!</p>
+<h1 id="5-lk2sp">5 Lk2:sp总结</h1>
+<p><strong>1</strong> 首先，参见 <code>&lt;#Lk1.2&gt;</code> ，向量坐标变换，也就是变基的时候，有自身的变基矩阵，就是 <code>Eq(K3,K4)</code>，设变基矩阵是C,那么</p>
+<ul>
+<li>Eq(k3)：标准基下的坐标转换为基B下的坐标：$C [\vec{a}]_B = \vec{a} $</li>
+<li>Eq(k4)：基B坐标转换为标准基下的坐标：<span class="arithmatex">\([\vec{a}]_B = C^{-1}\vec{a}\)</span></li>
+</ul>
+<p>注意变基矩阵C，是以<strong>基B的基向量</strong>作为列的！这是因为，<code>&lt;#Lk1.2.1&gt;,&lt;#Lk1.2.2&gt;</code> 是在标准和非标准之间转换，所以变基矩阵C一定是基B的基向量作为列！其实变基矩阵的求法一定是<code>&lt;#2.1&gt;</code> 的方法</p>
+<p><strong>2</strong> 变换也有<strong>自己的</strong>矩阵！<strong>变换是发生在输入、输出基下面的！</strong>变换前后空间可以不一样，基也可以不一样。如</p>
+<ul>
+<li><code>&lt;#1&gt; 例1</code>的点乘变换，输入向量是三维空间的，输出向量是1维空间的，空间都不一样，基当然也不一样。明显，当输入、输出空间维数都不一样的时候，T对应的矩阵A就不是方阵，如<code>&lt;#1&gt; 例1</code>的3-1的</li>
+<li><code>&lt;#1&gt; 例3</code> 的旋转例子当中，输入输出基是一样的</li>
+<li><code>&lt;#2.3&gt;</code> 的恒等变换，就是输入、输出空间一样，但基不一样</li>
+</ul>
+<p>注意，在 <code>&lt;#Lk1.3&gt;</code>所述的，都是 <strong>同一个空间</strong> (<span class="arithmatex">\(R^n\)</span>)下的变换(注意看<code>sp-mark-A2</code>标记！).从而得到了<strong>同一个</strong>变换，在<strong>同一个</strong>空间下，<strong>不同基</strong>下的变换矩阵的联系，也就是Eq(k7，k8)!它们是相似矩阵！也就是<code>&lt;V32-2&gt;</code>所讲内容</p>
+<p>但不管怎样，变换T对应的矩阵A都是<code>&lt;#2.1&gt;</code>讲述的方法！只是需要</p>
+<ol>
+<li>首先确定输入输入空间是否一样</li>
+<li>如果一样，在确定输入的基和输入的基是否选择一样的</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>T(v) = v的恒等变换一定是在同一个空间下的（从 <code>&lt;#1&gt; 例V2 的sp-mark-A1</code>推断，因为恒等变换后向量形式不变，所以<strong>恒等变换输入空间和输入空间是一样的，只是基可能不同！</strong>），因为向量表达式根本没有改变！只是当输入、输出的基不一样的时候，A是<strong>变基矩阵</strong></li>
+<li><strong>T(v) = v恒等变换是一种特殊的变换，也就是说，变基矩阵也是一个变换矩阵！</strong>它们的求法都是<code>&lt;#2.1&gt;</code>的方法！变基后，向量在不同基下的坐标不一样，但向量形式不变！如<code>sp-note7.2-6</code> 所述，方程就是 <code>&lt;Lk1.2&gt;</code> 的Eq(N1)!</li>
+</ul>
+<p><strong>3</strong> 不同基下同一个变换的变换矩阵不同，但性质最好的是特征向量作为基的变换矩阵，如 <code>&lt;#Lk1.4&gt;</code> 所示：先得到特征向量基项的变换矩阵D，然后通过Eq(k7) 得到标准基下的变换矩阵A</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.sections", "search.highlight", "search.share", "search.suggest", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>
